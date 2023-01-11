@@ -1,0 +1,33 @@
+#!/bin/bash
+# Creation of an apptainer from a definition file.
+
+if [ $# -ne 1 ] ; then
+    # Brief syntax message.
+    echo "Syntax:  docker-container <sdfp>"
+    echo "	<sdfp> = Path to singularity definition file"
+    echo ""
+    echo "Options will not be required for most container creations."
+    echo ""
+    exit 1
+fi
+
+# Base of apptainers creation structure.
+BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
+DEST=/scratch/containers
+TEMP=/fast/tmp
+
+# Prepare for singularity container build.
+D=`echo "$1" | awk -F\/ '{print $NF}'`
+C=`echo "$D" | sed -e 's/\.def/\.sif/'`
+cp $1 $TEMP/
+
+# Build & Install the apptainer
+sudo singularity build $TEMP/$C $TEMP/$D
+if [ -f $DEST/$N-$V.sif ] ; then
+    printf "\n\n\nERROR:  The apptainer you've just created already exists.\n"
+    printf "        Execute the following commands to replace what exists.\n\n"
+    printf "/bin/mv -f $TEMP/$C $DEST/\n\n\n\n"
+else
+    /bin/mv -f $TEMP/$C $DEST/
+fi
+

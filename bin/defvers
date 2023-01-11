@@ -1,0 +1,45 @@
+#!/bin/bash
+# Creation of module files to ease burden of apptainer use.
+# This script is written for people using Environment Modules.
+# https://modules.readthedocs.io/en/latest/index.html
+
+# Simple syntax check.
+if [ $# -lt 1 ] ; then
+    echo ""
+    echo "Syntax:  defvers <path-to-SIF> [-m <path>]"
+    echo "	-m   speficy base path for module files (def: /sw/modules)"
+    echo "This script will create set the default container image to be"
+    echo "used when a version is explicitly provided when loading a module."
+    echo ""
+    exit 1
+fi
+
+# Extract information from apptainer file name.
+TEMP=`echo $1 | awk -F/ '{print $NF}'`
+TEMP=`echo $TEMP | sed -e 's/\.sif//'`
+V=`echo $TEMP | awk -F- '{print $NF}'`   # Version.
+C=`echo $TEMP | sed -e "s/-$V//"`	 # Name.
+
+# Process all command line options.
+shift
+MODDIR=/sw/modules/$C
+while [[ $# -gt 0 ]] ; do
+    opt="$1"
+    case $opt in
+	-m)
+	    MODDIR="$2/$C"
+	    shift
+	    shift
+	    ;;
+	*)
+	    echo "Option $1 unknown, ignoring!"
+	    shift
+	    ;;
+    esac
+done
+
+# Create $MODDIR/.version
+printf "#%%Module\n" >/tmp/.version
+printf "set ModulesVersion $V\n" >>/tmp/.version
+install -m 664 -g hpc-admins /tmp/.version $MODDIR/
+rm -f /tmp/.version

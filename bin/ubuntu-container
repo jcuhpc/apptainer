@@ -1,0 +1,85 @@
+#!/bin/bash
+# Creation of a Ubuntu based apptainer.
+if [ $# -eq 0 ] ; then
+    # Brief syntax message.
+    echo "Syntax:  ubuntu-container <pkg0> [-d <dist>] [-f] [-n <name>] [-x <pkg1> [-x <pkg2>] ...]"
+    echo "	<pkg0> = Primary software package"
+    echo "	<dist> = Ubuntu version used (def: 22.04)"
+    echo "	<name> = Base name used for apptainer image file"
+    echo "	<pkg#> = Extra software packages required to be installed"
+    echo ""
+    echo "Packages <pkg0> depends upon will be installed automatically."
+    echo ""
+    exit 1
+fi
+
+# Process arguments & options.
+N=$1
+S=$1
+X=""
+V=""
+shift
+D="22.04"
+while [[ $# -gt 0 ]] ; do
+    opt="$1"
+    case $opt in
+	-d)
+	    D="$2"
+	    shift
+	    shift
+	    ;;
+	-n)
+	    N="$2"
+	    shift
+	    shift
+	    ;;
+	-v)
+	    V="$2"
+	    shift
+	    shift
+	    ;;
+	-x)
+	    X="$X $2"
+	    shift
+	    shift
+	    ;;
+	*)
+	    echo "Option $1 unknown, ignoring!"
+	    shift
+	    ;;
+    esac
+done
+
+TEMP=/fast/tmp
+DEST=/scratch/containers
+# Base of apptainers creation structure.
+BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
+# Directory housing apptainer definition file templates.
+META="$BASE/metadata/ubuntu"
+
+# Auto-detect version of primary software package
+declare -A DIST=( [18.04]="bionic" [20.04]="focal" [21.04]="hirsute"\
+		  [21.10]="impish" [22.04]="jammy" [22.10]="kinetic" )
+if [ "$V" = "" ] ; then
+    V=`curl https://packages.ubuntu.com/${DIST[$D]}/$S 2>/dev/null | awk -F[\(\)] '/Package:/{print $2}' | awk -F[-+~] '{print $1}'`
+    if [ "$V" == "" ] ; then
+	echo "Version identification failed.  Trying again often works."
+	exit 1
+    fi
+fi
+
+# Create apptainer definition file
+F="$META/ubuntu-$D-base.template"
+[[ ! -f $F ]]   &&   echo "ERROR: $F doesn't exist!"   &&   exit 1
+cat $F | sed -e "s/SWNAME/$S $X/g" >$TEMP/$N-$V.def
+
+# Build & Install the apptainer
+if [ -f $DEST/$N-$V.sif ] ; then
+    printf "\n\n\nERROR:  The apptainer you will be creating already exists.\n"
+    printf "        Execute the following commands to replace what exists.\n\n"
+    printf "sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def\n"
+    printf "/bin/mv -f $TEMP/$N-$V.sif $DEST/\n\n\n\n"
+else
+    sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
+    /bin/mv -f $TEMP/$N-$V.sif $DEST/
+fi
