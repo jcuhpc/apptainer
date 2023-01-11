@@ -1,0 +1,23 @@
+# Common modulefile for HPC software
+# The following variables must be set:
+#     sw_name:  software name
+#     sw_vers:  software version
+
+if [ module-info mode load ] {
+    puts stderr "
+$sw_name v$sw_vers software is available in a singularity container.
+Command aliases are provided for seemless access to software (for most).
+A list of available aliases can be seen by using the command:
+	module show $sw_name/$sw_vers
+
+Some researchers may want/need to prepend the relevant, traditional command
+syntax used for application execution with:
+	singularity run \$SING/$sw_name-$sw_vers.sif
+"
+}
+
+set  SIF  /sw/containers/$sw_name-$sw_vers.sif
+
+set-alias srun   "singularity run $SIF"
+set-alias sexec  "singularity exec $SIF"
+set-alias sshell "singularity shell $SIF"

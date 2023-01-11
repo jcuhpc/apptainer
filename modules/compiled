@@ -1,0 +1,6 @@
+# Common modulefile for HPC software
+# The following variables must be set:
+#     sw_name:  software name
+#     sw_vers:  software version
+
+set swhome /sw/$sw_name/$sw_vers

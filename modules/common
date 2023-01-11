@@ -1,0 +1,14 @@
+# Common modulefile for HPC software
+# The following variables must be set:
+#     sw_name:  software name
+#     sw_vers:  software version
+#     sw_site:  software related URL
+
+proc ModulesHelp { } {
+    global sw_name sw_site
+    puts stderr "$sw_name - $sw_site\n"
+}
+
+module-whatis "version $sw_vers"
+
+conflict $sw_name
