@@ -1,0 +1,9 @@
+Bootstrap: localimage
+From: /scratch/containers/R-4.1.2.sif
+
+%runscript
+exec "${@}"
+
+%post
+# Install required R packages
+R --slave -e 'install.packages("logitnorm")'

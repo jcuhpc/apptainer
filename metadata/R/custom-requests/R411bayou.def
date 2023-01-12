@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /sw/containers/R-4.1.1.sif
+
+
+%apprun R
+exec R "${@}"
+
+%apprun Rscript
+exec Rscript "${@}"
+
+%runscript
+exec R "${@}"
+
+%post
+# Install required R packages
+R --slave -e 'require(devtools);install_github("uyedaj/bayou");require(bayou)'

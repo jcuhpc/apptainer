@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: /sw/containers/R-4.1.1.sif
+
+
+%apprun R
+exec R "${@}"
+
+%apprun Rscript
+exec Rscript "${@}"
+
+%runscript
+exec R "${@}"
+
+%post
+# Install required R packages
+R --slave -e 'BiocManager::install("SNPRelate")'
+R --slave -e 'BiocManager::install("qvalue")'
+R --slave -e 'install.packages("dartR")'
+R --slave -e 'BiocManager::install("LEA")'
+R --slave -e 'install.packages("gdm")'
+R --slave -e 'install.packages("fmsb")'
+R --slave -e 'install.packages("yhat")'
+R --slave -e 'install.packages("ecodist")'
+
