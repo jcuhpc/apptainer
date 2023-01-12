@@ -1,0 +1,231 @@
+abyss bioconda
+ac-diamond bioconda
+admixtools bioconda
+admixture bioconda
+amphora auto
+amplify bioconda2
+angsd bioconda
+assembly-scan bioconda
+assembly-stats bioconda
+astral phylofisher
+augustus bioconda
+autodock hcc
+
+bamaddrg bioconda
+bamm bioconda
+bamtools bioconda
+bayescan bioconda
+bazel conda-forge
+bcftools bioconda
+beast2 bioconda
+bedtools bioconda
+biopython bioconda
+bismark bioconda
+blast bioconda
+bowtie2 bioconda
+busco bioconda
+bwa bioconda
+
+canu bioconda
+cap3 bioconda
+cd-hit bioconda
+checkm-genome bioconda
+clustalo bioconda
+clustalw bioconda
+corset bioconda
+coverm bioconda
+cufflinks bioconda
+cutadapt bioconda
+
+dadi conda-forge
+das_tool bioconda2
+diamond bioconda
+diamond_add_taxonomy bioconda
+dlcpar bioconda
+dmd conda-forge
+drep bioconda
+
+emboss bioconda
+enrichm bioconda2
+exonerate bioconda
+
+fasta3 bioconda
+fastai fastai
+fastme bioconda
+fastp bioconda
+fastqc bioconda2
+faststructure bioconda
+fasttree bioconda
+fastx_toolkit bioconda
+ffmpeg conda-forge
+flye bioconda
+freebayes bioconda
+freexl conda-forge
+
+galaxy-util bioconda
+gatk bioconda
+gatk4 bioconda
+gblocks bioconda
+gdal conda-forge
+gdc bioconda
+glpk conda-forge
+gmap bioconda
+gmsh conda-forge
+gnuplot conda-forge
+gradle conda-forge
+graftm bioconda
+graftm_genome bioconda
+gromacs bioconda2
+gromacs_mpi bioconda2
+gtdbtk bioconda
+guppy guppy
+
+hddm pymc
+hdf4 conda-forge
+hdf5 conda-forge
+hisat2 bioconda
+hmmer bioconda
+hmmer2 bioconda
+
+ipyrad ipyrad
+iqtree bioconda
+itsx bioconda
+
+jags conda-forge
+julia conda-forge
+
+kmer-jellyfish bioconda
+kraken bioconda
+kraken2 bioconda
+krakenuniq bioconda
+krona bioconda
+kwant conda-forge
+
+lastz bioconda
+libgdal conda-forge
+libnetcdf conda-forge
+longstitch bioconda
+
+mafft bioconda
+maker bioconda2
+mapdamage2 bioconda2
+maxbin2 bioconda2
+mcl bioconda
+medaka bioconda
+megahit bioconda
+metabat2 bioconda
+metawrap-mg ursky
+metis conda-forge
+mfqe bioconda
+migrate-n bioconda
+minimap2 bioconda
+mirdeep2 bioconda
+mothur bioconda
+mrbayes bioconda
+msprime conda-forge
+multiqc bioconda
+muscle bioconda
+
+netcdf4 conda-forge
+netcdf-cxx4 conda-forge
+netcdf-fortran bioconda2
+nettle conda-forge
+newick_utils bioconda
+nlopt conda-forge
+
+oases bioconda
+octave conda-forge
+orfm bioconda
+orthofinder bioconda
+
+pal2nal bioconda
+paml bioconda
+pandas conda-forge
+pandoc conda-forge
+parallel conda-forge
+pbipa bioconda
+pblat bioconda
+pcre2 conda-forge
+pcre conda-forge
+pear bioconda
+perl-velvetoptimiser bioconda
+petsc conda-forge
+phylobayes etetoolkit
+phyluce phyluce
+picard bioconda2
+pigz conda-forge
+pilon bioconda
+pipits bioconda
+plink bioconda
+pplacer bioconda
+prodigal bioconda
+proj4 conda-forge
+proj conda-forge
+proteinortho bioconda
+psmc atongsa
+purge_haplotigs bioconda2
+pyfasta bioconda
+pyfastaq bioconda
+pyfastx bioconda
+pyproj conda-forge
+pyslim bioconda
+
+qgis conda-forge
+qiime2 qiime2
+qualimap bioconda2
+quast bioconda
+
+r-rstan bioconda2
+r-rstantools bioconda2
+rcorrector bioconda
+rdp_classifier bioconda
+repeatscout bioconda
+repeatmodeler bioconda
+rnastructure bioconda
+rseqc bioconda2
+
+salmon bioconda
+samtools bioconda
+scalpel bioconda
+scikit-learn conda-forge
+seqmagick bioconda
+seqtk bioconda
+sga bioconda
+shannon_cpp bioconda
+shovill bioconda
+slim conda-forge
+snakemake bioconda2
+sortmerna bioconda
+spades bioconda
+sra-tools bioconda
+srst2 bioconda
+stacks bioconda2
+star bioconda
+stringtie bioconda
+structure bioconda
+
+tensorflow conda-forge
+tinyarray conda-forge
+tophat bioconda
+tpp bioconda
+transdecoder bioconda
+transrate bioconda
+treemix bioconda2
+treeshrink smirarab
+trimal bioconda
+trim-galore bioconda
+trimmomatic bioconda
+trinity bioconda2
+trinotate bioconda
+
+ucsc-blat bioconda
+ucsc-fatotwobit bioconda
+usher bioconda
+
+vcfkit bioconda
+vcflib bioconda
+vcftools bioconda
+velvet bioconda
+vsearch bioconda
+
+graftm_genome graftm_genome
