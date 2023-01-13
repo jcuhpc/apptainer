@@ -1,0 +1,21 @@
+Bootstrap: localimage
+From: /fast/tmp/ubuntu-22.04.sif
+
+%files
+# Register required for download.
+# but onced registered it seems you can see links for downloads
+/fast/tmp/tmhmm.tar /opt
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+cd /opt  &&  \
+tar xf tmhmm.tar  &&  \
+rm -f /opt/tmhmm.tar  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
+
+%environment
+    export PATH="/opt/tmhmm-2.0c/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

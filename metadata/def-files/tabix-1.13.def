@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils
+apt-get install -y tabix 
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
