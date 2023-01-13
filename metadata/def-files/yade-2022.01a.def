@@ -11,9 +11,6 @@ From: ubuntu:22.04
 	apt-get install -y yade yade-doc
 
 %runscript
-#	echo "Container was created $NOW"
-#	echo "Arguments received: $*"
-#	exec /usr/bin/yade "$@"
 	exec "$@"
 
 %labels
