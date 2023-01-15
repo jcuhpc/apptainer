@@ -22,9 +22,9 @@ Ultimately, this repository will contain every apptainer definition file
 created by JCU HPC staff.  The scripts contained in this repository have
 been created to generate definition files and/or apptainer images.  There
 are many JCU HPC specific configuration items in this repository - this
-is due to our "minimum viable product" approach.  For example, we build
-ubuntu apptainers (ubuntu-*.sif) that are used to decrease the time it
-takes for other apptainers to be built.
+is due to our "minimum viable product" approach.  We also build ubuntu
+apptainers (ubuntu-*.sif) that are used to decrease the time it takes
+for other apptainers to be built.
 
 
 -------------------
