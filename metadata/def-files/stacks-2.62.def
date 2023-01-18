@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /fast/tmp/ubuntu-22.04.sif
+
+%runscript
+exec "${@}"
+
+%post
+apt-get update
+apt-get install -y openmpi-bin openmpi-common libopenmpi3
+cd /opt
+wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
+tar xf stacks-2.62.tar.gz
+cd stacks-2.62
+./configure
+make
+make install
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

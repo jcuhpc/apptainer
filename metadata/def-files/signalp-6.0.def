@@ -1,0 +1,21 @@
+Bootstrap: docker
+From: signalp
+Registry: index.docker.io
+Namespace: streptomyces
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+

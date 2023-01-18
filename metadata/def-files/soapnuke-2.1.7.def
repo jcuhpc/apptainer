@@ -1,0 +1,27 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y build-essential wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git apt-utils zlib1g zlib1g-dev
+install -d -m 775 /opt/soapnuke/bin
+cd /opt
+wget https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke2.1.7.tar.gz
+tar xvf SOAPnuke2.1.7.tar.gz 
+cd SOAPnuke-SOAPnuke2.1.7
+make
+install -m 775 SOAPnuke /opt/soapnuke/bin
+install -m 664 COPYING Readme.md /opt/soapnuke/
+cd ..
+rm -rf SOAPnuke-SOAPnuke2.1.7
+

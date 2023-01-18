@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+echo "Australia/Brisbane" >/etc/timezone
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y build-essential bwa gzip python python-dev tar wget
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
+cd /opt
+wget --no-check-certificate https://www.well.ox.ac.uk/files-library/stampy-latest.tgz
+tar xf stampy-latest.tgz  &&  rm -f stampy-latest.tgz
+cd stampy-1.0.32
+make
+
+%environment
+    export PATH="/opt/stampy-1.0.32:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
