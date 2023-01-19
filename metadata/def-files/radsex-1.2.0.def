@@ -1,0 +1,32 @@
+Bootstrap: localimage
+#From: ubuntu:22.04
+From: /fast/tmp/ubuntu-22.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+export LANG=C.UTF-8
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils wget make gcc-11
+
+cd opt/
+wget https://github.com/SexGenomicsToolkit/radsex/archive/refs/tags/1.2.0.tar.gz
+tar xf 1.2.0.tar.gz
+cd radsex-1.2.0
+make
+
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/radsex-1.2.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
