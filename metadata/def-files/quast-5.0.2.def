@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%post
+    install -d -m 2775 -o root -g root /gpfs01
+    install -d -m 1777 -o root -g root /scratch /fast/tmp
+    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    conda update conda
+    conda create --debug -c conda-forge -c bioconda -n quast quast=5.0.2
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate quast
+    quast-download-gridss
+    quast-download-silva
+    quast-download-busco
+    # Busco data downloads usually fail - workaround follows...
+    wget --no-check-certificate https://busco.ezlab.org/v2/datasets/bacteria_odb9.tar.gz
+    wget --no-check-certificate https://busco.ezlab.org/v2/datasets/eukaryota_odb9.tar.gz
+    wget --no-check-certificate https://busco.ezlab.org/v2/datasets/fungi_odb9.tar.gz
+    cd /opt/conda/envs/quast/lib/python3.7/site-packages/quast_libs/busco
+    tar xf /bacteria_odb9.tar.gz
+    tar xf /eukaryota_odb9.tar.gz
+    tar xf /fungi_odb9.tar.gz
+    rm -f /*.tar.gz
+
+
+%environment
+    export PATH="/opt/conda/envs/quast/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
