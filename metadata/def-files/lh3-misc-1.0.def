@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt update
+ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+echo "Australia/Brisbane" >/etc/timezone
+apt-get install -y --no-install-recommends software-properties-common apt-utils
+apt -y install wget git luajit dialog
+
+
+wget -O dmd.deb https://downloads.dlang.org/releases/2022/dmd_2.100.2-0_amd64.deb
+apt install -y ./dmd.deb
+rm -rf dmd.deb
+
+cd /opt
+git clone https://github.com/lh3/misc.git
+
+
+%environment
+    export PATH="/opt/misc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

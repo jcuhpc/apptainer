@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+/fast/tmp/network.lic /opt
+/fast/tmp/matlab_installer_input.txt /opt
+/fast/tmp/matlab2022a /opt
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils gcc xauth libgtk2.0-bin libgtk2.0-common libgtk2.0-dev libnss3 libxt6 gedit fonts-dejavu-core fonts-sil-sophia-nubian x-window-system freeglut3 freeglut3-dev
+cd /opt/matlab2022a
+./install -inputFile /opt/matlab_installer_input.txt
+#cp -f /opt/license.dat /opt/matlab/licenses/network.lic
+cd ..   &&   rm -rf matlab2022a
+
+%environment
+    export PATH="/opt/matlab/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export MLM_LICENSE_FILE=/opt/matlab/licenses/network.lic
+
+%runscript
+    exec "$@"
+
