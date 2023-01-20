@@ -1,0 +1,31 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+IQTree_Version 2.1.3
+
+%runscript
+exec "$@"
+
+%post
+# Install IQTree 2.1.3
+export IQTree_VERSION=2.1.3
+echo "export IQTree_VERSION=${IQTree_VERSION}" >> $SINGULARITY_ENVIRONMENT
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+
+#iqtree dependent and packages MAY already be installed?
+apt-get install -y --no-install-recommends \
+software-properties-common 
+
+wget https://github.com/iqtree/iqtree2/releases/download/v2.1.3/iqtree-2.1.3-Linux.tar.gz && \
+tar xvf iqtree-2.1.3-Linux.tar.gz && \
+cp iqtree-2.1.3-Linux/bin/iqtree2 /usr/local/bin
+
+#add path to iqtree exec
+%environment
+export PATH="/usr/local/bin:$PATH"
+ 
