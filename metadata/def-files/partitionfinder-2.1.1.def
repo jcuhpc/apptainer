@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-18.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt-get install -y python python-pip
+pip install numpy pandas pyparsing scipy scikit-learn
+pip install numexpr==2.7.3
+pip install tables
+cd /opt   &&   \
+wget https://github.com/brettc/partitionfinder/archive/refs/tags/v2.1.1.tar.gz   &&   \
+tar xf v2.1.1.tar.gz   &&   rm -f v2.1.1.tar.gz   &&   \
+chmod +x partitionfinder-2.1.1/*.py   &&   \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/partitionfinder-2.1.1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

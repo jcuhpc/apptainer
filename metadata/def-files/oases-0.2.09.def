@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%post
+    install -d -m 2775 -o root -g root /gpfs01
+    install -d -m 1777 -o root -g root /scratch /fast/tmp
+    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    conda update conda
+    conda config --add channels defaults
+    conda config --add channels bioconda
+    conda config --add channels conda-forge
+    conda create --debug -n oases oases=0.2.09
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate oases
+
+%environment
+    export PATH="/opt/conda/envs/oases/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"

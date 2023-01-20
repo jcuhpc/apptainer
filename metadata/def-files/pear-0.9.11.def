@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%files
+/fast/tmp/0.9.11.tar /opt
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils tar
+cd /opt
+mkdir pear
+cd pear
+tar xf ../0.9.11.tar
+rm -f ../0.9.11.tar
+
+%environment
+    export PATH="/opt/pear/0.9.11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+

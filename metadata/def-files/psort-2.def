@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%files
+/fast/tmp/psort.tar /opt/
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y perl  &&  \
+cd /opt  &&  \
+tar xf psort.tar  &&  rm -f psort.tar  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/psort/2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

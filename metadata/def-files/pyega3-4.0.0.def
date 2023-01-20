@@ -1,0 +1,25 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y python3-pip
+
+python3 -m pip install pyega3
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+

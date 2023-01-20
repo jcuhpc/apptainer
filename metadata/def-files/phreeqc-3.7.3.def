@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common wget
+apt-get install -y build-essential
+
+wget http://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.7.3-15968.tar.gz
+tar xvf phreeqc-3.7.3-15968.tar.gz
+cd phreeqc-3.7.3-15968
+mkdir Release
+cd Release
+../configure
+make -j 2
+make install
+
+cd /
+rm -R phreeqc-3.7.3-15968.tar.gz
+rm -R phreeqc-3.7.3-15968
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

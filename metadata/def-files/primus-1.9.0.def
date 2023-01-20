@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%files
+# Register required for download.
+# but onced registered it seems you can see links for downloads
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y wget tar
+
+cd /opt
+wget https://primus.gs.washington.edu/docroot/versions/PRIMUS_v1.9.0.tgz && tar xvf PRIMUS_v1.9.0.tgz
+chmod -R 775 /opt/PRIMUS_v1.9.0
+rm -rf PRIMUS_v1.9.0.tgz
+
+%environment
+    export PATH="/opt/PRIMUS_v1.9.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
