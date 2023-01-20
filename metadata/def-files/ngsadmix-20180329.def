@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+
+%files
+/fast/tmp/r8s1.81.tar.gz /
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+echo "Australia/Brisbane" >/etc/timezone
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y build-essential ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
+apt-get install -y apt-utils tar git zlib1g-dev
+
+cd /usr/local  &&  \
+git clone https://github.com/aalbrechtsen/NGSadmix.git  &&  \
+cd NGSadmix  &&  g++ NGSadmix.cpp -O3 -lpthread -lz -o NGSadmix
+
+%environment
+    export PATH="/usr/local/NGSadmix:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
