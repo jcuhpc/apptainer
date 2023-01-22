@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils dirmngr
+echo "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+apt-get update
+apt-get install duck
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
