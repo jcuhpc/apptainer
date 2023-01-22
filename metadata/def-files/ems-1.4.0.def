@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y build-essential wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 libnetcdf-dev git cmake
+cd /opt
+wget https://github.com/csiro-coasts/EMS/archive/refs/tags/v1.4.0.tar.gz
+tar xf v1.4.0.tar.gz
+cd EMS-1.4.0
+conf/configure
+make
+# This will build all libraries and modules including SHOC & COMPAS
+# SHOC will be available in model/hd, to check version info type:
+#model/hd/shoc -v
+# COMPAS will be available in model/hd-us, to check version info type:
+#model/hd-us/compas -v
+cd ../
+rm -rf v1.4.0.tar.gz
+
+%environment
+    export PATH="/opt/EMS-1.4.0/model/hd:/opt/EMS-1.4.0/model/hd-us::/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+

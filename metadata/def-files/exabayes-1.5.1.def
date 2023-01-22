@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+echo "Australia/Brisbane" >/etc/timezone
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y build-essential ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
+apt-get install -y apt-utils tar wget
+#apt-get install -y apt-utils tar wget autotools-dev automake git libbz2-dev zlib1g-dev
+
+wget https://cme.h-its.org/exelixis/resource/download/software/exabayes-1.5.1.tar.gz
+tar xf exabayes-1.5.1.tar.gz
+cd exabayes-1.5.1
+./configure --prefix=/usr/local
+make   &&   make install
+rm -fr /exabayes*
+
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
