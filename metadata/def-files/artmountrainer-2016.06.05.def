@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%files
+/tmp/artbinmountrainier2016.06.05linux64.tgz /opt
+# Register required for download.
+# cannot wget or curl as it errors
+# unsafe legacy renegotiation disabled
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y curl tar  &&  \
+cd /opt  &&  \
+tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
+rm -rf artbinmountrainier2016.06.05linux64.tgz
+
+%environment
+    export PATH="/opt/art_bin_MountRainier:/opt/art_bin_MountRainier/ART_profiler_454:art_bin_MountRainier/ART_profiler_illumina:art_bin_MountRainier/examples:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

@@ -1,0 +1,31 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-20.04.sif
+
+%post
+	export DEBIAN_FRONTEND=noninteractive
+	apt-get clean
+	apt-get update -y
+	TZ=Australia/Brisbane  apt-get install -y tzdata
+	apt-get install -y openjdk-11-jdk unzip wget
+        cd /opt
+	wget https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip
+	unzip Astral.5.7.8.zip
+	cat >/opt/Astral/astral <<EOF
+#!/bin/bash
+java -jar /opt/Astral/astral.5.7.8.jar $@
+EOF
+	chmod 775 /opt/Astral/astral
+	chmod -x  /opt/Astral/*.jar /opt/Astral/*.pdf
+	find /opt/Astral -type d -exec chmod o+rx {} \;
+	find /opt/Astral -type f -exec chmod o+r  {} \;
+
+%runscript
+	exec "$@"
+
+%environment
+	export PATH="/opt/Astral:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%labels
+	Author wayne.mallett@jcu.edu.au
+	Version v0.1
+
