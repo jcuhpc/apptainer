@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-22.04.sif
+From: /fast/tmp/apptainer/ubuntu-23.04.sif
 
 %labels
 Maintainer JCUHPC
@@ -9,7 +9,7 @@ exec "$@"
 
 %post
 apt-get update
-apt-get install -y transrate-tools 
+apt-get install -y SWNAME
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
