@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils tar wget unzip
+
+cd /opt   &&   \
+wget http://cmpg.unibe.ch/software/fastsimcoal27/downloads/fsc27_linux64.zip   &&   \
+unzip fsc27_linux64.zip   &&   rm -f fsc27_linux64.zip   &&   \
+mv fsc27_linux64 fsc   &&   chmod +x fsc/fsc2705
+
+%environment
+    export PATH="/opt/fsc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
