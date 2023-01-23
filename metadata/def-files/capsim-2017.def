@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+export LANG=C.UTF-8
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils
+apt-get install -y make wget gzip libjhdf5-jni samtools bwa bedtools git default-jdk
+
+git clone https://github.com/mdcao/japsa
+cd japsa
+make INSTALL_DIR=/opt/japsa MXMEM=7000m SERVER=true JLP=/usr/lib/jni install
+
+cd ..
+rm -rf japsa
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/japsa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

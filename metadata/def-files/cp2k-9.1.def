@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils wget
+cd /opt
+wget https://github.com/cp2k/cp2k/releases/download/v9.1.0/cp2k-9.1-Linux-x86_64.ssmp
+chmod 775 cp2k-9.1-Linux-x86_64.ssmp
+
+%environment
+    export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
