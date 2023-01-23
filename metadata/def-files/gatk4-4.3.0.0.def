@@ -8,20 +8,13 @@ From: continuumio/miniconda3
     conda update conda
     conda config --add channels defaults
     conda config --add channels bioconda
-    conda config --add channels eaton-lab
     conda config --add channels conda-forge
-    conda create --debug -n ipyrad ipyrad=0.9.86
+    conda create --debug -n gatk4 gatk4=4.3.0.0
     . /opt/conda/etc/profile.d/conda.sh
-    conda activate ipyrad
-    pip install --upgrade jupyter_client
-    pip install --upgrade jupyter_core
-    cd /opt
-    git clone https://github.com/eaton-lab/tetrad.git
-    cd tetrad
-    pip install -e .
+    conda activate gatk4
 
 %environment
-    export PATH="/opt/conda/envs/ipyrad/bin:/opt/tetrad/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export PATH="/opt/conda/envs/gatk4/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
     exec "$@"

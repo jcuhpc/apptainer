@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update   &&   \
+apt-get install -y --no-install-recommends software-properties-common   &&   \
+apt-get install -y build-essential ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1   &&   \
+apt-get install -y apt-utils bwa git wget python python-pip libbz2-dev liblzma-dev zlib1g-dev   &&   \
+cd /opt   &&   \
+pip install numpy pysam scipy mathstats   &&   \
+git clone --recursive https://github.com/GATB/gatb-minia-pipeline   &&   \
+cd gatb-minia-pipeline   &&   \
+make test
+
+%environment
+    export PATH="/opt/gatb-minia-pipeline:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

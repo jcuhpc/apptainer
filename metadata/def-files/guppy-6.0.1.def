@@ -1,0 +1,27 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+/fast/tmp/ont-guppy-cpu_6.0.1_linux64.tar /opt
+
+%labels
+Maintainer JCUHPC
+
+%post
+    install -d -m 2775 -o root -g root /gpfs01
+    install -d -m 1777 -o root -g root /scratch /fast/tmp
+    apt-get update
+    ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+    echo "Australia/Brisbane" >/etc/timezone
+    apt-get install -y --no-install-recommends software-properties-common
+    apt-get install -y apt-utils tar
+    cd /opt
+    tar xf ont-guppy-cpu_6.0.1_linux64.tar
+    rm -f  ont-guppy-cpu_6.0.1_linux64.tar
+
+%environment
+    export PATH="/opt/ont-guppy-cpu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
