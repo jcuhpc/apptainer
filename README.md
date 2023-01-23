@@ -33,4 +33,3 @@ REPOSITORY CREATORS
 Dr. Whitney Mallett
 
 Mr. Wayne Spagnol
--------------------
