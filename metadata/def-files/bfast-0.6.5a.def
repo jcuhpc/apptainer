@@ -1,0 +1,34 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
+apt-get install -y --no-install-recommends software-properties-common
+apt-get install -y apt-utils tar wget autotools-dev automake git libbz2-dev zlib1g-dev
+apt-get install -y build-essential ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
+
+wget https://github.com/nh13/BFAST/archive/refs/tags/bfast.0.6.5a.tar.gz
+tar xf bfast.0.6.5a.tar.gz
+cd BFAST-bfast.0.6.5a
+sh autogen.sh
+./configure --prefix=/usr/local
+make   &&   make install
+rm -fr /*.tar.gs /BFAST-bfast.0.6.5a
+
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
