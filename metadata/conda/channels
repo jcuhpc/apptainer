@@ -168,7 +168,7 @@ pyfasta bioconda
 pyfastaq bioconda
 pyfastx bioconda
 pyproj conda-forge
-pyslim bioconda
+pyslim conda-forge
 
 qgis conda-forge
 qiime2 qiime2

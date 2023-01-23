@@ -13,30 +13,34 @@ INST=/scratch/containers/
 ##### MODIFICATIONS UNLIKELY TO BE REQUIRED IN THIS SECTION #####
 
 if [ $# -eq 1 -o $# -eq 2 ] ; then
-    SOFT=$1
+    N=$1
 
     # Determine template file & primary conda channel
-    CHNL=`grep ^$SOFT\  $META/channels | awk '{print $2}'`
+    CHNL=`grep ^$N\  $META/channels | awk '{print $2}'`
     TEMP=$META/$CHNL
-    [[ -f $META/$SOFT ]]   &&   TEMP=$META/$SOFT
+    [[ -f $META/$N ]]   &&   TEMP=$META/$N
     [[ "$CHNL" =~ "bioconda" ]]   &&   CHNL=bioconda   # Fix for use of bioconda# template files.
 
+    # Base of apptainers creation structure.
+    BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
     # Determine version to install
-    VERS=$2   # Specify version when 'badges' data doesn't point to latest version.
-    [[ "$VERS" = "" ]]   &&   VERS=`curl https://anaconda.org/$CHNL/$SOFT/badges/version.svg 2>/dev/null | grep Anaconda.org | awk -F\- '{print $2}'`
+    V=$2   # Specify version when 'badges' data doesn't point to latest version.
+    [[ "$V" = "" ]]   &&   V=`curl https://anaconda.org/$CHNL/$N/badges/version.svg 2>/dev/null | grep Anaconda.org | awk -F\- '{print $2}'`
 
     # Create singularity definition file
-    cat $TEMP | sed -e s/SWNAME/$SOFT/g | sed -e s/SWVERS/$VERS/g >/fast/tmp/$SOFT-$VERS.def
+    cat $TEMP | sed -e s/SWNAME/$N/g | sed -e s/SWVERS/$V/g >/fast/tmp/$N-$V.def
     # Build singularity container
     TEMP=/fast/tmp
-    if [ -f $INST/$SOFT-$VERS.sif ] ; then
+    if [ -f $INST/$N-$V.sif ] ; then
       printf "\n\n\nERROR:  The apptainer you will be creating already exists.\n"
       printf "        Execute the following commands to replace what exists.\n\n"
-      printf "sudo singularity build $TEMP/$SOFT-$VERS.sif $TEMP/$SOFT-$VERS.def\n"
-      printf "/bin/mv -f $TEMP/$SOFT-$VERS.sif $INST\n\n\n\n"
+      printf "sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def\n"
+      printf "mv $TEMP/$N-$V.def $BASE/metadata/def-files/\n"
+      printf "/bin/mv -f $TEMP/$N-$V.sif $INST\n\n\n\n"
     else
-      sudo singularity build $TEMP/$SOFT-$VERS.sif $TEMP/$SOFT-$VERS.def
-      /bin/mv -f $TEMP/$SOFT-$VERS.sif $INST
+      sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
+      mv $TEMP/$N-$V.def $BASE/metadata/def-files/
+      /bin/mv -f $TEMP/$N-$V.sif $INST
     fi
 
 else

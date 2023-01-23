@@ -59,7 +59,8 @@ META="$BASE/metadata/ubuntu"
 
 # Auto-detect version of primary software package
 declare -A DIST=( [18.04]="bionic" [20.04]="focal" [21.04]="hirsute"\
-		  [21.10]="impish" [22.04]="jammy" [22.10]="kinetic" )
+		  [21.10]="impish" [22.04]="jammy" [22.10]="kinetic"\
+		  [23.04]="lunar" )
 if [ "$V" = "" ] ; then
     V=`curl https://packages.ubuntu.com/${DIST[$D]}/$S 2>/dev/null | awk -F[\(\)] '/Package:/{print $2}' | awk -F[-+~] '{print $1}'`
     if [ "$V" == "" ] ; then
@@ -78,8 +79,10 @@ if [ -f $DEST/$N-$V.sif ] ; then
     printf "\n\n\nERROR:  The apptainer you will be creating already exists.\n"
     printf "        Execute the following commands to replace what exists.\n\n"
     printf "sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def\n"
+    printf "mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/\n"
     printf "/bin/mv -f $TEMP/$N-$V.sif $DEST/\n\n\n\n"
 else
     sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
+    mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/
     /bin/mv -f $TEMP/$N-$V.sif $DEST/
 fi

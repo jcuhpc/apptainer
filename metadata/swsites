@@ -41,6 +41,7 @@ bcftools www.htslib.org
 bcl2fastq2 sapac.support.illumina.com/downloads/bcl2fastq-conversion-software-v2-20.html
 beagle faculty.washington.edu/browning/beagle/beagle.html
 beast2 www.beast2.org
+bedops github.com/bedops/bedops
 BEDtools sourceforge.net/projects/bedtools
 bedtools bedtools.readthedocs.io/en/latest/
 bfast github.com/nh13/BFAST
@@ -326,6 +327,7 @@ raxml sco.h-its.org/exelixis/web/software/raxml/
 rclone rclone.org
 rcorrector github.com/mourisl/Rcorrector
 rdp_classifier sourceforge.net/projects/rdp-classifier/
+rdp-classifier github.com/rdpstaff/classifier
 readline tiswww.case.edu/php/chet/readline/rltop.html
 repeatmodeler github.com/Dfam-consortium/RepeatModeler
 repeatscout http://repeatscout.bioprojects.org
