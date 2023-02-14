@@ -1,0 +1,52 @@
+NAME                INSTALLED                 FIXED-IN                  TYPE  VULNERABILITY   SEVERITY   
+bash                5.1-6ubuntu1                                        deb   CVE-2022-3715   Low         
+ca-certificates     20211016                  20211016ubuntu0.22.04.1   deb   CVE-2022-23491  Medium      
+coreutils           8.32-4.1ubuntu1                                     deb   CVE-2016-2781   Low         
+gpgv                2.2.27-3ubuntu2.1                                   deb   CVE-2022-3219   Low         
+libc-bin            2.35-0ubuntu3.1                                     deb   CVE-2016-20013  Negligible  
+libc6               2.35-0ubuntu3.1                                     deb   CVE-2016-20013  Negligible  
+libgssapi-krb5-2    1.19.2-2                  1.19.2-2ubuntu0.1         deb   CVE-2022-42898  Medium      
+libk5crypto3        1.19.2-2                  1.19.2-2ubuntu0.1         deb   CVE-2022-42898  Medium      
+libkrb5-3           1.19.2-2                  1.19.2-2ubuntu0.1         deb   CVE-2022-42898  Medium      
+libkrb5support0     1.19.2-2                  1.19.2-2ubuntu0.1         deb   CVE-2022-42898  Medium      
+libncurses6         6.3-2                                               deb   CVE-2022-29458  Negligible  
+libncursesw6        6.3-2                                               deb   CVE-2022-29458  Negligible  
+libpam-modules      1.4.0-11ubuntu2           1.4.0-11ubuntu2.1         deb   CVE-2022-28321  Negligible  
+libpam-modules-bin  1.4.0-11ubuntu2           1.4.0-11ubuntu2.1         deb   CVE-2022-28321  Negligible  
+libpam-runtime      1.4.0-11ubuntu2           1.4.0-11ubuntu2.1         deb   CVE-2022-28321  Negligible  
+libpam0g            1.4.0-11ubuntu2           1.4.0-11ubuntu2.1         deb   CVE-2022-28321  Negligible  
+libpcre3            2:8.39-13ubuntu0.22.04.1                            deb   CVE-2017-11164  Negligible  
+libssl3             3.0.2-0ubuntu1.6                                    deb   CVE-2022-3996   Low         
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3358   Low         
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3602   High        
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3786   High        
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4203   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4304   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4450   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0215   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0216   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0217   Medium      
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0286   High        
+libssl3             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0401   Medium      
+libsystemd0         249.11-0ubuntu3.6                                   deb   CVE-2022-3821   Medium      
+libtinfo6           6.3-2                                               deb   CVE-2022-29458  Negligible  
+libudev1            249.11-0ubuntu3.6                                   deb   CVE-2022-3821   Medium      
+login               1:4.8.1-2ubuntu2          1:4.8.1-2ubuntu2.1        deb   CVE-2013-4235   Low         
+ncurses-base        6.3-2                                               deb   CVE-2022-29458  Negligible  
+ncurses-bin         6.3-2                                               deb   CVE-2022-29458  Negligible  
+openssl             3.0.2-0ubuntu1.6                                    deb   CVE-2022-3996   Low         
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3358   Low         
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3602   High        
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.7          deb   CVE-2022-3786   High        
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4203   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4304   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2022-4450   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0215   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0216   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0217   Medium      
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0286   High        
+openssl             3.0.2-0ubuntu1.6          3.0.2-0ubuntu1.8          deb   CVE-2023-0401   Medium      
+passwd              1:4.8.1-2ubuntu2          1:4.8.1-2ubuntu2.1        deb   CVE-2013-4235   Low         
+perl-base           5.34.0-3ubuntu1           5.34.0-3ubuntu1.1         deb   CVE-2020-16156  Medium      
+wget                1.21.2-2ubuntu1                                     deb   CVE-2021-31879  Medium      
+zlib1g              1:1.2.11.dfsg-2ubuntu9.1  1:1.2.11.dfsg-2ubuntu9.2  deb   CVE-2022-37434  Medium      

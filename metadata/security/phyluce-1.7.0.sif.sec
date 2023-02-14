@@ -1,0 +1,328 @@
+NAME                  INSTALLED                   FIXED-IN                      TYPE    VULNERABILITY        SEVERITY   
+GitPython             3.1.13                      3.1.30                        python  GHSA-hcpj-qp55-gfph  High        
+bash                  5.0-6ubuntu1.1              5.0-6ubuntu1.2                deb     CVE-2019-18276       Low         
+bsdutils              1:2.34-0.1ubuntu9.1         2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+bsdutils              1:2.34-0.1ubuntu9.1         2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+ca-certificates       20210119~20.04.1            20211016ubuntu0.20.04.1       deb     CVE-2022-23491       Medium      
+certifi               2020.12.5                   2022.12.07                    python  GHSA-43fp-rhv2-5gv8  Medium      
+coreutils             8.30-3ubuntu2                                             deb     CVE-2016-2781        Low         
+cryptography          3.4.4                       39.0.1                        python  GHSA-w7pp-m8wf-vj6r  Medium      
+cryptography          3.4.4                       39.0.1                        python  GHSA-x4qr-2fvf-3mr5  Medium      
+dpkg                  1.19.7ubuntu3               1.19.7ubuntu3.2               deb     CVE-2022-1664        Medium      
+e2fsprogs             1.45.5-2ubuntu1             1.45.5-2ubuntu1.1             deb     CVE-2022-1304        Medium      
+fdisk                 2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+fdisk                 2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+future                0.18.2                      0.18.3                        python  GHSA-v3c5-jqr6-7qm8  High        
+git                   1:2.25.1-1ubuntu3                                         deb     CVE-2018-1000021     Low         
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.1           deb     CVE-2021-21300       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.2           deb     CVE-2021-40330       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.4           deb     CVE-2022-24765       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.5           deb     CVE-2022-29187       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.6           deb     CVE-2022-39253       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.6           deb     CVE-2022-39260       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.8           deb     CVE-2022-23521       Medium      
+git                   1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.8           deb     CVE-2022-41903       Medium      
+git-man               1:2.25.1-1ubuntu3                                         deb     CVE-2018-1000021     Low         
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.1           deb     CVE-2021-21300       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.2           deb     CVE-2021-40330       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.4           deb     CVE-2022-24765       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.5           deb     CVE-2022-29187       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.6           deb     CVE-2022-39253       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.6           deb     CVE-2022-39260       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.8           deb     CVE-2022-23521       Medium      
+git-man               1:2.25.1-1ubuntu3           1:2.25.1-1ubuntu3.8           deb     CVE-2022-41903       Medium      
+gpgv                  2.2.19-3ubuntu2.1                                         deb     CVE-2022-3219        Low         
+gpgv                  2.2.19-3ubuntu2.1           2.2.19-3ubuntu2.2             deb     CVE-2022-34903       Medium      
+gzip                  1.10-0ubuntu4               1.10-0ubuntu4.1               deb     CVE-2022-1271        Medium      
+jupyter-core          4.7.1                                                     python  CVE-2022-39286       High        
+jupyter-core          4.7.1                       4.11.2                        python  GHSA-m678-f26j-3hrp  High        
+krb5-locales          1.17-6ubuntu4.1                                           deb     CVE-2021-36222       Medium      
+krb5-locales          1.17-6ubuntu4.1                                           deb     CVE-2021-37750       Medium      
+krb5-locales          1.17-6ubuntu4.1             1.17-6ubuntu4.2               deb     CVE-2022-42898       Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libasn1-8-heimdal     7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libblkid1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+libblkid1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+libc-bin              2.31-0ubuntu9.2                                           deb     CVE-2016-20013       Negligible  
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2016-10228       Negligible  
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2019-25013       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-27618       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-29562       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-6096        Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-27645       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-3326        Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-35942       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-3999        Medium      
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2022-23218       Low         
+libc-bin              2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2022-23219       Low         
+libc6                 2.31-0ubuntu9.2                                           deb     CVE-2016-20013       Negligible  
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2016-10228       Negligible  
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2019-25013       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-27618       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-29562       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2020-6096        Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-27645       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-3326        Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-35942       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2021-3999        Medium      
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2022-23218       Low         
+libc6                 2.31-0ubuntu9.2             2.31-0ubuntu9.7               deb     CVE-2022-23219       Low         
+libcom-err2           1.45.5-2ubuntu1             1.45.5-2ubuntu1.1             deb     CVE-2022-1304        Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.10            deb     CVE-2022-22576       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.10            deb     CVE-2022-27774       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.10            deb     CVE-2022-27775       Low         
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.10            deb     CVE-2022-27776       Low         
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.11            deb     CVE-2022-27781       Low         
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.11            deb     CVE-2022-27782       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.12            deb     CVE-2022-32206       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.12            deb     CVE-2022-32208       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.13            deb     CVE-2022-35252       Low         
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.14            deb     CVE-2022-32221       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.15            deb     CVE-2022-43552       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.5             deb     CVE-2021-22876       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.5             deb     CVE-2021-22890       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.6             deb     CVE-2021-22898       Low         
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.6             deb     CVE-2021-22924       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.6             deb     CVE-2021-22925       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.7             deb     CVE-2021-22946       Medium      
+libcurl3-gnutls       7.68.0-1ubuntu2.4           7.68.0-1ubuntu2.7             deb     CVE-2021-22947       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2021-45960       Low         
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2021-46143       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22822       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22823       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22824       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22825       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22826       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-22827       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-23852       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-23990       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-25235       High        
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.2              deb     CVE-2022-25236       High        
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.4              deb     CVE-2022-25313       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.4              deb     CVE-2022-25314       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.4              deb     CVE-2022-25315       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.5              deb     CVE-2022-40674       Medium      
+libexpat1             2.2.9-1build1               2.2.9-1ubuntu0.6              deb     CVE-2022-43680       Medium      
+libext2fs2            1.45.5-2ubuntu1             1.45.5-2ubuntu1.1             deb     CVE-2022-1304        Medium      
+libfdisk1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+libfdisk1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+libgcrypt20           1.8.5-5ubuntu1              1.8.5-5ubuntu1.1              deb     CVE-2021-33560       Low         
+libgcrypt20           1.8.5-5ubuntu1              1.8.5-5ubuntu1.1              deb     CVE-2021-40528       Medium      
+libglib2.0-0          2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.2        deb     CVE-2021-27218       Medium      
+libglib2.0-0          2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.2        deb     CVE-2021-27219       Medium      
+libglib2.0-0          2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.3        deb     CVE-2021-28153       Medium      
+libglib2.0-data       2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.2        deb     CVE-2021-27218       Medium      
+libglib2.0-data       2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.2        deb     CVE-2021-27219       Medium      
+libglib2.0-data       2.64.6-1~ubuntu20.04.1      2.64.6-1~ubuntu20.04.3        deb     CVE-2021-28153       Medium      
+libgmp10              2:6.2.0+dfsg-4              2:6.2.0+dfsg-4ubuntu0.1       deb     CVE-2021-43618       Low         
+libgnutls30           3.6.13-2ubuntu1.3           3.6.13-2ubuntu1.6             deb     CVE-2021-20231       Low         
+libgnutls30           3.6.13-2ubuntu1.3           3.6.13-2ubuntu1.6             deb     CVE-2021-20232       Low         
+libgnutls30           3.6.13-2ubuntu1.3           3.6.13-2ubuntu1.7             deb     CVE-2021-4209        Low         
+libgnutls30           3.6.13-2ubuntu1.3           3.6.13-2ubuntu1.7             deb     CVE-2022-2509        Medium      
+libgssapi-krb5-2      1.17-6ubuntu4.1                                           deb     CVE-2021-36222       Medium      
+libgssapi-krb5-2      1.17-6ubuntu4.1                                           deb     CVE-2021-37750       Medium      
+libgssapi-krb5-2      1.17-6ubuntu4.1             1.17-6ubuntu4.2               deb     CVE-2022-42898       Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libgssapi3-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libhcrypto4-heimdal   7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libheimbase1-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libheimntlm0-heimdal  7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libhogweed5           3.5.1+really3.5.1-2         3.5.1+really3.5.1-2ubuntu0.1  deb     CVE-2021-20305       Medium      
+libhogweed5           3.5.1+really3.5.1-2         3.5.1+really3.5.1-2ubuntu0.2  deb     CVE-2021-3580        Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libhx509-5-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libicu66              66.1-2ubuntu2               66.1-2ubuntu2.1               deb     CVE-2021-30535       Medium      
+libk5crypto3          1.17-6ubuntu4.1                                           deb     CVE-2021-36222       Medium      
+libk5crypto3          1.17-6ubuntu4.1                                           deb     CVE-2021-37750       Medium      
+libk5crypto3          1.17-6ubuntu4.1             1.17-6ubuntu4.2               deb     CVE-2022-42898       Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libkrb5-26-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libkrb5-3             1.17-6ubuntu4.1                                           deb     CVE-2021-36222       Medium      
+libkrb5-3             1.17-6ubuntu4.1                                           deb     CVE-2021-37750       Medium      
+libkrb5-3             1.17-6ubuntu4.1             1.17-6ubuntu4.2               deb     CVE-2022-42898       Medium      
+libkrb5support0       1.17-6ubuntu4.1                                           deb     CVE-2021-36222       Medium      
+libkrb5support0       1.17-6ubuntu4.1                                           deb     CVE-2021-37750       Medium      
+libkrb5support0       1.17-6ubuntu4.1             1.17-6ubuntu4.2               deb     CVE-2022-42898       Medium      
+libldap-2.4-2         2.4.49+dfsg-2ubuntu1.7      2.4.49+dfsg-2ubuntu1.9        deb     CVE-2022-29155       Medium      
+libldap-common        2.4.49+dfsg-2ubuntu1.7      2.4.49+dfsg-2ubuntu1.9        deb     CVE-2022-29155       Medium      
+liblz4-1              1.9.2-2                     1.9.2-2ubuntu0.20.04.1        deb     CVE-2021-3520        Medium      
+liblzma5              5.2.4-1ubuntu1              5.2.4-1ubuntu1.1              deb     CVE-2022-1271        Medium      
+libmount1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+libmount1             2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+libncurses6           6.2-0ubuntu2                                              deb     CVE-2021-39537       Negligible  
+libncurses6           6.2-0ubuntu2                                              deb     CVE-2022-29458       Negligible  
+libncursesw6          6.2-0ubuntu2                                              deb     CVE-2021-39537       Negligible  
+libncursesw6          6.2-0ubuntu2                                              deb     CVE-2022-29458       Negligible  
+libnettle7            3.5.1+really3.5.1-2         3.5.1+really3.5.1-2ubuntu0.1  deb     CVE-2021-20305       Medium      
+libnettle7            3.5.1+really3.5.1-2         3.5.1+really3.5.1-2ubuntu0.2  deb     CVE-2021-3580        Medium      
+libpam-modules        1.3.1-5ubuntu4.1            1.3.1-5ubuntu4.4              deb     CVE-2022-28321       Negligible  
+libpam-modules-bin    1.3.1-5ubuntu4.1            1.3.1-5ubuntu4.4              deb     CVE-2022-28321       Negligible  
+libpam-runtime        1.3.1-5ubuntu4.1            1.3.1-5ubuntu4.4              deb     CVE-2022-28321       Negligible  
+libpam0g              1.3.1-5ubuntu4.1            1.3.1-5ubuntu4.4              deb     CVE-2022-28321       Negligible  
+libpcre2-8-0          10.34-7                     10.34-7ubuntu0.1              deb     CVE-2022-1586        Low         
+libpcre2-8-0          10.34-7                     10.34-7ubuntu0.1              deb     CVE-2022-1587        Low         
+libpcre3              2:8.39-12build1                                           deb     CVE-2017-11164       Negligible  
+libpcre3              2:8.39-12build1             2:8.39-12ubuntu0.1            deb     CVE-2019-20838       Low         
+libpcre3              2:8.39-12build1             2:8.39-12ubuntu0.1            deb     CVE-2020-14155       Negligible  
+libperl5.30           5.30.0-9ubuntu0.2           5.30.0-9ubuntu0.3             deb     CVE-2020-16156       Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libroken18-heimdal    7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libsasl2-2            2.1.27+dfsg-2               2.1.27+dfsg-2ubuntu0.1        deb     CVE-2022-24407       High        
+libsasl2-modules      2.1.27+dfsg-2               2.1.27+dfsg-2ubuntu0.1        deb     CVE-2022-24407       High        
+libsasl2-modules-db   2.1.27+dfsg-2               2.1.27+dfsg-2ubuntu0.1        deb     CVE-2022-24407       High        
+libsepol1             3.0-1                       3.0-1ubuntu0.1                deb     CVE-2021-36084       Low         
+libsepol1             3.0-1                       3.0-1ubuntu0.1                deb     CVE-2021-36085       Low         
+libsepol1             3.0-1                       3.0-1ubuntu0.1                deb     CVE-2021-36086       Low         
+libsepol1             3.0-1                       3.0-1ubuntu0.1                deb     CVE-2021-36087       Low         
+libsmartcols1         2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+libsmartcols1         2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+libsqlite3-0          3.31.1-4ubuntu0.2           3.31.1-4ubuntu0.3             deb     CVE-2021-36690       Negligible  
+libsqlite3-0          3.31.1-4ubuntu0.2           3.31.1-4ubuntu0.4             deb     CVE-2020-35525       Medium      
+libsqlite3-0          3.31.1-4ubuntu0.2           3.31.1-4ubuntu0.4             deb     CVE-2020-35527       Medium      
+libsqlite3-0          3.31.1-4ubuntu0.2           3.31.1-4ubuntu0.5             deb     CVE-2022-35737       Medium      
+libss2                1.45.5-2ubuntu1             1.45.5-2ubuntu1.1             deb     CVE-2022-1304        Medium      
+libssh-4              0.9.3-2ubuntu2.1            0.9.3-2ubuntu2.2              deb     CVE-2021-3634        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.12            deb     CVE-2022-0778        High        
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.13            deb     CVE-2022-1292        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.15            deb     CVE-2022-2068        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.16            deb     CVE-2022-2097        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2022-4304        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2022-4450        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2023-0215        Medium      
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2023-0286        High        
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.3             deb     CVE-2021-3449        High        
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.8             deb     CVE-2021-3711        High        
+libssl1.1             1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.8             deb     CVE-2021-3712        Medium      
+libsystemd0           245.4-4ubuntu3.4                                          deb     CVE-2022-3821        Medium      
+libsystemd0           245.4-4ubuntu3.4            245.4-4ubuntu3.10             deb     CVE-2020-13529       Low         
+libsystemd0           245.4-4ubuntu3.4            245.4-4ubuntu3.10             deb     CVE-2021-33910       High        
+libsystemd0           245.4-4ubuntu3.4            245.4-4ubuntu3.15             deb     CVE-2021-3997        Medium      
+libtinfo6             6.2-0ubuntu2                                              deb     CVE-2021-39537       Negligible  
+libtinfo6             6.2-0ubuntu2                                              deb     CVE-2022-29458       Negligible  
+libudev1              245.4-4ubuntu3.4                                          deb     CVE-2022-3821        Medium      
+libudev1              245.4-4ubuntu3.4            245.4-4ubuntu3.10             deb     CVE-2020-13529       Low         
+libudev1              245.4-4ubuntu3.4            245.4-4ubuntu3.10             deb     CVE-2021-33910       High        
+libudev1              245.4-4ubuntu3.4            245.4-4ubuntu3.15             deb     CVE-2021-3997        Medium      
+libuuid1              2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+libuuid1              2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2021-3671        Low         
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.1         deb     CVE-2022-3116        Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.2         deb     CVE-2022-41916       Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2021-44758       Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-3437        Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-42898       Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.3         deb     CVE-2022-44640       Medium      
+libwind0-heimdal      7.7.0+dfsg-1ubuntu1         7.7.0+dfsg-1ubuntu1.4         deb     CVE-2022-45142       Medium      
+libx11-6              2:1.6.9-2ubuntu1.1          2:1.6.9-2ubuntu1.2            deb     CVE-2021-31535       Medium      
+libx11-data           2:1.6.9-2ubuntu1.1          2:1.6.9-2ubuntu1.2            deb     CVE-2021-31535       Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2020-24977       Low         
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2021-3516        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2021-3517        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2021-3518        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2021-3537        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.1  deb     CVE-2021-3541        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.2  deb     CVE-2022-23308       Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.3  deb     CVE-2022-29824       Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.4  deb     CVE-2016-3709        Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.5  deb     CVE-2022-2309        Low         
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.5  deb     CVE-2022-40303       Medium      
+libxml2               2.9.10+dfsg-5               2.9.10+dfsg-5ubuntu0.20.04.5  deb     CVE-2022-40304       Medium      
+libzstd1              1.4.4+dfsg-3                1.4.4+dfsg-3ubuntu0.1         deb     CVE-2021-24031       Medium      
+libzstd1              1.4.4+dfsg-3                1.4.4+dfsg-3ubuntu0.1         deb     CVE-2021-24032       Medium      
+login                 1:4.8.1-1ubuntu5.20.04                                    deb     CVE-2013-4235        Low         
+logsave               1.45.5-2ubuntu1             1.45.5-2ubuntu1.1             deb     CVE-2022-1304        Medium      
+mount                 2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+mount                 2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+ncurses-base          6.2-0ubuntu2                                              deb     CVE-2021-39537       Negligible  
+ncurses-base          6.2-0ubuntu2                                              deb     CVE-2022-29458       Negligible  
+ncurses-bin           6.2-0ubuntu2                                              deb     CVE-2021-39537       Negligible  
+ncurses-bin           6.2-0ubuntu2                                              deb     CVE-2022-29458       Negligible  
+numpy                 1.19.5                                                    python  CVE-2021-34141       Medium      
+numpy                 1.19.5                      1.21                          python  GHSA-6p56-wp2h-9hxr  Medium      
+numpy                 1.19.5                      1.22                          python  GHSA-fpfv-jqm9-f5jm  Medium      
+openssh-client        1:8.2p1-4ubuntu0.1                                        deb     CVE-2020-14145       Low         
+openssh-client        1:8.2p1-4ubuntu0.1                                        deb     CVE-2021-41617       Low         
+openssh-client        1:8.2p1-4ubuntu0.1          1:8.2p1-4ubuntu0.2            deb     CVE-2021-28041       Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.12            deb     CVE-2022-0778        High        
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.13            deb     CVE-2022-1292        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.15            deb     CVE-2022-2068        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.16            deb     CVE-2022-2097        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2022-4304        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2022-4450        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2023-0215        Medium      
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.17            deb     CVE-2023-0286        High        
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.3             deb     CVE-2021-3449        High        
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.8             deb     CVE-2021-3711        High        
+openssl               1.1.1f-1ubuntu2.2           1.1.1f-1ubuntu2.8             deb     CVE-2021-3712        Medium      
+passwd                1:4.8.1-1ubuntu5.20.04                                    deb     CVE-2013-4235        Low         
+patch                 2.7.6-6                                                   deb     CVE-2018-6952        Negligible  
+patch                 2.7.6-6                                                   deb     CVE-2021-45261       Negligible  
+perl                  5.30.0-9ubuntu0.2           5.30.0-9ubuntu0.3             deb     CVE-2020-16156       Medium      
+perl-base             5.30.0-9ubuntu0.2           5.30.0-9ubuntu0.3             deb     CVE-2020-16156       Medium      
+perl-modules-5.30     5.30.0-9ubuntu0.2           5.30.0-9ubuntu0.3             deb     CVE-2020-16156       Medium      
+pip                   21.0.1                      21.1                          python  GHSA-5xp3-jfq3-5q8x  Medium      
+py                    1.10.0                                                    python  GHSA-w596-4wvx-j9j6  Medium      
+setuptools            49.6.0.post20210108                                       python  CVE-2022-40897       Medium      
+setuptools            49.6.0.post20210108         65.5.1                        python  GHSA-r9hx-vwmv-q579  High        
+tar                   1.30+dfsg-7ubuntu0.20.04.1  1.30+dfsg-7ubuntu0.20.04.2    deb     CVE-2021-20193       Low         
+urllib3               1.26.3                                                    python  CVE-2021-28363       Medium      
+urllib3               1.26.3                                                    python  CVE-2021-33503       High        
+urllib3               1.26.3                      1.26.4                        python  GHSA-5phf-pp7p-vc2r  Medium      
+urllib3               1.26.3                      1.26.5                        python  GHSA-q2q7-5pp4-w6pg  High        
+util-linux            2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3995        Medium      
+util-linux            2.34-0.1ubuntu9.1           2.34-0.1ubuntu9.3             deb     CVE-2021-3996        Medium      
+wget                  1.20.3-1ubuntu1                                           deb     CVE-2021-31879       Medium      
+wheel                 0.36.2                      0.38.1                        python  GHSA-qwmp-2cf2-g9g6  High        
+zlib1g                1:1.2.11.dfsg-2ubuntu1.2    1:1.2.11.dfsg-2ubuntu1.3      deb     CVE-2018-25032       Medium      
+zlib1g                1:1.2.11.dfsg-2ubuntu1.2    1:1.2.11.dfsg-2ubuntu1.5      deb     CVE-2022-37434       Medium      

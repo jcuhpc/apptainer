@@ -1,0 +1,4 @@
+NAME          INSTALLED  FIXED-IN  TYPE    VULNERABILITY        SEVERITY 
+cryptography  3.4.8      39.0.1    python  GHSA-w7pp-m8wf-vj6r  Medium    
+cryptography  3.4.8      39.0.1    python  GHSA-x4qr-2fvf-3mr5  Medium    
+oauthlib      3.2.1      3.2.2     python  GHSA-3pgj-pg6c-r5p7  Medium    
