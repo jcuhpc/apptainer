@@ -361,3 +361,33 @@ wget                  1.20.1-1.1              (won't fix)              deb     C
 wheel                 0.37.0                  0.38.1                   python  GHSA-qwmp-2cf2-g9g6  High        
 zlib1g                1:1.2.11.dfsg-1         1:1.2.11.dfsg-1+deb10u1  deb     CVE-2018-25032       High        
 zlib1g                1:1.2.11.dfsg-1         1:1.2.11.dfsg-1+deb10u2  deb     CVE-2022-37434       Critical    
+_______________________________________________| _______________| _____| ______| ______| ________________| ________________________________________________
+cpe                                            | cve            | cvss | cvss2 | cvss3 | cwe             | url                                             
+_______________________________________________| _______________| _____| ______| ______| ________________| ________________________________________________
+cpe:/a:openssl:openssl:1.1.1l                  | CVE-2022-2068  | 9.8  | 10.0  | 9.8   | CWE-78          | https://nvd.nist.gov/vuln/detail/CVE-2022-2068  
+cpe:/a:openssl:openssl:1.1.1l                  | CVE-2022-0778  | 7.5  | 5.0   | 7.5   | CWE-835         | https://nvd.nist.gov/vuln/detail/CVE-2022-0778  
+cpe:/a:openssl:openssl:1.1.1l                  | CVE-2021-4160  | 5.9  | 4.3   | 5.9   | NVD-CWE-noinfo  | https://nvd.nist.gov/vuln/detail/CVE-2021-4160  
+cpe:/a:openssl:openssl:1.1.1l                  | CVE-2022-2097  | 5.3  | 5.0   | 5.3   | CWE-326         | https://nvd.nist.gov/vuln/detail/CVE-2022-2097  
+cpe:/a:openssl:openssl:1.1.1l                  | CVE-2022-1292  | 9.8  | 10.0  | 9.8   | CWE-78          | https://nvd.nist.gov/vuln/detail/CVE-2022-1292  
+cpe:/a:gnu:ncurses:6.2                         | CVE-2021-39537 | 8.8  | 6.8   | 8.8   | CWE-787         | https://nvd.nist.gov/vuln/detail/CVE-2021-39537 
+cpe:/a:gnu:ncurses:6.2                         | CVE-2022-29458 | 7.1  | 5.8   | 7.1   | CWE-125         | https://nvd.nist.gov/vuln/detail/CVE-2022-29458 
+cpe:/a:certifi_project:certifi:2021.10.8       | CVE-2022-23491 | 7.5  | 0.0   | 7.5   | CWE-345         | https://nvd.nist.gov/vuln/detail/CVE-2022-23491 
+cpe:/a:python_software_foundation:python:3.9.5 | CVE-2007-4559  | 6.8  | 6.8   | 0.0   | CWE-22          | https://nvd.nist.gov/vuln/detail/CVE-2007-4559  
+cpe:/a:python:setuptools:58.0.4                | CVE-2022-40897 | 5.9  | 0.0   | 5.9   | NVD-CWE-Other   | https://nvd.nist.gov/vuln/detail/CVE-2022-40897 
+cpe:/a:sqlite:sqlite:3.36.0                    | CVE-2022-35737 | 7.5  | 0.0   | 7.5   | CWE-129         | https://nvd.nist.gov/vuln/detail/CVE-2022-35737 
+cpe:/a:sqlite:sqlite:3.36.0                    | CVE-2021-36690 | 7.5  | 5.0   | 7.5   | NVD-CWE-noinfo  | https://nvd.nist.gov/vuln/detail/CVE-2021-36690 
+cpe:/a:yaml_project:yaml:0.2.5                 | CVE-2022-3064  | 7.5  | 0.0   | 7.5   | CWE-400         | https://nvd.nist.gov/vuln/detail/CVE-2022-3064  
+cpe:/a:yaml_project:yaml:0.2.5                 | CVE-2021-4235  | 5.5  | 0.0   | 5.5   | NVD-CWE-noinfo  | https://nvd.nist.gov/vuln/detail/CVE-2021-4235  
+cpe:/a:python:python:3.9.5                     | CVE-2015-20107 | 7.6  | 8.0   | 7.6   | CWE-77          | https://nvd.nist.gov/vuln/detail/CVE-2015-20107 
+cpe:/a:python:python:3.9.5                     | CVE-2018-25032 | 7.5  | 5.0   | 7.5   | CWE-787         | https://nvd.nist.gov/vuln/detail/CVE-2018-25032 
+cpe:/a:python:python:3.9.5                     | CVE-2021-3737  | 7.5  | 7.1   | 7.5   | CWE-400,CWE-835 | https://nvd.nist.gov/vuln/detail/CVE-2021-3737  
+cpe:/a:python:python:3.9.5                     | CVE-2022-45061 | 7.5  | 0.0   | 7.5   | CWE-400         | https://nvd.nist.gov/vuln/detail/CVE-2022-45061 
+cpe:/a:python:python:3.9.5                     | CVE-2013-0340  | 6.8  | 6.8   | 0.0   | CWE-611         | https://nvd.nist.gov/vuln/detail/CVE-2013-0340  
+cpe:/a:python:python:3.9.5                     | CVE-2022-42919 | 7.8  | 0.0   | 7.8   | NVD-CWE-noinfo  | https://nvd.nist.gov/vuln/detail/CVE-2022-42919 
+cpe:/a:python:python:3.9.5                     | CVE-2021-28861 | 7.4  | 0.0   | 7.4   | CWE-601         | https://nvd.nist.gov/vuln/detail/CVE-2021-28861 
+cpe:/a:python:python:3.9.5                     | CVE-2020-10735 | 7.5  | 0.0   | 7.5   | CWE-704         | https://nvd.nist.gov/vuln/detail/CVE-2020-10735 
+cpe:/a:python:python:3.9.5                     | CVE-2022-37454 | 9.8  | 0.0   | 9.8   | CWE-190         | https://nvd.nist.gov/vuln/detail/CVE-2022-37454 
+cpe:/a:python:python:3.9.5                     | CVE-2019-12900 | 9.8  | 7.5   | 9.8   | CWE-787         | https://nvd.nist.gov/vuln/detail/CVE-2019-12900 
+cpe:/a:python:python:3.9.5                     | CVE-2016-3189  | 6.5  | 4.3   | 6.5   | NVD-CWE-Other   | https://nvd.nist.gov/vuln/detail/CVE-2016-3189  
+cpe:/a:zlib:zlib:1.2.11                        | CVE-2022-37434 | 9.8  | 0.0   | 9.8   | CWE-787         | https://nvd.nist.gov/vuln/detail/CVE-2022-37434 
+cpe:/a:zlib:zlib:1.2.11                        | CVE-2018-25032 | 7.5  | 5.0   | 7.5   | CWE-787         | https://nvd.nist.gov/vuln/detail/CVE-2018-25032 
