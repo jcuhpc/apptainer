@@ -1,0 +1,29 @@
+BootStrap: localimage
+#From: ubuntu:22.04
+From: /fast/tmp/ubuntu-22.04.sif
+
+%files
+
+%post
+    apt-get -y update
+    apt-get install -y software-properties-common
+    apt-get -y install wget
+    apt-get -y install git
+    apt-get -y install default-jre
+
+    # install nextflow
+    cd opt/
+    #curl -s https://get.nextflow.io | bash
+    wget https://github.com/nextflow-io/nextflow/releases/download/v22.10.6/nextflow
+    chmod 755 nextflow
+
+%environment
+    export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
+%labels
+Maintainer JCUHPC
+
+

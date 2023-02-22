@@ -1,0 +1,23 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt-get upgrade -y
+apt install -y gfortran git libblas-dev libglu1-mesa libhdf5-dev liblapack-dev libmetis-dev libnetcdf-dev libopenmpi-dev libsm6 libxcursor1 libxft2 libxinerama1 openmpi-bin python3-dev python3-mpi4py python3-numpy python3-scipy swig unzip libtiff-dev gmsh python3-netcdf4 petsc-dev cmake
+cd /opt
+git clone https://git.immc.ucl.ac.be/slim/slim.git
+cd slim   &&   mkdir build   &&   cd build
+cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python3
+make -j4
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/slim/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

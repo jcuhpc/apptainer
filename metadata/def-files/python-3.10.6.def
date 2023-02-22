@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
 
 %labels
 Maintainer JCUHPC
