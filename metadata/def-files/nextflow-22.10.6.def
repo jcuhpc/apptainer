@@ -1,15 +1,15 @@
 BootStrap: localimage
-#From: ubuntu:22.04
-From: /fast/tmp/ubuntu-22.04.sif
-
-%files
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
 
 %post
     apt-get -y update
-    apt-get install -y software-properties-common
-    apt-get -y install wget
-    apt-get -y install git
-    apt-get -y install default-jre
+#    apt-get -y install crun runc
+    apt-get -y install default-jre python3-pip
+    pip3 install LastDB
+
+    # install singualrity
+#    wget https://github.com/sylabs/singularity/releases/download/v3.11.0/singularity-ce_3.11.0-jammy_amd64.deb
+#    dpkg -i  singularity-ce_3.11.0-jammy_amd64.deb 
 
     # install nextflow
     cd opt/

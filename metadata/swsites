@@ -129,6 +129,7 @@ fpart github.com/martymac/fpart
 freebayes github.com/ekg/freebayes
 freexl www.gaia-gis.it/fossil/freexl/home
 freud freud.readthedocs.io/en/latest
+gadma gadma.readthedocs.io/en/latest/index.html
 galaxy-util github.com/galaxyproject/galaxy
 garli github.com/Ashod/garli
 garli-mpi github.com/Ashod/garli
@@ -174,6 +175,7 @@ hmmer hmmer.org
 hmmer2 hmmer.org
 htslib www.htslib.org
 hybpiper github.com/mossmatters/HybPiper/releases
+hybpipernf https://github.com/chrisjackson-pellicle/hybpiper-nf
 infernal http://eddylab.org/infernal/
 interproscan interproscan-docs.readthedocs.io/en/latest/index.html
 ipyrad ipyrad.readthedocs.org/en/master/index.html
@@ -199,6 +201,7 @@ kraken2 ccb.jhu.edu/software/kraken/
 krakenuniq github.com/fbreitwieser/krakenuniq
 krona github.com/marbl/Krona
 kwant kwant-project.org
+last-align tracker.debian.org/pkg/last-align
 lastz github.com/lastz/lastz
 libcerf sourceforge.net/projects/libcerf/
 libexif www.linuxfromscratch.org/blfs/view/svn/general/libexif.html
@@ -275,6 +278,7 @@ pal2nal http://www.bork.embl.de/pal2nal/
 paml github.com/abacus-gene/paml
 pandoc pandoc.org
 parallel www.gnu.org/software/parallel/
+paragonenf https://github.com/chrisjackson-pellicle/paragone-nf
 partitionfinder http://www.robertlanfear.com/partitionfinder/
 paup paup.sc.fsu.edu
 pbipa github.com/PacificBiosciences/pbipa
@@ -353,7 +357,9 @@ shovill github.com/tseemann/shovill
 signalp services.healthtech.dtu.dk/service.php?SignalP-5.0
 singularity github.com/apptainer/singularity
 slim messerlab.org/slim/
+slim-hydro git.immc.ucl.ac.be/slim/slim/-/wikis/SLIM-Installation-on-Linux
 snakemake github.com/snakemake/snakemake
+snp-sites sanger-pathogens.github.io/snp-sites
 soapdenovo2 http://soap.genomics.org.cn/soapdenovo.html
 soapnuke github.com/BGI-flexlab/SOAPnuke
 sortmerna github.com/biocore/sortmerna
@@ -367,6 +373,7 @@ srst2 github.com/katholt/srst2
 stacks catchenlab.life.illinois.edu/stacks/
 stampy www.well.ox.ac.uk/research/research-groups/lunter-group/lunter-group/stampy
 star github.com/alexdobin/STAR
+strauto vc.popgen.org/software/strauto
 stringtie ccb.jhu.edu/software/stringtie/#install
 structure web.stanford.edu/group/pritchardlab/structure.html
 sumaclust http://metabarcoding.org/sumaclust

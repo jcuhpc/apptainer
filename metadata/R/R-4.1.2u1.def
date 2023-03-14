@@ -434,6 +434,22 @@ R --slave -e 'BiocManager::install("mixOmics")'
 R --slave -e 'BiocManager::install("skimr")'
 R --slave -e 'BiocManager::install("RcppRoll")'
 
+#added R412REQ00069689
+R --slave -e 'install.packages("fastmatrix")'
+
+#added REQ00082980
+R --slave -e 'install.packages("patchwork")'
+R --slave -e 'install.packages("fossil")'
+R --slave -e 'install.packages("liger")'
+R --slave -e 'install.packages("tidymodels")'
+R --slave -e 'BiocManager::install("Seurat")'
+R --slave -e 'BiocManager::install("scater")'
+R --slave -e 'BiocManager::install("SingleCellExperiment")'
+R --slave -e 'BiocManager::install("slingshot")'
+R --slave -e 'BiocManager::install("BUSpaRse")'
+R --slave -e 'BiocManager::install("tradeSeq")'
+
+
 #update all packages
 R --slave -e 'BiocManager::install(ask = FALSE)'
 
