@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%files
+/fast/tmp/strauto.tar /opt
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+cd /opt
+tar xf strauto.tar
+rm -f strauto.tar
+
+%environment
+    export PATH="/opt/strauto/1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

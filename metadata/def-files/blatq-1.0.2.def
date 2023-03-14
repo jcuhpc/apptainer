@@ -1,0 +1,20 @@
+BootStrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%post
+    apt-get -y update
+
+    cd bin
+    wget https://github.com/calacademy-research/BLATq/releases/download/v1.0.2/blatq
+    chmod 755 blatq    
+
+%environment
+    export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+
+%labels
+Maintainer JCUHPC
+
+

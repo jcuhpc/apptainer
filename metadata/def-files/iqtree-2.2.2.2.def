@@ -1,0 +1,30 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-22.04.sif
+
+%labels
+Maintainer JCUHPC
+IQTree_Version 2.2.2.2
+
+%runscript
+exec "$@"
+
+%post
+# Install IQTree 2.2.2.2
+export IQTree_VERSION=2.2.2.2
+echo "export IQTree_VERSION=${IQTree_VERSION}" >> $SINGULARITY_ENVIRONMENT
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+apt-get update
+
+#iqtree dependent and packages MAY already be installed?
+apt-get install -y --no-install-recommends software-properties-common 
+
+wget https://github.com/iqtree/iqtree2/releases/download/v2.2.2.2/iqtree-2.2.2.2-Linux.tar.gz && \
+tar xvf iqtree-2.2.2.2-Linux.tar.gz && \
+cp iqtree-2.2.2.2-Linux/bin/iqtree2 /usr/local/bin
+
+#add path to iqtree exec
+%environment
+export PATH="/usr/local/bin:$PATH"
+ 
