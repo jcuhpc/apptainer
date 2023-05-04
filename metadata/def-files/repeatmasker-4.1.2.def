@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 # instructions to install repeatmasker
 # download files and put in /fast/tmp
@@ -8,10 +8,6 @@ From: ubuntu:22.04
 # and Dfam.h5 version 3.6(25Gb compressed 160Gb uncompressed). note this is Dfam-p1.h5. needs be renamed to Dfam.h5 before its put in library
 # note this needs to be embed into sif as singualrity v3.7.4
 # cannot do a "--bind" in build, and cannot see an external database to build against.
-
-
-%labels
-Maintainer JCUHPC
 
 %files
 #downloaded files stored in /fast/tmp
@@ -23,14 +19,8 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
-apt-get install -y --no-install-recommends software-properties-common build-essential
-apt-get install -y apt-utils wget python3-h5py trf
+apt-get install -y python3-h5py trf
 
 #extract RepeatMasker and rmblast
 tar zxvf RepeatMasker-4.1.2-p1.tar.gz --directory /usr/local
@@ -49,3 +39,4 @@ rm -rf rmblast-2.11.0+-x64-linux.tar.gz
 
 %environment
     export PATH="/usr/local/RepeatMasker:/usr/local/rmblast-2.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

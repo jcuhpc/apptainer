@@ -1,19 +1,12 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y openjdk-11-jre wget unzip
+apt-get install -y openjdk-11-jre
 cd /opt
 wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip
 unzip PGDSpider_2.1.1.5.zip

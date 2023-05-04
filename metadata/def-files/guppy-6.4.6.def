@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/fast/tmp/ont-guppy_6.4.6_linux64.tar /opt
+
+%post
+    apt-get update
+    cd /opt
+    tar xf ont-guppy_6.4.6_linux64.tar
+    rm -f  ont-guppy_6.4.6_linux64.tar
+
+%environment
+    export PATH="/opt/ont-guppy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"
+

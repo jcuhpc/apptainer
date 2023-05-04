@@ -77,8 +77,6 @@ From: /fast/tmp/apptainer/ubuntu-22.04.sif
     cd ..
 
 %environment
-    export PATH="/usr/local/miniconda3/bin:$PATH"
-    export PATH="/fast-tree-install:$PATH"
     export PATH="/usr/local/miniconda3/bin:/fast-tree-install:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript

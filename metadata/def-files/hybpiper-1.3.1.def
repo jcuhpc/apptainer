@@ -1,25 +1,15 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils python3-biopython exonerate git ncbi-blast+ parallel samtools spades tar
+apt-get install -y python3-biopython exonerate ncbi-blast+ parallel samtools spades
 cd /opt
 git clone https://github.com/mossmatters/HybPiper.git
 
 %environment
     export PATH="/opt/HybPiper:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

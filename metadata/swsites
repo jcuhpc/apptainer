@@ -55,6 +55,7 @@ biotools github.com/sonwell/biotools
 bismark github.com/FelixKrueger/Bismark
 blast blast.ncbi.nlm.nih.gov
 blat genome.ucsc.edu
+blupf90 http://nce.ads.uga.edu/wiki/doku.php?id=start
 boost www.boost.org
 bowtie http://bowtie-bio.sourceforge.net/index.shtml
 bowtie2 bowtie-bio.sourceforge.net/bowtie2/index.shtml
@@ -64,6 +65,7 @@ bzip2 sourceforge.net/projects/bzip2
 cadaver github.com/notroj/cadaver
 canu github.com/marbl/canu
 cap3 faculty.sites.iastate.edu/xqhuang/cap3-and-pcap-sequence-and-genome-assembly-programs
+castep castep.org
 cd-hit github.com/weizhongli/cdhit
 cellranger support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome
 checkm-genome github.com/Ecogenomics/CheckM

@@ -1,20 +1,12 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update   &&   \
-DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata   &&   \
-apt-get install -y --no-install-recommends software-properties-common   &&   \
-apt-get install -y apt-utils gcc sed tar wget
+apt-get install -y gcc sed   &&   \
 cd /opt   &&   \
 wget https://github.com/yatisht/usher/archive/refs/tags/v0.6.0.tar.gz   &&   \
 tar xf v0.6.0.tar.gz   &&   rm -f v0.6.0.tar.gz   &&   \

@@ -1,27 +1,14 @@
-BootStrap: localimage
-#From: ubuntu:22.04
-From: /fast/tmp/apptainer/ubuntu-22.04.sif
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 
 %post
     apt-get -y update
-    apt-get install -y software-properties-common
     add-apt-repository universe
     apt-get -y update
-    apt-get -y install libwww-perl
-    apt-get -y install curl
-    apt-get -y install wget
-    apt-get -y install git
-    apt-get -y install time
-    apt-get -y install locales
-    apt-get -y install fonts-dejavu-core
-    apt-get -y install build-essential
-    apt-get -y install pkg-config
-    apt-get -y install vim
-    apt-get -y install perl
+    apt-get -y install fonts-dejavu-core libwww-perl locales perl pkg-config time vim
     apt-get -y install cpanminus
-    apt-get -y install unzip
     apt-get -y install libgl1 # necessary for ete3, see https://github.com/etetoolkit/ete/issues/195
 
     # locale-gen en_US.UTF-8
@@ -76,12 +63,7 @@ From: /fast/tmp/apptainer/ubuntu-22.04.sif
     cd ..
 
 %environment
-    #export PATH="/usr/local/miniconda3/bin:$PATH"
-    #export PATH="/fast-tree-install:$PATH"
     export PATH="/usr/local/miniconda3/bin:/fast-tree-install:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 
 %labels
     Author Chris_J and JCUHPC

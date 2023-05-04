@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:18.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 
 %runscript
 exec "$@"
@@ -12,16 +9,8 @@ exec "$@"
 # Registration required for download.
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
-apt-get upgrade -y
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils cmake tar zlib1g zlib1g-dev
-apt-get install -y build-essential libc6-dev libc6-dev-i386
-
+apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev
 cd /opt
 tar xf bcl2fastq2-v2.20.0.422-Source.tar.gz  &&  \
 cd bcl2fastq  &&  mkdir build  &&  cd build  &&  \
@@ -31,7 +20,4 @@ cd /opt  &&  rm -rf bcl2fastq *.tar.gz
 
 %environment
     export PATH="/opt/bcl2fastq2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

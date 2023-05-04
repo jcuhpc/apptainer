@@ -1,24 +1,12 @@
-Bootstrap: docker
-From: ubuntu:20.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y git python3-pip python3-wheel
-apt-get install -y gfortran
-apt-get install -y python3-numpy
-
+apt-get install -y gfortran python3-numpy python3-pip python3-wheel
 pip3 install cython pandas
 echo "cython and pandas installed"
 pip3 install pymc==2.3.8
@@ -28,7 +16,4 @@ echo "kabuki installed"
 pip3 install git+https://github.com/hddm-devs/hddm
 echo "hddm installed"
 pip3 install torch torchvision torchaudio
-
-%environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

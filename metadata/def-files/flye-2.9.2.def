@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt-get install -y python3-distutils python3-distutils-extra 
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd /opt   &&   wget https://github.com/fenderglass/Flye/archive/refs/tags/2.9.2.tar.gz   &&   \
+tar xf 2.9.2.tar.gz   &&   rm -f 2.9.2.tar.gz   &&   \
+cd Flye-2.9.2   &&   make
+
+%environment
+    export PATH="/opt/Flye-2.9.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/interproscan-5.56-89.0-64-bit.tar.gz /opt
@@ -11,14 +8,8 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils libdata-dump-perl libgomp1 libpcre3-dev openjdk-11-jre tar
+apt-get install -y libdata-dump-perl libgomp1 libpcre3-dev openjdk-11-jre 
 #cpanm Data::Dumper
 
 cd /opt
@@ -29,7 +20,4 @@ python3 initial_setup.py
 
 %environment
     export PATH="/opt/interproscan-5.56-89.0:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

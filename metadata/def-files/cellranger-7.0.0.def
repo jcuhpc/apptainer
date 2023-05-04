@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:18.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 
 %files
 /fast/tmp/cellranger-7.0.0.tar.gz /opt
@@ -13,16 +10,8 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get upgrade -y
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils cmake tar wget zlib1g zlib1g-dev
-apt-get install -y build-essential libc6-dev libc6-dev-i386
+apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev
 cd /opt
 #wget -O cellranger-7.0.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.0.0.tar.gz?Expires=1658926069&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci03LjAuMC50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTg5MjYwNjl9fX1dfQ__&Signature=APYiwdZZIbBflqtRVjen-G3yr-mMf98gtrR0t1AvunMboAO5WFmgu5tLwLEh~PiqyPJEaUjqDtLxdPF4gLduhneAshiER6CxpZ-nngLRuIofnMN4LzjoWwJd8TZ7GZqduItrGIhJGGb62jsKpKsC17qcI-DvRHzRKcI1oLifppkqsSIGWZsqgdrDp7jvmwmjeqeWZCDZ4SxiornO8Zvza789VheYABgpq9-2HvwYIiDuvKbEDbj8lw~da5G17C37hOwFtqyRZvITiAFF-YyKpxg3tvINqXyxVLdzq4ZIIn0i~epLEi27aUysVrH~RX-Iy013qUWNhC6jbL-vbAYi0w__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
 tar xf cellranger-7.0.0.tar.gz

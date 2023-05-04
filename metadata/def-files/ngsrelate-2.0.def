@@ -1,21 +1,12 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y build-essential libbz2-dev git lzma libvcflib-dev wget zlib1g zlib1g-dev
+apt-get install -y libbz2-dev lzma libvcflib-dev zlib1g zlib1g-dev
 cd /opt
 wget https://github.com/ANGSD/NgsRelate/archive/refs/tags/v2.0.tar.gz
 tar xf v2.0.tar.gz
@@ -27,5 +18,3 @@ rm -f v2.0.tar.gz
 %environment
     export PATH="/opt/NgsRelate-2.0:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-%runscript
-    exec "$@"

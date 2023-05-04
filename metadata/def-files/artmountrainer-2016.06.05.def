@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /tmp/artbinmountrainier2016.06.05linux64.tgz /opt
@@ -12,7 +12,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y curl tar  &&  \
 cd /opt  &&  \
 tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
 rm -rf artbinmountrainier2016.06.05linux64.tgz

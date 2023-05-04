@@ -1,18 +1,11 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-20.04.sif
-
-%labels
-Maintainer JCUHPC
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-
 #apt-get install -y apt-transport-https software-properties-common 
 apt-get install -y ffmpeg wavpack openssl libsox-fmt-all sox
 #apt-get install -y dotnet-runtime-6.0

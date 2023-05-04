@@ -1,15 +1,11 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-20.04.sif
-
-%labels
-Maintainer JCUHPC
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
 exec "$@"
 
 %post
 apt-get update
-apt-get upgrade -y
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 apt-get install -y ttf-mscorefonts-installer
 #DEBIAN_FRONTEND=noninteractive

@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/molphy-2.3b3.tar.Z /opt
@@ -11,12 +8,7 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils build-essential tar
 cd /opt
 tar xf molphy-2.3b3.tar.Z
 rm  -f molphy-2.3b3.tar.Z
@@ -26,7 +18,4 @@ cd ../..
 
 %environment
     export PATH="/opt/molphy-2.3b3:/opt/molphy-2.3b3/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

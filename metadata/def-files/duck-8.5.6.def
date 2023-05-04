@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt-get install -y dirmngr
+#echo "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+#apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+apt-get update
+wget https://dist.duck.sh/duck_8.5.6.39394-1_amd64.deb
+apt-get install ./duck_8.5.6.39394-1_amd64.deb
+rm -f duck_8.5.6.39394-1_amd64.deb
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+

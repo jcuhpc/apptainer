@@ -1,8 +1,5 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-22.04.sif
-
-%labels
-Maintainer JCUHPC
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
@@ -11,7 +8,4 @@ exec "$@"
 apt-get update
 apt-get install -y t-coffee  t-coffee-examples
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
-
-%environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

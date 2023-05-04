@@ -1,20 +1,12 @@
-Bootstrap: docker
-From: ubuntu:18.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils curl gfortran gzip libpython2.7 python
+apt-get install -y gfortran libpython2.7 python
 cd /opt
 curl -O http://phylosolutions.com/paup-test/paup4a168_ubuntu64.gz
 gzip -d paup4a168_ubuntu64.gz

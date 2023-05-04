@@ -1,0 +1,31 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt install -y python3
+apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common wget
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+apt install -y r-base
+apt install -y python2
+apt install -y kmc
+apt install -y gemma
+R -e 'install.packages("MASS")'
+R -e 'install.packages("mvnpermute")'
+R -e 'install.packages("matrixcalc")'
+
+mkdir -p /opt/kmersgwas/0.3beta
+cd /opt/kmersgwas/0.3beta
+wget https://github.com/voichek/kmersGWAS/releases/download/v0.3-beta/v0_3_beta.zip
+unzip v0_3_beta.zip
+chmod -R 755 /opt/
+rm v0_3_beta.zip
+
+%environment
+    export PATH="/opt/kmersgwas/0.3beta/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

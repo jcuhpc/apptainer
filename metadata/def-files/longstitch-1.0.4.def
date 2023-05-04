@@ -1,0 +1,17 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%post
+    install -d -m 2775 -o root -g root /gpfs01
+    install -d -m 1777 -o root -g root /scratch /fast/tmp
+    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    conda update conda
+    conda create --debug -c bioconda -n longstitch longstitch=1.0.4
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate longstitch
+
+%environment
+    export PATH="/opt/conda/envs/longstitch/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+    exec "$@"

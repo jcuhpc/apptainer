@@ -1,19 +1,12 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils python3-pip unzip wget
+apt-get install -y python3-pip
 cd /opt
 wget https://github.com/Vini2/GraphBin/releases/download/v1.5/GraphBinv1.5.zip
 unzip GraphBinv1.5.zip
@@ -22,7 +15,4 @@ pip3 install .
 
 %environment
     export PATH="/opt/GraphBin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

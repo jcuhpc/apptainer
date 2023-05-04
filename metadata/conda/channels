@@ -104,7 +104,7 @@ kwant conda-forge
 lastz bioconda
 libgdal conda-forge
 libnetcdf conda-forge
-longstitch bioconda
+longstitch bioconda1
 
 mafft bioconda
 maker bioconda2

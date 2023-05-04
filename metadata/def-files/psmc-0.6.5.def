@@ -1,5 +1,8 @@
-Bootstrap: docker
-From: ubuntu:20.04
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+    exec "$@"
 
 %post
     install -d -m 2775 -o root -g root /gpfs01
@@ -14,5 +17,3 @@ From: ubuntu:20.04
 %environment
     export PATH="/opt/psmc:/opt/psmc/utils:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-%runscript
-    exec "$@"

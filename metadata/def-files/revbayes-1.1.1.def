@@ -1,12 +1,8 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
-
 
 %post
 install -d -m 2775 -o root -g root /gpfs01
@@ -18,6 +14,6 @@ git clone --branch development https://github.com/revbayes/revbayes.git revbayes
 cd revbayes/projects/cmake
 ./build.sh
 
-
 %environment
     export PATH="/revbayes/projects/cmake:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

@@ -1,0 +1,28 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt-get install -y libgl1 python3-opencv
+apt-get install -y python3-pip
+apt install -y libxcb-image0
+apt install -y libxcb-keysyms1
+apt install -y libxcb-render-util0
+apt install -y libxcb-xkb1
+apt install -y libxkbcommon-x11-0
+python3 -m pip install opencv-python
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pillow
+pip3 install sleap==1.2.9
+
+%environment
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

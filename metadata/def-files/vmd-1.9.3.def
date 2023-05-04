@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 vmd-1.9.3.tar /opt
@@ -12,13 +9,7 @@ vmd-1.9.3.tar /opt
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils tar
 cd /opt
 tar xf vmd-1.9.3.tar
 rm -f vmd-1.9.3.tar

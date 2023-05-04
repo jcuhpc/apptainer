@@ -1,12 +1,12 @@
 Bootstrap: localimage
-From: /fast/tmp/apptainer/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
 
 %post
 apt-get update
-apt-get install -y apt-utils unzip wget gcc sed
+apt-get install -y gcc sed
 cd /opt
 wget https://github.com/admb-project/admb/releases/download/admb-12.3/admb-12.3-linux.zip
 unzip admb-12.3-linux.zip

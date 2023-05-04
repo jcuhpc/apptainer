@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /fast/tmp/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "${@}"
@@ -15,5 +15,3 @@ cd stacks-2.62
 make
 make install
 
-%environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

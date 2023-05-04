@@ -1,15 +1,12 @@
 Bootstrap: localimage
-From: /fast/tmp/ubuntu-18.04.sif
-
-%labels
-Maintainer JCUHPC
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 
 %runscript
 exec "$@"
 
 %post
 apt-get update   &&   \
-apt-get install -y gcc make tar wget    &&   \
+apt-get install -y gcc make   &&   \
 cd /opt   &&   \
 wget https://github.com/mfoll/BayeScan/archive/refs/tags/v2.1.tar.gz   &&   \
 tar xf v2.1.tar.gz   &&    rm -f v2.1.tar.gz   &&   \
@@ -17,5 +14,4 @@ cd BayeScan-2.1   &&   make   &&   \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
+    export PATH="/opt/BayeScan-2.1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

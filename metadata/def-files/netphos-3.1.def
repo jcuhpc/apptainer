@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/netphos-3.1.Linux.tar /
@@ -12,19 +9,11 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils tar
 cd /opt
 tar xf /netphos-3.1.Linux.tar
 rm -f /netphos-3.1.Linux.tar
 
 %environment
     export PATH="/opt/ape-1.0:/opt/ape-1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

@@ -1,11 +1,10 @@
 #!/bin/bash
-cd /gpfs01/Q0195/apptainer
-singularity build /fast/tmp/ubuntu-18.04.sif metadata/ubuntu/ubuntu-18.04.def 
-singularity build /fast/tmp/ubuntu-20.04.sif metadata/ubuntu/ubuntu-20.04.def 
-singularity build /fast/tmp/ubuntu-22.04.sif metadata/ubuntu/ubuntu-22.04.def 
-singularity build /fast/tmp/ubuntu-22.10.sif metadata/ubuntu/ubuntu-22.10.def 
-singularity build /fast/tmp/ubuntu-23.04.sif metadata/ubuntu/ubuntu-23.04.def
-chown sci-wam.hpc-users /fast/tmp/ubuntu-*.sif
-chmod 775 /fast/tmp/ubuntu-*.sif
-scp /fast/tmp/ubuntu-*.sif ln01:/fast/tmp/apptainer/
-mv -f /fast/tmp/ubuntu-*.sif /fast/tmp/apptainer/
+APPS=/gpfs01/Q0195/containers/
+DEFS=/gpfs01/Q0195/apptainer/metadata/ubuntu/
+singularity build $APPS/ubuntu-18.04.sif $DEFS/ubuntu-18.04.def 
+singularity build $APPS/ubuntu-20.04.sif $DEFS/ubuntu-20.04.def 
+singularity build $APPS/ubuntu-22.04.sif $DEFS/ubuntu-22.04.def 
+singularity build $APPS/ubuntu-22.10.sif $DEFS/ubuntu-22.10.def 
+singularity build $APPS/ubuntu-23.04.sif $DEFS/ubuntu-23.04.def
+chown sci-wam.hpc-users $APPS/ubuntu-*.sif
+chmod 775 $APPS/ubuntu-*.sif

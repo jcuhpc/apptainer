@@ -1,8 +1,5 @@
-Bootstrap: docker
-From: ubuntu:22.04
-
-%labels
-Maintainer JCUHPC
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/4b10.tar /opt
@@ -12,12 +9,7 @@ Maintainer JCUHPC
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
 apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y apt-utils tar
 cd /opt
 mkdir paup
 cd paup
@@ -26,7 +18,4 @@ rm -f ../4b10.tar
 
 %environment
     export PATH="/opt/paup/4b10:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
 

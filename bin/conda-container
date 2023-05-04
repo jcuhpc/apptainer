@@ -5,7 +5,7 @@
 # The $META/channels file represents a mapping between software name &
 # a singularity definition file template.  Each line will contain a
 # conda package name and a template file name (space separated).
-META=/sw/apptainer/metadata/conda
+META=/gpfs01/Q0195/apptainer/metadata/conda
 
 # Directory where singularity image files will be placed.
 INST=/scratch/containers/

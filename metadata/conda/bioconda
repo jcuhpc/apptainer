@@ -7,9 +7,9 @@ From: continuumio/miniconda3
     export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     conda update conda
     conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels conda-forge
-    conda create --debug -n SWNAME SWNAME=SWVERS
+#    conda config --add channels bioconda
+#    conda config --add channels conda-forge
+    conda create --debug -n SWNAME -c bioconda -c conda-forge SWNAME=SWVERS
     . /opt/conda/etc/profile.d/conda.sh
     conda activate SWNAME
 
