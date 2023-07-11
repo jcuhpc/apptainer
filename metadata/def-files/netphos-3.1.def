@@ -9,10 +9,13 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-tar xf /netphos-3.1.Linux.tar
-rm -f /netphos-3.1.Linux.tar
+cd /opt  &&  \
+apt-get update  &&  \
+mkdir -p /usr/cbs/bio/src  &&  \
+apt-get install -y gawk tcsh  &&  \
+tar xf /netphos-3.1.Linux.tar  &&  \
+rm -f /netphos-3.1.Linux.tar   &&  \
+ln -s /opt/ape-1.0 /usr/cbs/bio/src/ape-1.0
 
 %environment
     export PATH="/opt/ape-1.0:/opt/ape-1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

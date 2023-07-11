@@ -1,6 +1,12 @@
 Bootstrap: docker
 From: continuumio/miniconda3
 
+%files
+    /fast/tmp/GenomeAnalysisTK.jar /opt
+
+%runscript
+    exec "$@"
+
 %post
     install -d -m 2775 -o root -g root /gpfs01
     install -d -m 1777 -o root -g root /scratch /fast/tmp
@@ -12,9 +18,12 @@ From: continuumio/miniconda3
     conda create --debug -n gatk gatk=3.8
     . /opt/conda/etc/profile.d/conda.sh
     conda activate gatk
+    cd /opt/conda/envs/gatk
+    install -m 644 /opt/GenomeAnalysisTK.jar opt/gatk-3.8/
+    ln opt/gatk-3.8/GenomeAnalysisTK.jar bin/
+    rm -f /opt/GenomeAnalysisTK.jar
 
 %environment
     export PATH="/opt/conda/envs/gatk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export JATK_JAR=/opt/conda/envs/gatk/opt/gatk-3.8/GenomeAnalysisTK.jar
 
-%runscript
-    exec "$@"

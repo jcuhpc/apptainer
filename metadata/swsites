@@ -18,10 +18,12 @@ arb http://www.arb-home.de/
 archivemount github.com/cybernoid/archivemount
 armadillo arma.sourceforge.net
 artemis www.sanger.ac.uk/science/tools/artemis
+artmountrainer www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm
 assembly-scan github.com/rpetit3/assembly-scan
 assembly-stats github.com/sanger-pathogens/assembly-stats
 assemblytics http://assemblytics.com/
 astral github.com/smirarab/ASTRAL
+atria github.com/cihga39871/Atria
 augustus github.com/Gaius-Augustus/Augustus
 autodock autodock.scripps.edu
 autodock-vina vina.scripps.edu
@@ -53,6 +55,7 @@ biobambam2 github.com/gt1/biobambam2
 biopython biopython.org
 biotools github.com/sonwell/biotools
 bismark github.com/FelixKrueger/Bismark
+blasr github.com/BioinformaticsArchive/blasr
 blast blast.ncbi.nlm.nih.gov
 blat genome.ucsc.edu
 blupf90 http://nce.ads.uga.edu/wiki/doku.php?id=start
@@ -65,6 +68,7 @@ bzip2 sourceforge.net/projects/bzip2
 cadaver github.com/notroj/cadaver
 canu github.com/marbl/canu
 cap3 faculty.sites.iastate.edu/xqhuang/cap3-and-pcap-sequence-and-genome-assembly-programs
+capsim github.com/Devika1/capsim
 castep castep.org
 cd-hit github.com/weizhongli/cdhit
 cellranger support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome
@@ -113,7 +117,7 @@ fastahack github.com/ekg/fastahack
 fastai github.com/fastai/fastai
 fastani github.com/ParBLiSS/FastANI
 fastaq github.com/sanger-pathogens/Fastaq
-fastcluster cran.r-project.org/package=fastcluster
+fastcluster pypi.org/project/fastcluster/
 fastdnaml ftp://ftp.bio.indiana.edu/molbio/evolve/fastdnaml/fastDNAml.html
 fastme github.com/balabanmetin/FastME-personal-copy
 fastml fastml.tau.ac.il
@@ -168,6 +172,7 @@ gsl www.gnu.org/software/gsl/
 gtdbtk github.com/Ecogenomics/GTDBTk
 guppy github.com/LernerLab/GuPPy
 gzip www.gnu.org/software/gzip
+hddm hddm.readthedocs.io/en/latest/
 hdf4 www.hdfgroup.org
 hdf4-tools www.hdfgroup.org
 hdf5 www.hdfgroup.org
@@ -190,6 +195,7 @@ java openjdk.java.net
 jbigkit www.cl.cam.ac.uk/~mgk25/jbigkit/
 jellyfish www.genome.umd.edu/jellyfish.html
 jmodeltest github.com/ddarriba/jmodeltest2
+jpeg sourceforge.net/projects/libjpeg/
 lagan lagan.stanford.edu/lagan_web/index.shtml
 lamarc evolution.gs.washington.edu/lamarc/
 libjpeg sourceforge.net/projects/libjpeg/
@@ -232,6 +238,7 @@ medaka github.com/nanoporetech/medaka
 megahit github.com/voutcn/megahit
 mega megasoftware.net
 megax megasoftware.net
+merqury https://github.com/marbl/merqury#direct-installation
 metabat2 bitbucket.org/berkeleylab/metabat/
 metawrap-mg github.com/bxlab/metaWRAP
 metilene bioinf.uni-leipzig.de/Software/metilene/Manual/#3_installation
@@ -294,6 +301,7 @@ perl www.perl.org
 petsc mcs.anl.gov
 pftools github.com/sib-swiss/pftools3
 pgdspider www.cmpg.unibe.ch/software/PGDSpider/
+phreeqc water.usgs.gov/water-resources/software/PHREEQC/
 phylobayes github.com/bayesiancook/phylobayes
 phyluce phyluce.readthedocs.io/en/latest/
 phyml github.com/stephaneguindon/phyml
@@ -306,6 +314,7 @@ pipits github.com/hsgweon/pipits
 plink cog-genomics.org/plink/2.0/
 plink2 cog-genomics.org/plink/2.0/
 pplacer masten.fredhutch.org/pplacer/
+primus primus.gs.washington.edu/primusweb/res/documentation.html
 prodigal github.com/hyattpd/Prodigal
 proj proj.org
 proj4 proj.org
@@ -313,6 +322,7 @@ proteinortho gitlab.com/paulklemm_PHD/proteinortho
 psmc github.com/lh3/psmc
 psort psort.hgc.jp
 purge_haplotigs bitbucket.org/mroachawri/purge_haplotigs/
+pyega3 pypi.org/project/pyega3/
 pyfasta pypi.python.org/pypi/pyfasta/
 pyfastaq pypi.python.org/pypi/pyfastaq/
 pyfastx pyfastx.readthedocs.io
@@ -335,10 +345,12 @@ rcorrector github.com/mourisl/Rcorrector
 rdp_classifier sourceforge.net/projects/rdp-classifier/
 rdp-classifier github.com/rdpstaff/classifier
 readline tiswww.case.edu/php/chet/readline/rltop.html
+repeatmasker github.com/rmhubley/RepeatMasker
 repeatmodeler github.com/Dfam-consortium/RepeatModeler
 repeatscout http://repeatscout.bioprojects.org
 rnammer services.healthtech.dtu.dk/service.php?RNAmmer-1.2
 rnastructure http://rna.urmc.rochester.edu/RNAstructure.html
+r-rstan mc-stan.org
 rsem github.com/deweylab/RSEM
 rseqc rseqc.sourceforge.net
 rstudio rstudio.com
@@ -358,6 +370,7 @@ shannon_cpp github.com/bx3/shannon_cpp
 shovill github.com/tseemann/shovill
 signalp services.healthtech.dtu.dk/service.php?SignalP-5.0
 singularity github.com/apptainer/singularity
+sleap pypi.org/project/sleap/
 slim messerlab.org/slim/
 slim-hydro git.immc.ucl.ac.be/slim/slim/-/wikis/SLIM-Installation-on-Linux
 snakemake github.com/snakemake/snakemake
@@ -410,6 +423,7 @@ ugene ugene.net
 unanimity github.com/PacificBiosciences/unanimity
 unicycler github.com/rrwick/Unicycler
 units www.gnu.org/software/units/
+usearch drive5.com/usearch/
 usher github.com/yatisht/usher
 vcflib github.com/vcflib/vcflib
 vcftools vcftools.sourceforge.net

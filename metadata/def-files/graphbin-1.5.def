@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update
-apt-get install -y python3-pip
+apt-get install -y libcairo2 python3-pip
 cd /opt
 wget https://github.com/Vini2/GraphBin/releases/download/v1.5/GraphBinv1.5.zip
 unzip GraphBinv1.5.zip

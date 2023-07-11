@@ -6,6 +6,7 @@ exec "$@"
 
 %post
 apt-get update   &&   \
+apt-get install -y libgomp1 &&   \
 cd /opt   &&   \
 wget https://github.com/devillemereuil/bayescenv/archive/refs/tags/v1.1.tar.gz   &&   \
 tar xf v1.1.tar.gz   &&   rm -rf v1.1.tar.gz

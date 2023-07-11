@@ -6,6 +6,7 @@ From: continuumio/miniconda3
     install -d -m 1777 -o root -g root /scratch /fast/tmp
     export PATH="/opt/metaWRAP:/opt/conda/bin:/opt/conda/envs/metawrap-env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     cd /opt
+    apt install -y libarchive
     conda update conda
     conda install -y -c conda-forge  mamba
     git clone https://github.com/bxlab/metaWRAP.git

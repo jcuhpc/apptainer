@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/fast/tmp/usearch11.0.667_i86linux32 /usr/local/
+
+%runscript
+exec "$@"
+
+%post
+cd /usr/local  &&  \
+install -m 775 -o root -g root usearch11.0.667_i86linux32 bin/usearch  &&  \
+rm -f /usr/local/usearch11.0.667_i86linux32
+

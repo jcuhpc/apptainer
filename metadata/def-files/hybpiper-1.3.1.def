@@ -5,11 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y python3-biopython exonerate ncbi-blast+ parallel samtools spades
-cd /opt
-git clone https://github.com/mossmatters/HybPiper.git
+apt-get update   &&   \
+apt-get install -y python3 python3-pip exonerate ncbi-blast+ parallel samtools spades   &&   \
+pip install biopython progressbar seaborn matplotlib pandas pebble scipy   &&   \
+cd /opt   &&   \
+git clone https://github.com/mossmatters/HybPiper.git   &&   \
+cd HybPiper   &&   python3 setup.py install
 
 %environment
-    export PATH="/opt/HybPiper:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

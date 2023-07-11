@@ -1,0 +1,37 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+apt install -y default-jre bedtools samtools
+
+# Install R
+apt-get update
+apt-get install -y --no-install-recommends wget
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+#add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+apt-get install -y --no-install-recommends \
+r-base \
+r-base-core \
+r-base-dev \
+r-recommended \
+r-base-html \
+r-doc-html \
+
+R -e 'install.packages("argparse")'
+R -e 'install.packages("ggplot2")'
+R -e 'install.packages("scales")'
+
+cd /opt
+wget https://github.com/marbl/meryl/releases/download/v1.4/meryl-1.4.Linux-amd64.tar.xz
+tar -vxJf meryl-1.4.Linux-amd64.tar.xz
+rm meryl-1.4.Linux-amd64.tar.xz
+
+%environment
+    export PATH="/opt/meryl-1.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+

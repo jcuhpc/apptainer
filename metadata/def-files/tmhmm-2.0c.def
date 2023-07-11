@@ -10,10 +10,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 cd /opt  &&  \
+apt-get update  &&  \
 tar xf tmhmm.tar  &&  \
 rm -f /opt/tmhmm.tar  &&  \
+apt-get install -y perl  &&  \
+ln -s /usr/bin/perl /usr/local/bin/  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
 
 %environment

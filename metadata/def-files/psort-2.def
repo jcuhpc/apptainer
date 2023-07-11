@@ -8,10 +8,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
+cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y perl  &&  \
-cd /opt  &&  \
+export LC_ALL=en_AU.UTF-8  &&  \
 tar xf psort.tar  &&  rm -f psort.tar  &&  \
+ln -s /usr/local/bin/perl /usr/bin/perl  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment

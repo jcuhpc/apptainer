@@ -6,6 +6,8 @@ exec "$@"
 
 %post
 apt-get update
-apt-get install -y abyss 
+apt-get install -y augustus augustus-data
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
+%environment
+export AUGUSTUS_CONFIG_PATH=/usr/share/augustus/config

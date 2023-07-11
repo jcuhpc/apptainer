@@ -11,7 +11,7 @@ From: continuumio/miniconda3
     conda activate phylobayes
 
 %environment
-    export PATH="/opt/conda/envs/phylobayes/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export PATH="/opt/conda/envs/phylobayes/bin/ete3_apps/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
     exec "$@"

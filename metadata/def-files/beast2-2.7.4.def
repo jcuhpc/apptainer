@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y default-jre  &&  \
+wget https://github.com/CompEvol/beast2/releases/download/v2.7.4/BEAST.v2.7.4.Linux.x86.tgz  &&  \
+tar xf BEAST.v2.7.4.Linux.x86.tgz  &&  \
+rm  -f BEAST.v2.7.4.Linux.x86.tgz  &&  \
+mkdir -p /root/.beast/2.7  &&  \
+touch /root/.beast/2.7/toDeleteList  &&  \
+/opt/beast/bin/packagemanager -useAppDir -add SNAPP  &&  \
+/opt/beast/bin/packagemanager -useAppDir -add snapper  &&  \
+/opt/beast/bin/packagemanager -useAppDir -add speedemon  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/opt/beast/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/beast/jre/bin"

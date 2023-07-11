@@ -17,5 +17,5 @@ make -f Makefile
 cd ../..
 
 %environment
-    export PATH="/opt/molphy-2.3b3:/opt/molphy-2.3b3/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    export PATH="/opt/molphy-2.3b3/src:/opt/molphy-2.3b3/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

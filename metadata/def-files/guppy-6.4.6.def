@@ -5,9 +5,10 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 /fast/tmp/ont-guppy_6.4.6_linux64.tar /opt
 
 %post
-    apt-get update
-    cd /opt
-    tar xf ont-guppy_6.4.6_linux64.tar
+    apt-get update   &&   \
+    apt-get install -y nvidia-cuda-dev   &&   \
+    cd /opt   &&   \
+    tar xf ont-guppy_6.4.6_linux64.tar   &&   \
     rm -f  ont-guppy_6.4.6_linux64.tar
 
 %environment

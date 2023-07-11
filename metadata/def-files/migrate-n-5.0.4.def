@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y gcc libopenmpi3 libopenmpi-dev openmpi-bin openmpi-common pkg-config zlib1g zlib1g-dev  &&  \
+wget --no-check-certificate https://peterbeerli.com/migrate-html5/download_version4/migrate-5.0.4.src.tar.gz  &&  \
+tar xf migrate-5.0.4.src.tar.gz  &&  \
+cd migrate-5.0.4/src  &&  ./configure --prefix=/usr/local  &&  make  &&  \
+make install  &&  make clean  &&  cd ../..  &&  rm -rf migrate-5.0.4  &&  \
+tar xf migrate-5.0.4.src.tar.gz  &&  \
+export LIBS="-lmpi"  &&  \
+export LDFLAGS="-L/usr/lib/x86_64-linux-gnu/"  &&  \
+pkg-config /usr/lib/x86_64-linux-gnu/pkgconfig/ompi.pc  &&  \
+cd migrate-5.0.4/src  &&  ./configure --prefix=/usr/local  &&  make mpis  &&  \
+make install  &&  rm -rf migrate-5.0.4  &&  rm -f migrate-5.0.4.src.tar.gz  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+    export PATH="/opt/conda/envs/migrate-n/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

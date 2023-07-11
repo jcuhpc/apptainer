@@ -1,11 +1,12 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
 exec "$@"
 
 %post
 apt-get update
+apt-get install -y libblas-dev libatlas-base-dev libgsl-dev libgsl23
 wget https://github.com/brannala/BA3/releases/download/3.0.4.2/BA3-3.0.4-Linux-64.tgz
 cd /usr/local/bin   &&   tar xf /BA3-3.0.4-Linux-64.tgz
 mv examples ..

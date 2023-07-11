@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %labels
 Maintainer JCUHPC
@@ -18,6 +18,9 @@ apt install -y libxcb-keysyms1
 apt install -y libxcb-render-util0
 apt install -y libxcb-xkb1
 apt install -y libxkbcommon-x11-0
+apt install -y nvidia-cuda-toolkit 
+export DEBIAN_FRONTEND="noninteractive"
+echo "cudnn cudnn/license_preseed select ACCEPT" | debconf-set-selections && apt install -y nvidia-cudnn
 python3 -m pip install opencv-python
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade pillow

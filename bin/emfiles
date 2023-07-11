@@ -90,6 +90,7 @@ printf "set sw_name $CONT\n"	 >>/tmp/$VERS
 printf "set sw_vers $VERS\n"	 >>/tmp/$VERS
 printf "set sw_site \"$SITE\"\n" >>/tmp/$VERS
 printf "set moduledir [file dirname \$ModulesCurrentModulefile]\n" >>/tmp/$VERS
+printf "source \$moduledir/../common\n"      >>/tmp/$VERS
 printf "source \$moduledir/../container\n\n" >>/tmp/$VERS
 
 #
@@ -143,7 +144,9 @@ else
 
     FIND=1
     # Use dpkg to discover most likely candidates.
-    CMDS=`$SRUN dpkg -L $CONT 2>/dev/null | grep \/usr\/bin\/ | sed -e 's@/usr/bin/@@'`
+    CMDS=`$SRUN dpkg -L $CONT 2>/dev/null | grep ^\/usr\/bin\/ | sed -e 's@/usr/bin/@@'`
+    [[ "$CMDS" != "" ]]   &&   FIND=0   &&   CMDSaliases
+    CMDS=`$SRUN dpkg -L $CONT 2>/dev/null | grep ^\/bin\/ | sed -e 's@/bin/@@'`
     [[ "$CMDS" != "" ]]   &&   FIND=0   &&   CMDSaliases
     for i in "${!XTRA[@]}" ; do 
 	CMDS=`$SRUN dpkg -L ${XTRA[$i]} 2>/dev/null | grep \/usr\/bin\/ | sed -e 's@/usr/bin/@@'`

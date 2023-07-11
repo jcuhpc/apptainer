@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 # install doco
 # https://github.com/arumugamlab/MIntO/wiki/Installation&Dependencies
@@ -11,7 +11,7 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
     apt-get -y update
 
 # install miniconda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -O ~/miniconda.sh && \
 bash ~/miniconda.sh -b -p /usr/local/miniconda3 && \
 rm ~/miniconda.sh
 
@@ -29,21 +29,25 @@ export PATH="/usr/local/miniconda3/bin:$PATH"
 conda create -c conda-forge -n MIntO mamba
 conda activate MIntO
 mamba install -c conda-forge -c bioconda snakemake
-# set locations
-MINTO_DIR=/opt/MIntO
-#MINTODB_DIR=/opt/MIntO/data
-#DB_DIR=/gpfs01/Q0195/database/minto
-
 
 # get minto
-cd /opt
-wget https://github.com/arumugamlab/MIntO/archive/refs/tags/1.0.1.tar.gz
-tar -xvf 1.0.1.tar.gz
-mv MIntO-1.0.1 MIntO
-rm -rf 1.0.1.tar.gz
-mv /opt/minto_dependencies.yaml /opt/MIntO/configuration/dependencies.yaml
+mkdir -p /server/apps
+cd /server/apps/
+#wget https://github.com/arumugamlab/MIntO/archive/refs/tags/1.0.1.tar.gz
+#tar -xvf 1.0.1.tar.gz
+#mv MIntO-1.0.1 MIntO
+#rm -rf 1.0.1.tar.gz
+git clone https://github.com/arumugamlab/MIntO.git
+cd MIntO
+git checkout tags/2.0.0-beta.1
+mv /opt/minto_dependencies.yaml /server/apps/MIntO/configuration/dependencies.yaml
+
 #cp MINTODB_DIR/* DB_DIR
 #rm -rf $MINTODB_DIR
+# set locations
+MINTO_DIR=/server/apps/MIntO
+#MINTODB_DIR=/opt/MIntO/data
+#DB_DIR=/gpfs01/Q0195/database/minto
 
 # create soft link to database location
 #ln -v -s $BD_DIR $MINTODB_DIR
@@ -60,10 +64,10 @@ mv /opt/minto_dependencies.yaml /opt/MIntO/configuration/dependencies.yaml
 #mkdir -p $MINTO_DIR/fetchMGs-1.2
 
 # Install the dependencies
-#snakemake --snakefile $MINTO_DIR/smk/dependencies.smk --use-conda --restart-times 10 --keep-going --latency-wait 10 --jobs 6 --configfile $MINTO_DIR/configuration/dependencies.yaml --conda-prefix $MINTO_DIR/conda_env --cores 6
+snakemake --snakefile $MINTO_DIR/smk/dependencies.smk --use-conda --restart-times 10 --keep-going --latency-wait 10 --jobs 2 --configfile $MINTO_DIR/configuration/dependencies.yaml --conda-prefix $MINTO_DIR/conda_env --cores 4
 
 %environment
-    export PATH="/usr/local/miniconda3/bin:/opt/MIntO:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+    export PATH="/usr/local/miniconda3/bin:/server/apps/MIntO:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
 %labels
     JCUHPC

@@ -5,7 +5,8 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y epigrass 
+apt-get update   &&   \
+apt-get install -y epigrass python3 python3-pip   &&   \
+pip3 install dash numba   &&   \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 

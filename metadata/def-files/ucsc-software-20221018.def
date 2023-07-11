@@ -5,9 +5,9 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y rsync
-mkdir -p /opt/software
+apt-get update   &&   \
+mkdir -p /opt/software   &&   \
+apt-get install -y libcurl4 rsync   &&   \
 rsync -aP rsync://hgdownload.soe.ucsc.edu/genome/admin/exe/linux.x86_64/ /opt/software/
 
 %environment

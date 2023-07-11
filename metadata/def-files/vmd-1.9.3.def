@@ -9,10 +9,11 @@ vmd-1.9.3.tar /opt
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-tar xf vmd-1.9.3.tar
-rm -f vmd-1.9.3.tar
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libegl1 tcsh  &&  \
+tar xf vmd-1.9.3.tar  &&  rm -f vmd-1.9.3.tar
+# Software distribution is NOT complete (no vmd_LINUX)
 
 %environment
     export PATH="/opt/vmd/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
