@@ -2,11 +2,12 @@
 # Creation of a Ubuntu based apptainer.
 if [ $# -eq 0 ] ; then
     # Brief syntax message.
-    echo "Syntax:  ubuntu-container <pkg0> [-d <dist>] [-f] [-n <name>] [-x <pkg1> [-x <pkg2>] ...]"
-    echo "	<pkg0> = Primary software package"
-    echo "	<dist> = Ubuntu version used (def: 22.04)"
-    echo "	<name> = Base name used for apptainer image file"
-    echo "	<pkg#> = Extra software packages required to be installed"
+    echo "Syntax:  ubuntu-container <pkg0> [-d <dist>] [-f] [-n <name>] [-v <vers>] [-x <pkg1> [-x <pkg2>] ...]"
+    echo "	<pkg0> = Primary software package,"
+    echo "	<dist> = Ubuntu version used (def: 23.04),"
+    echo "	<name> = Base name used for apptainer image file (def: <pkg0>),"
+    echo "      <vers> = Corrected version number to be used for apptainer image file,"
+    echo "	<pkg#> = Extra software package(s) required to be installed."
     echo ""
     echo "Packages <pkg0> depends upon will be installed automatically."
     echo ""

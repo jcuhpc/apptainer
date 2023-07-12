@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ $# -eq 1 ] ; then
+  pushd  /fast/tmp/containers
+  if [ -f "$1" ] ; then
+    DATA=/gpfs01/Q0195/apptainer/metadata
+    $DATA/bin/syft $1 -o cyclonedx-json=/tmp/tmpfile
+    $DATA/bin/grype /tmp/tmpfile > $DATA/security/$1.sec
+    singularity exec $1 conda list >/tmp/tmpfile 2>/dev/null
+    if [ $? -eq 0 ] ; then
+      source /etc/profile.d/modules.sh
+      module load python/3.9.5
+      echo /tmp/tmpfile | jake ddt >> $DATA/security/$1.sec
+    fi
+    /bin/rm -f /tmp/tmpfile
+  else
+    printf "\nERROR:  FILE NOT FOUND (/fast/tmp/containers/$1)\n\n"
+  fi
+  popd
+else
+    printf "\nSYNTAX:  sec-publish <apptainer> [-c]"
+    printf "\n         <apptainer> must be in /fast/tmp/containers.\n\n"
+fi

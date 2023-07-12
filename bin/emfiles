@@ -39,7 +39,7 @@ CONT=`echo $TEMP | sed -e "s/-$VERS//"`     # Container (& default module) Name.
 declare -i i=0    # Just a counter.
 declare -a XTRA   # Extra packages to be searched.
 shift        # Skip past first argument.
-DFLT=0       # Default vrersion?
+DFLT=0       # Default version?
 NAME=$CONT   # Module name.
 MPTH=/sw/modules
 while [[ $# -gt 0 ]] ; do
