@@ -1,0 +1,34 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz  &&  \
+apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal32 libgdal-dev libgeos-dev libgsl27 libgsl-dev libnetcdf-dev libnetcdf19 libssl-dev openssl zlib1g zlib1g-dev  &&  \
+tar xf Python-3.11.4.tar.xz  &&  rm -f Python-3.11.4.tar.xz  &&  cd Python-3.11.4  &&  \
+./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
+make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.11.4  &&  \
+ldconfig /usr/local/lib  &&  pip3 install --upgrade pip  &&  \
+pip3 install absl-py alabaster alignment astor atomicwrites  &&  \
+pip3 install backcall biom-format biopython bleach bx-python  &&  \
+pip3 install CacheControl Cartopy certifi cftime click-plugins cligj cloudpickle colormath contourpy coverage cutadapt cvxopt cycler Cython  &&  \
+pip3 install db db-sqlite3 demes DendroPy distributed docutils doit  &&  \
+pip3 install GDAL==3.6.2 geopandas HTSeq humanize illumiprocessor  &&  \
+pip3 install jsonschema jupyter jupyter-client jupyter-console jupyter-core  &&  \
+pip3 install kastore khmer  &&  \
+pip3 install meson more-itertools msprime multiqc  &&  \
+pip3 install natsort netCDF4 numba numexpr numpy  &&  \
+pip3 install pyQt5 pyrsistent pyslim pytest pytools PyVCF3  &&  \
+pip3 install schwimmbad scikit-learn seaborn semver shannon  &&  \
+pip3 install simplejson spython statsmodels sympy tqdm  &&  \
+cd /opt  &&  git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
+cd AlphaFamImpute  &&  python3 setup.py install  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+##pip3 install   alignment antiorm blur bx-python bz2file composition concoct contourpy
+##pip3 install   dadi dammit dash db db-sqlite3 deblur demes
+#pip3 install --use-pep517 pygrib  &&  \

@@ -1,5 +1,5 @@
-BootStrap: docker
-From: ubuntu:22.04
+BootStrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %labels
 Maintainer JCUHPC(based on (Jeremy Nicklas)
@@ -20,8 +20,6 @@ install -d -m 1777 -o root -g root /scratch /fast/tmp
 
 # Get dependencies
 apt-get update
-ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
-echo "Australia/Brisbane" >/etc/timezone
 apt-get install -y --no-install-recommends software-properties-common dirmngr
 
 # Install R
@@ -64,7 +62,7 @@ libfribidi-dev
 # Install required R packages
 R --slave -e 'install.packages("devtools")'
 R --slave -e 'install.packages("BiocManager")'
-R --slave -e 'BiocManager::install()'
+R --slave -e 'BiocManager::install(version = "3.14")'
 R --slave -e 'BiocManager::install("sequencing")'
 R --slave -e 'BiocManager::install("RNAseq123")'
 R --slave -e 'BiocManager::install("rnaseqGene")'

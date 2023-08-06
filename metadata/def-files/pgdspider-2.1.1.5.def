@@ -6,15 +6,16 @@ exec "$@"
 
 %post
 apt-get update
-apt-get install -y openjdk-11-jre
+apt-get install -y openjdk-8-jre
 cd /opt
 wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip
 unzip PGDSpider_2.1.1.5.zip
 mv PGDSpider_2.1.1.5 pgdspider
 cd pgdspider
 rm -f PGDSpider2*.exe
-chmod +x PGDSpider2.sh
-sed -ie 's/PGD/\/opt\/pgdspider\/PGD/' PGDSpider2.sh
+printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2.jar\n" >PGDSpider2-gui.sh
+printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2-cli.jar\n" >PGDSpider2.sh
+chmod +x PGDSpider2*.sh
 
 %environment
     export PATH="/opt/pgdspider:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
