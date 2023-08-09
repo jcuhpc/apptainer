@@ -52,7 +52,7 @@ while [[ $# -gt 0 ]] ; do
 done
 
 TEMP=/fast/tmp
-DEST=/scratch/containers
+DEST=/gpfs01/Q0195/containers
 # Base of apptainers creation structure.
 BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
 # Directory housing apptainer definition file templates.

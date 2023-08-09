@@ -8,7 +8,7 @@
 META=/gpfs01/Q0195/apptainer/metadata/conda
 
 # Directory where singularity image files will be placed.
-INST=/scratch/containers/
+INST=/gpf01/Q0195/containers/
 
 ##### MODIFICATIONS UNLIKELY TO BE REQUIRED IN THIS SECTION #####
 
