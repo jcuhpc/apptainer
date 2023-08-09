@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update
+#EXAMPLE COMMANDS
+#apt-get install -y SWNAME
+#mamba create  -n <ENVNAME> -c conda-forge -c bioonda <SW1NAME>[=<SW1VERS>]
+#mamba install -n <ENVNAME> -c conda-forge -c bioonda <SW2NAME>[=<SW2VERS>]
+#apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
