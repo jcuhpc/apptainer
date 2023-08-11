@@ -9,10 +9,6 @@ apt-get update
 export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 mamba create --debug -c conda-forge -c bioconda -c defaults -n treemix treemix=1.13
 . /opt/conda/etc/profile.d/conda.sh
-#    conda config --add channels defaults
-#    conda config --add channels bioconda
-#    conda config --add channels conda-forge
-#    conda create --debug -n treemix treemix=1.13
 
 %environment
     export PATH="/opt/conda/envs/treemix/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
