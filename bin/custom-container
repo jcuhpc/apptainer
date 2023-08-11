@@ -23,5 +23,5 @@ cp $1 $TEMP/
 
 # Build & Install the apptainer
 sudo singularity build $TEMP/$C $TEMP/$D
-/bin/install -m 775 -g hpc-admins -f $TEMP/$C $DEST/
+/bin/install -m 775 -g hpc-admins $TEMP/$C $DEST/
 /bin/rm -f $TEMP/$C
