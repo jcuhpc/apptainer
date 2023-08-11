@@ -1,35 +1,31 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/metaWRAP:/opt/conda/bin:/opt/conda/envs/metawrap-env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    cd /opt
-    apt install -y libarchive
-    conda update conda
-    conda install -y -c conda-forge  mamba
-    git clone https://github.com/bxlab/metaWRAP.git
-    mamba create -y -n metawrap-env python=2.7
-#    conda activate metawrap-env
-    conda config --add channels defaults
-    conda config --add channels conda-forge
-    conda config --add channels bioconda
-    conda config --add channels ursky
-    mamba install --only-deps -c urksy metawrap-mg
-    . /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+apt update  &&  \
+apt install -y libarchive-dev libarchive-tools  &&  \
+git clone https://github.com/bxlab/metaWRAP.git  &&  \
+export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
+mamba create -y -n metawrap python=2.7   &&  \
+conda config --add channels defaults     &&  \
+conda config --add channels conda-forge  &&  \
+conda config --add channels bioconda     &&  \
+conda config --add channels ursky        &&  \
+mamba install -n metawrap --only-deps -c ursky metawrap-mg  &&  \
+. /opt/conda/etc/profile.d/conda.sh
 
 %environment
-    export PATH="/opt/metaWRAP/bin:/opt/conda/envs/metawrap-env/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    export bin_path=/opt/conda/envs/metawrap-mg/bin
-    export mw_path=/opt/conda/envs/metawrap-mg/bin/metawrap
-    export SOFT=/opt/conda/envs/metawrap-mg/bin/metawrap-scripts
-    export PIPES=/opt/conda/envs/metawrap-mg/bin/metawrap-modules
-    export KRAKEN_DB=/scratch/database/kracken
-    export KRAKEN2_DB=/scratch/database/kraken2
-    export BMTAGGER_DB=/scratch/database/bmtagger
-    export BLASTDB=/scratch/database/blast4/nt
-    export TAXDUMP=/scratch/database/taxdump
+export PATH="/opt/metaWRAP/bin:/opt/conda/envs/metawrap/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export bin_path=/opt/conda/envs/metawrap/bin
+export mw_path=/opt/conda/envs/metawrap/bin/metawrap
+export SOFT=/opt/conda/envs/metawrap/bin/metawrap-scripts
+export PIPES=/opt/conda/envs/metawrap/bin/metawrap-modules
+export KRAKEN_DB=/scratch/database/kracken
+export KRAKEN2_DB=/scratch/database/kraken2
+export BMTAGGER_DB=/scratch/database/bmtagger
+export BLASTDB=/scratch/database/blast4/nt
+export TAXDUMP=/scratch/database/taxdump
+export CONDA_HOME=/opt/conda
+export CONDA_PROF=/opt/conda/etc/profile.d
 
-%runscript
-    exec "$@"
