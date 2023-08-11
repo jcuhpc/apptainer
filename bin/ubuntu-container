@@ -76,14 +76,6 @@ F="$META/ubuntu-$D-base.template"
 cat $F | sed -e "s/SWNAME/$S $X/g" >$TEMP/$N-$V.def
 
 # Build & Install the apptainer
-if [ -f $DEST/$N-$V.sif ] ; then
-    printf "\n\n\nERROR:  The apptainer you will be creating already exists.\n"
-    printf "        Execute the following commands to replace what exists.\n\n"
-    printf "sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def\n"
-    printf "mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/\n"
-    printf "/bin/mv -f $TEMP/$N-$V.sif $DEST/\n\n\n\n"
-else
-    sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
-    mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/
-    /bin/mv -f $TEMP/$N-$V.sif $DEST/
-fi
+sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
+mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/
+/bin/install -m 775 -g hpc-admins $TEMP/$N-$V.sif $DEST/

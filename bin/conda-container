@@ -31,17 +31,10 @@ if [ $# -eq 1 -o $# -eq 2 ] ; then
     cat $TEMP | sed -e s/SWNAME/$N/g | sed -e s/SWVERS/$V/g >/fast/tmp/$N-$V.def
     # Build singularity container
     TEMP=/fast/tmp
-    if [ -f $INST/$N-$V.sif ] ; then
-      printf "\n\n\nERROR:  The apptainer you will be creating already exists.\n"
-      printf "        Execute the following commands to replace what exists.\n\n"
-      printf "sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def\n"
-      printf "mv $TEMP/$N-$V.def $BASE/metadata/def-files/\n"
-      printf "/bin/mv -f $TEMP/$N-$V.sif $INST\n\n\n\n"
-    else
-      sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
-      mv $TEMP/$N-$V.def $BASE/metadata/def-files/
-      /bin/mv -f $TEMP/$N-$V.sif $INST
-    fi
+    sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
+    mv $TEMP/$N-$V.def $BASE/metadata/def-files/
+    /bin/install -m 775 -g hpc-admins $TEMP/$N-$V.sif $INST/
+    /bin/rm -f $TEMP/$N-$V.sif
 
 else
     echo ""

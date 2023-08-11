@@ -23,11 +23,5 @@ cp $1 $TEMP/
 
 # Build & Install the apptainer
 sudo singularity build $TEMP/$C $TEMP/$D
-if [ -f $DEST/$N-$V.sif ] ; then
-    printf "\n\n\nERROR:  The apptainer you've just created already exists.\n"
-    printf "        Execute the following commands to replace what exists.\n\n"
-    printf "/bin/mv -f $TEMP/$C $DEST/\n\n\n\n"
-else
-    /bin/mv -f $TEMP/$C $DEST/
-fi
-
+/bin/install -m 775 -g hpc-admins -f $TEMP/$C $DEST/
+/bin/rm -f $TEMP/$C
