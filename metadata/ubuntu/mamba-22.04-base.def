@@ -8,8 +8,8 @@ exec "$@"
 apt-get update  &&  \
 export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
 #apt-get install -y <SW_LIST>  &&  \
-#mamba create  -c conda-forge -c bioonda -c defaults -n <ENV> <SW1>[=<V1>]  &&  \
-#mamba install -c conda-forge -c bioonda -c defaults -n <ENV> <SW2>[=<V2>]  &&  \
+#mamba create  -c conda-forge -c bioconda -c defaults -n <ENV> <SW1>[=<V1>]  &&  \
+#mamba install -c conda-forge -c bioconda -c defaults -n <ENV> <SW2>[=<V2>]  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
