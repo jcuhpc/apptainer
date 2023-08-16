@@ -5,10 +5,14 @@ From: /gpfs01/Q0195/containers/mamba-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-#EXAMPLE COMMANDS
-#apt-get install -y SWNAME
-#mamba create  -n <ENVNAME> -c conda-forge -c bioonda <SW1NAME>[=<SW1VERS>]
-#mamba install -n <ENVNAME> -c conda-forge -c bioonda <SW2NAME>[=<SW2VERS>]
-#apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get update  &&  \
+export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
+#apt-get install -y <SW_LIST>  &&  \
+#mamba create  -c conda-forge -c bioonda -c defaults -n <ENV> <SW1>[=<V1>]  &&  \
+#mamba install -c conda-forge -c bioonda -c defaults -n <ENV> <SW2>[=<V2>]  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/opt/conda/envs/<ENV>/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
