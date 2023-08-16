@@ -6,7 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
 mamba create --debug -c conda-forge -c bioconda -c defaults -n treemix treemix=1.13  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
