@@ -1,29 +1,23 @@
-Bootstrap: docker
-From: continuumio/miniconda3
-
-%files
-    /fast/tmp/GenomeAnalysisTK.jar /opt
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
 
 %runscript
-    exec "$@"
+exec "$@"
+
+%files
+/fast/tmp/GenomeAnalysisTK.jar /opt
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels conda-forge
-    conda create --debug -n gatk gatk=3.8
-    . /opt/conda/etc/profile.d/conda.sh
-    conda activate gatk
-    cd /opt/conda/envs/gatk
-    install -m 644 /opt/GenomeAnalysisTK.jar opt/gatk-3.8/
-    ln opt/gatk-3.8/GenomeAnalysisTK.jar bin/
-    rm -f /opt/GenomeAnalysisTK.jar
+apt-get update  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n gatk gatk=3.8  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+cd /opt/conda/envs/gatk  &&  \
+install -m 644 /opt/GenomeAnalysisTK.jar opt/gatk-3.8/  &&  \
+ln opt/gatk-3.8/GenomeAnalysisTK.jar bin/  &&  \
+rm -f /opt/GenomeAnalysisTK.jar  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/opt/conda/envs/gatk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    export JATK_JAR=/opt/conda/envs/gatk/opt/gatk-3.8/GenomeAnalysisTK.jar
+export PATH="/opt/conda/envs/gatk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export JATK_JAR=/opt/conda/envs/gatk/opt/gatk-3.8/GenomeAnalysisTK.jar
 
