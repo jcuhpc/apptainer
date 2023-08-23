@@ -23,5 +23,5 @@ conda install -c conda-forge mamba  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
 
 %environment
-export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
