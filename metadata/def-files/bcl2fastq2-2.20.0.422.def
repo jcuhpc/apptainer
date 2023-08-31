@@ -9,15 +9,15 @@ exec "$@"
 # Registration required for download.
 
 %post
-apt-get update
-apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev
-cd /opt
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev  &&  \
 tar xf bcl2fastq2-v2.20.0.422-Source.tar.gz  &&  \
 cd bcl2fastq  &&  mkdir build  &&  cd build  &&  \
 ../src/configure --prefix=/opt/bcl2fastq2  &&  \
-make  &&  make install  &&  \
-cd /opt  &&  rm -rf bcl2fastq *.tar.gz
+make  &&  make install  &&  cd ../..  &&  \
+rm -rf bcl2fastq *.tar.gz
 
 %environment
-    export PATH="/opt/bcl2fastq2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/bcl2fastq2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
