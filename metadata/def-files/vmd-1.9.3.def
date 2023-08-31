@@ -2,8 +2,9 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
-vmd-1.9.3.tar /opt
+/fast/tmp/vmd-1.9.3.tar /opt
 # Register required for download.
+# Software distribution is NOT complete (no vmd_LINUX)
 
 %runscript
 exec "$@"
@@ -12,9 +13,9 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y libegl1 tcsh  &&  \
-tar xf vmd-1.9.3.tar  &&  rm -f vmd-1.9.3.tar
-# Software distribution is NOT complete (no vmd_LINUX)
+tar xf vmd-1.9.3.tar  &&  rm -f vmd-1.9.3.tar  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/opt/vmd/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/vmd/1.9.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
