@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -eq 1 ] ; then
+    NAME=$1
+    META=/gpfs01/Q0195/apptainer/metadata/conda
+    CHNL=`grep ^$NAME\  $META/channels | awk '{print $2}'`
+    [[ "$CHNL" =~ "bioconda" ]]  &&  CHNL=bioconda
+    VERS=`curl https://anaconda.org/$CHNL/$NAME/badges/version.svg 2>/dev/null | grep Anaconda.org | awk -F\- '{print $2}'`
+    echo "Latest conda version of $NAME = $VERS"
+
+else
+    echo ""
+    echo "Syntax:  conda-vers <sw_name>"
+    echo ""
+    exit 1
+fi
+
