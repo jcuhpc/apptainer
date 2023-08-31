@@ -6,6 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y spades  &&  \
+apt-get install -y snakemake  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
