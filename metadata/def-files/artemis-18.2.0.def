@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.10.sif
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
 
 %runscript
 exec "$@"
