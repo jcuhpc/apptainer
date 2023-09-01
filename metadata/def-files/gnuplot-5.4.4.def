@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.10.sif
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
 
 %runscript
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y gnuplot-qt  gnuplot-data
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get update  &&  \
+apt-get install -y gnuplot-qt gnuplot-data  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
