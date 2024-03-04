@@ -16,6 +16,7 @@ gio mime text/html firefox.desktop
 
 # Install R
 apt-get update
+apt-get install -y libpython3-dev
 apt-get install -y --no-install-recommends wget
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 #add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
@@ -47,7 +48,7 @@ rm julia-1.8.5-linux-x86_64.tar.gz
 /opt/julia-1.8.5/bin/julia -e 'using Pkg; Pkg.add("Random")'
 /opt/julia-1.8.5/bin/julia -e 'using Pkg; Pkg.add("DataFrames")'
 /opt/julia-1.8.5/bin/julia -e 'using Pkg; Pkg.add("QuartetNetworkGoodnessFit")'
-
+/opt/julia-1.8.5/bin/julia -e 'using Pkg; Pkg.add("PyCall")'
 
 %environment
     export PATH="/opt/julia-1.8.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
