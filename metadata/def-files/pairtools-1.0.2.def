@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y cython3 libc6 libgcc-s1 libstdc++6 python3-bioframe python3-click python3-numpy python3-numpy-abi9 python3-pairtools python3-pandas python3-pysam python3-scipy python3-yaml samtools  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
