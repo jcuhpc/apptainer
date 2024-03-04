@@ -19,6 +19,7 @@ archivemount github.com/cybernoid/archivemount
 armadillo arma.sourceforge.net
 artemis www.sanger.ac.uk/science/tools/artemis
 artmountrainer www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm
+asremlr biometryhub.github.io/installing-r/installing-asreml.html
 assembly-scan github.com/rpetit3/assembly-scan
 assembly-stats github.com/sanger-pathogens/assembly-stats
 assemblytics http://assemblytics.com/
@@ -47,6 +48,7 @@ bedops github.com/bedops/bedops
 BEDtools sourceforge.net/projects/bedtools
 bedtools bedtools.readthedocs.io/en/latest/
 bfast github.com/nh13/BFAST
+bifrost github.com/pmelsted/bifrost
 bio-eagle data.broadinstitute.org/alkesgroup/Eagle/
 bio-tradis github.com/sanger-pathogens/Bio-Tradis
 bio-vcf github.com/vcflib/bio-vcf
@@ -198,6 +200,7 @@ jmodeltest github.com/ddarriba/jmodeltest2
 jpeg sourceforge.net/projects/libjpeg/
 lagan lagan.stanford.edu/lagan_web/index.shtml
 lamarc evolution.gs.washington.edu/lamarc/
+lammps github.com/lammps/lammps
 libjpeg sourceforge.net/projects/libjpeg/
 libjpeg-turbo github.com/libjpeg-turbo/libjpeg-turbo
 longstitch github.com/bcgsc/longstitch
@@ -284,6 +287,7 @@ orthofinder github.com/davidemms/OrthoFinder
 otb gitlab.orfeo-toolbox.org/orfeotoolbox/otb
 p11-kit p11-glue.freedesktop.org/p11-kit.html
 p7zip sourceforge.net/projects/p7zip/
+pairtools github.com/open2c/pairtools
 pal2nal http://www.bork.embl.de/pal2nal/
 paml github.com/abacus-gene/paml
 pandoc pandoc.org
@@ -291,6 +295,7 @@ parallel www.gnu.org/software/parallel/
 paragonenf https://github.com/chrisjackson-pellicle/paragone-nf
 partitionfinder http://www.robertlanfear.com/partitionfinder/
 paup paup.sc.fsu.edu
+pbbioconda github.com/PacificBiosciences/pbbioconda
 pbipa github.com/PacificBiosciences/pbipa
 pblat github.com/icebert/pblat
 pbmpi github.com/bayesiancook/pbmpi
@@ -398,6 +403,7 @@ tabix www.htslib.org
 tar www.gnu.org/software/tar/
 t-coffee http://www.tcoffee.org/Projects_home_page/t_coffee_home_page.html
 termcap www.gnu.org/software/termutils/
+tgs-gapcloser github.com/BGI-Qingdao/TGS-GapCloser
 tiff github.com/LuaDist/libtiff
 tiger bitbucket.org/wegmannlab/tiger/wiki/Home
 tmhmm services.healthtech.dtu.dk/service.php?TMHMM-2.0
@@ -426,6 +432,7 @@ unicycler github.com/rrwick/Unicycler
 units www.gnu.org/software/units/
 usearch drive5.com/usearch/
 usher github.com/yatisht/usher
+vcf-kit vcf-kit.readthedocs.io/en/latest/?badge=latest
 vcflib github.com/vcflib/vcflib
 vcftools vcftools.sourceforge.net
 velvet github.com/dzerbino/velvet
@@ -433,6 +440,7 @@ velvet-long github.com/dzerbino/velvet
 velvetoptimiser github.com/tseemann/VelvetOptimiser
 vmd www.ks.uiuc.edu/Research/vmd/
 vsearch github.com/torognes/vsearch
+wgd github.com/arzwa/wgd
 wise http://www.ebi.ac.uk/~birney/wise2/
 wolfpsort github.com/fmaguire/WoLFPSort
 wxwidgets www.wxwidgets.org

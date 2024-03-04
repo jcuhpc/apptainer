@@ -5,14 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y gfortran libpython2.7 python
-cd /opt
-curl -O http://phylosolutions.com/paup-test/paup4a168_ubuntu64.gz
-gzip -d paup4a168_ubuntu64.gz
-chmod +x paup4a168_ubuntu64
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y gfortran libpython2.7 python  &&  \
+curl -O http://phylosolutions.com/paup-test/paup4a168_ubuntu64.gz  &&  \
+gzip -d paup4a168_ubuntu64.gz  &&  chmod +x paup4a168_ubuntu64  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

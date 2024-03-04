@@ -26,7 +26,7 @@ elif [ ! -f $1 ] ; then
 fi
 
 APPT="$1"   # Path to apptainer.
-INST="install -m 644 -g hpc-admins"   # File installation shorthand.
+INST="install -m 664 -g hpc-admins"   # File installation shorthand.
 BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`   # Base of apptainers creation structure.
 
 # Extract information from apptainer file name.
@@ -41,7 +41,9 @@ declare -a XTRA   # Extra packages to be searched.
 shift        # Skip past first argument.
 DFLT=0       # Default version?
 NAME=$CONT   # Module name.
-MPTH=/sw/modules
+# changed 12 Nov 2023
+#MPTH=/sw/modules
+MPTH=/gpfs01/Q0195/modules
 while [[ $# -gt 0 ]] ; do
     opt="$1"
     case $opt in
