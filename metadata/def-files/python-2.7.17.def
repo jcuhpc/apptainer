@@ -5,22 +5,22 @@ From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 exec "$@"
 
 %post
-apt-get update
+apt-get update  &&  \
 apt-get install -y cython libbz2-dev liblzma-dev libopenmpi-dev liblzo2-dev\
 	openmpi-bin openmpi-common python python-biopython python-hachoir-core\
-	python-hachoir-metadata python-hachoir-parser python-numpy zlib1g-dev
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
-pip install absl-py alignment antiorm astor
-pip install biom-format==2.1.6 bleach bx-python bz2file
-pip install certifi chardet clepy click cloudpickle\
-	    composition configparser cutadapt cvxopt==1.1.9 cycler
-pip install dadi dask db db-sqlite3 DendroPy distributed
-pip install entrypoints ete3==3.0.0b35 funcsigs functools32 gast grpcio
-pip install h5py html5lib html5lib HTSeq==0.11.1
-pip install jsonschema==2.6.0 qtconsole==4.3.1 terminado==0.8.1
-pip install illumiprocessor ipython ipywidgets
-pip install jax joblib==0.11 jsonschema jupyter jupyter-console
-pip install locket Markdown Metadata mpi4py mpmath==1.0.0
-pip install partd pbr pitz pp protobuf==3.6.1 pyproj python-lzo PyVCF
-pip install qiime requests schwimmbad scikit-learn shannon sympy
+	python-hachoir-metadata python-hachoir-parser python-numpy zlib1g-dev  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*  &&  \
+pip install absl-py alignment antiorm astor  &&  \
+pip install biom-format==2.1.6 bleach bx-python bz2file  &&  \
+pip install certifi chardet clepy click cloudpickle composition configparser cutadapt cvxopt==1.1.9 cycler  &&  \
+pip install dadi dask db db-sqlite3 DendroPy distributed  &&  \
+pip install entrypoints ete3==3.0.0b35 funcsigs functools32 gast grpcio  &&  \
+pip install h5py html5lib html5lib HTSeq==0.11.1  &&  \
+pip install jsonschema==2.6.0 qtconsole==4.3.1 terminado==0.8.1  &&  \
+pip install illumiprocessor ipython ipywidgets  &&  \
+pip install jax joblib==0.11 jsonschema jupyter jupyter-console  &&  \
+pip install locket Markdown Metadata mpi4py mpmath==1.0.0  &&  \
+pip install partd pbr pitz pp protobuf==3.6.1 pyproj python-lzo PyVCF  &&  \
+pip install qiime requests schwimmbad scikit-learn shannon sympy  &&  \
 pip install tensorboard tensorflow termcolor virtualenv
+
