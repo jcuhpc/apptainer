@@ -5,12 +5,11 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y gcc sed
-cd /opt
-wget https://github.com/admb-project/admb/releases/download/admb-12.3/admb-12.3-linux.zip
-unzip admb-12.3-linux.zip
-mv admb-12.3 admb
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y gcc sed  &&  \
+wget https://github.com/admb-project/admb/releases/download/admb-12.3/admb-12.3-linux.zip  &&  \
+unzip admb-12.3-linux.zip  &&  mv admb-12.3 admb  &&  rm -f admb-12.3-linux.zip
 
 %environment
 export PATH="/opt/admb:/opt/admb/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
