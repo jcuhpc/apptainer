@@ -13,6 +13,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
 rm -rf artbinmountrainier2016.06.05linux64.tgz
 
