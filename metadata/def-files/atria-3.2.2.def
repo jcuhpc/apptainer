@@ -9,8 +9,8 @@ cd /opt  &&  \
 apt-get update  &&  \
 apt install pigz pbzip2  &&  \
 wget https://github.com/cihga39871/Atria/releases/download/v3.2.2/atria-3.2.2-linux.tar.gz  &&  \
-tar -zxf atria-3.2.2-linux.tar.gz  &&  \
-rm atria-3.2.2-linux.tar.gz
+tar -zxf atria-3.2.2-linux.tar.gz  &&  rm atria-3.2.2-linux.tar.gz  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
 export PATH="/opt/atria-3.2.2-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
