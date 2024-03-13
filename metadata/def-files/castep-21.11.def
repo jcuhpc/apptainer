@@ -5,17 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 /fast/tmp/CASTEP.tar /opt
 
 %post
-apt-get update
-apt-get install -y gfortran libopenmpi3 libopenmpi-dev openmpi-bin openmpi-common\
-		   libblas3 libblas64-3 libblas-dev libfftw3-3 libfftw3-bin libfftw3-dev \
-		   libopenblas-base libopenblas-dev liblapack3 liblapack64-3 liblapack-dev\
-		   python3 python3-distutils python3-distutils-extra
-ln /usr/bin/python3 /usr/bin/python   &&   \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
-cd /opt   &&   tar xf CASTEP.tar   &&   rm -f CASTEP.tar   &&   cd CASTEP   &&   \
-make CASTEP_ARCH=linux_x86_64_gortran10 COMMS_ARCH=mpi SUBARCH=mpi MATLIBS=openblas   &&   \
-mkdir -p /opt/CASTEP/bin/linux_x86_64_gfortran10--serial/build   &&   \
-make install   &&   make install-tools
+apt-get update  &&  \
+apt-get install -y gfortran libopenmpi3 libopenmpi-dev openmpi-bin openmpi-common libblas3 libblas64-3 libblas-dev libfftw3-3 libfftw3-bin libfftw3-dev libopenblas-base libopenblas-dev liblapack3 liblapack64-3 liblapack-dev python3 python3-distutils python3-distutils-extra  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+ln /usr/bin/python3 /usr/bin/python  &&  \
+cd /opt  &&  tar xf CASTEP.tar  &&  rm -f CASTEP.tar  &&  cd CASTEP  &&  \
+make CASTEP_ARCH=linux_x86_64_gortran10 COMMS_ARCH=mpi SUBARCH=mpi MATLIBS=openblas  &&  \
+mkdir -p /opt/CASTEP/bin/linux_x86_64_gfortran10--serial/build  &&  \
+make install  &&  make install-tools
 
 %environment
-    export PATH="/opt/CASTEP/bin:/opt/CASTEP/bin/linux_x86_64_gfortran--serial:/opt/CASTEP/obj/linux_x86_64_gfortran10--mpi:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/CASTEP/bin:/opt/CASTEP/bin/linux_x86_64_gfortran--serial:/opt/CASTEP/obj/linux_x86_64_gfortran10--mpi:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

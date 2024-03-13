@@ -5,16 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-export LANG=C.UTF-8
-apt-get update
-apt-get install -y make libjhdf5-jni samtools bwa bedtools default-jdk
-git clone https://github.com/mdcao/japsa
-cd japsa
-make INSTALL_DIR=/opt/japsa MXMEM=7000m SERVER=true JLP=/usr/lib/jni install
-cd ..
-rm -rf japsa
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+export LANG=C.UTF-8  &&  \
+apt-get update  &&  \
+apt-get install -y make libjhdf5-jni samtools bwa bedtools default-jdk  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*   &&  \
+git clone https://github.com/mdcao/japsa  &&  cd japsa  &&  \
+make INSTALL_DIR=/opt/japsa MXMEM=7000m SERVER=true JLP=/usr/lib/jni install  &&  \
+cd ..  &&  rm -rf japsa
 
 %environment
-    export PATH="/opt/japsa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/japsa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
