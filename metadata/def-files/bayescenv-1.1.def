@@ -8,6 +8,7 @@ exec "$@"
 cd /opt   &&   \
 apt-get update   &&   \
 apt-get install -y libgomp1 &&   \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/devillemereuil/bayescenv/archive/refs/tags/v1.1.tar.gz   &&   \
 tar xf v1.1.tar.gz   &&   rm -rf v1.1.tar.gz
 
