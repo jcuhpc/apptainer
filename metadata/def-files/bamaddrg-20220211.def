@@ -8,6 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 cmake  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 git clone https://github.com/ekg/bamaddrg.git  &&  \
 cd bamaddrg  &&  make
 
