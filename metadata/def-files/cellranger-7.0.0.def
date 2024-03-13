@@ -10,13 +10,11 @@ From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev
-cd /opt
-#wget -O cellranger-7.0.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.0.0.tar.gz?Expires=1658926069&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci03LjAuMC50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTg5MjYwNjl9fX1dfQ__&Signature=APYiwdZZIbBflqtRVjen-G3yr-mMf98gtrR0t1AvunMboAO5WFmgu5tLwLEh~PiqyPJEaUjqDtLxdPF4gLduhneAshiER6CxpZ-nngLRuIofnMN4LzjoWwJd8TZ7GZqduItrGIhJGGb62jsKpKsC17qcI-DvRHzRKcI1oLifppkqsSIGWZsqgdrDp7jvmwmjeqeWZCDZ4SxiornO8Zvza789VheYABgpq9-2HvwYIiDuvKbEDbj8lw~da5G17C37hOwFtqyRZvITiAFF-YyKpxg3tvINqXyxVLdzq4ZIIn0i~epLEi27aUysVrH~RX-Iy013qUWNhC6jbL-vbAYi0w__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
-tar xf cellranger-7.0.0.tar.gz
-rm -f cellranger-7.0.0.tar.gz
-cd /opt
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y cmake libc6-dev libc6-dev-i386 zlib1g zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+tar xf cellranger-7.0.0.tar.gz  &&  rm -f cellranger-7.0.0.tar.gz  &&  \
 tar xf bcl2fastq2-v2.20.0.422-Source.tar.gz  &&  \
 cd bcl2fastq  &&  mkdir build  &&  cd build  &&  \
 ../src/configure --prefix=/opt/bcl2fastq2  &&  \
@@ -24,5 +22,5 @@ make  &&  make install  &&  \
 cd /opt  &&  rm -rf bcl2fastq *.tar.gz
 
 %environment
-    export PATH="/opt/cellranger-7.0.0:/opt/bcl2fastq2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/cellranger-7.0.0:/opt/bcl2fastq2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
