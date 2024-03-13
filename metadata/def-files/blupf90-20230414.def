@@ -45,5 +45,5 @@ rm -rf nce.ads.uga.edu   &&   \
 chmod 755 *
 
 %environment
-    export PATH="/opt/blupf90:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/blupf90:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
