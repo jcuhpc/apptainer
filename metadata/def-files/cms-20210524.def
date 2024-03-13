@@ -9,15 +9,15 @@ cd /opt  &&  \
 apt-get update  &&  \
 git clone https://github.com/beatrixparis/connectivity-modeling-system.git  &&  \
 apt-get install -y gfortran libcurl3 libnetcdf-dev libnetcdf13 libnetcdff-dev libnetcdff6 libopenmpi-dev libopenmpi2 netcdf-bin openmpi-bin  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 ln -s /usr/bin/f95 /usr/bin/f90  &&  \
 cd connectivity-modeling-system/cms-master/arch  &&  \
 sed -ie 's/\/local\/netcdf\/lib/\/lib\/x86_64-linux-gnu/' mpi_compiler  &&  \
 sed -ie 's/\/local\/netcdf\/include/\/include/' mpi_compiler  &&  \
 sed -ie 's/ -I\/usr\/local\/include//' mpi_compiler  &&  \
 sed -ie 's/ -L\/usr\/local\/lib//' mpi_compiler  &&  \
-cd ../src  &&  make  &&  rm -f *.o  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd ../src  &&  make  &&  rm -f *.o
 
 %environment
-    export PATH="/opt/connectivity-modeling-system/cms-master/src:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/connectivity-modeling-system/cms-master/src:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
