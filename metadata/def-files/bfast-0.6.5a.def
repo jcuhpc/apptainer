@@ -5,14 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y autotools-dev automake libbz2-dev zlib1g-dev
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
-wget https://github.com/nh13/BFAST/archive/refs/tags/bfast.0.6.5a.tar.gz
-tar xf bfast.0.6.5a.tar.gz
-cd BFAST-bfast.0.6.5a
-sh autogen.sh
-./configure --prefix=/usr/local
-make   &&   make install
-rm -fr /*.tar.gs /BFAST-bfast.0.6.5a
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y autotools-dev automake libbz2-dev zlib1g-dev  &&  \
+apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1  &&  \
+wget https://github.com/nh13/BFAST/archive/refs/tags/bfast.0.6.5a.tar.gz  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  && \
+tar xf bfast.0.6.5a.tar.gz  &&  cd BFAST-bfast.0.6.5a  &&  \
+sh autogen.sh  &&  ./configure --prefix=/usr/local  &&  \
+make  &&  make install  &&  cd ..  &&  \
+rm -fr *.tar.gz BFAST-bfast.0.6.5a
 
