@@ -11,8 +11,8 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 cd /opt  &&  \
+apt-get update  &&  \
 tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
 rm -rf artbinmountrainier2016.06.05linux64.tgz
 
