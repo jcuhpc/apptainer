@@ -7,12 +7,15 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/pmelsted/bifrost/archive/refs/tags/v1.3.0.tar.gz  &&  \
 tar -xvf v1.3.0.tar.gz  &&  rm -f v1.3.0.tar.gz  &&  \
 cd bifrost-1.3.0  &&  mkdir build  &&  cd build  &&  \
-cmake .. -DCOMPILATION_ARCH=OFF  &&  make  &&  \
-make install  &&  cd /opt  && rm -rf bifrost-1.3.0
+cmake .. -DCOMPILATION_ARCH=OFF  &&  \
+make  &&  make install  &&  \
+cd /opt  && rm -rf bifrost-1.3.0
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+
