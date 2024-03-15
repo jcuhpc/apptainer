@@ -5,11 +5,12 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-wget https://github.com/cp2k/cp2k/releases/download/v9.1.0/cp2k-9.1-Linux-x86_64.ssmp
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/cp2k/cp2k/releases/download/v9.1.0/cp2k-9.1-Linux-x86_64.ssmp  &&  \
 chmod 775 cp2k-9.1-Linux-x86_64.ssmp
 
 %environment
-    export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
