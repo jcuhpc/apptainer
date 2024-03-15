@@ -6,9 +6,9 @@ exec "$@"
 
 %post
 apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 mamba create  -c conda-forge -c defaults -n dadi dadi=2.1.1  &&  \
-. /opt/conda/etc/profile.d/conda.sh  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+. /opt/conda/etc/profile.d/conda.sh
 
 %environment
 export PATH="/opt/conda/envs/dadi/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
