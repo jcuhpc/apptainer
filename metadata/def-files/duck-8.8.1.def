@@ -6,9 +6,9 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-DVER="8.5.6.39394"  &&  \
+DVER=8.8.1.41263  &&  \
 apt-get install -y dirmngr  &&  \
 wget https://dist.duck.sh/duck_$DVER-1_amd64.deb  &&  \
 apt-get install ./duck_$DVER-1_amd64.deb  &&  rm -f duck_$DVER-1_amd64.deb  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
