@@ -2,25 +2,17 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
-    exec "$@"
+exec "$@"
 
 %post
-apt-get update
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 libnetcdf-dev cmake
-cd /opt
-wget https://github.com/csiro-coasts/EMS/archive/refs/tags/v1.4.0.tar.gz
-tar xf v1.4.0.tar.gz
-cd EMS-1.4.0
-conf/configure
-make
-# This will build all libraries and modules including SHOC & COMPAS
-# SHOC will be available in model/hd, to check version info type:
-#model/hd/shoc -v
-# COMPAS will be available in model/hd-us, to check version info type:
-#model/hd-us/compas -v
-cd ../
-rm -rf v1.4.0.tar.gz
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1 libnetcdf-dev  &&  \
+wget https://github.com/csiro-coasts/EMS/archive/refs/tags/v1.4.0.tar.gz   &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+tar xf v1.4.0.tar.gz  &&  rm -f v1.4.0.tar.gz  &&  \
+cd EMS-1.4.0  &&  conf/configure  &&  make
 
 %environment
-    export PATH="/opt/EMS-1.4.0/model/hd:/opt/EMS-1.4.0/model/hd-us::/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/EMS-1.4.0/model/hd:/opt/EMS-1.4.0/model/hd-us::/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
