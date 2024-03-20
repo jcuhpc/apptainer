@@ -7,7 +7,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/cp2k/cp2k/releases/download/v9.1.0/cp2k-9.1-Linux-x86_64.ssmp  &&  \
 chmod 775 cp2k-9.1-Linux-x86_64.ssmp
 

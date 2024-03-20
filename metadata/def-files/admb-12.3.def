@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y gcc sed  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/admb-project/admb/releases/download/admb-12.3/admb-12.3-linux.zip  &&  \
 unzip admb-12.3-linux.zip  &&  mv admb-12.3 admb  &&  rm -f admb-12.3-linux.zip
 
