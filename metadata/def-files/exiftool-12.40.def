@@ -5,15 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
-wget https://exiftool.org/Image-ExifTool-12.40.tar.gz
-tar xf Image-ExifTool-12.40.tar.gz
-cd Image-ExifTool-12.40
-perl Makefile.PL
-make install
-rm -fr /Image*
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://exiftool.org/Image-ExifTool-12.40.tar.gz  &&  \
+tar xf Image-ExifTool-12.40.tar.gz  &&  cd Image-ExifTool-12.40  &&  \
+perl Makefile.PL  &&  make install  &&  rm -fr /opt/Image*
 
 %environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

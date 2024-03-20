@@ -5,15 +5,16 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1
-wget https://cme.h-its.org/exelixis/resource/download/software/exabayes-1.5.1.tar.gz
-tar xf exabayes-1.5.1.tar.gz
-cd exabayes-1.5.1
-./configure --prefix=/usr/local
-make   &&   make install
-rm -fr /exabayes*
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://cme.h-its.org/exelixis/resource/download/software/exabayes-1.5.1.tar.gz  &&  \
+tar xf exabayes-1.5.1.tar.gz  &&  cd exabayes-1.5.1  &&  \
+./configure --prefix=/usr/local  &&  \
+make  &&  make install  &&  \
+rm -fr /opt/exa*
 
 %environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
