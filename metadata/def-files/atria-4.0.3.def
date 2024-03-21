@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=4.0.3  &&  \
+apt-get update  &&  \
+apt install pigz pbzip2  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/cihga39871/Atria/releases/download/v$VERS/atria-$VERS-linux-ubuntu22.tar.gz  &&  \
+tar -zxf atria*.tar.gz  &&  rm atria*.tar.gz
+
+%environment
+export PATH="/opt/atria-$VERS/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
