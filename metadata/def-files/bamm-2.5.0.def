@@ -9,9 +9,9 @@ cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 cmake  &&  \
 wget https://github.com/macroevolution/bamm/archive/refs/tags/v2.5.0.tar.gz  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 tar xf v2.5.0.tar.gz  &&  cd bamm-2.5.0  &&  mkdir build  &&  \
 cd build  &&  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local  &&  \
 make  &&  make install  &&  cd ../..  &&  \
-rm -rf bamm-2.5.0 v2.5.0.tar.gz
+rm -fr bamm-2.5.0 v2.5.0.tar.gz
 
