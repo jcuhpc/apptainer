@@ -8,9 +8,11 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y gcc make  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/mfoll/BayeScan/archive/refs/tags/v2.1.tar.gz  &&  \
-tar xf v2.1.tar.gz  &&   rm -f v2.1.tar.gz  &&  cd BayeScan-2.1  &&  make  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+tar xf v2.1.tar.gz  &&  rm -f v2.1.tar.gz  &&  \
+cd BayeScan-2.1  &&  make
 
 %environment
 export PATH="/opt/BayeScan-2.1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
