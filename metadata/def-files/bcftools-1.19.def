@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n bcftools bcftools=1.19  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/bcftools/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
