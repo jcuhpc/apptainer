@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libbz2-dev libcurl4 libcurl4-openssl-dev liblzma-dev zlib1g-dev  &&  \
+apt-get install -y python python-biopython python-numexpr python-pathlib python-pip python-pyfaidx python-pytest python-unidecode  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/list/*  &&  \
+pip install biopython==1.72 cooler==0.8.9 matplotlib==2.2.0 hic2cool==0.4.0 numpy==1.16.0 pandas==0.23.0 psutil==5.8.0 pybigwig==0.3.7 pyGenomeTracks==2.1 scipy==1.2.3 tables==3.5.1  &&  \
+pip install HiCAssembler==1.1.1
