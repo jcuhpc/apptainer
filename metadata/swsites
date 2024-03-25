@@ -179,6 +179,8 @@ hdf4 www.hdfgroup.org
 hdf4-tools www.hdfgroup.org
 hdf5 www.hdfgroup.org
 hdf5-tools www.hdfgroup.org
+hicassembler github.com/maxplanck-ie/HiCAssembler
+hicexplorer github.com/deeptools/HiCExplorer
 hisat2 daehwankimlab.github.io/hisat2/
 hmmer hmmer.org
 hmmer2 hmmer.org
