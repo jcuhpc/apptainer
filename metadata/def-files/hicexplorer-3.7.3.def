@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+mamba create -c bioconda -c conda-forge -n hicexplorer hicexplorer=3.7.3  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/hicexplorer/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
