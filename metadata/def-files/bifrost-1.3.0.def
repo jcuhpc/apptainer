@@ -7,7 +7,6 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/pmelsted/bifrost/archive/refs/tags/v1.3.0.tar.gz  &&  \
 tar -xvf v1.3.0.tar.gz  &&  rm -f v1.3.0.tar.gz  &&  \
 cd bifrost-1.3.0  &&  mkdir build  &&  cd build  &&  \

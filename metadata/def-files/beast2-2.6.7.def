@@ -10,7 +10,7 @@ exec "$@"
 %post
 apt-get update  &&  \
 apt-get install -y beast2-mcmc beast2-mcmc-examples  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 chmod +x /usr/local/bin/packagemanager  &&  \
 /usr/local/bin/packagemanager -useAppDir -add snapper
 

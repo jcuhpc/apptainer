@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y python3-dev python3-pip ffmpeg  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+pip install tensorflow --break-system-packages  &&  \
+pip install librosa resampy numpy --break-system-packages  &&  \
+git clone https://github.com/kahst/BirdNET-Analyzer.git  &&  \
+chmod -R o+x BirdNET-Analyzer
+
+
+%environment
+export PATH="/opt/BirdNET-Analyzer:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

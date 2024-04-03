@@ -16,7 +16,7 @@ touch /root/.beast/2.7/toDeleteList  &&  \
 /opt/beast/bin/packagemanager -useAppDir -add SNAPP  &&  \
 /opt/beast/bin/packagemanager -useAppDir -add snapper  &&  \
 /opt/beast/bin/packagemanager -useAppDir -add speedemon  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
 %environment
 export PATH="/opt/beast/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/beast/jre/bin"
