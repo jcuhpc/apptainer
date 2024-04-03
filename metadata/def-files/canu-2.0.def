@@ -7,7 +7,7 @@ exec "$@"
 %post
 apt-get update  &&  \
 apt-get install -y canu  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

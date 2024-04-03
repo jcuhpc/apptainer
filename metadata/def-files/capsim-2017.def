@@ -8,7 +8,7 @@ exec "$@"
 export LANG=C.UTF-8  &&  \
 apt-get update  &&  \
 apt-get install -y make libjhdf5-jni samtools bwa bedtools default-jdk  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*   &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 git clone https://github.com/mdcao/japsa  &&  cd japsa  &&  \
 make INSTALL_DIR=/opt/japsa MXMEM=7000m SERVER=true JLP=/usr/lib/jni install  &&  \
 cd ..  &&  rm -rf japsa

@@ -7,10 +7,10 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-git clone https://github.com/beatrixparis/connectivity-modeling-system.git  &&  \
 apt-get install -y gfortran libcurl3 libnetcdf-dev libnetcdf13 libnetcdff-dev libnetcdff6 libopenmpi-dev libopenmpi2 netcdf-bin openmpi-bin  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 ln -s /usr/bin/f95 /usr/bin/f90  &&  \
+git clone https://github.com/beatrixparis/connectivity-modeling-system.git  &&  \
 cd connectivity-modeling-system/cms-master/arch  &&  \
 sed -ie 's/\/local\/netcdf\/lib/\/lib\/x86_64-linux-gnu/' mpi_compiler  &&  \
 sed -ie 's/\/local\/netcdf\/include/\/include/' mpi_compiler  &&  \
