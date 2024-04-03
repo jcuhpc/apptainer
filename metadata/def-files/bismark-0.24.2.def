@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n bismark bismark=0.24.2  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/bismark/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
