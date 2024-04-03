@@ -9,6 +9,7 @@ export DEBIAN_FRONTEND=noninteractive  &&  \
 cd /opt  &&  \
 apt-get update -y  &&  \
 apt-get install -y openjdk-11-jdk  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip  &&  \
 unzip Astral.5.7.8.zip  &&  \
 cat >/opt/Astral/astral <<EOF
