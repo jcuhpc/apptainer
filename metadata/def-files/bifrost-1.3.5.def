@@ -1,0 +1,21 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.3.5  &&  \
+apt-get update  &&  \
+wget https://github.com/pmelsted/bifrost/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar -xvf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
+cd bifrost-$VERS  &&  mkdir build  &&  cd build  &&  \
+cmake .. -DCOMPILATION_ARCH=OFF  &&  \
+make  &&  make install  &&  \
+cd /opt  &&  rm -rf bifrost-1.3.5
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+
