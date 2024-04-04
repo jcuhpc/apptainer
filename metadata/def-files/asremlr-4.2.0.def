@@ -1,0 +1,73 @@
+BootStrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%labels
+R_Version 4.2.2
+
+
+%runscript
+exec "$@"
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz
+
+
+%post
+# Software versions
+export R_VERSION=4.2.2
+echo "export R_VERSION=${R_VERSION}" >> $SINGULARITY_ENVIRONMENT
+install -d -m 2775 -o root -g root /gpfs01
+install -d -m 1777 -o root -g root /scratch /fast/tmp
+
+
+# Get dependencies
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common dirmngr wget
+
+# Install R
+# update indices
+# install two helper packages we need
+apt install --no-install-recommends software-properties-common dirmngr
+# add the signing key (by Michael Rutter) for these repos
+# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc 
+# Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+
+# Install R
+apt install -y --no-install-recommends \
+    r-base=${R_VERSION}* \
+    r-base-core=${R_VERSION}* \
+    r-base-dev=${R_VERSION}* \
+    r-recommended=${R_VERSION}* \
+    r-base-html=${R_VERSION}* \
+    r-doc-html=${R_VERSION}* \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libopenblas-dev
+
+# Install required R packages
+R --slave -e 'install.packages("data.table")'
+R --slave -e 'install.packages("ggplot2")'
+R --slave -e 'install.packages("jsonlite")'
+R --slave -e 'install.packages("Matrix")'
+
+R --slave -e 'install.packages("/opt/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz", repos = NULL, type = "source")'
+rm -rf /opt/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz
+
+# Add a default CRAN mirror
+echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site
+
+# Add a directory for host R libraries
+mkdir -p /library
+echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/lib/R/etc/Renviron.site
+
+# Clean up
+rm -rf /var/lib/apt/lists/*
+
+%test
+R --quiet -e "stopifnot(getRversion() == '${R_VERSION}')"
