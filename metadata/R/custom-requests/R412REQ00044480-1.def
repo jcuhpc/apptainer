@@ -1,9 +1,0 @@
-Bootstrap: localimage
-From: /fast/tmp/containers/R-4.1.2.sif
-
-%runscript
-exec "${@}"
-
-%post
-# Install required R packages
-R --slave -e 'BiocManager::install("LEA")'
