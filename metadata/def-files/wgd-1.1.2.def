@@ -21,7 +21,8 @@ cd wgd-1.1.2  &&  pip3 install .  &&  \
 cd ..  &&  rm -fr wgd-1.1.2
 
 %environment
-export PATH="/opt/wdg:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# /opt/wgd removed from PATH (by WM) - this directory was never created.
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export TMPDIR="/fast/tmp"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
