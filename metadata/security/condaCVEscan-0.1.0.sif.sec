@@ -1,5 +1,0 @@
-NAME          INSTALLED  FIXED-IN  TYPE    VULNERABILITY        SEVERITY 
-cryptography  38.0.4     39.0.1    python  GHSA-w7pp-m8wf-vj6r  Medium    
-cryptography  38.0.4     39.0.1    python  GHSA-x4qr-2fvf-3mr5  Medium    
-setuptools    65.5.0               python  CVE-2022-40897       Medium    
-setuptools    65.5.0     65.5.1    python  GHSA-r9hx-vwmv-q579  High      
