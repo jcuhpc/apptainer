@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+mamba create --debug -c conda-forge -c bioconda -c defaults -n busco busco=5.7.0  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+ln -s /gpfs01/Q0195/database/busco /busco_downloads
+
+%environment
+export PATH="/opt/conda/envs/busco/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
