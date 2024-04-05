@@ -1,0 +1,10 @@
+######################
+# General settings
+######################
+local_dir: /opt
+minto_dir: /server/apps/MIntO
+
+download_memory: 5
+download_threads: 2
+rRNA_index_memory: 5
+rRNA_index_threads: 2
