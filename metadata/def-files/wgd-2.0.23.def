@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%files
+/fast/tmp/i-adhore-3.0.01.tar.gz /opt/
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get -y install python3-pip diamond-aligner libpng-dev mcl mafft binfmt-support paml fasttree ncbi-blast+ muscle prank phyml install openmpi-bin openmpi-common openmpi-doc libopenmpi3  &&  \
+tar -xzvf i-adhore-3.0.01.tar.gz  &&  \
+cd i-adhore-3.0.01  &&  mkdir build  &&  cd build  &&  \
+cmake ..  &&  make  &&  make install  &&  cd /opt  &&  \
+rm -rf i-adhore-3.0.01.tar.gz i-adhore-3.0.01  &&  \
+pip3 install numpy==1.19.0 wgd==2.0.23
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
