@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt &&  \
+apt-get update  &&  \
+apt-get install -y gcc make samtools zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/c-zhou/yahs/archive/refs/tags/v1.2a.tar.gz  &&  \
+tar xf v1.2a.tar.gz  &&  rm -f v1.2a.tar.gz  &&  cd yahs-1.2a  &&  make
+
+%environment
+export PATH="/opt/yahs-1.2a:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
