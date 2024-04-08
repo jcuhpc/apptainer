@@ -322,6 +322,7 @@ pipits github.com/hsgweon/pipits
 plink cog-genomics.org/plink/2.0/
 plink2 cog-genomics.org/plink/2.0/
 pplacer masten.fredhutch.org/pplacer/
+pretext-suite anaconda.org/search?q=pretext-suite
 primus primus.gs.washington.edu/primusweb/res/documentation.html
 prodigal github.com/hyattpd/Prodigal
 proj proj.org
@@ -449,6 +450,7 @@ wxwidgets www.wxwidgets.org
 xz sourceforge.net/projects/lzmautils/
 yade yade-dem.org/doc/installation.html
 yaha github.com/GregoryFaust/yaha
+yahs https://github.com/c-zhou/yahs
 yasm yasm.com/en/
 zalign launchpad.net/zalign
 zeromq zeromq.org
