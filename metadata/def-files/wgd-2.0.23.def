@@ -11,6 +11,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get -y install python3-pip diamond-aligner libpng-dev mcl mafft binfmt-support paml fasttree ncbi-blast+ muscle prank phyml install openmpi-bin openmpi-common openmpi-doc libopenmpi3  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 tar -xzvf i-adhore-3.0.01.tar.gz  &&  \
 cd i-adhore-3.0.01  &&  mkdir build  &&  cd build  &&  \
 cmake ..  &&  make  &&  make install  &&  cd /opt  &&  \
