@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+
+%runscript
+exec "${@}"
+
+%post
+cd /opt  &&  \
+VERS=2.66  &&  \
+apt-get update  &&  \
+apt-get install -y openmpi-bin openmpi-common libopenmpi3  &&  \
+wget https://catchenlab.life.illinois.edu/stacks/source/stacks-$VERS.tar.gz  &&  \
+tar xf stacks-$VERS.tar.gz  &&  rm -f stacks-$VERS.tar.gz  &&  \
+cd stacks-$VERS  &&  ./configure  &&  make  &&  make install  &&  \
+cd ..  &&  rm -rf stacks-$VERS
+

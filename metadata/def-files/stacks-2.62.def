@@ -5,13 +5,11 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "${@}"
 
 %post
-apt-get update
-apt-get install -y openmpi-bin openmpi-common libopenmpi3
-cd /opt
-wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
-tar xf stacks-2.62.tar.gz
-cd stacks-2.62
-./configure
-make
-make install
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y openmpi-bin openmpi-common libopenmpi3  &&  \
+wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz  &&  \
+tar xf stacks-2.62.tar.gz  &&  rm -f stacks-2.62.tar.gz  &&  \
+cd stacks-2.62  &&  ./configure  &&  make  &&  make install  &&  \
+cd ..  &&  rm -rf stacks-2.62
 
