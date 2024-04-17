@@ -10,5 +10,5 @@ mamba create --debug -c conda-forge -c bioconda -c defaults -n treemix treemix=1
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
-    export PATH="/opt/conda/envs/treemix/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/treemix/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
