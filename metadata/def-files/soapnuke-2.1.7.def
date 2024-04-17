@@ -5,16 +5,15 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 zlib1g zlib1g-dev
-install -d -m 775 /opt/soapnuke/bin
-cd /opt
-wget https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke2.1.7.tar.gz
-tar xvf SOAPnuke2.1.7.tar.gz 
-cd SOAPnuke-SOAPnuke2.1.7
-make
-install -m 775 SOAPnuke /opt/soapnuke/bin
-install -m 664 COPYING Readme.md /opt/soapnuke/
-cd ..
-rm -rf SOAPnuke-SOAPnuke2.1.7
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 zlib1g zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke2.1.7.tar.gz  &&  \
+tar xvf SOAPnuke2.1.7.tar.gz  &&  rm -f SOAPnuke2.1.7.tar.gz  &&  \
+cd SOAPnuke-SOAPnuke2.1.7  &&  make  &&  \
+install -d -m 775 /opt/soapnuke/bin  &&  \
+install -m 775 SOAPnuke /opt/soapnuke/bin  &&  \
+install -m 664 COPYING Readme.md /opt/soapnuke/  &&  \
+cd /opt  &&  rm -rf SOAPnuke-SOAPnuke2.1.7
 
