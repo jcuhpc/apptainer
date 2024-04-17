@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+From: /gpfs01/Q0195/containers/Python-3.11.4.sif
 
 %runscript
 exec "$@"
@@ -8,12 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y bcftools bwa libffi8 libffi-dev libssl-dev muscle ncbi-blast+ openssl samtools zlib1g zlib1g-dev  &&  \
-wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz  &&  \
-tar xf Python-3.11.4.tar.xz  &&  rm -f Python-3.11.4.tar.xz  &&  cd Python-3.11.4  &&  \
-./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
-make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.11.4  &&  \
-ldconfig /usr/local/lib  &&  pip3 install --upgrade pip  &&  \
-pip3 install numpy VCF-kit  &&  \
-ln /usr/local/bin/python3 /usr/local/bin/python  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+pip3 install --upgrade pip  &&  pip3 install numpy VCF-kit  &&  \
+ln /usr/local/bin/python3 /usr/local/bin/python
 

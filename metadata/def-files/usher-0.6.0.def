@@ -5,14 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-cd /opt   &&   \
-apt-get update   &&   \
-apt-get install -y gcc sed   &&   \
-wget https://github.com/yatisht/usher/archive/refs/tags/v0.6.0.tar.gz   &&   \
-tar xf v0.6.0.tar.gz   &&   rm -f v0.6.0.tar.gz   &&   \
-cd usher-0.6.0   &&   sed -ie 's/sudo -E//g' install/installUbuntu.sh   &&   \
-install/installUbuntu.sh   &&   \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y gcc sed  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/yatisht/usher/archive/refs/tags/v0.6.0.tar.gz  &&  \
+tar xf v0.6.0.tar.gz  &&  rm -f v0.6.0.tar.gz  &&  cd usher-0.6.0  &&  \
+sed -ie 's/sudo -E//g' install/installUbuntu.sh  &&  \
+install/installUbuntu.sh
 
 %environment
 export PATH="/opt/usher-0.6.0/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
