@@ -1,8 +1,5 @@
 BootStrap: localimage
-#From: ubuntu:22.04
 From: /fast/tmp/apptainer/ubuntu-22.04.sif
-
-%files
 
 %post
     apt-get -y update
