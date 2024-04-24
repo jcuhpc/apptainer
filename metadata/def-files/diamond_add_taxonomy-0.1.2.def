@@ -6,7 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 mamba create  -c conda-forge -c bioconda -c defaults -n diamond_add_taxonomy diamond_add_taxonomy=0.1.2  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
