@@ -1,19 +1,15 @@
 Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
-%files
-
 %runscript
 exec "$@"
 
 %post
-apt-get update
-wget https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/linux64.table2asn.gz
-gzip -d linux64.table2asn.gz
-mv linux64.table2asn /usr/local/bin/table2asn
-chmod 755 /usr/bin/table2asn
-
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+wget https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/linux64.table2asn.gz  &&  \
+gzip -d linux64.table2asn.gz  &&  mv linux64.table2asn table2asn  &&  chmod 775 table2asn
 
 %environment
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

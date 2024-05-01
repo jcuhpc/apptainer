@@ -1,0 +1,21 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.1.2  &&  \
+apt-get update  &&  \
+apt-get install -y libboost-dev libboost-program-options-dev libgsl-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/stevemussmann/BA3-SNPS-autotune/archive/refs/tags/v2.1.2.tar.gz  &&  \
+wget https://github.com/stevemussmann/BayesAss3-SNPs/archive/refs/tags/v1.1.tar.gz  &&  \
+tar xf v1.1.tar.gz  &&  rm -f v1.1.tar.gz  &&  cd BayesAss3-SNPs-1.1  &&  \
+make  &&  make install  &&  cd ..  &&  rm -rf BayesAss3-SNPs-1.1  &&  \
+tar xf v2.1.2.tar.gz  &&  rm -f *.tar.gz
+
+%environment
+export PATH="/opt/BA3-SNPS-autotune-2.1.2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

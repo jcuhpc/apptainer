@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 cd /opt  &&  \
-VERS=2.1.7  &&  \
+VERS=2.1.9  &&  \
 apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 zlib1g zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \

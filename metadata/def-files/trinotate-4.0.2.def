@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=4.0.2  &&  \
+apt-get update  &&  \
+apt-get install -y perl  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/Trinotate/Trinotate/archive/refs/tags/Trinotate-v$VERS.tar.gz  &&  \
+tar xf Trinotate-v$VERS.tar.gz  &&  rm -f Trinotate-v$VERS.tar.gz && \
+mv Trinotate-Trinotate-v$VERS Trinotate
+
+%environment
+export PATH="/opt/Trinotate:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

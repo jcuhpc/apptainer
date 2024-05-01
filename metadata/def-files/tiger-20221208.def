@@ -5,13 +5,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 cd /opt  &&  \
+apt-get update  &&  \
 git clone --depth 1 https://bitbucket.org/WegmannLab/Tiger.git  &&  \
 cd Tiger  &&  git submodule update --init --recursive  &&  \
 git config --global submodule.recurse true  &&  make  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
 
 %environment
-    export PATH="/opt/Tiger:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/Tiger:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

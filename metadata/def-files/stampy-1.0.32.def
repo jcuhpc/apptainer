@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y bwa python python-dev  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/list/*  &&  \
 wget --no-check-certificate https://www.well.ox.ac.uk/files-library/stampy-latest.tgz  &&  \
 tar xf stampy-latest.tgz  &&  rm -f stampy-latest.tgz  &&  \
 cd stampy-1.0.32  &&  make

@@ -9,8 +9,9 @@ cd /opt  &&  \
 VERS=2.66  &&  \
 apt-get update  &&  \
 apt-get install -y openmpi-bin openmpi-common libopenmpi3  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://catchenlab.life.illinois.edu/stacks/source/stacks-$VERS.tar.gz  &&  \
 tar xf stacks-$VERS.tar.gz  &&  rm -f stacks-$VERS.tar.gz  &&  \
-cd stacks-$VERS  &&  ./configure  &&  make  &&  make install  &&  \
-cd ..  &&  rm -rf stacks-$VERS
+cd stacks-$VERS  &&  ./configure  &&  make  &&  \
+make install  &&  cd ..  &&  rm -rf stacks-$VERS
 

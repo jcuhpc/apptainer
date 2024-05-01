@@ -5,14 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y perl
-cd /opt
-wget https://github.com/Trinotate/Trinotate/archive/refs/tags/Trinotate-v3.2.2.tar.gz
-tar xf Trinotate-v3.2.2.tar.gz 
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y perl  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/Trinotate/Trinotate/archive/refs/tags/Trinotate-v3.2.2.tar.gz  &&  \
+tar xf Trinotate-v3.2.2.tar.gz  &&  rm -f Trinotate-v3.2.2.tar.gz && \
 mv Trinotate-Trinotate-v3.2.2 Trinotate-3.2.2
-rm -f Trinotate-v3.2.2.tar.gz 
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
 export PATH="/opt/Trinotate-3.2.2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

@@ -30,6 +30,7 @@ autodock autodock.scripps.edu
 autodock-vina vina.scripps.edu
 automake www.gnu.org/software/automake/
 awscli docs.aws.amazon.com/cli/
+ba3-snps-autotune github.com/stevemussmann/BA3-SNPS-autotune
 bamaddrg github.com/ekg/bamaddrg
 bamclipper github.com/tommyau/bamclipper
 bamm github.com/macroevolution/bamm
