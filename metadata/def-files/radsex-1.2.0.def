@@ -5,18 +5,15 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-export LANG=C.UTF-8
-apt-get update
-apt-get install -y make gcc-11
+cd /opt  &&  \
+apt-get update  &&  \
+export LANG=C.UTF-8  &&  \
+apt-get install -y make gcc-11  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/SexGenomicsToolkit/radsex/archive/refs/tags/1.2.0.tar.gz  &&  \
+tar xf 1.2.0.tar.gz  &&  rm -f 1.2.0.tar.gz  &&  cd radsex-1.2.0  &&  make
 
-cd opt/
-wget https://github.com/SexGenomicsToolkit/radsex/archive/refs/tags/1.2.0.tar.gz
-tar xf 1.2.0.tar.gz
-cd radsex-1.2.0
-make
-
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/opt/radsex-1.2.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/radsex-1.2.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

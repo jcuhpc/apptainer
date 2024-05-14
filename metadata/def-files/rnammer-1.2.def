@@ -5,14 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y hmmer2 libxml-simple-perl
-
-wget https://services.healthtech.dtu.dk/download/9cbe6f8f-4cd9-4e33-aae4-564d2427e2ab/rnammer-1.2.src.tar.gz &&\
-mkdir -p /usr/local/rnammer  &&  cd /usr/local/rnammer  &&  \
-tar xf /rnammer-1.2.src.tar.gz  &&  \
-rm -f /rnammer-1.2.src.tar.gz
+apt-get update  &&  \
+apt-get install -y hmmer2 libxml-simple-perl  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+mkdir -p /opt/rnammer  &&  cd /opt/rnammer  &&  \
+wget https://services.healthtech.dtu.dk/download/9cbe6f8f-4cd9-4e33-aae4-564d2427e2ab/rnammer-1.2.src.tar.gz  &&  \
+tar xf rnammer-1.2.src.tar.gz  &&  rm -f rnammer-1.2.src.tar.gz
 
 %environment
-    export PATH="/usr/local/rnammer:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/rnammer:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

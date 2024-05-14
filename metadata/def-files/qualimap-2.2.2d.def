@@ -10,5 +10,5 @@ mamba create -c conda-forge -c bioconda -c defaults -n qualimap qualimap=2.2.2d 
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
-    export PATH="/opt/conda/envs/qualimap/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/qualimap/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

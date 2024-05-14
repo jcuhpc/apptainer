@@ -10,14 +10,14 @@ apt-get install -y ca-certificates gfortran libglib2.0-0 libxext6 libsm6 libxren
 
 TGZ="r8s1.81.tar.gz"
 cd /usr/local  &&  \
-wget -q https://sourceforge.net/projects/r8s/files/$TGZ   &&   \
-tar xf $TGZ  &&  rm -f $TGZ  &&  cd r8s1.81/src   &&   \
-sed -i 's/continuousML.o //' Makefile.linux   &&   \
-sed -i '/continuousML.o:/d'  Makefile.linux   &&   \
-sed -i 's|/usr/include/sys/errno.h||' Makefile.linux   &&   \
-make -f Makefile.linux   &&   mv r8s ..   &&   cd ../..   &&   \
+wget -q https://sourceforge.net/projects/r8s/files/$TGZ  &&  \
+tar xf $TGZ  &&  rm -f $TGZ  &&  cd r8s1.81/src  &&  \
+sed -i 's/continuousML.o //' Makefile.linux  &&  \
+sed -i '/continuousML.o:/d'  Makefile.linux  &&  \
+sed -i 's|/usr/include/sys/errno.h||' Makefile.linux  &&  \
+make -f Makefile.linux  &&  mv r8s ..  &&  cd ../..  &&  \
 mv r8s1.81 r8s  &&  rm -rf r8s/src
 
 %environment
-    export PATH="/usr/local/r8s:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/r8s:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

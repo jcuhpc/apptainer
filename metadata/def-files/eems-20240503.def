@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libeigen3-dev libboost-all-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+git clone https://github.com/dipetkov/eems.git  &&  \
+cd /opt/eems/runeems_snps/src  &&  \
+sed -i "s+/local/opt/eigen++" Makefile  &&  make linux  &&  \
+cd /opt/eems/runeems_sats/src  &&  \
+sed -i "s+/local/opt/eigen++" Makefile  &&  make linux
+
+%environment
+export PATH="/opt/eems/runeems_snps/src:/opt/eems/runeems_sats/src:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

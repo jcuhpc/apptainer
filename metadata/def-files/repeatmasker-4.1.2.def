@@ -19,24 +19,15 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y python3-h5py trf
-
-#extract RepeatMasker and rmblast
-tar zxvf RepeatMasker-4.1.2-p1.tar.gz --directory /usr/local
-tar zxvf rmblast-2.11.0+-x64-linux.tar.gz --directory /usr/local
-
-#move Dfam file into correect location
-mv Dfam.h5 /usr/local/RepeatMasker/Libraries
-
-#Run Configure Script
-cd /usr/local/RepeatMasker
+apt-get update  &&  \
+apt-get install -y python3-h5py trf  &&  \
+tar zxvf RepeatMasker-4.1.2-p1.tar.gz --directory /usr/local  &&  \
+tar zxvf rmblast-2.11.0+-x64-linux.tar.gz --directory /usr/local  &&  \
+rm -f *.tar.gz  &&  mv Dfam.h5 /usr/local/RepeatMasker/Libraries  &&  \
+cd /usr/local/RepeatMasker &&  \
 /usr/bin/perl ./configure -trf_prgm /usr/bin/trf -default_search_engine 2 -libdir /usr/local/RepeatMasker/Libraries -rmblast_dir /usr/local/rmblast-2.11.0/bin
 
-#clean up
-rm -rf RepeatMasker-4.1.2-p1.tar.gz
-rm -rf rmblast-2.11.0+-x64-linux.tar.gz
-
 %environment
-    export PATH="/usr/local/RepeatMasker:/usr/local/rmblast-2.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/RepeatMasker:/usr/local/rmblast-2.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 

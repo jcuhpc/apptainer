@@ -5,15 +5,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
-apt-get update
-apt install -y build-essential git cmake libboost-all-dev
-git clone --branch development https://github.com/revbayes/revbayes.git revbayes
-cd revbayes/projects/cmake
-./build.sh
+apt-get update  &&  \
+apt install -y build-essential git cmake libboost-all-dev  &&  \
+pt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+git clone --branch development https://github.com/revbayes/revbayes.git revbayes  &&  \
+cd revbayes/projects/cmake  &&  ./build.sh
 
 %environment
-    export PATH="/revbayes/projects/cmake:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/revbayes/projects/cmake:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

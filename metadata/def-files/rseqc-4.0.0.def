@@ -7,8 +7,7 @@ exec "$@"
 %post
 apt-get update  &&  \
 mamba create  -c conda-forge -c bioconda -c defaults -n rseqc rseqc=4.0.0  &&  \
-. /opt/conda/etc/profile.d/conda.sh  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+. /opt/conda/etc/profile.d/conda.sh
 
 %environment
 export PATH="/opt/conda/envs/rseqc/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
