@@ -5,14 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 cd /opt  &&  \
+apt-get update  &&  \
 apt-get install -y libopenmpi-dev libopenmpi3 openmpi-bin openmpi-common  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/bayesiancook/pbmpi/archive/refs/tags/v1.8c.tar.gz  &&  \
 tar xf v1.8c.tar.gz  &&  rm -f v1.8c.tar.gz  &&  \
-cd pbmpi-1.8c/sources  &&  make  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd pbmpi-1.8c/sources  &&  make
 
 %environment
-    export PATH="/opt/pbmpi-1.8c/data:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/pbmpi-1.8c/data:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

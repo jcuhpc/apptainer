@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-22.04.sif
+From: /gpfs01/Q0195/containers/mamba-23.04.sif
 
 %runscript
 exec "$@"
