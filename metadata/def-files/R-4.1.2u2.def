@@ -461,6 +461,18 @@ R --slave -e 'install.packages("future.batchtools")'
 #added R412REQ00102231
 R --slave -e 'install.packages("sfheaders")'
 
+#added R412REQ00112669
+#R --slave -e 'install.packages("optparse")'
+
+#added REQ00117748
+R --slave -e 'devtools::install_github("mrke/NicheMapR")'
+
+#added REQ00130412
+R --slave -e 'install.packages("optparse")'
+
+#added REQ00131280
+R --slave -e 'BiocManager::install("R453Plus1Toolbox", version = "3.14")'
+
 #update all packages
 R --slave -e 'BiocManager::install(ask = FALSE)'
 

@@ -35,6 +35,7 @@ bamaddrg github.com/ekg/bamaddrg
 bamclipper github.com/tommyau/bamclipper
 bamm github.com/macroevolution/bamm
 bamtools github.com/pezmaster31/bamtools
+bamUtil github.com/statgen/bamUtil
 bayesass github.com/brannala/BA3/releases
 bayesass3-snp github.com/brannala/BA3/releases
 bayescan cmpg.unibe.ch/software/BayeScan
