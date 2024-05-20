@@ -20,7 +20,8 @@ apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://cran.r-project.org/src/base/R-4/R-$VERS.tar.gz  &&  \
 tar xf R-$VERS.tar.gz  &&  rm -f R-$VERS.tar.gz  &&  cd R-$VERS  &&  \
 ./configure --prefix=/usr/local  &&  make  &&  make check  &&  \
-make install  &&  cd ..  &&  rm -rf R-$VERS
+make install  &&  cd ..  &&  rm -rf R-$VERS  &&  \
+echo "options(repos = c(CRAN = 'https://cran.r-project.org/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
 
 %test
 R --quiet -e "stopifnot(getRversion() == '4.4.0')"
