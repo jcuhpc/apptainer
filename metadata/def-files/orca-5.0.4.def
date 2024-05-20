@@ -22,7 +22,6 @@ mv -i orca_5_0_4_linux_x86-64_openmpi411_part2/* /opt/orca/
 mv -i orca_5_0_4_linux_x86-64_openmpi411_part3/* /opt/orca/
 rmdir orca_5_0_4_linux_x86-64_openmpi411_part?
 
-
 %environment
     export PATH="/opt/orca:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
