@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/tmp/artbinmountrainier2016.06.05linux64.tgz /opt
+# Registration required for download.
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
+rm -f artbinmountrainier2016.06.05linux64.tgz
+
+%environment
+export PATH="/opt/art_bin_MountRainier:/opt/art_bin_MountRainier/ART_profiler_454:/opt/art_bin_MountRainier/ART_profiler_illumina:/opt/art_bin_MountRainier/examples:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

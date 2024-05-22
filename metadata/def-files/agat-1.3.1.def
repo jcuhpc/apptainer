@@ -17,3 +17,4 @@ make  &&  make test  &&  make install
 
 %environment
 export PATH="/opt/AGAT-$VERS:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
