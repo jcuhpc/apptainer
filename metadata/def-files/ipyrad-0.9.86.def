@@ -13,8 +13,7 @@ export PATH="/opt/conda/envs/ipyrad/bin:/opt/tetrad/bin:/opt/conda/bin:/usr/loca
 pip install --upgrade jupyter_core  &&  \
 pip install --upgrade jupyter_client  &&  \
 git clone https://github.com/eaton-lab/tetrad.git  &&  \
-cd tetrad  &&  pip install -e .  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd tetrad  &&  pip install -e .
 
 %environment
 export PATH="/opt/conda/envs/ipyrad/bin:/opt/tetrad/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

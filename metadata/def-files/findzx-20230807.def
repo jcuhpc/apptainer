@@ -1,6 +1,9 @@
 Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
+%runscript
+exec "$@"
+
 %post
 cd /opt  &&  \
 apt-get update  &&  \
@@ -19,7 +22,5 @@ mamba install -n findZX -c conda-forge -c bioconda bwa=0.7.17 samtools=1.12 pica
 mamba install -n findZX -c conda-forge -c bioconda tk=8.6.10 r-tcltk2=1.2_11 r-tibble=3.1.6 r-sjplot=2.8.10 pear=0.9.6 spades=3.15.2 parallel=20210422 mapcaller=0.9.9.41 htslib=1.12 platypus-variant tabix=0.2.6 perl-vcftools-vcf=0.1.16 assembly-stats
 
 %environment
-    export PATH="/opt/conda/envs/findZX/bin:/opt/conda/bin:/opt/findZX:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/findZX/bin:/opt/conda/bin:/opt/findZX:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-%runscript
-    exec "$@"

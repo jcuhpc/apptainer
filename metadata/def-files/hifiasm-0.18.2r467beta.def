@@ -5,13 +5,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-export LANG=C.UTF-8
-apt-get update
-cd /opt
-git clone https://github.com/chhylp123/hifiasm
-cd hifiasm && make
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+cd /opt  &&  \
+apt-get update  &&  \
+export LANG=C.UTF-8  &&  \
+git clone https://github.com/chhylp123/hifiasm  &&  \
+cd hifiasm  &&  make  &&  \
 
 %environment
-    export PATH="/opt/hifiasm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/hifiasm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

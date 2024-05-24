@@ -5,49 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y jags 
-ls -all
-apt-get install -y --no-install-recommends software-properties-common dirmngr
-
-# Install R
-apt-get update
-apt-get install -y --no-install-recommends wget
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-#add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-apt-get install -y --no-install-recommends \
-r-base \
-r-base-core \
-r-base-dev \
-r-recommended \
-r-base-html \
-r-doc-html \
-libcurl4-openssl-dev \
-libssl-dev \
-libxml2-dev \
-libcairo2-dev \
-libxt-dev \
-libopenblas-dev \
-libnetcdf-dev \
-libgit2-dev \
-default-jre \
-libgdal-dev \
-libtool-bin \
-libgmp-dev \
-libmpfr-dev \
-libgsl-dev \
-libmagick++-dev \
-libnode-dev \
-libudunits2-dev \
-libarchive-dev \
-openjdk-11-jdk \
-libfreetype6-dev \
-libfreetype6 \
-libharfbuzz-dev \
-libfribidi-dev
-
-R --slave -e 'install.packages("runjags")'
-R --slave -e 'install.packages("rjags")'
+apt-get update  &&  \
+apt-get install -y jags  &&  \
+apt-get install -y --no-install-recommends dirmngr  &&  \
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc  &&  \
+apt-get install -y --no-install-recommends r-base r-base-core r-base-dev r-recommended r-base-html r-doc-html libcurl4-openssl-dev libssl-dev libxml2-dev libcairo2-dev libxt-dev libopenblas-dev libnetcdf-dev libgit2-dev default-jre libgdal-dev libtool-bin libgmp-dev libmpfr-dev libgsl-dev libmagick++-dev libnode-dev libudunits2-dev libarchive-dev openjdk-11-jdk libfreetype6-dev libfreetype6 libharfbuzz-dev libfribidi-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+R --slave -e 'install.packages("runjags")'  &&  \
+R --slave -e 'install.packages("rjags")'  &&  \
 R --slave -e 'install.packages("jagsUI")'
 
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*

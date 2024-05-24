@@ -4,16 +4,16 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 %files
 /fast/tmp/ont-guppy_6.4.6_linux64.tar /opt
 
+%runscript
+exec "$@"
+
 %post
-    apt-get update   &&   \
-    apt-get install -y nvidia-cuda-dev   &&   \
-    cd /opt   &&   \
-    tar xf ont-guppy_6.4.6_linux64.tar   &&   \
-    rm -f  ont-guppy_6.4.6_linux64.tar
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y nvidia-cuda-dev  &&  \
+tar xf ont-guppy_6.4.6_linux64.tar  &&  \
+rm -f  ont-guppy_6.4.6_linux64.tar
 
 %environment
-    export PATH="/opt/ont-guppy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
+export PATH="/opt/ont-guppy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

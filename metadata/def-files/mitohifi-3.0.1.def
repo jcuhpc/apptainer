@@ -16,6 +16,3 @@ install -d -m 1777 -o root -g root /scratch /fast/tmp
 %environment
 #    export PATH="/opt/MitoFinder:/opt/MitoHiFI:/opt/cdhit:/opt/conda/bin:/opt/databases:/opt/hifiasm-0.16.1:/opt/minimap2-2.24_x64-linux:/opt/wrappers:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-%runscript
-    exec "$@"
-

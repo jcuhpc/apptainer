@@ -9,9 +9,7 @@ apt-get update  &&  \
 mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=2.3.2  &&  \
 cd /opt/conda/envs/gtdbtk/share/gtdbtk-2.3.2  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
-rm -rf db  &&  \
-ln -s /scratch/database/gtdbtk-2.3.2/db db  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+rm -rf db  &&  ln -s /scratch/database/gtdbtk-2.3.2/db db
 # Run the following command to download the appropriate database file(s).
 #   singularity run /gpfs01/Q0195/containers/gtdbtk-2.3.2.sif download-db.sh
 

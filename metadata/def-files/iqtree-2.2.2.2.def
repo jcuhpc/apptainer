@@ -5,15 +5,10 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-# Install IQTree 2.2.2.2
-export IQTree_VERSION=2.2.2.2
+apt-get update  &&  \
+export IQTree_VERSION=2.2.2.2  &&  \
 echo "export IQTree_VERSION=${IQTree_VERSION}" >> $SINGULARITY_ENVIRONMENT
-wget https://github.com/iqtree/iqtree2/releases/download/v2.2.2.2/iqtree-2.2.2.2-Linux.tar.gz && \
-tar xvf iqtree-2.2.2.2-Linux.tar.gz && \
-cp iqtree-2.2.2.2-Linux/bin/iqtree2 /usr/local/bin
+wget https://github.com/iqtree/iqtree2/releases/download/v$IQTree_VERSION/iqtree-$IQTree_VERSION-Linux.tar.gz && \
+tar xvf iqtree-$IQTree_VERSION-Linux.tar.gz && \
+cp iqtree-$IQTree_VERSION-Linux/bin/iqtree2 /usr/local/bin
 
-#add path to iqtree exec
-%environment
-export PATH="/usr/local/bin:$PATH"
- 

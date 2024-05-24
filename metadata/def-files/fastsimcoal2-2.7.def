@@ -5,15 +5,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt   &&   \
-wget http://cmpg.unibe.ch/software/fastsimcoal27/downloads/fsc27_linux64.zip   &&   \
-unzip fsc27_linux64.zip   &&   rm -f fsc27_linux64.zip   &&   \
-mv fsc27_linux64 fsc   &&   chmod +x fsc/fsc2705
+cd /opt  &&  \
+apt-get update  &&  \
+wget http://cmpg.unibe.ch/software/fastsimcoal27/downloads/fsc27_linux64.zip  &&  \
+unzip fsc27_linux64.zip  &&  rm -f fsc27_linux64.zip  &&  \
+mv fsc27_linux64 fsc  &&  chmod +x fsc/fsc2705
 
 %environment
-    export PATH="/opt/fsc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-%runscript
-    exec "$@"
+export PATH="/opt/fsc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

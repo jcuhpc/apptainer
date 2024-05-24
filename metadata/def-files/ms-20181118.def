@@ -8,12 +8,12 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-tar xf ms.tar.gz
-rm -f ms.tar.gz   &&   mv msdir ms   &&   cd ms   &&   rm -f ._*
+cd /opt  &&  \
+apt-get update  &&  \
+tar xf ms.tar.gz  &&  rm -f ms.tar.gz  &&  \
+mv msdir ms  &&  cd ms  &&  rm -f ._*  &&  \
 gcc -O3 -o ms ms.c streec.c rand1.c -lm
 
 %environment
-    export PATH="/opt/ms:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/ms:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

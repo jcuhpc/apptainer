@@ -5,14 +5,14 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-wget http://www.bioinf.uni-leipzig.de/Software/metilene/metilene_v02-8.tar.gz
-tar xf metilene_v02-8.tar.gz
-rm -f  metilene_v02-8.tar.gz
-cd metilene_v0.2-8
+cd /opt  &&  \
+apt-get update  &&  \
+wget http://www.bioinf.uni-leipzig.de/Software/metilene/metilene_v02-8.tar.gz  &&  \
+tar xf metilene_v02-8.tar.gz  &&  \
+rm -f  metilene_v02-8.tar.gz  &&  \
+cd metilene_v0.2-8  &&  \
 chmod -x L* M* ma* README *.R src/*
 
 %environment
-    export PATH="/opt/metilene_v0.2-8:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/metilene_v0.2-8:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

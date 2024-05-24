@@ -5,14 +5,13 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y libcairo2 python3-pip
-cd /opt
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libcairo2 python3-pip  &&  \
 wget https://github.com/Vini2/GraphBin/releases/download/v1.5/GraphBinv1.5.zip
-unzip GraphBinv1.5.zip
-cd GraphBin
-pip3 install .
+unzip GraphBinv1.5.zip  &&  rm -f GraphBinv1.5.zip  &&  \
+cd GraphBin  &&  pip3 install .
 
 %environment
-    export PATH="/opt/GraphBin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/GraphBin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

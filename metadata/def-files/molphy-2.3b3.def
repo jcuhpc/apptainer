@@ -8,14 +8,12 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-tar xf molphy-2.3b3.tar.Z
-rm  -f molphy-2.3b3.tar.Z
-cd  molphy-2.3b3/src
-make -f Makefile
-cd ../..
+cd /opt  &&  \
+apt-get update  &&  \
+tar xf molphy-2.3b3.tar.Z  &&  \
+rm  -f molphy-2.3b3.tar.Z  &&  \
+cd molphy-2.3b3/src  &&  make -f Makefile
 
 %environment
-    export PATH="/opt/molphy-2.3b3/src:/opt/molphy-2.3b3/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/molphy-2.3b3/src:/opt/molphy-2.3b3/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
