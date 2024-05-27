@@ -6,11 +6,12 @@ exec "$@"
 
 %post
 cd /opt &&  \
+VERS=1.2a  &&  \
 apt-get update  &&  \
 apt-get install -y gcc make samtools zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/c-zhou/yahs/archive/refs/tags/v1.2a.tar.gz  &&  \
-tar xf v1.2a.tar.gz  &&  rm -f v1.2a.tar.gz  &&  cd yahs-1.2a  &&  make
+wget https://github.com/c-zhou/yahs/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  cd yahs-$VERS  &&  make
 
 %environment
 export PATH="/opt/yahs-1.2a:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

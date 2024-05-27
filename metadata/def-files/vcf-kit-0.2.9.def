@@ -9,6 +9,6 @@ cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y bcftools bwa libffi8 libffi-dev libssl-dev muscle ncbi-blast+ openssl samtools zlib1g zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-pip3 install --upgrade pip  &&  pip3 install numpy VCF-kit  &&  \
+pip3 install --upgrade pip  &&  pip3 install numpy VCF-kit==0.2.9  &&  \
 ln /usr/local/bin/python3 /usr/local/bin/python
 

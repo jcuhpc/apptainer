@@ -11,9 +11,10 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=1.9.3  &&  \
 apt-get update  &&  \
 apt-get install -y libegl1 tcsh  &&  \
-tar xf vmd-1.9.3.tar  &&  rm -f vmd-1.9.3.tar  &&  \
+tar xf vmd-$VERS.tar  &&  rm -f vmd-$VERS.tar  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 
 %environment

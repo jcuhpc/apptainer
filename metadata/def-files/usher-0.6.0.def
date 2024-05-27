@@ -6,11 +6,12 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=0.6.0  &&  \
 apt-get update  &&  \
 apt-get install -y gcc sed  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/yatisht/usher/archive/refs/tags/v0.6.0.tar.gz  &&  \
-tar xf v0.6.0.tar.gz  &&  rm -f v0.6.0.tar.gz  &&  cd usher-0.6.0  &&  \
+wget https://github.com/yatisht/usher/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  cd usher-$VERS  &&  \
 sed -ie 's/sudo -E//g' install/installUbuntu.sh  &&  \
 install/installUbuntu.sh
 

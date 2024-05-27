@@ -6,12 +6,13 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=1.4.1  &&  \
 apt-get update  &&  \
 apt-get install -y gcc make  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/inab/trimal/archive/refs/tags/v1.4.1.tar.gz  &&  \
-tar xf v1.4.1.tar.gz  &&  rm -f v1.4.1.tar.gz  &&  \
-cd trimal-1.4.1/source  &&  make  &&  \
+wget https://github.com/inab/trimal/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
+cd trimal-$VERS/source  &&  make  &&  \
 mv readal statal trimal ..
 
 %environment
