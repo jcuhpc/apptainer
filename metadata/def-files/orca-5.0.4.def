@@ -10,18 +10,18 @@ From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y xz-utils openmpi-bin openmpi-common openmpi-doc libopenmpi3
-ls -l *.tar.xz
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part1.tar.xz
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part2.tar.xz
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part3.tar.xz
-rm -f *.tar.xz
-mv orca_5_0_4_linux_x86-64_openmpi411_part1 /opt/orca
-mv -i orca_5_0_4_linux_x86-64_openmpi411_part2/* /opt/orca/
-mv -i orca_5_0_4_linux_x86-64_openmpi411_part3/* /opt/orca/
+apt-get update  &&  \
+apt-get install -y xz-utils openmpi-bin openmpi-common openmpi-doc libopenmpi3  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part1.tar.xz  &&  \
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part2.tar.xz  &&  \
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part3.tar.xz  &&  \
+rm -f *.tar.xz  &&  \
+mv orca_5_0_4_linux_x86-64_openmpi411_part1 /opt/orca  &&  \
+mv -i orca_5_0_4_linux_x86-64_openmpi411_part2/* /opt/orca/  &&  \
+mv -i orca_5_0_4_linux_x86-64_openmpi411_part3/* /opt/orca/  &&  \
 rmdir orca_5_0_4_linux_x86-64_openmpi411_part?
 
 %environment
-    export PATH="/opt/orca:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/orca:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

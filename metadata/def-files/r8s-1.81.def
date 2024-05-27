@@ -5,18 +5,19 @@ From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y ca-certificates gfortran libglib2.0-0 libxext6 libsm6 libxrender1 linux-libc-dev
-
-TGZ="r8s1.81.tar.gz"
+VERS=1.81  &&  \
 cd /usr/local  &&  \
-wget -q https://sourceforge.net/projects/r8s/files/$TGZ  &&  \
-tar xf $TGZ  &&  rm -f $TGZ  &&  cd r8s1.81/src  &&  \
+apt-get update  &&  \
+apt-get install -y ca-certificates gfortran libglib2.0-0 libxext6 libsm6 libxrender1 linux-libc-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget -q https://sourceforge.net/projects/r8s/files/r8s$VERS.tar.gz  &&  \
+tar xf r8s$VERS.tar.gz  &&  rm -f r8s$VERS.tar.gz  &&  \
+mv r8s$VERS r8s  &&  cd r8s/src  &&  \
 sed -i 's/continuousML.o //' Makefile.linux  &&  \
 sed -i '/continuousML.o:/d'  Makefile.linux  &&  \
 sed -i 's|/usr/include/sys/errno.h||' Makefile.linux  &&  \
-make -f Makefile.linux  &&  mv r8s ..  &&  cd ../..  &&  \
-mv r8s1.81 r8s  &&  rm -rf r8s/src
+make -f Makefile.linux  &&  mv r8s ..  &&  \
+cd ../..  &&  rm -rf r8s/src
 
 %environment
 export PATH="/usr/local/r8s:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

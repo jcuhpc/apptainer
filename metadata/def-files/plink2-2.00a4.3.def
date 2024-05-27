@@ -5,9 +5,8 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update   &&   \
-cd /usr/local/bin   &&   \
-wget https://s3.amazonaws.com/plink2-assets/alpha4/plink2_linux_avx2_20230610.zip   &&   \
-unzip plink2_linux_avx2_20230610.zip   &&   rm -f plink2_linux_avx2_20230610.zip    &&   \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+wget https://s3.amazonaws.com/plink2-assets/alpha4/plink2_linux_avx2_20230610.zip  &&  \
+unzip plink2_linux_avx2_20230610.zip  &&  rm -f plink2_linux_avx2_20230610.zip
 

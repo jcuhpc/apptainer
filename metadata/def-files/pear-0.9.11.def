@@ -9,13 +9,11 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-cd /opt
-mkdir pear
-cd pear
-tar xf ../0.9.11.tar
-rm -f ../0.9.11.tar
+cd /opt  &&  \
+apt-get update  &&  \
+mkdir pear  &&  cd pear &&  \
+tar xf ../0.9.11.tar  &&  rm -f ../*.tar
 
 %environment
-    export PATH="/opt/pear/0.9.11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/pear/0.9.11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

@@ -18,5 +18,5 @@ rm -f /netphos-3.1.Linux.tar   &&  \
 ln -s /opt/ape-1.0 /usr/cbs/bio/src/ape-1.0
 
 %environment
-    export PATH="/opt/ape-1.0:/opt/ape-1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/ape-1.0:/opt/ape-1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

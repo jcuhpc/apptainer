@@ -5,15 +5,10 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-wget http://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.7.3-15968.tar.gz
-tar xvf phreeqc-3.7.3-15968.tar.gz
-cd phreeqc-3.7.3-15968
-mkdir Release
-cd Release
-../configure
-make -j 2
-make install
-cd /
-rm -rf phreeqc-3.7.3-15968.tar.gz phreeqc-3.7.3-15968
+apt-get update  &&  \
+wget http://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.7.3-15968.tar.gz  &&  \
+tar xvf phreeqc-3.7.3-15968.tar.gz  &&  rm -f *.tar.gz  &&  \
+cd phreeqc-3.7.3-15968  &&  mkdir Release  &&  cd Release  &&  \
+../configure  &&  make -j 2  &&  make install  &&  cd ../..  &&  \
+rm -rf phreeqc-3.7.3-15968
 

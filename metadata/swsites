@@ -277,6 +277,7 @@ nettle www.lysator.liu.se/~nisse/nettle/
 newick_utils http://cegg.unige.ch/newick_utils
 ngsadmix www.popgen.dk/software/index.php/NgsAdmix
 ngsrelate github.com/ANGSD/NgsRelate
+ngsTools github.com/mfumagalli/ngsTools
 nlopt nlopt.readthedocs.io/en/latest/
 oases github.com/dzerbino/oases
 octave www.octave.org

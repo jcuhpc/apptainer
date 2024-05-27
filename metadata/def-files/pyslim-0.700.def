@@ -5,11 +5,7 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
-
-apt-get update
-apt-get install -y --no-install-recommends software-properties-common
-apt-get install -y python3-pip
-python3 -m pip install pyslim
+apt-get update  &&  \
+apt-get install -y python3-pip  &&  \
+python3 -m pip install pyslim==0.700
 

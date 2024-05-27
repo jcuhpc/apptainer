@@ -8,9 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 wget https://github.com/lammps/lammps/releases/download/stable_2Aug2023/lammps-linux-x86_64-2Aug2023.tar.gz  &&  \
-tar xf lammps-linux-x86_64-2Aug2023.tar.gz  &&  \
-rm -f lammps-linux-x86_64-2Aug2023.tar.gz   &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
+tar xf lammps-linux-x86_64-2Aug2023.tar.gz  &&  rm -f *.tar.gz
 
 %environment
 export PATH="/opt/lammps-static/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

@@ -5,18 +5,17 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt-get update
-apt-get install -y openjdk-8-jre
-cd /opt
-wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip
-unzip PGDSpider_2.1.1.5.zip
-mv PGDSpider_2.1.1.5 pgdspider
-cd pgdspider
-rm -f PGDSpider2*.exe
-printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2.jar\n" >PGDSpider2-gui.sh
-printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2-cli.jar\n" >PGDSpider2.sh
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y openjdk-8-jre  &&  \
+wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip  &&  \
+unzip PGDSpider_2.1.1.5.zip  &&  rm -f *.zip  &&  \
+mv PGDSpider_2.1.1.5 pgdspider  &&  \
+cd pgdspider  &&  rm -f PGDSpider2*.exe  &&  \
+printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2.jar\n" >PGDSpider2-gui.sh  &&  \
+printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2-cli.jar\n" >PGDSpider2.sh  &&  \
 chmod +x PGDSpider2*.sh
 
 %environment
-    export PATH="/opt/pgdspider:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/pgdspider:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

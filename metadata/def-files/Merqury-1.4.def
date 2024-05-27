@@ -8,7 +8,6 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y bedtools default-jre samtools  &&  \
-apt-get install -y --no-install-recommends  wget  &&  \
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc  &&  \
 apt-get install -y --no-install-recommends r-base r-base-core r-base-dev r-recommended r-base-html r-doc-html  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
@@ -18,8 +17,6 @@ R -e 'install.packages("scales")'  &&  \
 wget https://github.com/marbl/meryl/releases/download/v1.4/meryl-1.4.Linux-amd64.tar.xz  &&  \
 tar -vxJf meryl-1.4.Linux-amd64.tar.xz  &&  \
 rm meryl-1.4.Linux-amd64.tar.xz
-# The following line was commented out (sat before apt-get R installs).
-#add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
 %environment
 export PATH="/opt/meryl-1.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"

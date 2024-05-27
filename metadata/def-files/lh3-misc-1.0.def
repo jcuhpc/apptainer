@@ -5,18 +5,20 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 exec "$@"
 
 %post
-apt update   &&   \
-apt -y install perl luajit gcc dialog   &&   \
-wget -O dmd.deb https://downloads.dlang.org/releases/2022/dmd_2.100.2-0_amd64.deb   &&   \
-apt install -y ./dmd.deb   &&   rm -rf dmd.deb   &&   \
-cd /opt   &&   git clone https://github.com/lh3/misc.git   &&   \
-cd /opt/misc/math/matmul_SSE   &&   gcc -O2 -o matmul matmul.c   &&   gcc -O2 -o matmul-double matmul-double.c   &&   \
-cd /opt/misc/seq/ace2sam   &&   gcc -O2 -o ace2sam ace2sam.c -lz   &&   \
-cd /opt/misc/seq/seqbility   &&   make   &&   \
-cd /opt/misc/seq/seqtk   &&   gcc -O2 -o seqtk seqtk.c -lm -lz   &&   \
-cd /opt/misc/sys/runit   &&   make
-#cd /opt/misc/math   &&   gcc -O2 -o lsoda lsoda.c unequal-jk.c -lm
+cd /opt  &&  \
+apt update  &&  \
+apt -y install perl luajit gcc dialog  &&  \
+wget -O dmd.deb https://downloads.dlang.org/releases/2022/dmd_2.100.2-0_amd64.deb  &&  \
+apt install -y ./dmd.deb  &&  rm -rf dmd.deb  &&  \
+git clone https://github.com/lh3/misc.git  &&  \
+cd /opt/misc/math/matmul_SSE  &&  \
+gcc -O2 -o matmul matmul.c  &&  \
+gcc -O2 -o matmul-double matmul-double.c  &&  \
+cd /opt/misc/seq/ace2sam  &&  gcc -O2 -o ace2sam ace2sam.c -lz  &&  \
+cd /opt/misc/seq/seqbility  &&  make  &&  \
+cd /opt/misc/seq/seqtk  &&  gcc -O2 -o seqtk seqtk.c -lm -lz  &&  \
+cd /opt/misc/sys/runit  &&  make
 
 %environment
-    export PATH="/opt/misc/biodb:/opt/misc/crap:/opt/misc/math:/opt/misc/math/matmul_SSE:/opt/misc/seq:/opt/misc/seq/ace2sam:/opt/misc/seq/epo:/opt/misc/seq/novoseq:/opt/misc/seq/seqbility:/opt/misc/seq/seqtk:/opt/misc/sys/runit:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/misc/biodb:/opt/misc/crap:/opt/misc/math:/opt/misc/math/matmul_SSE:/opt/misc/seq:/opt/misc/seq/ace2sam:/opt/misc/seq/epo:/opt/misc/seq/novoseq:/opt/misc/seq/seqbility:/opt/misc/seq/seqtk:/opt/misc/sys/runit:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
