@@ -1,21 +1,23 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-23.04.sif
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 apt-get update  &&  \
+export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.3.2/db  &&  \
 mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=2.3.2  &&  \
 cd /opt/conda/envs/gtdbtk/share/gtdbtk-2.3.2  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
-rm -rf db  &&  ln -s /scratch/database/gtdbtk-2.3.2/db db
-# Run the following command to download the appropriate database file(s).
-#   singularity run /gpfs01/Q0195/containers/gtdbtk-2.3.2.sif download-db.sh
+rm -rf db  &&  ln -s $GTDBTK_DATA_PATH db  &&  \
+echo "Database files can be downloaded by running the command:"  &&  \
+echo "  singularity run /gpfs01/Q0195/containers/gtdbtk-2.3.2.sif download-db.sh"  &&  \
+echo ""
 
 %environment
 export PATH="/opt/conda/envs/gtdbtk/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export GTDBTK_DATA_PATH=/scratch/database/gtdbtk-2.3.2/db
+export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.3.2/db
 export CONDA_PYTHON_EXE=/opt/conda/bin/python
 export CONDA_EXE=/opt/conda/bin/conda
 

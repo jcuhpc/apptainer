@@ -22,7 +22,7 @@ apt-get install -y python3-tqdm python3-urllib3 python3-zict  &&  \
 pip3 install alignment bx-python contourpy db db-sqlite3 demes  &&  \
 pip3 install illumiprocessor kastore khmer meson msprime multiqc  &&  \
 pip3 install pyslim PyVCF3 schwimmbad scikit-learn shannon spython  &&  \
-pip3 install newick tskit  &&  \
+pip3 install newick tskit xarray  &&  \
 cd /opt  &&  \
 git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
 cd AlphaFamImpute  &&  \

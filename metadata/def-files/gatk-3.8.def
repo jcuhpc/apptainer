@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-23.04.sif
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
 
 %runscript
 exec "$@"
 
 %files
-/fast/tmp/GenomeAnalysisTK.jar /
+/gpfs01/Q0195/apptainer/metadata/files/GenomeAnalysisTK.jar /
 
 %post
 apt-get update  &&  \

@@ -24,7 +24,7 @@ pip3 install meson more-itertools msprime multiqc  &&  \
 pip3 install natsort netCDF4 numba numexpr numpy  &&  \
 pip3 install pyQt5 pyrsistent pyslim pytest pytools PyVCF3  &&  \
 pip3 install schwimmbad scikit-learn seaborn semver shannon  &&  \
-pip3 install simplejson spython statsmodels sympy tqdm  &&  \
+pip3 install simplejson spython statsmodels sympy tqdm xarray  &&  \
 cd /opt  &&  git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
 cd AlphaFamImpute  &&  python3 setup.py install  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
