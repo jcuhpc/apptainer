@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y plink1.9  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
