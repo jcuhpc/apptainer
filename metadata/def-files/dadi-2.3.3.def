@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create  -c conda-forge -c defaults -n dadi dadi=2.3.2  &&  \
+mamba create  -c conda-forge -c defaults -n dadi dadi=2.3.3  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

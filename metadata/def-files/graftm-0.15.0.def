@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y make  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n graftm graftm=0.15.0  &&  \
+rm -rf /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \
+ln -s /gpfs01/Q0195/database/krona/taxonomy /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+echo ""  &&  echo "Execute the following command:"  &&  \
+echo "singularity run graftm-0.15.0.sif ktUpdateTaxonomy.sh"  &&  echo ""
+
+%environment
+export PATH="/opt/conda/envs/graftm/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

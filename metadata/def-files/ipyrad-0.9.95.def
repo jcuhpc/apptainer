@@ -7,7 +7,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-mamba create  -c conda-forge -c eaton-lab -c bioconda -c defaults -n ipyrad ipyrad=0.9.86  &&  \
+mamba create  -c conda-forge -c eaton-lab -c bioconda -c defaults -n ipyrad ipyrad=0.9.95  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
 export PATH="/opt/conda/envs/ipyrad/bin:/opt/tetrad/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
 pip install --upgrade jupyter_core  &&  \

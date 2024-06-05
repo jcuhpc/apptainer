@@ -1,9 +1,6 @@
 Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 
-%files
-/fast/tmp/maespa-20180227.tar /opt
-
 %runscript
 exec "$@"
 
@@ -11,8 +8,9 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y gfortran  &&  \
-tar xf maespa-20180227.tar  &&  cd maespa  &&  make  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+git clone https://bitbucket.org/remkoduursma/maespa.git &&  \
+cd maespa  &&  make
 
 %environment
 export PATH="/opt/maespa:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

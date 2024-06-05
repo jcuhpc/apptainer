@@ -7,7 +7,7 @@ exec "$@"
 %post
 apt-get update  &&  \
 export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
-mamba create --debug -c conda-forge -c bioconda -n longstitch longstitch=1.0.4  &&  \
+mamba create --debug -c conda-forge -c bioconda -n longstitch longstitch=1.0.5  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create -c bioconda -c conda-forge -n hicexplorer hicexplorer=3.7.3  &&  \
+mamba create -c bioconda -c conda-forge -n hicexplorer hicexplorer=3.7.4  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

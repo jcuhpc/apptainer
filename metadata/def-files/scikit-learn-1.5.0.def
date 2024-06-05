@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create  -c conda-forge -c defaults -n scikit-learn scikit-learn=1.2.0  &&  \
+mamba create  -c conda-forge -c defaults -n scikit-learn scikit-learn=1.5.0  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

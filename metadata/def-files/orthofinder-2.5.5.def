@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create  -c conda-forge -c bioconda -c defaults -n orthofinder orthofinder=2.5.4  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n orthofinder orthofinder=2.5.5  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

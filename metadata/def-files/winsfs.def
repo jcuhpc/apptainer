@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  &&  \
+. /root/.cargo/env  &&  cargo install winsfs-cli --root /opt/winsfs
+
+%environment
+export PATH="/opt/winsfs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

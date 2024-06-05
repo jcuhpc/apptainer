@@ -6,7 +6,7 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create  -c conda-forge -c bioconda -c defaults -n bcftools bcftools=1.19  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n bcftools bcftools=1.20  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

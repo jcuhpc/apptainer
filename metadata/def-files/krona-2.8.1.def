@@ -6,7 +6,9 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-mamba create  -c conda-forge -c bioconda -c defaults -n krona krona=2.8  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n krona krona=2.8.1  &&  \
+rm -rf /opt/conda/envs/krona/opt/krona/taxonomy  &&  \
+ln -s /gpfs01/Q0195/database/krona/taxonomy /opt/conda/envs/krona/opt/krona/taxonomy  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

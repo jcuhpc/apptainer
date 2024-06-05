@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tar.xz  &&  \
-apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal32 libgdal-dev libgeos-dev libgsl27 libgsl-dev libnetcdf-dev libnetcdf19 libssl-dev openssl zlib1g zlib1g-dev  &&  \
+apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal34t64 libgdal-dev libgeos-dev libgsl27 libgsl-dev libnetcdf-dev libnetcdf19 libssl-dev openssl zlib1g zlib1g-dev  &&  \
 tar xf Python-3.11.4.tar.xz  &&  rm -f Python-3.11.4.tar.xz  &&  cd Python-3.11.4  &&  \
 ./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
 make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.11.4  &&  \
