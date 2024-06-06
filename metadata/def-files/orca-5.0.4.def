@@ -1,26 +1,23 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-23.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %files
-/fast/tmp/orca_5_0_4_linux_x86-64_openmpi411_part1.tar.xz /
-/fast/tmp/orca_5_0_4_linux_x86-64_openmpi411_part2.tar.xz /
-/fast/tmp/orca_5_0_4_linux_x86-64_openmpi411_part3.tar.xz /
+/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part1.tar /
+/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part2.tar /
+/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part3.tar /
 
 %runscript
 exec "$@"
 
 %post
 apt-get update  &&  \
+install -d -m 775 /opt/orca  &&  \
 apt-get install -y xz-utils openmpi-bin openmpi-common openmpi-doc libopenmpi3  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part1.tar.xz  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part2.tar.xz  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part3.tar.xz  &&  \
-rm -f *.tar.xz  &&  \
-mv orca_5_0_4_linux_x86-64_openmpi411_part1 /opt/orca  &&  \
-mv -i orca_5_0_4_linux_x86-64_openmpi411_part2/* /opt/orca/  &&  \
-mv -i orca_5_0_4_linux_x86-64_openmpi411_part3/* /opt/orca/  &&  \
-rmdir orca_5_0_4_linux_x86-64_openmpi411_part?
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part1.tar -C /opt/orca  &&  \
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part2.tar -C /opt/orca  &&  \
+tar xf orca_5_0_4_linux_x86-64_openmpi411_part3.tar -C /opt/orca  &&  \
+rm -f *.tar
 
 %environment
 export PATH="/opt/orca:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
