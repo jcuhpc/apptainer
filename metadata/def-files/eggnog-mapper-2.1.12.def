@@ -13,9 +13,10 @@ apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/eggnogdb/eggnog-mapper/archive/refs/tags/$VERS.tar.gz  &&  \
 tar -xvf $VERS.tar.gz  &&  rm -f $VERS.tar.gz  &&  \
 cd eggnog-mapper-$VERS  &&  python3 setup.py install && \
-export EGGNOG_DATA_DIR=/gpfs01/Q0195/database/eggnog-mapper-data && \
-./download_eggnog_data.py
+export EGGNOG_DATA_DIR=/gpfs01/Q0195/database/eggnog-mapper-data
+#./download_eggnog_data.py
 
 %environment
 export PATH="/opt/eggnog-mapper-2.1.12:/opt/eggnog-mapper-2.1.12/eggnog-mapper/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export EGGNOG_DATA_DIR=/gpfs01/Q0195/database/eggnog-mapper-data
 

@@ -73,7 +73,6 @@ R --slave -e 'install.packages("covr")'  &&  \
 R --slave -e 'install.packages("cowplot")'  &&  \
 R --slave -e 'install.packages("coxme")'  &&  \
 R --slave -e 'install.packages("cubelyr")'  &&  \
-R --slave -e 'install.packages("cwhmisc")'  &&  \
 R --slave -e 'install.packages("d3Network")'  &&  \
 R --slave -e 'install.packages("DAAG")'  &&  \
 R --slave -e 'install.packages("dartR")'  &&  \
@@ -81,7 +80,6 @@ R --slave -e 'install.packages("date")'  &&  \
 R --slave -e 'install.packages("degreenet")'  &&  \
 R --slave -e 'install.packages("denstrip")'  &&  \
 R --slave -e 'install.packages("DEoptim")'  &&  \
-R --slave -e 'install.packages("dfoptim")'  &&  \
 R --slave -e 'install.packages("DHARMa")'  &&  \
 R --slave -e 'install.packages("DiagrammeR")'  &&  \
 R --slave -e 'install.packages("distributional")'  &&  \
@@ -350,7 +348,10 @@ R --slave -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-pack
 echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site  &&  \
 mkdir -p /library  &&  \
 echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/lib/R/etc/Renviron.site
-# Last 3 lines: "to shut it up" (WS)
+# Last 3 lines: "to shut R up" (WS)
+# Packages that are not available in R v4.4.0.
+# R --slave -e 'install.packages("cwhmisc")'  &&  \
+# R --slave -e 'install.packages("dfoptim")'  &&  \
 
 %test
 R --quiet -e "stopifnot(getRversion() == '${R_VERSION}')"

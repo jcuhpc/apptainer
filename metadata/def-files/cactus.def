@@ -1,0 +1,46 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+DEBIAN_FRONTEND=noninteractive && \
+apt-get install -y python3-dev python3-pip \
+libbz2-dev \
+pkg-config \
+libhdf5-dev \
+liblzo2-dev \
+libtokyocabinet-dev \
+liblzma-dev \
+libxml2-dev \
+libssl-dev \
+libpng-dev \
+uuid-dev \
+libcurl4-gnutls-dev \
+libffi-dev \
+rsync \
+python-is-python3 \
+libdeflate-dev \
+libjemalloc-dev \
+python3-distutils \
+pybind11-dev \
+libzstd-dev \
+libhts-dev && \
+#wget https://github.com/ComparativeGenomicsToolkit/cactus/archive/refs/tags/v2.8.2.tar.gz && \
+#tar xf v2.8.2.tar.gz  &&  rm -f v2.8.2.tar.gz &&  \
+git clone https://github.com/ComparativeGenomicsToolkit/cactus.git --recursive
+cd cactus && \
+#grep apt-get Dockerfile | head -1 | sed -e 's/RUN //g' -e 's/apt-get/apt-get/g' && \
+make -j 8 && \
+build-tools/downloadPangenomeTools && \
+export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH && \
+build-tools/downloadMafTools && \
+
+%environment
+export PATH="/opt/cactus/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

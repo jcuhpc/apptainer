@@ -12,10 +12,11 @@ exec "$@"
 VERS=4.4.0  &&  \
 cd /usr/local &&  \
 apt-get update  &&  \
-apt-get install -y default-jre dirmngr gcc gfortran libcairo2-dev \
-	libcurl4-openssl-dev libgdal-dev libgit2-dev libgmp-dev libgsl-dev \
-	libmagick++-dev libmpfr-dev libncurses-dev libnetcdf-dev libnode-dev libopenblas-dev \
-	libreadline-dev libssl-dev libtool-bin libxml2-dev libxt-dev libudunits2-dev  &&  \
+apt-get install -y default-jre dirmngr gcc gfortran language-pack-en\
+	libcairo2-dev libcurl4-openssl-dev libgdal-dev libgit2-dev\
+	libgmp-dev libgsl-dev libmagick++-dev libmpfr-dev libncurses-dev\
+	libnetcdf-dev libnode-dev libopenblas-dev libreadline-dev\
+	libssl-dev libtool-bin libxml2-dev libxt-dev libudunits2-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://cran.r-project.org/src/base/R-4/R-$VERS.tar.gz  &&  \
 tar xf R-$VERS.tar.gz  &&  rm -f R-$VERS.tar.gz  &&  cd R-$VERS  &&  \

@@ -276,6 +276,7 @@ netphos services.healthtech.dtu.dk/service.php?NetPhos-3.1
 nettle www.lysator.liu.se/~nisse/nettle/
 newick_utils http://cegg.unige.ch/newick_utils
 ngsadmix www.popgen.dk/software/index.php/NgsAdmix
+ngsparalog github.com/tplinderoth/ngsParalog
 ngsrelate github.com/ANGSD/NgsRelate
 ngsTools github.com/mfumagalli/ngsTools
 nlopt nlopt.readthedocs.io/en/latest/

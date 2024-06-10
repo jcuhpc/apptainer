@@ -16,8 +16,6 @@ exec "$@"
 # Software versions
 export R_VERSION=4.2.2
 echo "export R_VERSION=${R_VERSION}" >> $SINGULARITY_ENVIRONMENT
-install -d -m 2775 -o root -g root /gpfs01
-install -d -m 1777 -o root -g root /scratch /fast/tmp
 
 
 # Get dependencies

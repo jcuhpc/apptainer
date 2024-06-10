@@ -1,11 +1,8 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
 
 %post
 VERS=1.7.3  &&  \
-install -d -m 2775 -o root -g root /gpfs01  &&  \
-install -d -m 1777 -o root -g root /scratch /fast/tmp  &&  \
-export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
 conda update conda  &&  \
 wget https://raw.githubusercontent.com/faircloth-lab/phyluce/v$VERS/distrib/phyluce-$VERS-py36-Linux-conda.yml  &&  \
 conda env create -n phyluce --file phyluce-$VERS-py36-Linux-conda.yml  &&  \

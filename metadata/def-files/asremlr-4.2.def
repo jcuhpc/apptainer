@@ -1,0 +1,22 @@
+BootStrap: localimage
+From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
+
+%runscript
+exec "$@"
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/
+
+%post
+apt-get update  &&  \
+apt-get install -y dirmngr  &&  \
+R --slave -e 'install.packages("data.table")'  &&  \
+R --slave -e 'install.packages("jsonlite")'  &&  \
+R --slave -e 'install.packages("ggplot2")'  &&  \
+R --slave -e 'install.packages("Matrix")'  &&  \
+R --slave -e 'install.packages("/opt/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz", repos = NULL, type = "source")'  &&  \
+rm -rf /opt/*.tar.gz
+
+%environment
+export LC_ALL="en_AU.UTF-8"
+

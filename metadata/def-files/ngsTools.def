@@ -1,0 +1,21 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%post
+export DEBIAN_FRONTEND=noninteractive  &&  \
+cd /opt  &&  \
+apt-get update -y  &&  \
+apt install -y libz-dev libbz2-dev libgsl-dev liblzma-dev libcurl4-openssl-dev libssl-dev pkg-config  &&  \
+git clone --recursive https://github.com/mfumagalli/ngsTools.git  &&  \
+cd ngsTools  &&  make
+
+%environment
+export LC_ALL=C
+export PATH=/opt/ngsTools/ngsUtils:/opt/ngsTools/ngsSim:/opt/ngsTools/ngsPopGen:/opt/ngsTools/ngsLD:/opt/ngsTools/ngsF-HMM:/opt/ngsTools/ngsF:/opt/ngsTools/ngsDist:/opt/ngsTools/angsd:$PATH
+
+%runscript
+exec "$@"
+
+%labels
+Author Radovan Bast
+

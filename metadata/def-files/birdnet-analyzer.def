@@ -14,7 +14,6 @@ pip install librosa resampy numpy --break-system-packages  &&  \
 git clone https://github.com/kahst/BirdNET-Analyzer.git  &&  \
 chmod -R o+x BirdNET-Analyzer
 
-
 %environment
 export PATH="/opt/BirdNET-Analyzer:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

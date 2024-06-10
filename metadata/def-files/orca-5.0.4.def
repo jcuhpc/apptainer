@@ -10,13 +10,15 @@ From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 exec "$@"
 
 %post
+cd /opt  &&  \
 apt-get update  &&  \
 install -d -m 775 /opt/orca  &&  \
 apt-get install -y xz-utils openmpi-bin openmpi-common openmpi-doc libopenmpi3  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part1.tar -C /opt/orca  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part2.tar -C /opt/orca  &&  \
-tar xf orca_5_0_4_linux_x86-64_openmpi411_part3.tar -C /opt/orca  &&  \
+tar xf /orca_5_0_4_linux_x86-64_openmpi411_part1.tar  &&  \
+tar xf /orca_5_0_4_linux_x86-64_openmpi411_part2.tar  &&  \
+tar xf /orca_5_0_4_linux_x86-64_openmpi411_part3.tar  &&  \
+mv orca_5*/* orca  &&  rmdir orca_5*  &&  \
 rm -f *.tar
 
 %environment

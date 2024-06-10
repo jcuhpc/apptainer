@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+mamba create  -c conda-forge -c bioconda -c defaults -n repeatmodeler repeatmodeler=2.0.5 repeatmasker  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/repeatmodeler/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PERL5LIB="/opt/conda/envs/repeatmodeler/share/RepeatMasker"
+
