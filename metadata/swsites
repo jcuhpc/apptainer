@@ -58,6 +58,7 @@ bioawk github.com/lh3/bioawk
 biobambam2 github.com/gt1/biobambam2
 biopython biopython.org
 biotools github.com/sonwell/biotools
+birdnet-analyzer github.com/kahst/BirdNET-Analyzer.git
 bismark github.com/FelixKrueger/Bismark
 blasr github.com/BioinformaticsArchive/blasr
 blast blast.ncbi.nlm.nih.gov
@@ -386,6 +387,7 @@ singularity github.com/apptainer/singularity
 sleap pypi.org/project/sleap/
 slim messerlab.org/slim/
 slim-hydro git.immc.ucl.ac.be/slim/slim/-/wikis/SLIM-Installation-on-Linux
+slim4-hydro git.immc.ucl.ac.be/slim/slim4
 snakemake github.com/snakemake/snakemake
 snp-sites sanger-pathogens.github.io/snp-sites
 soapdenovo2 http://soap.genomics.org.cn/soapdenovo.html
