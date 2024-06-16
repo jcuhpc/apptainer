@@ -6,13 +6,14 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=2.1  &&  \
 apt-get update  &&  \
 apt-get install -y gcc make  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/mfoll/BayeScan/archive/refs/tags/v2.1.tar.gz  &&  \
-tar xf v2.1.tar.gz  &&  rm -f v2.1.tar.gz  &&  \
-cd BayeScan-2.1  &&  make
+wget https://github.com/mfoll/BayeScan/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  mv BayeScan-$VERS BayeScan  &&  \
+cd BayeScan  &&  make
 
 %environment
-export PATH="/opt/BayeScan-2.1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/BayeScan:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

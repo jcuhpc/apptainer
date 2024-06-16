@@ -11,8 +11,9 @@ apt-get install -y bwa python python-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/list/*  &&  \
 wget --no-check-certificate https://www.well.ox.ac.uk/files-library/stampy-latest.tgz  &&  \
 tar xf stampy-latest.tgz  &&  rm -f stampy-latest.tgz  &&  \
-cd stampy-1.0.32  &&  make
+mv stampy-1.0.32 stampy  &&  \
+cd stampy  &&  make
 
 %environment
-export PATH="/opt/stampy-1.0.32:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/stampy:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

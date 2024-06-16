@@ -9,7 +9,7 @@ apt-get update  &&  \
 apt-get install -y cython libbz2-dev liblzma-dev libopenmpi-dev liblzo2-dev\
 	openmpi-bin openmpi-common python python-biopython python-hachoir-core\
 	python-hachoir-metadata python-hachoir-parser python-numpy zlib1g-dev  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/list/*  &&  \
 pip install absl-py alignment antiorm astor  &&  \
 pip install biom-format==2.1.6 bleach bx-python bz2file  &&  \
 pip install certifi chardet clepy click cloudpickle composition configparser cutadapt cvxopt==1.1.9 cycler  &&  \

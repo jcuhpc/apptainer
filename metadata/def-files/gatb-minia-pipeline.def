@@ -5,15 +5,15 @@ From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
 exec "$@"
 
 %post
-apt-get update   &&   \
-apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1   &&   \
-apt-get install -y bwa python python-pip libbz2-dev liblzma-dev zlib1g-dev    &&   \
-cd /opt   &&   \
-pip install numpy pysam scipy mathstats   &&   \
-git clone --recursive https://github.com/GATB/gatb-minia-pipeline   &&   \
-cd gatb-minia-pipeline   &&   \
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1  &&  \
+apt-get install -y bwa python python-pip libbz2-dev liblzma-dev zlib1g-dev   &&  \
+pip install numpy pysam scipy mathstats  &&  \
+git clone --recursive https://github.com/GATB/gatb-minia-pipeline  &&  \
+cd gatb-minia-pipeline  &&  \
 make test
 
 %environment
-    export PATH="/opt/gatb-minia-pipeline:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/gatb-minia-pipeline:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
