@@ -1,12 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-23.04.sif
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-apt-get update  &&  \
-mamba create  -c conda-forge -c bioconda -c defaults -n <ENV> <SW1>[=<V1>]  &&  \
+mamba create -c conda-forge -c bioconda -c defaults -n <ENV> <SW1>[=<V1>]  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

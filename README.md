@@ -1,31 +1,27 @@
 # apptainer
 A JCU repository for apptainer provisioning.
 
+In 2019, a decision was made to containerise as many HPC workflows as
+possible.    The primary driver was to support reproducible research.  
 This repository, created by JCU HPC staff, contains a few scripts and
-metadata files that we have used to create almost 500 apptainers.  We
-have focussed on automation, as much as possible.
+metadata files  that have been used to create  almost 500 apptainers.  
+Zero trust and sustainability were key considerations.
 
-In recent times, there has been a shift toward a "zero trust" security
-model.  At JCU, a trusted source is an organisation with a focus on IT
-security - e.g., where security advisaries & patches are routinely
-issued.  Image repositories such as dockerhub, shpc, & biocontainers
-are not (at this time) considered to be trusted sources.  Therefore,
-JCU has adopted a policy of building all containers from a definition
-file.
+We consider Ubuntu repositories to be a high trusted source.  Conda
+repositories are a conditionally trusted source.  We have no choice
+but to trust research software sources/binaries.  As a last resort,
+when a build seems impossible, we download binary apptainer images.
 
-Sustainability is also important to JCU, so we have created a script
-that builds a container image that uses untrusted conda environments.
-In some cases this is unavoidable, because some software developers
-choose to only document their software in a conda context.
+We build base apptainer images (Ubuntu, Mamba, Python, & R) to speed
+up the build of apptainers we deliver for researchers to use.  Also,
+we have created a few scripts that  build apptainer definition files
+for you.  In many cases, the definition files created simply provide
+a starting point that requires modification.
 
-Ultimately, this repository will contain every apptainer definition file
-created by JCU HPC staff.  The scripts contained in this repository have
-been created to generate definition files and/or apptainer images.  There
-are many JCU HPC specific configuration items in this repository - this
-is due to our "minimum viable product" approach.  We also build ubuntu
-apptainers (ubuntu-*.sif) that are used to decrease the time it takes
-for other apptainers to be built.
-
+This repository will contain every apptainer definition file created
+for researchers using the JCU HPC cluster.  Modification will likely 
+be required for non-JCU people wishing to use this repository.  This
+is due to our "minimum viable product" approach to development.
 
 -------------------
 REPOSITORY CREATORS
