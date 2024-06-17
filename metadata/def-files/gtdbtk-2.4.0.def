@@ -5,7 +5,6 @@ From: /gpfs01/Q0195/containers/mamba-24.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.3.2/db  &&  \
 mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=2.3.2  &&  \
 cd /opt/conda/envs/gtdbtk/share/gtdbtk-2.3.2  &&  \

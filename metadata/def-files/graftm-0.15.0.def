@@ -5,8 +5,6 @@ From: /gpfs01/Q0195/containers/mamba-24.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
-apt-get install -y make  &&  \
 mamba create  -c conda-forge -c bioconda -c defaults -n graftm graftm=0.15.0  &&  \
 rm -rf /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \
 ln -s /gpfs01/Q0195/database/krona/taxonomy /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \

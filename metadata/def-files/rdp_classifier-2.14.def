@@ -5,7 +5,6 @@ From: /gpfs01/Q0195/containers/mamba-24.04.sif
 exec "$@"
 
 %post
-apt-get update  &&  \
 mamba create  -c conda-forge -c bioconda -c defaults -n rdp_classifier rdp_classifier=2.14  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
