@@ -12,7 +12,7 @@ apt-get update  &&  \
 apt-get upgrade -y  &&  \
 install -d -m 2775 -o root -g root /gpfs01  &&  \
 install -d -m 1777 -o root -g root /scratch /fast/tmp  &&  \
-DEBIAN_FRONTEND=noninteractive TZ=Australia/Brisbane  apt-get install -y tzdata  &&  \
+DEBIAN_FRONTEND=noninteractive  TZ=Australia/Brisbane  apt-get install -y tzdata  &&  \
 apt-get install -y --no-install-recommends software-properties-common  &&  \
 apt-get install -y apt-utils build-essential cmake curl git gzip python python-pip tar wget  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/list/*
