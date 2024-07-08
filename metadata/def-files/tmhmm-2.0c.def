@@ -2,9 +2,8 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
-# Register required for download.
-# but onced registered it seems you can see links for downloads
 /fast/tmp/tmhmm.tar /opt
+# Register required for download.
 
 %runscript
 exec "$@"

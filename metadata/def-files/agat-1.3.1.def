@@ -12,9 +12,10 @@ apt-get -y install libbio-perl-perl libclone-perl libgraph-perl liblwp-useragent
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/NBISweden/AGAT/archive/refs/tags/v$VERS.tar.gz  &&  \
 tar -xzvf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
-cd AGAT-$VERS  &&  perl Makefile.PL  &&  \
-make  &&  make test  &&  make install
+mv AGAT-$VERS AGAT  &&  cd AGAT  &&  \
+perl Makefile.PL  &&  make  &&  \
+make test  &&  make install
 
 %environment
-export PATH="/opt/AGAT-$VERS:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+export PATH="/opt/AGAT:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 

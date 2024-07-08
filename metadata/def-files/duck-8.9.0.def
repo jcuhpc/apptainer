@@ -6,6 +6,9 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y garli garli-mpi  &&  \
+DVER=8.9.0.41543  &&  \
+apt-get install -y dirmngr  &&  \
+wget https://dist.duck.sh/duck_$DVER-1_amd64.deb  &&  \
+apt-get install ./duck_$DVER-1_amd64.deb  &&  rm -f *.deb  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 

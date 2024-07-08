@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-cd /usr/local  &&  \
+cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
@@ -13,5 +13,5 @@ git clone https://github.com/aalbrechtsen/NGSadmix.git  &&  \
 cd NGSadmix  &&  g++ NGSadmix.cpp -O3 -lpthread -lz -o NGSadmix
 
 %environment
-export PATH="/usr/local/NGSadmix:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/NGSadmix:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

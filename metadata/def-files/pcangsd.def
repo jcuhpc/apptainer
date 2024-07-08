@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
 
 %runscript
 exec "$@"
@@ -8,9 +8,8 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 export LANG=C.UTF-8  &&  \
-apt-get install -y python3-pip  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-pip3 install numpy cython scipy  &&  \
+pip3 install --upgrade pip  &&  \
+pip3 install numpy cython scipy setuptools  &&  \
 git clone https://github.com/Rosemeis/pcangsd.git  &&  \
 cd pcangsd  &&  python3 setup.py build_ext --inplace  &&  pip3 install -e .
 

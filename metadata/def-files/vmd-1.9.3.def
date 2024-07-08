@@ -3,8 +3,7 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/vmd-1.9.3.tar /opt
-# Register required for download.
-# Software distribution is NOT complete (no vmd_LINUX)
+# Software distribution is incomplete (no vmd_LINUX)
 
 %runscript
 exec "$@"

@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.2.4  &&  \
+apt-get update  &&  \
+apt install -y libboost-all-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/revbayes/revbayes/releases/download/v$VERS/revbayes-v$VERS-linux64.tar.gz  &&  \
+tar xf revbayes-v$VERS-linux64.tar.gz  &&  rm -f *.tar.gz  &&  \
+install -m 775 revbayes-v$VERS/bin/rb /usr/local/bin/
+

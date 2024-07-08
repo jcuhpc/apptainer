@@ -1,0 +1,10 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+pip3 install freud-analysis==3.1.0
+

@@ -6,12 +6,13 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=2.9.4  &&  \
 apt-get update  &&  \
 apt-get install -y python3-distutils python3-distutils-extra  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/fenderglass/Flye/archive/refs/tags/2.9.2.tar.gz  &&  \
-tar xf 2.9.2.tar.gz  &&  rm -f 2.9.2.tar.gz  &&  \
-cd Flye-2.9.2  &&  make
+wget https://github.com/fenderglass/Flye/archive/refs/tags/$VERS.tar.gz  &&  \
+tar xf $VERS.tar.gz  &&  rm -f *.tar.gz  &&  mv Flye-$VERS Flye  &&  \
+cd Flye  &&  make
 
 %environment
-export PATH="/opt/Flye-2.9.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/Flye/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

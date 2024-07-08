@@ -6,6 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y bedtools bedtools-test  &&  \
+apt-get install -y bedtools  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 

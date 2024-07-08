@@ -1,15 +1,14 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
-apt-get update  &&  \
 wget http://cmpg.unibe.ch/software/fastsimcoal27/downloads/fsc27_linux64.zip  &&  \
 unzip fsc27_linux64.zip  &&  rm -f fsc27_linux64.zip  &&  \
-mv fsc27_linux64 fsc  &&  chmod +x fsc/fsc2705
+mv fsc27_linux64 fsc  &&  chmod +x fsc/fsc27093
 
 %environment
 export PATH="/opt/fsc:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

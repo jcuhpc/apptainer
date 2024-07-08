@@ -13,7 +13,7 @@ tar -xvf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
 cd bifrost-$VERS  &&  mkdir build  &&  cd build  &&  \
 cmake .. -DCOMPILATION_ARCH=OFF  &&  \
 make  &&  make install  &&  \
-cd /opt  &&  rm -rf bifrost-1.3.5
+cd /opt  &&  rm -rf bifrost-*
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"

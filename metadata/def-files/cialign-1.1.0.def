@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -8,8 +8,5 @@ exec "$@"
 apt-get update  &&  \
 apt-get install -y python3 python3-matplotlib python3-numpy python3-scipy python3-pip  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-pip3 install cialign==1.1.0 pandas
-
-%environment
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+pip3 install cialign==1.1.0 pandas --break-system-packages
 

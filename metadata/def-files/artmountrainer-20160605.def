@@ -11,8 +11,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  \
-rm -f artbinmountrainier2016.06.05linux64.tgz
+tar -xvf artbinmountrainier2016.06.05linux64.tgz  &&  rm -f *.tgz
 
 %environment
 export PATH="/opt/art_bin_MountRainier:/opt/art_bin_MountRainier/ART_profiler_454:/opt/art_bin_MountRainier/ART_profiler_illumina:/opt/art_bin_MountRainier/examples:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

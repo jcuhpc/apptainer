@@ -6,6 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y jellyfish jellyfish-examples  &&  \
+apt-get install -y jellyfish  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 

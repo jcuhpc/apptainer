@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -9,7 +9,7 @@ cd /opt  &&  \
 apt-get update  &&  \
 git clone --depth 1 https://bitbucket.org/WegmannLab/Tiger.git  &&  \
 cd Tiger  &&  git submodule update --init --recursive  &&  \
-git config --global submodule.recurse true  &&  make  &&  \
+git config --global submodule.recurse true  &&  make
 
 %environment
 export PATH="/opt/Tiger:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

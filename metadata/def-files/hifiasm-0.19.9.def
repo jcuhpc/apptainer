@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=0.19.9  &&  \
+apt-get update  &&  \
+export LANG=C.UTF-8  &&  \
+wget https://github.com/chhylp123/hifiasm/archive/refs/tags/$VERS.tar.gz  &&  \
+tar xf $VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv hifiasm-$VERS hifiasm  &&  \
+cd hifiasm  &&  make
+
+%environment
+export PATH="/opt/hifiasm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

@@ -3,26 +3,19 @@ From: /fast/tmp/apptainer/ubuntu-22.04.sif
 
 %post
 apt-get -y update  &&  \
-add-apt-repository universe  &&  \
-apt-get -y update  &&  \
+add-apt-repository universe  &&  apt-get -y update  &&  \
 apt-get -y install build-essential cpanminus curl fonts-dejavu-corelibwww-perl libgl1 locales perl pkg-config time vim  &&  \
 echo "LANG=en_US.UTF-8" >> /etc/default/locale  &&  \
 git clone https://github.com/chrisjackson-pellicle/Yang-and-Smith-RBGV-scripts.git  &&  \
 cp Yang-and-Smith-RBGV-scripts/04_trim_tips.py Yang-and-Smith-RBGV-scripts/trim_tips.py  &&  \
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh  &&  \
+bash ~/miniconda.sh -b -p /usr/local/miniconda3  &&  \
+export PATH="/usr/local/miniconda3/bin:$PATH"
 
-    if [ ! -d /usr/local/miniconda3 ]; then
-        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
-        bash ~/miniconda.sh -b -p /usr/local/miniconda3 && \
-        rm ~/miniconda.sh
-    fi
-
-    # set conda path:
-    export PATH="/usr/local/miniconda3/bin:$PATH"
-
-    # add bioconda channel:
-    conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels conda-forge
+# add bioconda channel:
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
 
     # install programs using conda:
     conda install -c conda-forge mamba
@@ -54,10 +47,10 @@ cp Yang-and-Smith-RBGV-scripts/04_trim_tips.py Yang-and-Smith-RBGV-scripts/trim_
     cd ..
 
 %environment
-    export PATH="/usr/local/miniconda3/bin:/fast-tree-install:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/miniconda3/bin:/fast-tree-install:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
 
 %labels
     Author Chris_J and JCUHPC

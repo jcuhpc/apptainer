@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+VERS=0.3-beta  &&  \
+apt-get update  &&  \
+apt install -y apt-transport-https ca-certificates gnupg  &&  \
+apt install -y dirmngr gemma kmc  python2 python3 r-base  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+R -e 'install.packages("MASS")'  &&  \
+R -e 'install.packages("mvnpermute")'  &&  \
+R -e 'install.packages("matrixcalc")'  &&  \
+mkdir -p /opt/kmersGWAS  &&  cd /opt/kmersGWAS  &&  \
+wget https://github.com/voichek/kmersGWAS/releases/download/v0.3-beta/v0_3_beta.zip  &&  \
+unzip v0_3_beta.zip  &&  rm -f *.zip
+
+%environment
+export PATH="/opt/kmersGWAS/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

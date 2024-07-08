@@ -1,20 +1,17 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=2.1.1.5  &&  \
 apt-get update  &&  \
 apt-get install -y openjdk-8-jre  &&  \
-wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip  &&  \
-unzip PGDSpider_2.1.1.5.zip  &&  rm -f *.zip  &&  \
-mv PGDSpider_2.1.1.5 pgdspider  &&  \
-cd pgdspider  &&  rm -f PGDSpider2*.exe  &&  \
-printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2.jar\n" >PGDSpider2-gui.sh  &&  \
-printf "#!/bin/sh\njava -Xmx1024m -Xms512m -jar /opt/pgdspider/PGDSpider2-cli.jar\n" >PGDSpider2.sh  &&  \
-chmod +x PGDSpider2*.sh
+wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_$VERS.zip  &&  \
+unzip PGDSpider_$VERS.zip  &&  mv PGDSpider_$VERS pgdspider  &&  \
+cd pgdspider  &&  rm -f *.zip pgdspider/PGDSpider2*.exe
 
 %environment
 export PATH="/opt/pgdspider:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

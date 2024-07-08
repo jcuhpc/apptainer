@@ -1,14 +1,10 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-cd /opt  &&  \
-apt-get update  &&  \
+cd /usr/local/bin  &&  \
 wget https://github.com/calacademy-research/BLATq/releases/download/v1.0.2/blatq  &&  chmod 755 blatq
-
-%environment
-export PATH="/opt:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

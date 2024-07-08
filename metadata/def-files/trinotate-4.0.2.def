@@ -11,7 +11,7 @@ apt-get update  &&  \
 apt-get install -y perl  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/Trinotate/Trinotate/archive/refs/tags/Trinotate-v$VERS.tar.gz  &&  \
-tar xf Trinotate-v$VERS.tar.gz  &&  rm -f Trinotate-v$VERS.tar.gz && \
+tar xf Trinotate-v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
 mv Trinotate-Trinotate-v$VERS Trinotate
 
 %environment

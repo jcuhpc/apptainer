@@ -6,6 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y bowtie2 bowtie2-examples  &&  \
+apt-get install -y bowtie2  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 

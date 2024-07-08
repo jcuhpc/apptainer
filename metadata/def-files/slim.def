@@ -1,15 +1,18 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-export LANG=C.UTF-8  &&  \
+cd /opt  &&  \
 apt-get update  &&  \
+export LANG=C.UTF-8  &&  \
+apt-get remove -y curl  &&  \
 apt-get install -y libqt5core5a qtbase5-dev qtchooser qt5-qmake  &&  \
-apt --fix-broken install  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+apt --fix-broken install  &&  \
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5  &&  \
-wget --output-document /dev/stdout - --quiet https://raw.githubusercontent.com/MesserLab/SLiM-Extras/master/installation/DebianUbuntuInstall.sh | bash -s
+wget https://raw.githubusercontent.com/MesserLab/SLiM-Extras/master/installation/DebianUbuntuInstall.sh  &&  \
+bash DebianUbuntuInstall.sh /usr/local
 

@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.4.1  &&  \
+apt-get update  &&  \
+apt-get install -y bedtools default-jre samtools  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+R -e 'install.packages("argparse")'  &&  \
+R -e 'install.packages("ggplot2")'  &&  \
+R -e 'install.packages("scales")'  &&  \
+wget https://github.com/marbl/meryl/releases/download/v$VERS/meryl-$VERS.Linux-amd64.tar.xz  &&  \
+tar -vxJf meryl-$VERS.Linux-amd64.tar.xz  &&  \
+mv meryl-$VERS meryl  &&  rm *.tar.xz
+
+%environment
+export PATH="/opt/meryl/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+

@@ -29,6 +29,3 @@ cd /opt  &&  git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
 cd AlphaFamImpute  &&  python3 setup.py install  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
-##pip3 install   alignment antiorm blur bx-python bz2file composition concoct contourpy
-##pip3 install   dadi dammit dash db db-sqlite3 deblur demes
-#pip3 install --use-pep517 pygrib  &&  \

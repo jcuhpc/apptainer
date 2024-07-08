@@ -1,18 +1,18 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS="v02-8"  &&  \
 apt-get update  &&  \
-wget http://www.bioinf.uni-leipzig.de/Software/metilene/metilene_v02-8.tar.gz  &&  \
-tar xf metilene_v02-8.tar.gz  &&  \
-rm -f  metilene_v02-8.tar.gz  &&  \
-cd metilene_v0.2-8  &&  \
+wget http://www.bioinf.uni-leipzig.de/Software/metilene/metilene_$VERS.tar.gz  &&  \
+tar xf metilene_$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv metilene_v0.2-8 metilene  &&  cd metilene  &&  \
 chmod -x L* M* ma* README *.R src/*
 
 %environment
-export PATH="/opt/metilene_v0.2-8:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/metilene:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

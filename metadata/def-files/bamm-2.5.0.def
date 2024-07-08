@@ -1,17 +1,18 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=2.5.0  &&  \
 apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 cmake  &&  \
-wget https://github.com/macroevolution/bamm/archive/refs/tags/v2.5.0.tar.gz  &&  \
+wget https://github.com/macroevolution/bamm/archive/refs/tags/v$VERS.tar.gz  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-tar xf v2.5.0.tar.gz  &&  cd bamm-2.5.0  &&  mkdir build  &&  \
+tar xf v$VERS.tar.gz  &&  cd bamm-$VERS  &&  mkdir build  &&  \
 cd build  &&  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local  &&  \
 make  &&  make install  &&  cd ../..  &&  \
-rm -fr bamm-2.5.0 v2.5.0.tar.gz
+rm -fr bamm-$VERS v$VERS.tar.gz
 

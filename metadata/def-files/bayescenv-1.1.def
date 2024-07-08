@@ -1,17 +1,18 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=1.1  &&  \
 apt-get update  &&  \
 apt-get install -y libgomp1 &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/devillemereuil/bayescenv/archive/refs/tags/v1.1.tar.gz  &&  \
-tar xf v1.1.tar.gz  &&  rm -rf *.tar.gz
+wget https://github.com/devillemereuil/bayescenv/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -rf *.tar.gz  &&  mv bayescenv-$VERS bayescenv
 
 %environment
-export PATH="/opt/bayescenv-1.1/bin/linux64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/bayescenv/bin/linux64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

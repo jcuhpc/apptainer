@@ -10,10 +10,10 @@ VERS=4.1.1  &&  \
 apt-get update  &&  \
 apt-get install -y libboost-all-dev libbz2-dev numactl  &&  \
 wget https://github.com/alekseyzimin/masurca/releases/download/v$VERS/MaSuRCA-$VERS.tar.gz  &&  \
-tar -xzvf MaSuRCA-$VERS.tar.gz  &&  rm -rf MaSuRCA-$VERS.tar.gz  &&  \
-cd MaSuRCA-$VERS &&  \
+tar -xzvf MaSuRCA-$VERS.tar.gz  &&  rm -rf *.tar.gz  &&  \
+mv MaSuRCA-$VERS MaSuRCA  &&  cd MaSuRCA &&  \
 sed -i 's/ && cp -a \.\.\/Flye \$DEST//g' install.sh  &&  \
 ./install.sh
 
 %environment
-export PATH="/opt/MaSuRCA-4.1.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/MaSuRCA/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

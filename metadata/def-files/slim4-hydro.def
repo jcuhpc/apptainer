@@ -11,7 +11,7 @@ DEBIAN_FRONTEND=noninteractive  apt install -y git cmake gcc libmetis-dev libope
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
 pip install seamsh --break-system-packages  &&  \
 git clone https://git.immc.ucl.ac.be/slim/slim4.git  &&  \
-cd slim4  &&  mkdir build  &&  cd build  &&  cmake ..  &&  make -j2
+cd slim4  &&  mkdir build  &&  cd build  &&  cmake ..  &&  make -j 2
 
 %environment
 petsc_version=$(ls -d /usr/lib/petscdir/petsc3.?? |head -n 1)

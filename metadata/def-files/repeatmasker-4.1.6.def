@@ -1,10 +1,6 @@
 Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
-# instructions to install repeatmasker (& rmblast)
-# dfam38_full.1.h5 will be required - will be renamed to Dfam.h5
-# NOTE: this file is temporarily embedded into the sif
-
 %files
 /gpfs01/Q0195/database/Dfam/3.8/dfam38_full.0.h5 /
 

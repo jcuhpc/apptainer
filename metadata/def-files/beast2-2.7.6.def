@@ -11,7 +11,7 @@ apt-get update  &&  \
 apt-get install -y default-jre  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/CompEvol/beast2/releases/download/$VERS/BEAST.$VERS.Linux.x86.tgz  &&  \
-tar xf BEAST.$VERS.Linux.x86.tgz  &&  rm  -f BEAST.$VERS.Linux.x86.tgz  &&  \
+tar xf BEAST.$VERS.Linux.x86.tgz  &&  rm  -f *.tgz  &&  \
 mkdir -p /root/.beast/2.7  &&  \
 touch /root/.beast/2.7/toDeleteList  &&  \
 /opt/beast/bin/packagemanager -useAppDir -add SNAPP  &&  \
@@ -20,3 +20,4 @@ touch /root/.beast/2.7/toDeleteList  &&  \
 
 %environment
 export PATH="/opt/beast/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/beast/jre/bin"
+

@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+VERS=20240624  &&  \
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+wget https://s3.amazonaws.com/plink2-assets/plink2_linux_avx2_$VERS.zip  &&  \
+unzip plink2_linux_avx2_$VERS.zip  &&  rm -f *.zip
+

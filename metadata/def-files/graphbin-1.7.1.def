@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libcairo2  &&  \
+pip3 install graphbin==1.7.1
+

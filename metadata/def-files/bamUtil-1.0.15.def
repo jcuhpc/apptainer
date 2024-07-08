@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -15,7 +15,4 @@ tar xf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
 git clone https://github.com/statgen/libStatGen  &&  \
 cd bamUtil-$VERS  &&  make cloneLib  &&  make  &&  make install  &&  \
 rm -rf /opt/bamUtil-$VERS /opt/libStatGen
-
-%environment
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

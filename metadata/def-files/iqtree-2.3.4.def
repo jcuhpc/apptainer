@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+export VERS=2.3.4  &&  \
+echo "export IQTree_VERSION=${VERS}" >> $SINGULARITY_ENVIRONMENT  &&  \
+wget https://github.com/iqtree/iqtree2/releases/download/v$VERS/iqtree-$VERS-Linux-intel.tar.gz  &&  \
+tar xvf iqtree-$VERS-Linux-intel.tar.gz  &&  \
+install -m 775 iqtree-$VERS-Linux-intel/bin/iqtree2 /usr/local/bin
+

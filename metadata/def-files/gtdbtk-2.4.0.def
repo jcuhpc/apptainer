@@ -5,18 +5,18 @@ From: /gpfs01/Q0195/containers/mamba-24.04.sif
 exec "$@"
 
 %post
-export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.3.2/db  &&  \
-mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=2.3.2  &&  \
-cd /opt/conda/envs/gtdbtk/share/gtdbtk-2.3.2  &&  \
+VERS=2.4.0  &&  \
+mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=$VERS  &&  \
+export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-$VERS/db  &&  \
+cd /opt/conda/envs/gtdbtk/share/gtdbtk-$VERS  &&  rm -rf db  &&  \
+mkdir -p $GTDBTK_DATA_PATH  &&  \
+ln -s $GTDBTK_DATA_PATH db  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
-rm -rf db  &&  ln -s $GTDBTK_DATA_PATH db  &&  \
-echo "Database files can be downloaded by running the command:"  &&  \
-echo "  singularity run /gpfs01/Q0195/containers/gtdbtk-2.3.2.sif download-db.sh"  &&  \
-echo ""
+/opt/conda/envs/gtdbtk/bin/download-db.sh
 
 %environment
 export PATH="/opt/conda/envs/gtdbtk/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.3.2/db
+export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.4.0/db
 export CONDA_PYTHON_EXE=/opt/conda/bin/python
 export CONDA_EXE=/opt/conda/bin/conda
 

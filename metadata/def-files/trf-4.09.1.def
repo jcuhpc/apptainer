@@ -6,6 +6,6 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y trf  trf-examples  &&  \
+apt-get install -y trf  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
 

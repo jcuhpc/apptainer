@@ -68,6 +68,7 @@ R --slave -e 'install.packages("chron")'  &&  \
 R --slave -e 'install.packages("cmprsk")'  &&  \
 R --slave -e 'install.packages("colourvalues")'  &&  \
 R --slave -e 'install.packages("CompQuadForm")'  &&  \
+R --slave -e 'install.packages("convevol")'  &&  \
 R --slave -e 'install.packages("corrplot")'  &&  \
 R --slave -e 'install.packages("covr")'  &&  \
 R --slave -e 'install.packages("cowplot")'  &&  \

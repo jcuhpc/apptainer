@@ -1,0 +1,35 @@
+BootStrap: localimage
+From: /fast/tmp/containers/mamba-24.04.sif
+
+%post
+apt-get -y update  &&  \
+apt-get install -y software-properties-common  &&  \
+add-apt-repository universe  &&  \
+apt-get -y update  &&  \
+apt-get -y install build-essential fonts-dejavu-core libgl1 locales pkg-config time unzip vim  &&  \
+locale-gen en_US.UTF-8  &&  \
+echo "LANG=en_US.UTF-8" >> /etc/default/locale  &&  \
+conda config --add channels defaults  &&  \
+conda config --add channels bioconda  &&  \
+conda config --add channels conda-forge  &&  \
+mamba install -y conda-forge::python=3.11  &&  \
+mamba install -y chrisjackson-pellicle::hybpiper=2.1.5  &&  \
+mamba install -y bioconda::trimmomatic=0.39  &&  \
+mamba install -y bioconda::fastp=0.23.2  &&  \
+mamba install -y chrisjackson-pellicle::paragone=0.0.14rc  &&  \
+curl -OL https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip  &&  \
+unzip Astral.5.7.8.zip  &&  rm -f *.zip  &&  chmod -R a+rX Astral  &&  \
+pip install alv  &&  \
+mkdir fast-tree-install  &&  cd fast-tree-install  &&  \
+curl -OL http://www.microbesonline.org/fasttree/FastTreeMP  &&  \
+chmod ugo=rx FastTreeMP  &&  cd ..
+
+%environment
+export PATH="/opt/conda/bin:/fast-tree-install:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+%runscript
+exec "$@"
+
+%labels
+Author Chris_J and JCUHPC
+

@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 git clone https://github.com/BGI-Qingdao/TGS-GapCloser.git gapcloser  &&  \
-cd gapcloser  &&  git submodule init  &&  git submodule update &&  make -j 4
+cd gapcloser  &&  git submodule init  &&  git submodule update  &&  make -j 4
 
 %environment
 export PATH="/opt/gapcloser:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

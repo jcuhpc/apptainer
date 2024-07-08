@@ -19,11 +19,12 @@ DEBIAN_FRONTEND=noninteractive  TZ=Australia/Brisbane  apt-get install -y tzdata
 apt-get install -y apt-utils autoconf build-essential bzip2 ca-certificates cmake curl git gzip libffi8 libffi-dev libssl-dev openssl tar unzip wget zlib1g zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://www.python.org/ftp/python/$VERS/Python-$VERS.tar.xz  &&  \
-tar xf Python-$VERS.tar.xz  &&  rm -f Python*.tar.xz  &&  cd Python-$VERS  &&  \
+tar xf Python-$VERS.tar.xz  &&  rm -f *.tar.xz  &&  cd Python-$VERS  &&  \
 ./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
-make -j 4  &&  make install  &&  cd ..  &&  rm -rf Python-$VERS  &&  \
-ldconfig /usr/local/lib  &&  pip3 install --upgrade pip
-#apt-get install -y bcftools bwa muscle ncbi-blast+ samtools  &&  \
+make -j 4  &&  make install  &&  \
+cd ..  &&  rm -rf Python-$VERS  &&  \
+ldconfig /usr/local/lib  &&  \
+pip3 install --upgrade pip
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

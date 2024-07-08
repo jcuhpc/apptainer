@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
 exec "$@"
@@ -14,7 +14,4 @@ tar xf exabayes-1.5.1.tar.gz  &&  cd exabayes-1.5.1  &&  \
 ./configure --prefix=/usr/local  &&  \
 make  &&  make install  &&  \
 rm -fr /opt/exa*
-
-%environment
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

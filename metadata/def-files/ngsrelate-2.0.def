@@ -1,18 +1,20 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=2.0  &&  \
 apt-get update  &&  \
 apt-get install -y libbz2-dev lzma libvcflib-dev zlib1g zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-wget https://github.com/ANGSD/NgsRelate/archive/refs/tags/v2.0.tar.gz  &&  \
-tar xf v2.0.tar.gz  &&  rm -f v2.0.tar.gz  &&  \
-cd NgsRelate-2.0  &&  make
+wget https://github.com/ANGSD/NgsRelate/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *tar.gz  &&  \
+mv NgsRelate-2.0 NgsRelate  &&  \
+cd NgsRelate  &&  make
 
 %environment
-export PATH="/opt/NgsRelate-2.0:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/NgsRelate:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
