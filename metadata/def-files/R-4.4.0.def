@@ -5,6 +5,7 @@ From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
 exec "$@"
 
 %post
+mkdir /library  &&  \
 apt-get update  &&  \
 apt-get install -y libarchive-dev libfreetype6 libfreetype6-dev \
                    libfribidi-dev libharfbuzz-dev openjdk-11-jdk  &&  \
@@ -81,6 +82,7 @@ R --slave -e 'install.packages("date")'  &&  \
 R --slave -e 'install.packages("degreenet")'  &&  \
 R --slave -e 'install.packages("denstrip")'  &&  \
 R --slave -e 'install.packages("DEoptim")'  &&  \
+R --slave -e 'install.packages("dfoptim")'  &&  \
 R --slave -e 'install.packages("DHARMa")'  &&  \
 R --slave -e 'install.packages("DiagrammeR")'  &&  \
 R --slave -e 'install.packages("distributional")'  &&  \
@@ -308,6 +310,7 @@ R --slave -e 'install.packages("textmineR")'  &&  \
 R --slave -e 'install.packages("tgp")'  &&  \
 R --slave -e 'install.packages("tidybayes")'  &&  \
 R --slave -e 'install.packages("tidygraph")'  &&  \
+R --slave -e 'install.packages("tidyterra")'  &&  \
 R --slave -e 'install.packages("tidytext")'  &&  \
 R --slave -e 'install.packages("tidyverse")'  &&  \
 R --slave -e 'install.packages("tm")'  &&  \
@@ -323,6 +326,7 @@ R --slave -e 'install.packages("ucminf")'  &&  \
 R --slave -e 'install.packages("unmarked")'  &&  \
 R --slave -e 'install.packages("untb")'  &&  \
 R --slave -e 'install.packages("urca")'  &&  \
+R --slave -e 'install.packages("usdm")'  &&  \
 R --slave -e 'install.packages("vcfR")'  &&  \
 R --slave -e 'install.packages("vegan")'  &&  \
 R --slave -e 'install.packages("vegan3d")'  &&  \
@@ -347,12 +351,8 @@ R --slave -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/D
 R --slave -e 'library(AmpGram);install_AmpGramModel()'  &&  \
 R --slave -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))'  &&  \
 echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site  &&  \
-mkdir -p /library  &&  \
 echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/lib/R/etc/Renviron.site
-# Last 3 lines: "to shut R up" (WS)
-# Packages that are not available in R v4.4.0.
-# R --slave -e 'install.packages("cwhmisc")'  &&  \
-# R --slave -e 'install.packages("dfoptim")'  &&  \
+# Last 2 lines: "to shut R up" (WS)
 
 %test
 R --quiet -e "stopifnot(getRversion() == '${R_VERSION}')"
