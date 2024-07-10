@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+VERS=2024.1  &&  \
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+wget https://github.com/cp2k/cp2k/releases/download/v2024.1/cp2k-$VERS-Linux-gnu-x86_64.ssmp  &&  \
+chmod 775 cp2k-$VERS-Linux-gnu-x86_64.ssmp
+

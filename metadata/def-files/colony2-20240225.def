@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/colony2_Lnx_25_02_2024.zip /usr/local/
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+install -d -m 775 /usr/local/colony2  &&  \
+apt install -y libopenmpi3 openmpi-bin openmpi-common  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+cd /usr/local/colony2  &&  unzip ../colony2_Lnx_25_02_2024.zip  &&  \
+rm -f /*.zip  &&  chmod +x *.out  &&  \
+ln colony2s.gnu.out colony2s  &&  \
+ln colony2p.gnu.ompi1.10.1.out colony2p
+
+%environment
+export PATH="/usr/local/colony2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

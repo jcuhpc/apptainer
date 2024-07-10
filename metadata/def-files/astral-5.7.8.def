@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -13,7 +13,7 @@ apt-get install -y openjdk-11-jdk  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/smirarab/ASTRAL/raw/master/Astral.$VERS.zip  &&  \
 unzip Astral.$VERS.zip  &&  rm -f *.zip  &&  \
-chmod -x  /opt/Astral/*.jar /opt/Astral/*.pdf  &&  \
+chmod -x /opt/Astral/*.jar /opt/Astral/*.pdf  &&  \
 find /opt/Astral -type d -exec chmod o+rx {} \;
 find /opt/Astral -type f -exec chmod o+r  {} \;
 

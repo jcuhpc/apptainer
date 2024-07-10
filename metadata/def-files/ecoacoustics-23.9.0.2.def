@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+VERS=23.9.0.2  &&  \
+apt-get update  &&  \
+apt-get install -y ffmpeg libsox-fmt-all openssl sox wavpack  &&  \
+install -d -m 775 /opt/AP/Logs  &&  cd /opt/AP  &&  \
+wget https://github.com/QutEcoacoustics/audio-analysis/releases/download/v$VERS/AP_linux-x64_v$VERS.tar.xz  &&  \
+tar xvf AP_linux-x64_v$VERS.tar.xz  &&  rm -f *.tar.xz
+
+%environment
+export PATH="/opt/AP:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ 
