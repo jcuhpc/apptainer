@@ -11,7 +11,7 @@ apt-get update  &&  \
 apt-get -y install libnlopt-dev libgsl-dev liblapack-dev  &&  \
 wget https://www.evolution.reading.ac.uk/BayesTraitsV$VERS/Files/BayesTraitsV$VERS-src.tar.gz  &&  \
 tar -xzvf BayesTraitsV$VERS-src.tar.gz  &&  \
-rm -f *.tar.gz  &&  cd BayesTraitsV4.1.2-src  &&  \
+rm -f *.tar.gz  &&  cd BayesTraitsV$VERS-src  &&  \
 gcc *.c -o BayesTraitsV4 -O3 -lm -lgsl -lgslcblas -lnlopt -llapack &&  \
 install -m 775 BayesTraitsV4 /usr/local/bin  &&  \
 cd ..  &&  rm -rf Bayes*
