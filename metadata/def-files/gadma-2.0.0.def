@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.0.0  &&  \
+apt-get update  &&  \
+apt-get install -y gfortran libbz2-dev liblzma-dev python3 python3-pip  &&  \
+echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections  &&  apt-get install -y ttf-mscorefonts-installer  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+pip3 install "setuptools_scm<=7.1.0"  &&  \
+pip3 install "numpy>=1.16.5,<1.23.0"  &&  \
+pip3 install "scipy>=0.6.0,<1.7.0"  &&  \
+pip3 install "matplotlib<=3.5.3" &&  \
+pip3 install "Pillow>=4.2.1"  &&  \
+pip3 install ruamel.yaml==0.16.12  &&  \
+pip3 install mpmath Cython networkx  &&  \
+pip3 install h5py scikit-allel pandas  &&  \
+pip3 install git+https://bitbucket.org/simongravel/moments.git  &&  \
+pip3 install "dadi>=1.7.0,<2.3.0" demes demesdraw  &&  \
+pip3 install git+https://github.com/ctlab/GADMA.git@2.0.0
+
