@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.5.3  &&  \
+apt-get update  &&  \
+apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1 libnetcdf-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/csiro-coasts/EMS/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv EMS-$VERS EMS  &&  cd EMS  &&  \
+conf/configure  &&  make
+
+%environment
+export PATH="/opt/EMS/model/hd:/opt/EMS/model/hd-us::/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
