@@ -11,8 +11,9 @@ apt-get update  &&  \
 apt-get install -y gcc make samtools zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/c-zhou/yahs/archive/refs/tags/v$VERS.tar.gz  &&  \
-tar xf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  cd yahs-$VERS  &&  make
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv yahs-$VERS yahs  &&  cd yahs  &&  make
 
 %environment
-export PATH="/opt/yahs-1.2a:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/yahs:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

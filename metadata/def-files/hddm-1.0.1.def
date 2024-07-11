@@ -9,7 +9,6 @@ apt-get update  &&  \
 apt-get install -y gcc gfortran  &&  \
 apt-get install -y python3-pip python3-wheel  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-pip3 install scipy==1.6.3  &&  \
 pip3 install "numpy < 1.23.0"  &&  \
 pip3 install "cython < 1.0.0"  &&  \
 pip3 install pandas==1.4.4  &&  \

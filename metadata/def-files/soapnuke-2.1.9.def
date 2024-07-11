@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
@@ -11,13 +11,11 @@ apt-get update  &&  \
 apt-get install -y ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 zlib1g zlib1g-dev  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/BGI-flexlab/SOAPnuke/archive/refs/tags/SOAPnuke$VERS.tar.gz  &&  \
-tar xvf SOAPnuke$VERS.tar.gz  &&  rm -f SOAPnuke$VERS.tar.gz  &&  \
+tar xvf SOAPnuke$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
 cd SOAPnuke-SOAPnuke$VERS  &&  make  &&  \
-install -d -m 775 /opt/soapnuke/bin  &&  \
-install -m 775 SOAPnuke /opt/soapnuke/bin  &&  \
-install -m 664 COPYING Readme.md /opt/soapnuke/  &&  \
+install -m 775 SOAPnuke /usr/local/bin  &&  \
 cd ..  &&  rm -rf SOAPnuke-SOAPnuke$VERS
 
 %environment
-export PATH="/opt/soapnuke/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
