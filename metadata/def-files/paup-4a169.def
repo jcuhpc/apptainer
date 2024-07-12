@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+apt-get install -y gfortran libpython2.7 python  &&  \
+curl -O https://phylosolutions.com/paup-test/paup4a169_ubuntu64.gz  &&  \
+gzip -d paup4a169_ubuntu64.gz  &&  chmod +x paup4a169_ubuntu64  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+

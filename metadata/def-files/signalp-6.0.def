@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
 /gpfs01/Q0195/apptainer/metadata/files/signalp-6.0h.fast.tar.gz /opt
@@ -17,6 +17,5 @@ mv signalp6_fast/signalp-6-package signalp  &&  rmdir signalp6_fast  &&  \
 pip3 install signalp/
 
 %environment
-export PATH="/opt/stampy-1.0.32:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export MODELS=/opt/signalp/models/
 
