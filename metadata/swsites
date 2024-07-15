@@ -77,6 +77,7 @@ capsim github.com/Devika1/capsim
 castep castep.org
 cd-hit github.com/weizhongli/cdhit
 cellranger support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome
+cellsnp-lite github.com/single-cell-genetics/cellsnp-lite
 checkm-genome github.com/Ecogenomics/CheckM
 cialign github.com/KatyBrown/CIAlign
 cloog cloog.org
@@ -257,6 +258,7 @@ migrate-n peterbeerli.com/migrate-html5/download.html
 minimap2 github.com/lh3/minimap2
 mirdeep2 github.com/rajewsky-lab/mirdeep2
 molphy www.ism.ac.jp/ismlib/softother.e.html
+monopogen github.com/KChen-lab/Monopogen
 mothur github.com/mothur/mothur
 mpc www.multiprecision.org
 mpfr www.mpfr.org
@@ -393,6 +395,7 @@ snp-sites sanger-pathogens.github.io/snp-sites
 soapdenovo2 http://soap.genomics.org.cn/soapdenovo.html
 soapnuke github.com/BGI-flexlab/SOAPnuke
 sortmerna github.com/biocore/sortmerna
+souporcell github.com/wheaton5/souporcell
 spades cab.spbu.ru/files/release3.12.0/manual.html
 sparsehash github.com/sparsehash/sparsehash
 sqlite www.sqlite.org
@@ -441,6 +444,7 @@ unicycler github.com/rrwick/Unicycler
 units www.gnu.org/software/units/
 usearch drive5.com/usearch/
 usher github.com/yatisht/usher
+vartrix github.com/10XGenomics/vartrix
 vcf-kit vcf-kit.readthedocs.io/en/latest/?badge=latest
 vcflib github.com/vcflib/vcflib
 vcftools vcftools.sourceforge.net

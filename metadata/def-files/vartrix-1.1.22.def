@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+cd /usr/local/bin  &&  \
+wget https://github.com/10XGenomics/vartrix/releases/download/v1.1.22/vartrix_linux  &&  \
+chmod 775 vartrix_linux
+

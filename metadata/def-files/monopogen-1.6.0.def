@@ -1,0 +1,28 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.6.0  &&  \
+apt-get update  &&  \
+apt-get install -y openjdk-11-jdk python3 python3-pip r-base  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+pip3 install "pandas>=1.2.3"  &&  \
+pip3 install "pysam>=0.16.0.1"  &&  \
+pip3 install "numpy>=1.19.5"  &&  \
+pip3 install "scipy>=1.6.3"  &&  \
+pip3 install "pillow>=8.2.0"  &&  \
+R --slave -e 'install.packages("data.table")'  &&  \
+R --slave -e 'install.packages("ggplot2")'  &&  \
+R --slave -e 'install.packages("e1071")'  &&  \
+wget https://github.com/KChen-lab/Monopogen/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv Monopogen-1.6.0 Monopgen  &&  \
+cd Monopgen  &&  pip3 install -e .
+
+%environment
+export PATH="/opt/Monopogen/apps:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

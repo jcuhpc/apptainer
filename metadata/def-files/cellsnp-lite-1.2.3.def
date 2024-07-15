@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/mamba-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+mamba create  -c conda-forge -c bioconda -c defaults -n cellsnp cellsnp-lite=1.2.3  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/cellsnp/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
