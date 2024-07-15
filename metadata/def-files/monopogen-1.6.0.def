@@ -20,8 +20,9 @@ R --slave -e 'install.packages("ggplot2")'  &&  \
 R --slave -e 'install.packages("e1071")'  &&  \
 wget https://github.com/KChen-lab/Monopogen/archive/refs/tags/v$VERS.tar.gz  &&  \
 tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
-mv Monopogen-1.6.0 Monopgen  &&  \
-cd Monopgen  &&  pip3 install -e .
+mv Monopogen-$VERS Monopogen  &&  cd Monopogen  &&  pip3 install -e .  &&  \
+cd apps  &&  ln ../src/Monopogen.py .  &&  \
+chmod +x bc* bg* [gjstv]* *.jar *.py
 
 %environment
 export PATH="/opt/Monopogen/apps:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
