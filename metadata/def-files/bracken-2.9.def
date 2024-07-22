@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+KVER=1.0.4  &&  VERS=2.9  &&  \
+apt-get install -y kraken kraken2 libboost-dev libbz2-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/fbreitwieser/krakenuniq/archive/refs/tags/v$KVER.tar.gz  &&  \
+tar xf v$KVER.tar.gz  &&  cd krakenuniq-$KVER  &&  \
+./install_krakenuniq.sh /opt/krakenuniq  &&  \
+cd ..  &&  rm -rf *.tar.gz *-$KVER  &&  \
+wget https://github.com/jenniferlu717/Bracken/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  mv Bracken-$VERS bracken  &&  \
+cd bracken  &&  bash install_bracken.sh  &&  \
+cd ..  &&  rm -f *.tar.gz
+
+%environment
+export PATH="/opt/bracken:/opt/bracken/analysis-scripts:/opt/krakenuniq:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
