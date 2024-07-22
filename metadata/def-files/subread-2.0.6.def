@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.0.6  &&  \
+apt-get update  &&  \
+wget https://sourceforge.net/projects/subread/files/subread-$VERS/subread-$VERS-Linux-x86_64.tar.gz  &&  \
+tar xf subread-$VERS-Linux-x86_64.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv subread-2.0.6-Linux-x86_64 subread
+
+%environment
+export PATH="/opt/subread/bin:/opt/subread/bin/utilities:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
