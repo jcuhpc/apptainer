@@ -1,0 +1,16 @@
+Bootstrap: docker
+From: seafrogbert/marine_animal_detector:latest
+
+#%runscript
+#exec "$@"
+
+%post
+install -d -m 2775 -o root -g root /gpfs01  &&  \
+install -d -m 1777 -o root -g root /scratch /fast/tmp  &&  \
+apt-key del 7fa2af80  &&  \
+curl -L -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb  &&  \
+dpkg -i ./cuda-keyring_1.0-1_all.deb  &&  \
+rm -f *.deb
+
+%environment
+export PATH="/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
