@@ -103,6 +103,7 @@ dextractor github.com/thegenemyers/DEXTRACTOR
 diamond github.com/bbuchfink/diamond
 diamond_add_taxonomy github.com/pvanheus/diamond_add_taxonomy
 dirac diracprogram.org/doc/release-15/
+dirac-mpi https://gitlab.com/dirac/dirac/-/tree/release-24?ref_type=heads
 dlcpar github.com/wutron/dlcpar
 dmd dlang.org
 dnaclust dnaclust.sourceforge.net
@@ -378,6 +379,7 @@ salmon github.com/COMBINE-lab/salmon
 samtools www.htslib.org
 scalpel scalpel.sourceforge.net
 scikit-learn scikit-learn.org
+scikit-maad https://github.com/scikit-maad/scikit-maad/tree/production
 seadas seadas.gsfc.nasa.gov
 secretomep services.healthtech.dtu.dk/service.php?SecretomeP-2.0
 sed www.gnu.org/software/sed/
