@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get -y install gfortran  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+git clone https://github.com/syntheke/bayesR.git  &&  cd bayesR/src  &&  \
+gfortran -o ../bin/bayesR -O2 -cpp RandomDistributions.f90 baymods.f90 bayesR.f90  &&  \
+gfortran -o bayesRv2 -O2 -cpp -Dblock -fopenmp RandomDistributions.f90 baymods.f90 bayesR.f90
+
+%environment
+export PATH="/opt/bayesR/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

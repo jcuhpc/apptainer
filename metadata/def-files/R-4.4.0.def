@@ -87,6 +87,7 @@ R --slave -e 'install.packages("DHARMa")'  &&  \
 R --slave -e 'install.packages("DiagrammeR")'  &&  \
 R --slave -e 'install.packages("distributional")'  &&  \
 R --slave -e 'install.packages("diveRsity")'  &&  \
+R --slave -e 'install.packages("doParallel")'  && \
 R --slave -e 'install.packages("doMC")'  &&  \
 R --slave -e 'install.packages("doSNOW")'  &&  \
 R --slave -e 'install.packages("downloader")'  &&  \
