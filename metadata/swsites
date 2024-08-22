@@ -40,6 +40,7 @@ bayesass github.com/brannala/BA3/releases
 bayesass3-snp github.com/brannala/BA3/releases
 bayescan cmpg.unibe.ch/software/BayeScan
 bayescenv github.com/devillemereuil/bayescenv
+bayesR github.com/syntheke/bayesR
 bazel github.com/bazelbuild/bazel
 bbftp-client github.com/ucla/bbftp-client
 bcftools www.htslib.org
