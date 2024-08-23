@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=7.3.1  &&  \
+apt-get update  &&  \
+apt-get install -y default-jdk g++ unzip zip  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/bazelbuild/bazel/releases/download/$VERS/bazel-$VERS-installer-linux-x86_64.sh  &&  \
+chmod +x *.sh  &&  ./bazel-$VERS-installer-linux-x86_64.sh  &&  \
+rm -f bazel-$VERS-installer-linux-x86_64.sh
+
+%environment
+export PATH="/opt/bazel/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
