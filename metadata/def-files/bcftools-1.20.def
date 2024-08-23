@@ -1,13 +1,22 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n bcftools bcftools=1.20  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+VERS=1.20  &&  \
+apt-get update  &&  \
+apt-get install -y libbz2-dev libcurl4-gnutls-dev libgsl27 libgsl-dev liblzma-dev zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/samtools/bcftools/releases/download/$VERS/bcftools-$VERS.tar.bz2  &&  \
+tar xf bcftools-$VERS.tar.bz2  &&  rm -f *.tar.bz2  &&  \
+mv bcftools-$VERS bcftools  &&  cd bcftools  &&  \
+make -j 4  &&  make install  &&  \
+cd ..  &&  rm -fr bcftools
 
 %environment
-export PATH="/opt/conda/envs/bcftools/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/bcftools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export BCFTOOLS_PLUGINS=/usr/local/libexec/bcftools
 
