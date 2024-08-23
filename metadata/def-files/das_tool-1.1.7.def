@@ -1,13 +1,24 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n das_tool das_tool=1.1.7  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+VERS=1.1.7  &&  \
+apt-get update  &&  \
+apt-get install -y diamond-aligner prodigal pullseq r-base ruby  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+R --slave -e 'install.packages("docopt")'  &&  \
+R --slave -e 'install.packages("magrittr")'  &&  \
+R --slave -e 'install.packages("data.table")'  &&  \
+wget https://github.com/cmks/DAS_Tool/archive/refs/tags/$VERS.tar.gz  &&  \
+tar xf $VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv DAS_Tool-$VERS das_tool  &&  \
+cd das_tool  &&  \
+unzip db.zip  && rm -f *.zip
 
 %environment
-export PATH="/opt/conda/envs/das_tool/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/das_tool:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
