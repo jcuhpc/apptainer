@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 VERS=2.5.4  &&  \
 apt-get update  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/BenLangmead/bowtie2/releases/download/v$VERS/bowtie2-$VERS-linux-x86_64.zip  &&  \
 unzip *.zip  &&  rm -f *.zip  &&  mv bowtie2-$VERS-linux-x86_64 bowtie2
 

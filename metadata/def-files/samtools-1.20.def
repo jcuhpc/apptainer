@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.20  &&  \
+apt-get update  &&  \
+apt-get install -y autoconf automake make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libdeflate-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/samtools/samtools/releases/download/$VERS/samtools-$VERS.tar.bz2  &&  \
+tar xf samtools-$VERS.tar.bz2  &&  \
+rm -f *.tar.bz2  &&  cd samtools-$VERS  &&  \
+./configure --prefix=/usr/local  &&  make -j 4  &&  make install  &&  \
+cd /opt  &&  rm -rf samtools-$VERS
+

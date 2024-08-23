@@ -7,7 +7,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28_x64-linux.tar.bz2  &&  \
 tar xf minimap2-2.28_x64-linux.tar.bz2  &&  rm -f *.tar.bz2  &&  \
 mv minimap2-2.28_x64-linux minimap2
