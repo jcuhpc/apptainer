@@ -1,13 +1,18 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n canu canu=2.2  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+VERS=2.2  &&  \
+apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/marbl/canu/releases/download/v$VERS/canu-$VERS.linux-amd64.tar.xz  &&  \
+tar xf canu-$VERS.linux-amd64.tar.xz  &&  rm -f *.xz  &&  \
+mv canu-2.2 canu
 
 %environment
-export PATH="/opt/conda/envs/canu/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/canu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
