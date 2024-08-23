@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+wget https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28_x64-linux.tar.bz2  &&  \
+tar xf minimap2-2.28_x64-linux.tar.bz2  &&  rm -f *.tar.bz2  &&  \
+mv minimap2-2.28_x64-linux minimap2
+
+%environment
+export PATH="/opt/minimap2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
