@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.5.4  &&  \
+apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+wget https://github.com/BenLangmead/bowtie2/releases/download/v$VERS/bowtie2-$VERS-linux-x86_64.zip  &&  \
+unzip *.zip  &&  rm -f *.zip  &&  mv bowtie2-$VERS-linux-x86_64 bowtie2
+
+%environment
+export PATH="/opt/bowtie2:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
