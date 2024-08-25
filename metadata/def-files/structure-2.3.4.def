@@ -1,13 +1,17 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n structure structure=2.3.4  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+apt-get update  &&  \
+wget https://web.stanford.edu/group/pritchardlab/structure_software/release_versions/v2.3.4/release/structure_linux_console.tar.gz  &&  \
+tar xf structure_linux_console.tar.gz  &&  rm -f *.tar.gz  &&  \
+cd console  &&  chmod 775 . structure  &&  \
+chmod 664 [emt]* *.pdf
 
 %environment
-export PATH="/opt/conda/envs/structure/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/console:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
