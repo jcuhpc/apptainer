@@ -1,13 +1,14 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
 VERS=1.7.3  &&  \
-conda update conda  &&  \
 wget https://raw.githubusercontent.com/faircloth-lab/phyluce/v$VERS/distrib/phyluce-$VERS-py36-Linux-conda.yml  &&  \
+sed -ie '/  - default/d' phyluce-$VERS-py36-Linux-conda.yml  &&  \
 conda env create -n phyluce --file phyluce-$VERS-py36-Linux-conda.yml  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
-conda activate phyluce
+conda activate phyluce  &&  \
+rm -f *.yml*
 
 %environment
 export PATH="/opt/conda/envs/phyluce/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
