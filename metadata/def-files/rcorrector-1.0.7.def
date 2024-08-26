@@ -1,13 +1,20 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n rcorrector rcorrector=1.0.7  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y jellyfish  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/mourisl/Rcorrector/archive/refs/tags/v1.0.7.tar.gz  &&  \
+tar xf v1.0.7.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv Rcorrector-1.0.7 rcorrector  &&  \
+chmod 775 rcorrector/*.pl  &&  \
+cd rcorrector  &&  make
 
 %environment
-export PATH="/opt/conda/envs/rcorrector/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/rcorrector:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
