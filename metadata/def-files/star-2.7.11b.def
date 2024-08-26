@@ -1,13 +1,17 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n star star=2.7.11b  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+VERS=2.7.11b  &&  \
+wget https://github.com/alexdobin/STAR/releases/download/$VERS/STAR_$VERS.zip  &&  \
+unzip STAR_$VERS.zip  &&  cd STAR_$VERS/Linux_x86_64_static  &&  \
+install -m 775 * /usr/local/bin/  &&  \
+cd ../..  &&  rm -rf  /opt/*
 
 %environment
-export PATH="/opt/conda/envs/star/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/star:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
