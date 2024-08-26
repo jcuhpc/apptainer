@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n shannon_cpp shannon_cpp=0.5.0  &&  \
+mamba create -c conda-forge -c bioconda -n shannon_cpp shannon_cpp=0.5.0  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
