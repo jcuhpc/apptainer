@@ -1,13 +1,16 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -c defaults -n orthofinder orthofinder=2.5.5  &&  \
-. /opt/conda/etc/profile.d/conda.sh
+cd /opt  &&  \
+pip3 install numpy scipy  &&  \
+wget https://github.com/davidemms/OrthoFinder/releases/download/2.5.5/OrthoFinder_source.tar.gz  &&  \
+tar xf OrthoFinder_source.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv OrthoFinder_source orthofinder
 
 %environment
-export PATH="/opt/conda/envs/orthofinder/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/orthofinder:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
