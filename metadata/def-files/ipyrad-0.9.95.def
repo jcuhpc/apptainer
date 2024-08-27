@@ -1,12 +1,12 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
-mamba create  -c conda-forge -c eaton-lab -c bioconda -c defaults -n ipyrad ipyrad=0.9.95  &&  \
+mamba create  -c conda-forge -c eaton-lab -c bioconda -n ipyrad ipyrad=0.9.95  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
 export PATH="/opt/conda/envs/ipyrad/bin:/opt/tetrad/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
 pip install --upgrade jupyter_core  &&  \
