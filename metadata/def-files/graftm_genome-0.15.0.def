@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
@@ -7,7 +7,7 @@ exec "$@"
 %post
 apt-get update  &&  \
 apt-get install -y make  &&  \
-mamba create  -c conda-forge -c bioconda -c defaults -n graftm graftm=0.15.0 diamond hmmer krona mfqe orfm pplacer  &&  \
+mamba create -c conda-forge -c bioconda -n graftm graftm=0.15.0 diamond hmmer krona mfqe orfm pplacer  &&  \
 rm -rf /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \
 ln -s /gpfs01/Q0195/database/krona/taxonomy /opt/conda/envs/graftm/opt/krona/taxonomy  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
