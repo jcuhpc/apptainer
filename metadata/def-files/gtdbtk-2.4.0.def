@@ -1,12 +1,12 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 VERS=2.4.0  &&  \
-mamba create  -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=$VERS  &&  \
+mamba create -c bioconda -c conda-forge -n gtdbtk gtdbtk=$VERS  &&  \
 export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-$VERS/db  &&  \
 cd /opt/conda/envs/gtdbtk/share/gtdbtk-$VERS  &&  rm -rf db  &&  \
 mkdir -p $GTDBTK_DATA_PATH  &&  \
