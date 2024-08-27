@@ -1,12 +1,12 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
 export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
-mamba create --debug -c conda-forge -c bioconda -n longstitch longstitch=1.0.5  &&  \
+mamba create -c conda-forge -c bioconda -n longstitch longstitch=1.0.5  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
