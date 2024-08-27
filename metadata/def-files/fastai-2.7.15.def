@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c fastai -c defaults -n fastai fastai=2.7.15  &&  \
+mamba create -c fastai -n fastai fastai=2.7.15  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
