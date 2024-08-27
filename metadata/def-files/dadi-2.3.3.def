@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c defaults -n dadi dadi=2.3.3  &&  \
+mamba create -c conda-forge -n dadi dadi=2.3.3  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
