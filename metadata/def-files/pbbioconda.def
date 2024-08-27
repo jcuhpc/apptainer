@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create --debug -c bioconda -c conda-forge -c defaults -n pbbioconda isoseq jasmine lima pbaa pbbam pbccs pbcommand pbcopper pbcore pbcoretools pb-falcon pb-assembly pbfusion pbipa pbmarkdup pbmm2 pbpigeon pbskera pbsv pbtk recalladapters trgt  &&  \
+mamba create --debug -c bioconda -c conda-forge -n pbbioconda isoseq jasmine lima pbaa pbbam pbccs pbcommand pbcopper pbcore pbcoretools pb-falcon pb-assembly pbfusion pbipa pbmarkdup pbmm2 pbpigeon pbskera pbsv pbtk recalladapters trgt  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
