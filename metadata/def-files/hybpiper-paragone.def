@@ -1,5 +1,5 @@
 BootStrap: localimage
-From: /fast/tmp/containers/mamba-24.04.sif
+From: /fast/tmp/containers/miniforge-24.04.sif
 
 %post
 apt-get -y update  &&  \
@@ -9,7 +9,6 @@ apt-get -y update  &&  \
 apt-get -y install build-essential fonts-dejavu-core libgl1 locales pkg-config time unzip vim  &&  \
 locale-gen en_US.UTF-8  &&  \
 echo "LANG=en_US.UTF-8" >> /etc/default/locale  &&  \
-conda config --add channels defaults  &&  \
 conda config --add channels bioconda  &&  \
 conda config --add channels conda-forge  &&  \
 mamba install -y conda-forge::python=3.11  &&  \
