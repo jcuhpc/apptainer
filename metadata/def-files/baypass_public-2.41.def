@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get -y install gfortran libomp-dev  &&  \
+wget https://forgemia.inra.fr/mathieu.gautier/baypass_public/-/archive/v2.41/baypass_public-v2.41.tar.gz  &&  \
+tar -xzvf baypass_public-v2.41.tar.gz  &&  \
+rm -rf baypass_public-v2.41.tar.gz
+cd baypass_public-v2.41/sources  &&  \
+make clean all FC=gfortran  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/opt/baypass_public-v2.41/sources:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
