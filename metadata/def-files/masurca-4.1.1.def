@@ -17,4 +17,4 @@ sed -i 's/ && cp -a \.\.\/Flye \$DEST//g' install.sh  &&  \
 
 %environment
 export PATH="/opt/MaSuRCA/CA8/Linux-amd64/bin:/opt/MaSuRCA/bin:/opt/MaSuRCA/Flye/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export PERL5LIB="/opt/MaSuRCA/lib/perl:$PERL5LIB
+export PERL5LIB="/opt/MaSuRCA/lib/perl:$PERL5LIB"
