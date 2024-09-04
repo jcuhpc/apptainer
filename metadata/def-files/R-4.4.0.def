@@ -92,6 +92,7 @@ R --slave -e 'install.packages("doMC")'  &&  \
 R --slave -e 'install.packages("doSNOW")'  &&  \
 R --slave -e 'install.packages("downloader")'  &&  \
 R --slave -e 'install.packages("dynlm")'  &&  \
+R --slave -e 'install.packages("earth")'
 R --slave -e 'install.packages("EasyABC")'  &&  \
 R --slave -e 'install.packages("Ecdat")'  &&  \
 R --slave -e 'install.packages("Ecfun")'  &&  \
@@ -124,6 +125,7 @@ R --slave -e 'install.packages("gdm")'  &&  \
 R --slave -e 'install.packages("gdtools")'  &&  \
 R --slave -e 'install.packages("gee")'  &&  \
 R --slave -e 'install.packages("geepack")'  &&  \
+R --slave -e 'install.packages("geigen")'
 R --slave -e 'install.packages("geiger")'  &&  \
 R --slave -e 'install.packages("genetics")'  &&  \
 R --slave -e 'install.packages("geoR")'  &&  \
@@ -193,10 +195,12 @@ R --slave -e 'install.packages("Matching")'  &&  \
 R --slave -e 'install.packages("MatchIt")'  &&  \
 R --slave -e 'install.packages("matrixcalc")'  &&  \
 R --slave -e 'install.packages("maxlike")'  &&  \
+R --slave -e 'install.packages("maxnet")'
 R --slave -e 'install.packages("mboost")'  &&  \
 R --slave -e 'install.packages("mcgibbsit")'  &&  \
 R --slave -e 'install.packages("mcmc")'  &&  \
 R --slave -e 'install.packages("MCMCglmm")'  &&  \
+R --slave -e 'install.packages("mda")'
 R --slave -e 'install.packages("mediation")'  &&  \
 R --slave -e 'install.packages("MEMSS")'  &&  \
 R --slave -e 'install.packages("mice")'  &&  \
@@ -234,6 +238,7 @@ R --slave -e 'install.packages("png")'  &&  \
 R --slave -e 'install.packages("poilog")'  &&  \
 R --slave -e 'install.packages("polspline")'  &&  \
 R --slave -e 'install.packages("polysat")'  &&  \
+R --slave -e 'install.packages("poolfstat")'
 R --slave -e 'install.packages("poppr")'  &&  \
 R --slave -e 'install.packages("projpred")'  &&  \
 R --slave -e 'install.packages("proto")'  &&  \
@@ -337,6 +342,7 @@ R --slave -e 'install.packages("VSURF")'  &&  \
 R --slave -e 'install.packages("waveslim")'  &&  \
 R --slave -e 'install.packages("wavethresh")'  &&  \
 R --slave -e 'install.packages("wosr")'  &&  \
+R --slave -e 'install.packages("xgboost")'
 R --slave -e 'install.packages("xts")'  &&  \
 R --slave -e 'install.packages("yhat")'  &&  \
 R --slave -e 'install.packages("zoeppritz")'  &&  \

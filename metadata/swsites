@@ -41,6 +41,7 @@ bayesass3-snp github.com/brannala/BA3/releases
 bayescan cmpg.unibe.ch/software/BayeScan
 bayescenv github.com/devillemereuil/bayescenv
 bayesR github.com/syntheke/bayesR
+baypass_public https://forgemia.inra.fr/mathieu.gautier/baypass_public
 bazel github.com/bazelbuild/bazel
 bbftp-client github.com/ucla/bbftp-client
 bcftools www.htslib.org
@@ -330,6 +331,7 @@ picard github.com/broadinstitute/picard
 pilon github.com/broadinstitute/pilon
 pigz zlib.net/pigz/
 pipits github.com/hsgweon/pipits
+pixy https://github.com/ksamuk/pixy
 plink cog-genomics.org/plink/2.0/
 plink2 cog-genomics.org/plink/2.0/
 pplacer masten.fredhutch.org/pplacer/
