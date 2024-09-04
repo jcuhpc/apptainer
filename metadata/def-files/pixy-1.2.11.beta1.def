@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+python3 --version  &&  \
+VERS=1.2.11.beta1  &&  \
+wget https://github.com/ksamuk/pixy/archive/refs/tags/$VERS.tar.gz  &&  \
+tar -xvf $VERS.tar.gz  &&  rm -f $VERS1.tar.gz  &&  \
+cd pixy-$VERS  &&  chmod 775 setup.py  &&  \
+python3 setup.py build clean install  &&  \
+conda create -c bioconda -n htslib htslib=1.20  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/htslib:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
