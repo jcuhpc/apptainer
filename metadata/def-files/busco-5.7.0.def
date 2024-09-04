@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create --debug -c conda-forge -c bioconda -c defaults -n busco busco=5.7.0  &&  \
+mamba create --debug -c conda-forge -c bioconda -n busco busco=5.7.0  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
 ln -s /gpfs01/Q0195/database/busco /busco_downloads
 
