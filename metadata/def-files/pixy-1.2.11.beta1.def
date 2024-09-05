@@ -16,5 +16,5 @@ conda create -c bioconda -n htslib htslib=1.20  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
-export PATH="/opt/conda/envs/htslib:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/htslib/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
