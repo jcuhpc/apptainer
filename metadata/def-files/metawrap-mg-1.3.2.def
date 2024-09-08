@@ -1,5 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/mamba-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/metawrap-mg-1.3.2.yml /opt
 
 %post
 cd /opt  &&  \
@@ -7,12 +10,9 @@ apt update  &&  \
 apt install -y libarchive-dev libarchive-tools  &&  \
 git clone https://github.com/bxlab/metaWRAP.git  &&  \
 export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
-mamba create -y -n metawrap python=2.7   &&  \
-conda config --add channels defaults     &&  \
-conda config --add channels conda-forge  &&  \
-conda config --add channels bioconda     &&  \
-conda config --add channels ursky        &&  \
-mamba install -n metawrap --only-deps -c ursky metawrap-mg=1.3.2  &&  \
+mamba env create -f /opt/metawrap-mg-1.3.2.yml  &&  \
+cd /opt/conda/envs/metawrap/opt/krona  &&  rm -rf taxonomy  &&  \
+ln -s /gpfs01/Q0195/database/krona/taxonomy .  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment
@@ -21,12 +21,11 @@ export bin_path=/opt/conda/envs/metawrap/bin
 export mw_path=/opt/conda/envs/metawrap/bin/metawrap
 export SOFT=/opt/conda/envs/metawrap/bin/metawrap-scripts
 export PIPES=/opt/conda/envs/metawrap/bin/metawrap-modules
-export KRAKEN_DB=/scratch/database/kracken
-
-export KRAKEN2_DB=/scratch/database/kraken2
-export BMTAGGER_DB=/scratch/database/bmtagger
-export BLASTDB=/scratch/database/blast4/nt
-export TAXDUMP=/scratch/database/taxdump
+export KRAKEN_DB=/gpfs01/Q0195/database/kracken
+export KRAKEN2_DB=/gpfs01/Q0195/database/kraken2
+export BMTAGGER_DB=/gpfs01/Q0195/database/bmtagger
+export BLASTDB=/gpfs01/Q0195/database/blast4/nt
+export TAXDUMP=/gpfs01/Q0195/database/taxdump
 export CONDA_HOME=/opt/conda
 export CONDA_PROF=/opt/conda/etc/profile.d
 
