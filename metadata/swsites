@@ -446,6 +446,7 @@ trimmomatic www.usadellab.org/cms/?page=trimmomatic
 trinity github.com/trinityrnaseq/trinityrnaseq
 trinityrnaseq github.com/trinityrnaseq/trinityrnaseq
 trinotate trinotate.github.io
+trnascan-se github.com/UCSC-LoweLab/tRNAscan-SE
 ucsc-blat genome.ucsc.edu
 ucsc-fatotwobit genome.ucsc.edu
 ucsc-software genome.ucsc.edu
