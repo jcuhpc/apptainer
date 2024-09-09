@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+VERS=0.12.7  &&  \
+apt-get update  &&  \
+cd /usr/local/share  &&  \
+wget https://github.com/gpertea/gffread/releases/download/v$VERS/gffread-$VERS.Linux_x86_64.tar.gz  &&  \
+tar xf gffread-$VERS.Linux_x86_64.tar.gz  &&  rm -f *.tar.gz  &&  \
+install -m 775 gffread-$VERS.Linux_x86_64/gffread /usr/local/bin  &&  \
+rm -f gffread-$VERS.Linux_x86_64/gffread
+
