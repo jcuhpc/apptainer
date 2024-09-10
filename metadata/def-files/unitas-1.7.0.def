@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+wget https://www.smallrnagroup.uni-mainz.de/software/unitas_1.7.0.zip  &&  \
+unzip unitas_1.7.0.zip  &&  rm -f *.zip  &&  \
+chmod 775 unitas/unitas_1.7.0.pl 
+
+%environment
+export PATH="/opt/unitas:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PERL5LIB="/opt/unitas/Scalar:/opt/unitas/Statistics:/opt/unitas/LWP:/opt/unitas/LWP/Authen:/opt/unitas/LWP/Protocol:/opt/unitas/Compress:/opt/unitas/Archive"
+
