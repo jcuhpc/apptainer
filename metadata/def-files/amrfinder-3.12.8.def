@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y  hmmer libcurl4 ncbi-blast+  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/ncbi/amr/releases/download/amrfinder_v3.12.8/amrfinder_binaries_v3.12.8.tar.gz  &&  \
+install -d -m 775 amrfinder  ;  cd amrfinder  &&  \
+tar xf ../amrfinder_binaries_v3.12.8.tar.gz  &&  rm -f ../*.tar.gz
+
+%environment
+export PATH="/opt/amrfinder:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
