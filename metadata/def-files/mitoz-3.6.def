@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+mamba create -c bioconda -c conda-forge -n mitoz mitoz=3.6  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+export PATH="/opt/conda/envs/mitoz/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"  &&  \
+circos --modules
+
+%environment
+export PATH="/opt/conda/envs/mitoz/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
