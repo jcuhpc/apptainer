@@ -1,0 +1,11 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /usr/local/bin  &&  \
+wget https://www.smallrnagroup.uni-mainz.de/software/proTRAC_2.4.2.pl  &&  \
+chmod 775 proTRAC*.pl
+
