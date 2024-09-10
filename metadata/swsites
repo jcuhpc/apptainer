@@ -349,7 +349,8 @@ purge_haplotigs bitbucket.org/mroachawri/purge_haplotigs/
 pyega3 pypi.org/project/pyega3/
 pyfasta pypi.python.org/pypi/pyfasta/
 pyfastaq pypi.python.org/pypi/pyfastaq/
-pyfastx pyfastx.readthedocs.io
+p9yfastx pyfastx.readthedocs.io
+pygenometracks github.com/deeptools/pyGenomeTracks
 pyproj pyproj4.github.io/pyproj/stable/
 pyslim github.com/tskit-dev/pyslim
 python www.python.org
