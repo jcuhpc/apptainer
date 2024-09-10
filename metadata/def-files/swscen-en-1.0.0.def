@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
+
+%labels
+Maintainer JCUHPC
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.0.0  &&  \
+pip3 install --upgrade pip  &&  \
+pip3 install biopython numpy pathlib2 tqdm  &&  \
+wget https://github.com/Tagliacollo/PFinderUCE-SWSC-EN/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv PFinderUCE-SWSC-EN-$VERS PFinderUCE-SWSC-EN-master
+

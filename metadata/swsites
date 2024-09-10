@@ -423,6 +423,7 @@ structure web.stanford.edu/group/pritchardlab/structure.html
 subread sourceforge.net/projects/subread/
 sumaclust http://metabarcoding.org/sumaclust
 swig swig.org
+swscen-en github.com/Tagliacollo/PFinderUCE-SWSC-EN
 tabix www.htslib.org
 tar www.gnu.org/software/tar/
 t-coffee http://www.tcoffee.org/Projects_home_page/t_coffee_home_page.html
