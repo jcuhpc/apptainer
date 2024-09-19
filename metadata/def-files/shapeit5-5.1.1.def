@@ -1,0 +1,32 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libbz2-dev liblzma-dev zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+#
+htslib_version='1.21'  &&  \
+curl -SL https://github.com/samtools/bcftools/releases/download/${htslib_version}/bcftools-${htslib_version}.tar.bz2 > bcftools-${htslib_version}.tar.bz2  &&  \
+tar -xjvf bcftools-${htslib_version}.tar.bz2  &&  \
+cd /opt/bcftools-${htslib_version}  &&  \
+./configure  &&  make -j4  &&  make install &&  \
+rm -rf bcftools*  &&  \
+#
+mkdir -p /opt/shapeit5/bin  &&  \
+cd /opt/shapeit5/bin  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/ligate_static  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_common_static  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/phase_rare_static  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/simulate_static  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/switch_static  &&  \
+wget https://github.com/odelaneau/shapeit5/releases/download/v5.1.1/xcftools_static  && \
+chmod +x /opt/shapeit5/bin/*
+
+%environment
+export PATH="/opt/shapeit5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
