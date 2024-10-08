@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.0.1  &&  \
+apt-get update  &&  \
+apt-get install -y pipenv python2 python-is-python2 python-pip-whl  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/wutron/dlcpar/archive/refs/tags/v$VERS.tar.gz  &&  \
+pip install cplex matplotlib numpy pulp shapely  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv dlcpar-$VERS dlcpar  &&  cd dlcpar  &&  \
+python setup.py install --prefix=/usr/local  &&  \
+cd /opt  &&  rm -rf dlcpar
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
