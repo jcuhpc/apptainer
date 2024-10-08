@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+wget https://download947.mediafire.com/0lb4gil0fvngKSRubvYsms2kfirwoPT3FnuNNzOROLw9K1pBSNigeChsvU1FCJ5dB679h5jswDLpc3V8nGl2DMGZj0e9BSofQm-E8KJxGNnHKOBeyKP5xWskEI1GbFKDHtaBEolYZqxQ0Fiqm9L90fI3yFRUvLO51MAwveDlX2rODYfc/1t4ulh3bny8oyw3/DivStat_cmd_Linux64.tar.gz  &&  \
+tar xf *.tar.gz  &&  rm -f *.tar.gz
+
+%environment
+export PATH="/opt/DivStat_cmd_Linux64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
