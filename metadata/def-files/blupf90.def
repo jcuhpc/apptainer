@@ -1,0 +1,28 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%post
+export DEBIAN_FRONTEND=noninteractive  &&  \
+apt-get update -y  &&  \
+apt-get install -y gfortran  &&  \
+mkdir -p /opt/blupf90  &&  cd /opt/blupf90  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/blupf90+  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/gibbsf90+  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/idsolf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/inbupgf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/postgibbsf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/postGSf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/predf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/predictf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/preGSf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/qcf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/renumf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/rrmebvf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/seekparentf90  &&  \
+wget --no-check-certificate https://nce.ads.uga.edu/html/projects/programs/Linux/64bit/validationf90  &&  \
+chmod 755 *
+
+%environment
+export PATH="/opt/blupf90:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
