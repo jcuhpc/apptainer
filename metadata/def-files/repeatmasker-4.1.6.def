@@ -12,16 +12,17 @@ apt-get update  &&  \
 apt-get install -y python3-h5py trf  &&  \
 VERS=2.14.1  &&  wget https://www.repeatmasker.org/rmblast/rmblast-$VERS+-x64-linux.tar.gz  &&  \
 tar zxvf rmblast-$VERS+-x64-linux.tar.gz --directory /usr/local  &&  \
+mv /usr/local/rmblast-$VERS /usr/local/rmblast  &&  \
 rm -f rmblast-$VERS+-x64-linux.tar.gz  &&  \
 VERS=4.1.6  &&  wget https://www.repeatmasker.org/RepeatMasker/RepeatMasker-$VERS.tar.gz  &&  \
 tar zxvf RepeatMasker-$VERS.tar.gz --directory /usr/local  &&  \
 rm -f RepeatMasker-$VERS.tar.gz  &&  \
 cd /usr/local/RepeatMasker &&  \
 mv /dfam38_full.0.h5 Libraries/famdb/  &&  \
-/usr/bin/perl ./configure -trf_prgm /usr/bin/trf -default_search_engine 2 -libdir /usr/local/RepeatMasker/Libraries -rmblast_dir /usr/local/rmblast-2.11.0/bin  &&  \
+/usr/bin/perl ./configure -trf_prgm /usr/bin/trf -default_search_engine 2 -libdir /usr/local/RepeatMasker/Libraries -rmblast_dir /usr/local/rmblast/bin  &&  \
 rm -f Libraries/famdb/dfam38_full.0.h5
 # The appropriate dfam*.h5 file will be bind mounted in module file aliases
 
 %environment
-export PATH="/usr/local/RepeatMasker:/usr/local/rmblast-2.11.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/RepeatMasker:/usr/local/rmblast/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
