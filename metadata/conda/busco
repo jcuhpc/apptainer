@@ -1,26 +1,23 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    conda create --debug -c conda-forge -c bioconda -c defaults -n busco busco=SWVERS
-    . /opt/conda/etc/profile.d/conda.sh
-    export PATH=/opt/conda/envs/busco/bin:${PATH}
-    busco --download all
-    mkdir /busco_downloads/information
-    cd /busco_downloads/information
-    wget --no-check-certificate https://busco-data.ezlab.org/v5/data/information/lineages_list.2019-11-27.txt.tar.gz
-    tar xf lineages_list.2019-11-27.txt.tar.gz
-    rm -f lineages_list.2019-11-27.txt.tar.gz
-    wget --no-check-certificate https://busco-data.ezlab.org/v5/data/information/virus_datasets.2020-11-26.txt.tar.gz
-    tar xf virus_datasets.2020-11-26.txt.tar.gz
-    rm -f virus_datasets.2020-11-26.txt.tar.gz
+mamba create -c conda-forge -c bioconda -n busco busco=SWVERS  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+export PATH=/opt/conda/envs/busco/bin:${PATH}
+busco --download all   # This command has failed every time.
+mkdir /busco_downloads/information
+cd /busco_downloads/information
+wget --no-check-certificate https://busco-data.ezlab.org/v5/data/information/lineages_list.2019-11-27.txt.tar.gz
+tar xf lineages_list.2019-11-27.txt.tar.gz
+rm -f lineages_list.2019-11-27.txt.tar.gz
+wget --no-check-certificate https://busco-data.ezlab.org/v5/data/information/virus_datasets.2020-11-26.txt.tar.gz
+tar xf virus_datasets.2020-11-26.txt.tar.gz
+rm -f virus_datasets.2020-11-26.txt.tar.gz
 
 %environment
-    export PATH="/opt/conda/envs/busco/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/busco/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
+

@@ -1,18 +1,15 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    conda create --debug -c bioconda -c conda-forge -c defaults -n gtdbtk gtdbtk=SWVERS
-    . /opt/conda/etc/profile.d/conda.sh
-    conda activate gtdbtk
-    download-db.sh
+mamba create -c bioconda -c conda-forge -n gtdbtk gtdbtk=SWVERS  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate gtdbtk  &&  \
+download-db.sh
 
 %environment
-    export PATH="/opt/conda/envs/gtdbtk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/gtdbtk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
+

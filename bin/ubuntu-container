@@ -51,17 +51,12 @@ while [[ $# -gt 0 ]] ; do
     esac
 done
 
-TEMP=/fast/tmp
-DEST=/gpfs01/Q0195/containers
 # Base of apptainers creation structure.
 BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
-# Directory housing apptainer definition file templates.
-META="$BASE/metadata/ubuntu"
 
 # Auto-detect version of primary software package
-declare -A DIST=( [18.04]="bionic" [20.04]="focal" [21.04]="hirsute"\
-		  [21.10]="impish" [22.04]="jammy" [22.10]="kinetic"\
-		  [23.04]="lunar" )
+declare -A DIST=( [18.04]="bionic" [20.04]="focal" \
+		  [22.04]="jammy"  [24.04]="noble" )
 if [ "$V" = "" ] ; then
     V=`curl https://packages.ubuntu.com/${DIST[$D]}/$S 2>/dev/null | awk -F[\(\)] '/Package:/{print $2}' | awk -F[-+~] '{print $1}'`
     if [ "$V" == "" ] ; then
@@ -71,11 +66,12 @@ if [ "$V" = "" ] ; then
 fi
 
 # Create apptainer definition file
-F="$META/ubuntu-$D-base.template"
+F="metadata/ubuntu/ubuntu-$D-base.template"
 [[ ! -f $F ]]   &&   echo "ERROR: $F doesn't exist!"   &&   exit 1
-cat $F | sed -e "s/SWNAME/$S $X/g" >$TEMP/$N-$V.def
+cat $F | sed -e "s/SWNAME/$S $X/g" >$N-$V.def
 
 # Build & Install the apptainer
-sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
-mv /fast/tmp/$N-$V.def $BASE/metadata/def-files/
-/bin/install -m 775 -g hpc-admins $TEMP/$N-$V.sif $DEST/
+sudo apptainer build $N-$V.sif $N-$V.def
+/bin/install -m 664 -g hpc-admins $N-$V.def metadata/def-files/
+/bin/install -m 775 -g hpc-admins $N-$V.sif ../containers/
+rm -f $N-$V.def $N-$V.sif

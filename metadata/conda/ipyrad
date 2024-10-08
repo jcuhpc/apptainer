@@ -1,23 +1,16 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels eaton-lab
-    conda config --add channels conda-forge
-    conda create --debug -n ipyrad ipyrad=SWVERS tetrad
-    . /opt/conda/etc/profile.d/conda.sh
-    conda activate SWNAME
-    pip install --upgrade jupyter_client
-    pip install --upgrade jupyter_core
+conda create -c bioconda -c eaton-lab -c conda-forge -n ipyrad ipyrad=SWVERS tetrad  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate SWNAME  &&  \
+pip install --upgrade jupyter_client  &&  \
+pip install --upgrade jupyter_core
 
 %environment
-    export PATH="/opt/conda/envs/SWNAME/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/SWNAME/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
+

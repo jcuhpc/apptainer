@@ -1,19 +1,16 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    wget https://raw.githubusercontent.com/faircloth-lab/phyluce/vSWVERS/distrib/phyluce-SWVERS-py36-Linux-conda.yml
-    conda env create -n phyluce --file phyluce-SWVERS-py36-Linux-conda.yml
-    . /opt/conda/etc/profile.d/conda.sh
-    conda activate phyluce
+wget https://raw.githubusercontent.com/faircloth-lab/phyluce/vSWVERS/distrib/phyluce-SWVERS-py36-Linux-conda.yml  &&  \
+mamba env create -n phyluce --file phyluce-SWVERS-py36-Linux-conda.yml  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate phyluce
 
 %environment
-    export _JAVA_OPTIONS="-Xms1024m -Xmx60g"
-    export PATH="/opt/conda/envs/phyluce/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export _JAVA_OPTIONS="-Xms1024m -Xmx60g"
+export PATH="/opt/conda/envs/phyluce/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
+

@@ -5,10 +5,7 @@
 # The $META/channels file represents a mapping between software name &
 # a singularity definition file template.  Each line will contain a
 # conda package name and a template file name (space separated).
-META=/gpfs01/Q0195/apptainer/metadata/conda
-
-# Directory where singularity image files will be placed.
-INST=/gpf01/Q0195/containers/
+META=metadata/conda
 
 ##### MODIFICATIONS UNLIKELY TO BE REQUIRED IN THIS SECTION #####
 
@@ -18,23 +15,24 @@ if [ $# -eq 1 -o $# -eq 2 ] ; then
     # Determine template file & primary conda channel
     CHNL=`grep ^$N\  $META/channels | awk '{print $2}'`
     TEMP=$META/$CHNL
-    [[ -f $META/$N ]]   &&   TEMP=$META/$N
-    [[ "$CHNL" =~ "bioconda" ]]   &&   CHNL=bioconda   # Fix for use of bioconda# template files.
+    [[ -f $META/$N ]]  &&  TEMP=$META/$N
+    [[ "$CHNL" =~ "bioconda" ]]  &&  CHNL=bioconda   # Fix for use of bioconda# template files.
 
     # Base of apptainers creation structure.
     BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
+
     # Determine version to install
     V=$2   # Specify version when 'badges' data doesn't point to latest version.
     [[ "$V" = "" ]]   &&   V=`curl https://anaconda.org/$CHNL/$N/badges/version.svg 2>/dev/null | grep Anaconda.org | awk -F\- '{print $2}'`
 
     # Create singularity definition file
-    cat $TEMP | sed -e s/SWNAME/$N/g | sed -e s/SWVERS/$V/g >/fast/tmp/$N-$V.def
+    cat $TEMP | sed -e s/SWNAME/$N/g | sed -e s/SWVERS/$V/g >$N-$V.def
+
     # Build singularity container
-    TEMP=/fast/tmp
-    sudo singularity build $TEMP/$N-$V.sif $TEMP/$N-$V.def
-    mv $TEMP/$N-$V.def $BASE/metadata/def-files/
-    /bin/install -m 775 -g hpc-admins $TEMP/$N-$V.sif $INST/
-    /bin/rm -f $TEMP/$N-$V.sif
+    sudo singularity build $N-$V.sif $N-$V.def
+    /bin/install -m 664 -g hpc-admins $N-$V.def metadata/def-files/
+    /bin/install -m 775 -g hpc-admins $N-$V.sif ../containers/
+    /bin/rm -f $N-$V.def $N-$V.sif
 
 else
     echo ""

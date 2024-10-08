@@ -1,19 +1,14 @@
-Bootstrap: docker
-From: continuumio/miniconda3
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 
 %post
-    install -d -m 2775 -o root -g root /gpfs01
-    install -d -m 1777 -o root -g root /scratch /fast/tmp
-    export PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    conda update conda
-    conda config --add channels defaults
-    conda config --add channels bioconda
-    conda config --add channels conda-forge
-    conda create --debug -n SWNAME SWNAME=SWVERS
-    . /opt/conda/etc/profile.d/conda.sh
+mamba create -c conda-forge -c biocond -n SWNAMEa SWNAME=SWVERS  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate SWNAME
 
 %environment
-    export PATH="/opt/conda/envs/SWNAME/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/conda/envs/SWNAME/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 %runscript
-    exec "$@"
+exec "$@"
+
