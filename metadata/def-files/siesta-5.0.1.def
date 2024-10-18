@@ -1,0 +1,21 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=5.0.1  &&  \
+apt-get update  &&  \
+apt-get -y install cmake gfortran libreadline8 libreadline-dev liblapack-dev libnetcdff-dev libopenmpi-dev libscalapack-openmpi-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://gitlab.com/siesta-project/siesta/-/archive/$VERS/siesta-$VERS.tar.bz2  &&  \
+tar -xf siesta-$VERS.tar.bz2  &&  rm -f *.tar.bz2  &&  \
+mv siesta-$VERS siesta  &&  cd siesta  &&  \
+cmake -S. -B_build -DCMAKE_INSTALL_PREFIX=/usr/local  &&  \
+cmake --build _build -j 8  &&  cmake --install _build
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
