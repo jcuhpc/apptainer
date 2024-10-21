@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+JVER=1.11.1  &&  \
+apt-get update  &&  \
+git clone https://github.com/marcelauliano/MitoHiFi.git  &&  \
+mamba env create -n mitohifi -f MitoHiFi/environment/mitohifi_env.yml  &&  \
+export PATH="/opt/conda/envs/mitohifi/bin:$PATH"  &&  \
+pip install pillow==6.2.2  &&  \
+apt-get install -y autoconf automake build-essential default-jre  &&  \
+wget https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-$JVER-linux-x86_64.tar.gz  &&  \
+tar xf julia-$JVER-linux-x86_64.tar.gz  &&  \
+mv julia-$JVER julia  &&  rm -f *.tar.gz  &&  \
+export JULIA_DEPOT_PATH=/opt/julia/share/julia  &&  \
+/opt/julia/bin/julia -e 'using Pkg; Pkg.add("MIToS")'  &&  \
+git clone https://github.com/RemiAllio/MitoFinder.git  &&  \
+cd MitoFinder  &&  ./install.sh
+
+%environment
+export PATH="/opt/MitoFinder:/opt/MitoFinder/mitfi/infernal-1.0.2/exec/bin:/opt/julia/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
