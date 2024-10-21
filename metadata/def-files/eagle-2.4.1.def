@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.4.1  &&  \
+apt-get update  &&  \
+wget https://storage.googleapis.com/broad-alkesgroup-public/Eagle/downloads/Eagle_v$VERS.tar.gz  &&  \
+tar xf Eagle_v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv Eagle_v$VERS Eagle
+
+%environment
+export PATH="/opt/Eagle:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
