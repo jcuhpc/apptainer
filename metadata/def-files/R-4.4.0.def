@@ -41,6 +41,7 @@ R --slave -e 'install.packages("AlgDesign")'  &&  \
 R --slave -e 'install.packages("amap")'  &&  \
 R --slave -e 'install.packages("AmpGram")'  &&  \
 R --slave -e 'install.packages("Amelia")'  &&  \
+R --slave -e 'install.packages("amt")'  &&  \
 R --slave -e 'install.packages("archive")'  &&  \
 R --slave -e 'install.packages("arm")'  &&  \
 R --slave -e 'install.packages("arrayhelpers")'  &&  \
@@ -147,6 +148,7 @@ R --slave -e 'install.packages("glue")'  &&  \
 R --slave -e 'install.packages("GPArotation")'  &&  \
 R --slave -e 'install.packages("gpclib")'  &&  \
 R --slave -e 'install.packages("graphlayouts")'  &&  \
+R --slave -e 'install.packages("gsalib")'  &&  \
 R --slave -e 'install.packages("gstat")'  &&  \
 R --slave -e 'install.packages("gsubfn")'  &&  \
 R --slave -e 'install.packages("HDInterval")'  &&  \
@@ -212,6 +214,7 @@ R --slave -e 'install.packages("mlergm")'  &&  \
 R --slave -e 'install.packages("mlmRev")'  &&  \
 R --slave -e 'install.packages("mlogit")'  &&  \
 R --slave -e 'install.packages("moments")'  &&  \
+R --slave -e 'install.packages("momentuHMM")'  &&  \
 R --slave -e 'install.packages("mondate")'  &&  \
 R --slave -e 'install.packages("MPV")'  &&  \
 R --slave -e 'install.packages("multcompView")'  &&  \

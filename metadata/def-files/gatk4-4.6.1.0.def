@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=4.6.1.0  &&  \
+apt-get update  &&  \
+apt-get install -y unzip bedtools samtools bcftools tabix python3-pip  &&  \
+wget https://github.com/broadinstitute/gatk/releases/download/$VERS/gatk-$VERS.zip  &&  \
+unzip gatk-$VERS.zip  &&  rm -f gatk-$VERS.zip  &&  \
+mv gatk-$VERS gatk  &&  cd gatk  &&  \
+conda env create -n gatk -f gatkcondaenv.yml
+
+%environment
+export PATH="/opt/gatk:/opt/conda/envs/gatk/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
