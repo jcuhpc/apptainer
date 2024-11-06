@@ -110,6 +110,7 @@ dirac-mpi https://gitlab.com/dirac/dirac/-/tree/release-24?ref_type=heads
 dlcpar github.com/wutron/dlcpar
 dmd dlang.org
 dnaclust dnaclust.sourceforge.net
+dorado github.com/nanoporetech/dorado
 drep github.com/MrOlm/drep
 duck https://duck.sh/
 eagle alkesgroup.broadinstitute.org/Eagle/
