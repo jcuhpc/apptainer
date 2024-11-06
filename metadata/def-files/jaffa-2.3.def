@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.3  &&  \
+R --slave -e 'install.packages("IRanges")'  &&  \
+wget https://github.com/Oshlack/JAFFA/releases/download/version-$VERS/JAFFA-version-$VERS.tar.gz  &&  \
+tar xf JAFFA-version-$VERS.tar.gz  &&  rm -f *.tar.gz &&  \
+mv JAFFA-version-$VERS jaffa  &&  cd jaffa  &&  \
+./install_linux64.sh
+
+%environment
+export PATH="/opt/jaffa/tools/bin:/opt/jaffa/scripts:/opt/jaffa:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
