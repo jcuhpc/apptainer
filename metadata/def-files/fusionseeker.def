@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+BVER=1.2.1  &&  \
+apt-get update  &&  \
+apt-get install -y python3-pysam minimap2 samtools  &&  \
+git clone https://github.com/Maggi-Chen/FusionSeeker.git  &&  \
+wget https://github.com/ruanjue/bsalign/archive/refs/tags/v$BVER.tar.gz  &&  \
+tar xf v$BVER.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv bsalign-$BVER bsalign  &&  cd bsalign  &&  \
+make -j 4
+
+%environment
+export PATH="/opt/FusionSeeker:/opt/bsalign:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
