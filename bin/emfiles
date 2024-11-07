@@ -101,7 +101,7 @@ printf "source \$moduledir/../container\n\n" >>/tmp/$VERS
 function CMDSaliases {
     local X
     for X in $CMDS ; do
-	printf "set-alias $X\t\"singularity run \$SIF $X\"\n" >>/tmp/$VERS
+	printf "set-alias $X\t\"\$SIF $X\"\n" >>/tmp/$VERS
     done
 }
 
@@ -135,7 +135,7 @@ printf "# SIF is defined in ../container\n" >>/tmp/$VERS
 $SRUN test -d /opt/conda
 if [ $? -eq 0 ] ; then
 
-    echo "Miniconda apptainer detected!"
+    echo "Miniforge apptainer detected!"
     Conda_Search "$CONT-$VERS"
     for i in "${!XTRA[@]}" ; do 
 	Conda_Search "${XTRA[$i]}"
