@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+mamba create -c conda-forge -c bioconda -n longgf longgf=0.1.2  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/longgf/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export LD_LIBRARY_PATH="/opt/conda/envs/longgf/lib":$LD_LIBRARY_PATH
+export C_INCLUDE_PATH="/opt/conda/envs/longgf/include::$C_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="/opt/conda/envs/longgf/include":$CPLUS_INCLUDE_PATH
+
