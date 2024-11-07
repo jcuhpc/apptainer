@@ -164,6 +164,7 @@ gcc gcc.gnu.org
 gdal www.gdal.org
 gdc gdcproject.org
 gdc2 github.com/refresh-bio/GDC2
+genion github.com/vpc-ccg/genion
 genometester github.com/bioinfo-ut/GenomeTester4
 genomethreader github.com/genometools/genomethreader
 genometools github.com/genometools/genometools
