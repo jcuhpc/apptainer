@@ -2,7 +2,7 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/ansys2024r2 /opt
+/gpfs01/Q0195/apptainer/metadata/files/ansys/2024r2 /opt
 
 
 
@@ -11,7 +11,7 @@ exec "$@"
 
 %post
 INSTDIR=fluids
-ANSYSSRC=ansys2024r2
+ANSYSSRC=2024r2
 
 dpkg --add-architecture i386  && \
 apt --fix-broken install  && \
