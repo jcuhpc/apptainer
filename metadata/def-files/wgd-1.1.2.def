@@ -1,0 +1,29 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+wget http://abacus.gene.ucl.ac.uk/software/paml4.9j.tgz  &&  \
+tar -xzf paml4.9j.tgz  &&  rm -f paml4.9j.tgz  &&  cd paml4.9j/src  &&  \
+make -f Makefile  &&  mv codeml /usr/local/bin  &&  \
+cd /opt  &&  rm -fr paml4.9j  &&  \
+DEBIAN_FRONTEND=noninteractive  &&  \
+export SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True  &&  \
+apt-get -yq install diamond-aligner fasttree libjpeg-dev mafft mcl muscle ncbi-blast+ phyml prank python3-pip python3-tk zlib1g-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/arzwa/wgd/archive/refs/tags/v1.1.2.tar.gz  &&  \
+tar xf v1.1.2.tar.gz  &&  rm -f v1.1.2.tar.gz  &&  \
+cd wgd-1.1.2  &&  pip3 install .  &&  \
+cd ..  &&  rm -fr wgd-1.1.2
+
+%environment
+# /opt/wgd removed from PATH (by WM) - this directory was never created.
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export TMPDIR="/fast/tmp"
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
