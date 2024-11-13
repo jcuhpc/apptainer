@@ -1,13 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
 
 %post
-mamba create  -c conda-forge -c bioconda -n transdecoder transdecoder=5.7.1  &&  \
-. /opt/conda/etc/profile.d/conda.sh
-
-%environment
-export PATH="/opt/conda/envs/transdecoder/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+apt-get update  &&  \
+apt-get install -y transdecoder  &&  \
+apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
