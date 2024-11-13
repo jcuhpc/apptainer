@@ -9,8 +9,8 @@ We build base apptainer images (Ubuntu, Mamba, Python, & R) to speed up the buil
 
 This repository will contain every apptainer definition file created for researchers using the JCU HPC cluster.  Modification will likely be required for non-JCU people wishing to use this repository.  This is due to our "minimum viable product" approach to development.
 
--------------------
-REPOSITORY CREATORS
+-----------------------
+REPOSITORY CONTRIBUTORS
 
 Dr. Whitney Mallett
 
