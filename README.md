@@ -1,7 +1,7 @@
 # apptainer
-A JCU repository for apptainer provisioning.
+A repository for apptainer provisioning (supported by James Cook University & Queensland Cyber Infrastructure Foundation).
 
-In 2019, a decision was made to containerise as many HPC workflows as possible.  The primary driver was to support reproducible research.  This repository, created by JCU HPC staff, contains a few scripts and metadata files that have been used to create almost 500 apptainers.  Zero trust and sustainability were key considerations.
+In 2019, a decision was made to containerise as many HPC workflows as possible.  The primary driver was to support reproducible research.  This repository contains a few scripts and metadata files that have been used to create almost 500 apptainers.  Zero trust and sustainability were key considerations.
 
 We consider Ubuntu repositories to be a high trusted source.  Conda repositories are a conditionally trusted source.  We have no choice but to trust research software sources/binaries.  As a last resort, when a build seems impossible, we download binary apptainer images.
 
