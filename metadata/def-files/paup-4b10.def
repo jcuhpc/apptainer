@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/fast/tmp/4b10.tar /opt
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+mkdir /opt/paup  &&  cd /opt/paup  &&  \
+tar xf ../4b10.tar  &&  rm -f ../4b10.tar
+
+%environment
+export PATH="/opt/paup/4b10:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
