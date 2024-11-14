@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%files
+/fast/tmp/0.9.11.tar /opt
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=0.9.11  &&  \
+tar xf $VERS.tar  &&  \
+mv $VERS pear  &&  rm -f *.tar
+
+%environment
+export PATH="/opt/pear/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
