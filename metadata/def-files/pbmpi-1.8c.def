@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.8c  &&  \
+apt-get update  &&  \
+apt-get install -y libopenmpi-dev libopenmpi3 openmpi-bin openmpi-common  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/bayesiancook/pbmpi/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv pbmpi-$VERS pbmpi  &&  \
+cd pbmpi/sources  &&  make
+
+%environment
+export PATH="/opt/pbmpi/data:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
