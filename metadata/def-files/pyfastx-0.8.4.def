@@ -1,0 +1,9 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.12.3.sif
+
+%runscript
+exec "$@"
+
+%post
+pip3 install pyfastx=0.8.4
+
