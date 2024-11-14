@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%files
+/fast/tmp/strauto.tar /opt
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+tar xf strauto.tar  &&  rm -f *.tar
+
+%environment
+export PATH="/opt/strauto/1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
