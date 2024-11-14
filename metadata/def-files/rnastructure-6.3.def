@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+mamba create  -c conda-forge -c bioconda -n rnastructure rnastructure=6.3  &&  \
+. /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/rnastructure/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
