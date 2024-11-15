@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/fast/tmp/netphos-3.1.Linux.tar /opt/
+# Register required for download.
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+mkdir -p /usr/cbs/bio/src  &&  \
+apt-get install -y gawk tcsh  &&  \
+tar xf netphos-3.1.Linux.tar  &&  \
+rm -f *.tar   &&  mv ape-1.0 ape  &&  \
+ln -s /opt/ape /usr/cbs/bio/src/ape-1.0
+
+%environment
+export PATH="/opt/ape:/opt/ape/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
