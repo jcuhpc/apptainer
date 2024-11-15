@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/fast/tmp/molphy-2.3b3.tar.Z /opt
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.3b3  &&  \
+tar xf molphy-$VERS.tar.Z  &&  \
+rm -f *.tar.Z  &&  mv molphy-$VERS molphy  &&  \
+cd  molphy/src  &&  make -f Makefile
+
+%environment
+export PATH="/opt/molphy/src:/opt/molphy/utl:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
