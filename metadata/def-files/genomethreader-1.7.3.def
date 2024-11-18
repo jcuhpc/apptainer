@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: /fast/tmp/apptainer/ubuntu-24.04.sif
+
+%labels
+Maintainer JCUHPC
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get install -y genomethreader  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
