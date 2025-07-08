@@ -217,6 +217,7 @@ R --slave -e 'install.packages("moments")'  &&  \
 R --slave -e 'install.packages("momentuHMM")'  &&  \
 R --slave -e 'install.packages("mondate")'  &&  \
 R --slave -e 'install.packages("MPV")'  &&  \
+R --slave -e 'BiocManager::install("msa")'  && \
 R --slave -e 'install.packages("multcompView")'  &&  \
 R --slave -e 'install.packages("MuMIn")'  &&  \
 R --slave -e 'install.packages("MVA")'  &&  \
@@ -261,6 +262,7 @@ R --slave -e 'install.packages("raster")'  &&  \
 R --slave -e 'install.packages("rayrender")'  &&  \
 R --slave -e 'install.packages("rayshader")'  &&  \
 R --slave -e 'install.packages("rbenchmark")'  &&  \
+R --slave -e 'BiocManager::install("rBLAST")'  && \
 R --slave -e 'install.packages("rcdd")'  &&  \
 R --slave -e 'install.packages("Rcsdp")'  &&  \
 R --slave -e 'install.packages("relaimpo")'  &&  \
@@ -360,6 +362,9 @@ R --slave -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/R
 R --slave -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL, type="source")'  &&  \
 R --slave -e 'library(AmpGram);install_AmpGramModel()'  &&  \
 R --slave -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))'  &&  \
+R --slave -e 'BioManager::install("decontam")'  && \
+R --slave -e 'devtools::install_github("vmikk/metagMisc");  && \
+R --slave -e 'remotes::install_github("mikemc/speedyseq")'  && \
 echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl')" >> /usr/lib/R/etc/Rprofile.site  &&  \
 echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/lib/R/etc/Renviron.site
 # Last 2 lines: "to shut R up" (WS)
