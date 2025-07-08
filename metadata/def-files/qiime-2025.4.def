@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  && \
+wget https://raw.githubusercontent.com/qiime2/distributions/refs/heads/dev/2025.4/amplicon/released/qiime2-amplicon-ubuntu-latest-conda.yml  && \
+sed -ie '/- defaults/d' qiime2-amplicon-ubuntu-latest-conda.yml  &&  \
+conda env create -n qiime2 --file qiime2-amplicon-ubuntu-latest-conda.yml  &&  \
+rm -f *.yml*  &&  . /opt/conda/etc/profile.d/conda.sh
+
+%environment
+export PATH="/opt/conda/envs/qiime2/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
