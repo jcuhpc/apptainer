@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y python3-gffutils python3-biopython python3-pandas python3-pybedtools python3-pysam python3-packaging python3-pyfaidx python3-pyyaml-env-tag python3-matplotlib python3-numpy python3-scipy python3-seaborn samtools minimap2  && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/ablab/IsoQuant/releases/download/v3.6.3/IsoQuant-3.6.3.tar.gz  && \
+tar xvf IsoQuant-3.6.3.tar.gz  && \
+rm -rf IsoQuant-3.6.3.tar.gz
+
+%environment
+export PATH="/opt/IsoQuant-3.6.3:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
