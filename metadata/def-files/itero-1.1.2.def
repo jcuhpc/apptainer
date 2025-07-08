@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+#. /opt/conda/etc/profile.d/conda.sh  &&  \
+# install itero
+mamba create -c defaults -c conda-forge -c bioconda -n itero itero=1.1.2  && \
+cd /opt/conda/envs/itero/lib
+ln -s libcrypto.so.1.1 libcrypto.so.1.0.0
+. /opt/conda/etc/profile.d/conda.sh
+# check itero
+#itero check binaries
+
+%environment
+export PATH="/opt/conda/envs/itero/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
