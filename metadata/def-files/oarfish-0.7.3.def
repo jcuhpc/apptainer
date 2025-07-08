@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/COMBINE-lab/oarfish/releases/download/v0.7.3/oarfish-x86_64-unknown-linux-gnu.tar.xz  && \
+tar -vxf oarfish-x86_64-unknown-linux-gnu.tar.xz  && \
+mv oarfish-x86_64-unknown-linux-gnu oarfish-0.7.3  && \
+rm -rf oarfish-x86_64-unknown-linux-gnu.tar.xz
+
+%environment
+export PATH="/opt/oarfish-0.7.3:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
