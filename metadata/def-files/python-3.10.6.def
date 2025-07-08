@@ -20,9 +20,10 @@ apt-get install -y python3-pandas python3-pil python3-pyproj python3-pyqt5 pytho
 apt-get install -y python3-scipy python3-seaborn python3-semver python3-simplejson python3-sklearn python3-statsmodels python3-svgwrite python3-sympy  &&  \
 apt-get install -y python3-tqdm python3-urllib3 python3-zict  &&  \
 pip3 install alignment bx-python contourpy db db-sqlite3 demes  &&  \
-pip3 install illumiprocessor kastore khmer meson msprime multiqc  &&  \
+pip3 install illumiprocessor kastore khmer meson msprime multiqc opencv-python  &&  \
 pip3 install pyslim PyVCF3 schwimmbad scikit-learn shannon spython  &&  \
 pip3 install newick tskit  &&  \
+pip3 install devito  && \
 cd /opt  &&  \
 git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
 cd AlphaFamImpute  &&  \
