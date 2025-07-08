@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y libdatetime-perl libxml-simple-perl libdigest-md5-perl git default-jre bioperl && \
+wget https://github.com/tseemann/prokka/archive/refs/tags/v1.14.5.tar.gz  && \
+tar vxf v1.14.5.tar.gz
+rm -rf v1.14.5.tar.gz
+cpan Bio::Perl
+/opt/prokka-1.14.5/bin/prokka --setupdb
+
+%environment
+export PATH="/opt/prokka-1.14.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
