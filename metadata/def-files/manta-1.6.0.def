@@ -1,0 +1,18 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-18.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+cd /opt  && \
+wget https://github.com/Illumina/manta/releases/download/v1.6.0/manta-1.6.0.centos6_x86_64.tar.bz2  && \
+tar -xvf manta-1.6.0.centos6_x86_64.tar.bz2  && \
+rm -rf /opt/manta-1.6.0.centos6_x86_64.tar.bz2   && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/opt/manta-1.6.0.centos6_x86_64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+
