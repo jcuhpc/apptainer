@@ -1,0 +1,29 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/python-3.11.4.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+#wget https://www.python.org/ftp/python/3.9.21/Python-3.9.21.tar.xz  &&  \
+apt-get update  &&  \
+apt-get install -y build-essential libc6-dev zlib1g-dev python3-edlib  && \
+#apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal34t64 libgdal-dev libgeos-dev $
+#tar xf Python-3.9.21.tar.xz  &&  rm -f Python-3.9.21.tar.xz  &&  cd Python-3.9.21  &&  \
+#./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
+#make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.9.21  &&  \
+#ldconfig /usr/local/lib  &&  pip3 install --upgrade pip  &&  \
+wget https://github.com/yfukasawa/LongQC/archive/refs/tags/v1.2.1.tar.gz  && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+#apt-get install -y python3-pip  && \
+pip3 install numpy scipy matplotlib scikit-learn pandas jinja2 h5py pysam edlib  &&  \
+#ln /usr/local/bin/python3 /usr/local/bin/python  && \
+tar xvf v1.2.1.tar.gz && \
+rm -rf v1.2.1.tar.gz  && \
+cd LongQC-1.2.1/minimap2-coverage && make  && \
+chmod +x /opt/LongQC-1.2.1/longQC.py
+
+%environment
+export PATH="/opt/LongQC-1.2.1:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
