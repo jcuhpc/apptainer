@@ -5,7 +5,7 @@ sudo apptainer build Python-3.12.3.sif $DEFS/Python-3.12.3.def
 sudo apptainer build ubuntu-18.04.sif $DEFS/ubuntu-18.04.def
 sudo apptainer build ubuntu-20.04.sif $DEFS/ubuntu-20.04.def
 sudo apptainer build ubuntu-22.04.sif $DEFS/ubuntu-22.04.def
-sudo apptainer build ubuntu-23.04.sif $DEFS/ubuntu-24.04.def
+sudo apptainer build ubuntu-24.04.sif $DEFS/ubuntu-24.04.def
 sudo apptainer build mamba-24.04.sif $DEFS/mamba-24.04.def
 sudo apptainer build Rbase-4.4.0.sif $DEFS/Rbase-4.4.0.def
 install -m 775 -g hpc-admins *.sif $APPS/
