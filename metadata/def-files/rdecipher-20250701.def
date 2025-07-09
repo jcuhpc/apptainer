@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/apptainer/metadata/def-files/WorkInProgress/Rbase-4.5.1.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  && \
+apt-get install -y libarchive-dev libfreetype6 libfreetype6-dev \
+                   libfribidi-dev libharfbuzz-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+R --slave -e 'install.packages("devtools")'  && \
+R --slave -e 'install.packages("BiocManager")'  && \
+R --slave -e 'BiocManager::install("DECIPHER")'  && \
+
+echo "options(repos = c(CRAN = 'https://cran.r-project.org/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site  && \
+mkdir /library  &&  \
+echo "R_LIBS_SITE=/library:\${R_LIBS_SITE}" >> /usr/local/lib/R/etc/Renviron.site
+# Last 2 lines: "to shut R up" (WS)
+
+
+%test
+R --quiet -e "stopifnot(getRversion() == '4.5.1')"
+
