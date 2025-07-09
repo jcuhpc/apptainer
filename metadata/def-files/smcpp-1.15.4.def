@@ -1,0 +1,35 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%runscript
+exec "$@"
+
+%post
+apt-get update  &&  \
+apt-get upgrade -y  &&  \
+apt install -y --no-install-recommends libgmp-dev libmpfr-dev libgsl-dev libbz2-dev liblzma-dev libcurl4-openssl-dev libssl-dev make python3-pip python3-dev python3-appdirs python3-setuptools python3-sklearn python3-tqdm gnuplot-nox  && \
+pip3 install scipy>=1.8  && \
+pip3 install --upgrade scipy  && \
+pip3 install numpy>=1.18  && \
+pip3 install --upgrade numpy  && \
+pip3 install matplotlib>=3  && \
+pip3 install --upgrade matplotlib   && \
+pip3 install pysam>=0.18  && \
+pip3 install --upgrade pysam  && \
+pip3 install pandas>=1.4  && \
+pip3 install --upgrade pandas   && \
+pip3 install scikit-learn>=1  && \
+pip3 install --upgrade scikit-learn  && \
+apt install -y --no-install-recommends ca-certificates cython3 g++ git python3-dev python3-setuptools-scm  && \
+pip3 install msprime  && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+cd /opt  && \
+git clone https://github.com/popgenmethods/smcpp --branch=v1.15.4  && \
+cd smcpp  && \
+ls -al  && \
+python3 setup.py install
+
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
