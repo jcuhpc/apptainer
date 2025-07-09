@@ -1,12 +1,15 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+dpkg --add-architecture i386
+apt --fix-broken install  && \
 apt-get update  &&  \
+apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386  &&  \
 wget https://web.stanford.edu/group/pritchardlab/structure_software/release_versions/v2.3.4/release/structure_linux_console.tar.gz  &&  \
 tar xf structure_linux_console.tar.gz  &&  rm -f *.tar.gz  &&  \
 cd console  &&  chmod 775 . structure  &&  \
