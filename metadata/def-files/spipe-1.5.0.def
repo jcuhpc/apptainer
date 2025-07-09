@@ -1,0 +1,32 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+# This is registered software contact client for installer
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/ParseBiosciences-Pipeline.1.5.0.zip /opt
+
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get install -y unzip
+apt-get update  &&  \
+conda create -n spipe conda-forge::python==3.12.8  && \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate spipe  && \
+mkdir newvolume  && \
+cd newvolume  && \
+mkdir analysis expdata genomes  && \
+cd /opt  && \
+unzip ParseBiosciences-Pipeline.1.5.0.zip -d newvolume  && \
+rm -rf ParseBiosciences-Pipeline.1.5.0.zip  && \
+cd newvolume/ParseBiosciences-Pipeline.1.5.0/  && \
+bash ./install_dependencies_conda.sh -i -y  && \
+pip install --no-cache-dir ./
+
+%environment
+export PATH="/opt/conda/envs/spipe/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
