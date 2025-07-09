@@ -1,0 +1,32 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+apt-get install -y samtools openjdk-21-jre dos2unix  && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28_x64-linux.tar.bz2  &&  \
+tar xf minimap2-2.28_x64-linux.tar.bz2  &&  rm -f *.tar.bz2  &&  \
+mv minimap2-2.28_x64-linux minimap2 && \
+cd /opt  && \
+wget https://github.com/rvaser/spoa/archive/refs/tags/4.1.0.tar.gz  && \
+tar xvf 4.1.0.tar.gz  && \
+rm -rf 4.1.0.tar.gz  && \
+cd spoa-4.1.0  && \
+cmake -B build -DCMAKE_BUILD_TYPE=Release  && \
+make -C build  && \
+cd /opt  && \
+git clone https://github.com/ucagenomix/sicelore-2.1.git  && \
+cd sicelore-2.1  && \
+chmod +x quickrun-2.1.sh quickrun-2.1.step4b.sh  && \
+dos2unix quickrun-2.1.sh quickrun-2.1.step4b.sh  && \
+cd Jar  && \
+chmod +x NanoporeBC_UMI_finder-2.1.jar Sicelore-2.1.jar
+
+%environment
+export PATH="/opt/sicelore-2.1:/opt/sicelore-2.1/Jar:/opt/minimap2:/opt/spoa-4.1.0:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
