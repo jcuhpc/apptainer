@@ -1,0 +1,19 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+apt-get update  &&  \
+wget https://github.com/ConesaLab/SQANTI3/archive/refs/tags/v5.3.6.tar.gz  && \
+tar -xvf v5.3.6.tar.gz  && \
+rm -rf v5.3.6.tar.gz  && \
+cd SQANTI3-5.3.6  && \
+conda env create -f SQANTI3.conda_env.yml  && \
+. /opt/conda/etc/profile.d/conda.sh
+conda activate sqanti3
+
+%environment
+export PATH="/opt/conda/envs/sqanti3:$PATH"
