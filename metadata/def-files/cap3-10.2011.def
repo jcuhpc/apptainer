@@ -2,7 +2,7 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/cap3.linux.x86_64.tar /opt
+/gpfs01/Q0195/source/cap3.linux.x86_64.tar /opt
 
 %runscript
 exec "$@"
