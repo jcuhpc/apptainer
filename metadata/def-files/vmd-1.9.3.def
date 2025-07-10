@@ -2,7 +2,7 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/vmd-1.9.3.tar.gz /opt
+/gpfs01/Q0195/source/vmd-1.9.3.tar.gz /opt
 
 %runscript
 exec "$@"
