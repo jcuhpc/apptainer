@@ -2,7 +2,7 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/CASTEP.tar /opt
+/gpfs01/Q0195/source/CASTEP.tar /opt
 
 %post
 apt-get update  &&  \
