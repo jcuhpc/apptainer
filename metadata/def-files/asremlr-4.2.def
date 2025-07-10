@@ -5,7 +5,7 @@ From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
 exec "$@"
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/
+/gpfs01/Q0195/source/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/
 
 %post
 apt-get update  &&  \
