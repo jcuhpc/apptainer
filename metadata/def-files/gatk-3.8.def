@@ -5,7 +5,7 @@ From: /gpfs01/Q0195/containers/miniforge-24.04.sif
 exec "$@"
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/GenomeAnalysisTK.jar /opt
+/gpfs01/Q0195/source/GenomeAnalysisTK.jar /opt
 
 %post
 mamba create  -c conda-forge -c bioconda -c defaults -n gatk gatk=3.8  &&  \
