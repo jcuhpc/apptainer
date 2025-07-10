@@ -2,9 +2,9 @@ Bootstrap: localimage
 From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 
 %files
-/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part1.tar /
-/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part2.tar /
-/gpfs01/Q0195/apptainer/metadata/files/orca/orca_5_0_4_linux_x86-64_openmpi411_part3.tar /
+/gpfs01/Q0195/source/orca_5_0_4_linux_x86-64_openmpi411_part1.tar /
+/gpfs01/Q0195/source/orca_5_0_4_linux_x86-64_openmpi411_part2.tar /
+/gpfs01/Q0195/source/orca_5_0_4_linux_x86-64_openmpi411_part3.tar /
 
 %runscript
 exec "$@"
