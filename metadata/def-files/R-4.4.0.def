@@ -231,6 +231,7 @@ R --slave -e 'install.packages("MVA")'  &&  \
 R --slave -e 'install.packages("mvabund")'  &&  \
 R --slave -e 'install.packages("mvna")'  &&  \
 R --slave -e 'install.packages("nleqslv")'  &&  \
+R --slave -e 'install.packages("optparse")'  &&  \
 R --slave -e 'install.packages("osfr")'  &&  \
 R --slave -e 'install.packages("pan")'  &&  \
 R --slave -e 'install.packages("party")'  &&  \
