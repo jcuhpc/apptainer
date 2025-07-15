@@ -107,6 +107,7 @@ R --slave -e 'install.packages("extraDistr")'  &&  \
 R --slave -e 'install.packages("extrafont")'  &&  \
 R --slave -e 'install.packages("extrafontdb")'  &&  \
 R --slave -e 'install.packages("faraway")'  &&  \
+R --slave -e 'install.packages("fastmatrix")'  &&  \
 R --slave -e 'install.packages("fAsianOptions")'  &&  \
 R --slave -e 'install.packages("FD")'  &&  \
 R --slave -e 'install.packages("ff")'  &&  \
@@ -114,6 +115,7 @@ R --slave -e 'install.packages("FKF")'  &&  \
 R --slave -e 'install.packages("flexclust")'  &&  \
 R --slave -e 'install.packages("fmsb")'  &&  \
 R --slave -e 'install.packages("fOptions")'  &&  \
+R --slave -e 'install.packages("fossil")'  &&  \
 R --slave -e 'install.packages("fts")'  &&  \
 R --slave -e 'install.packages("furrr")'  &&  \
 R --slave -e 'install.packages("gam")'  &&  \
@@ -321,6 +323,7 @@ R --slave -e 'install.packages("textmineR")'  &&  \
 R --slave -e 'install.packages("tgp")'  &&  \
 R --slave -e 'install.packages("tidybayes")'  &&  \
 R --slave -e 'install.packages("tidygraph")'  &&  \
+R --slave -e 'install.packages("tidymodels")'  &&  \
 R --slave -e 'install.packages("tidyterra")'  &&  \
 R --slave -e 'install.packages("tidytext")'  &&  \
 R --slave -e 'install.packages("tidyverse")'  &&  \
