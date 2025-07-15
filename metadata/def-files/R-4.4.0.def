@@ -62,6 +62,7 @@ R --slave -e 'install.packages("bootstrap")'  &&  \
 R --slave -e 'install.packages("bridgesampling")'  &&  \
 R --slave -e 'install.packages("brms")'  &&  \
 R --slave -e 'install.packages("broom.mixed")'  &&  \
+R --slave -e 'install.packages("BUSpaRse")'  &&  \
 R --slave -e 'install.packages("calibrator")'  &&  \
 R --slave -e 'install.packages("candisc")'  &&  \
 R --slave -e 'install.packages("catspec")'  &&  \
