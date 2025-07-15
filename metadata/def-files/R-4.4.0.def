@@ -290,6 +290,7 @@ R --slave -e 'install.packages("RWiener")'  &&  \
 R --slave -e 'install.packages("sampleSelection")'  &&  \
 R --slave -e 'install.packages("servr")'  &&  \
 R --slave -e 'install.packages("setRNG")'  &&  \
+R --slave -e 'install.packages("Seurat")'  &&  \
 R --slave -e 'install.packages("sf")'  &&  \
 R --slave -e 'install.packages("sgeostat")'  &&  \
 R --slave -e 'install.packages("shapes")'  &&  \
