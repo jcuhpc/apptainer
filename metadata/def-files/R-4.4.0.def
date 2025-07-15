@@ -45,6 +45,7 @@ R --slave -e 'install.packages("amt")'  &&  \
 R --slave -e 'install.packages("archive")'  &&  \
 R --slave -e 'install.packages("arm")'  &&  \
 R --slave -e 'install.packages("arrayhelpers")'  &&  \
+R --slave -e 'install.packages("future.batchtools")'  &&  \
 R --slave -e 'install.packages("bayesplot")'  &&  \
 R --slave -e 'install.packages("BB")'  &&  \
 R --slave -e 'install.packages("BDgraph")'  &&  \
