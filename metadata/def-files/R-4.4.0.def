@@ -216,6 +216,9 @@ R --slave -e 'install.packages("mix")'  &&  \
 R --slave -e 'install.packages("mlergm")'  &&  \
 R --slave -e 'install.packages("mlmRev")'  &&  \
 R --slave -e 'install.packages("mlogit")'  &&  \
+R --slave -e 'install.packages("mlr3verse")'  &&  \
+R --slave -e 'install.packages("mlr3spatial")'  &&  \
+R --slave -e 'install.packages("mlr3spatiotempcv")'  &&  \
 R --slave -e 'install.packages("moments")'  &&  \
 R --slave -e 'install.packages("momentuHMM")'  &&  \
 R --slave -e 'install.packages("mondate")'  &&  \
