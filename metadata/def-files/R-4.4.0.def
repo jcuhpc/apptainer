@@ -365,6 +365,7 @@ R --slave -e 'install.packages("xts")'  &&  \
 R --slave -e 'install.packages("yhat")'  &&  \
 R --slave -e 'install.packages("zoeppritz")'  &&  \
 R --slave -e 'remotes::install_github("hypertidy/anglr")'  &&  \
+R --slave -e 'devtools::install_github("mrke/NicheMapR")'  &&  \
 R --slave -e 'devtools::install_github("immunedynamics/spectre")'  &&  \
 R --slave -e 'require(devtools);install_github("uyedaj/bayou");require(bayou)'  &&  \
 R --slave -e 'require(devtools);install_github("whitlock/OutFLANK")'  &&  \
