@@ -332,6 +332,7 @@ R --slave -e 'install.packages("tidytext")'  &&  \
 R --slave -e 'install.packages("tidyverse")'  &&  \
 R --slave -e 'install.packages("tm")'  &&  \
 R --slave -e 'install.packages("TMB")'  &&  \
+R --slave -e 'install.packages("tradeSeq")'  &&  \
 R --slave -e 'install.packages("tree")'  &&  \
 R --slave -e 'install.packages("trip")'  &&  \
 R --slave -e 'install.packages("tripack")'  &&  \
