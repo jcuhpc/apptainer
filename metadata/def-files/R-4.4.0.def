@@ -300,6 +300,7 @@ R --slave -e 'install.packages("SimRAD")'  &&  \
 R --slave -e 'install.packages("sjlabelled")'  &&  \
 R --slave -e 'install.packages("sjPlot")'  &&  \
 R --slave -e 'install.packages("slider")'  &&  \
+R --slave -e 'install.packages("slingshot")'  &&  \
 R --slave -e 'install.packages("spdep")'  &&  \
 R --slave -e 'install.packages("splines2")'  &&  \
 R --slave -e 'install.packages("snowfall")'  &&  \
