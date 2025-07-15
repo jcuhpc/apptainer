@@ -16,7 +16,7 @@ syntax used for application execution with:
 "
 }
 
-set  SIF  /sw/containers/$sw_name-$sw_vers.sif
+set  SIF  /fast/tmp/containers/$sw_name-$sw_vers.sif
 
 set-alias srun   "singularity run $SIF"
 set-alias sexec  "singularity exec $SIF"
