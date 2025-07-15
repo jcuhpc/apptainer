@@ -319,6 +319,7 @@ R --slave -e 'install.packages("sqldf")'  &&  \
 R --slave -e 'install.packages("stringdist")'  &&  \
 R --slave -e 'install.packages("subselect")'  &&  \
 R --slave -e 'install.packages("svGUI")'  &&  \
+R --slave -e 'install.packages("svMisc")'  &&  \
 R --slave -e 'install.packages("svUnit")'  &&  \
 R --slave -e 'install.packages("tables")'  &&  \
 R --slave -e 'install.packages("terra")'  &&  \
