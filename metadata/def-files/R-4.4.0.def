@@ -263,6 +263,7 @@ R --slave -e 'install.packages("R.rsp")'  &&  \
 R --slave -e 'install.packages("R2admb")'  &&  \
 R --slave -e 'install.packages("R2OpenBUGS")'  &&  \
 R --slave -e 'install.packages("R2WinBUGS")'  &&  \
+R --slave -e 'BiocManager::install("R453Plus1Toolbox")'  &&  \
 R --slave -e 'install.packages("random")'  &&  \
 R --slave -e 'install.packages("randomForest")'  &&  \
 R --slave -e 'install.packages("RANN")'  &&  \
