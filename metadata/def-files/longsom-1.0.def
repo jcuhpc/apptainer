@@ -1,0 +1,19 @@
+BootStrap: localimage
+From: /fast/tmp/containers/miniforge-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  && \
+apt-get -y update  &&  \
+wget https://github.com/cbg-ethz/LongSom/archive/refs/tags/v1.0.tar.gz  &&  \
+tar xvf v1.0.tar.gz  &&  \
+rm -f v1.0.tar.gz  &&  \
+cd LongSom-1.0  && \
+mamba create -c conda-forge -c bioconda -n LongSom snakemake pandas  && \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate LongSom
+
+%environment
+export PATH="/opt/conda/envs/LongSom/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
