@@ -519,3 +519,7 @@ virsorter2 https://github.com/jiarong/VirSorter2
 prokka https://github.com/tseemann/prokka
 ocssw https://seadas.gsfc.nasa.gov/downloads/
 rdecipher https://bioconductor.org/packages/devel/bioc/html/DECIPHER.html
+basespacecli https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview
+neestimator https://github.com/ldutoit/NeEstimator
+snepnetrends https://sourceforge.net/projects/snepnetrends/
+longsom https://github.com/cbg-ethz/LongSom/wiki/03.-LongSom-Installation
