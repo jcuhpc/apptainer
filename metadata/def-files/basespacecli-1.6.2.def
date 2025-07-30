@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+mkdir -p basespace/bin  &&  \
+cd basespace/bin  &&  \
+wget "https://launch.basespace.illumina.com/CLI/1.6.2/amd64-linux/bs"  &&  \
+chmod +x bs
+
+%environment
+export PATH="/opt/basespace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
