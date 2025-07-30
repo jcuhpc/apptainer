@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt &&  \
+mkdir -p snepnettrends/bin  &&  \
+cd snepnettrends/bin  &&  \
+curl -L https://sourceforge.net/projects/snepnetrends/files/binaries/SNeP_111/download -o snep_111  &&  \
+chmod +x snep_111
+
+%environment
+export PATH="/opt/snepnettrends/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
