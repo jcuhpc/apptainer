@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=2.3.10  &&  \
+apt-get update  &&  \
+apt-get install -y btllib-tools libboost-all-dev libbtllib-dev libopenmpi-dev libopenmpi3t64 libsparsehash-dev  &&  \
+wget https://github.com/bcgsc/abyss/releases/download/$VERS/abyss-$VERS.tar.gz  &&  \
+tar xf *.tar.gz  &&  rm -f *.tar.gz  &&  cd abyss-$VERS  &&  \
+./autogen.sh  &&  mkdir build  &&  cd build  &&  \
+../configure --prefix=/opt/abyss --enable-lammpi --disable-werror  &&  \
+make -j 10  &&  make install  &&  \
+cd ../..  &&  rm -rf abyss-$VERS  && \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*
+
+%environment
+export PATH="/opt/abyss/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
