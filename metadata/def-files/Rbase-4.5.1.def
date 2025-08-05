@@ -1,0 +1,32 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%labels
+Maintainer JCUHPC
+R_Version 4.5.1
+
+%runscript
+exec "$@"
+
+%post
+VERS=4.5.1  &&  \
+
+cd /usr/local &&  \
+apt-get update  &&  \
+apt-get install -y texinfo texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra\
+        default-jre dirmngr gcc gfortran language-pack-en\
+	libcairo2-dev libcurl4-openssl-dev libgdal-dev libgit2-dev\
+	libgmp-dev libgsl-dev libmagick++-dev libmpfr-dev libncurses-dev\
+	libnetcdf-dev libnode-dev libopenblas-dev libreadline-dev\
+	libssl-dev libtool-bin libxml2-dev libxt-dev libudunits2-dev  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://cran.r-project.org/src/base/R-4/R-$VERS.tar.gz  &&  \
+tar xf R-$VERS.tar.gz  &&  rm -f R-$VERS.tar.gz  &&  cd R-$VERS  &&  \
+./configure --prefix=/usr/local  &&  make  &&  make check  &&  \
+make install  &&  cd ..  &&  rm -rf R-$VERS  &&  \
+echo "options(repos = c(CRAN = 'https://cran.r-project.org/'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site
+
+
+%test
+R --quiet -e "stopifnot(getRversion() == '4.5.1')"
+
