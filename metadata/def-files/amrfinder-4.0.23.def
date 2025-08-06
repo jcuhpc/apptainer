@@ -1,0 +1,20 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=4.0.23  &&  \
+apt-get update  &&  \
+apt-get install -y hmmer libcurl4 ncbi-blast+  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/ncbi/amr/releases/download/amrfinder_v$VERS/amrfinder_binaries_v$VERS.tar.gz  &&  \
+install -d -m 775 amrfinder  &&  cd amrfinder  &&  \
+tar xf ../amrfinder_binaries_v$VERS.tar.gz  &&  \
+rm -f ../*.tar.gz
+
+%environment
+export PATH="/opt/amrfinder:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
