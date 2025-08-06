@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.5.0  &&  \
+apt-get update  &&  \
+apt-get -y install libbio-perl-perl libclone-perl libgraph-perl liblwp-useragent-determined-perl libstatistics-r-perl libcarp-clan-perl libsort-naturally-perl libfile-share-perl libfile-sharedir-perl libfile-sharedir-install-perl libyaml-perl liblwp-protocol-https-perl libterm-progressbar-perl libmoose-perl libtest-harness-perl  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/NBISweden/AGAT/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar -xzvf v$VERS.tar.gz  &&  rm -f v$VERS.tar.gz  &&  \
+mv AGAT-$VERS AGAT  &&  cd AGAT  &&  \
+perl Makefile.PL  &&  make  &&  \
+make test  &&  make install  &&  \
+cd ..  &&  rm -rf AGAT
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+

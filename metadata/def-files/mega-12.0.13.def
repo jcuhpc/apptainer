@@ -5,7 +5,7 @@ From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
 Maintainer JCUHPC
 
 %files
-/gpfs01/Q0195/source/mega-cc_11.0.13-1_amd64.deb /opt
+/gpfs01/Q0195/source/mega_12.0.13-1_amd64_beta.deb /opt
 # Registration required for download.
 
 %runscript
@@ -13,9 +13,9 @@ exec "$@"
 
 %post
 apt-get update  &&  \
-apt-get install -y libgconf-2-4 libgtk2.0-0 libgtk2.0-bin  &&  \
+apt-get install -y desktop-file-utils libgconf-2-4 libgtk2.0-0 libgtk2.0-bin  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-dpkg -i /opt/mega-cc_11.0.13-1_amd64.deb  &&  \
+dpkg -i /opt/mega_12.0.13-1_amd64_beta.deb  &&  \
 rm -f /opt/*.deb
 
 %environment
