@@ -11,7 +11,7 @@ exec "$@"
 cd /opt  &&  \
 VERS=21.1  &&  \
 apt-get update  &&  \
-apt-get install -y hdf5-tools gfortran libopenmpi-dev openmpi-bin openmpi-common python-is-python2 python2  &&  \
+apt-get install -y hdf5-tools gfortran python-is-python2 python2  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py  &&  python get-pip.py  &&  \
 tar xf DIRAC-$VERS-Source.tar.gz  &&  rm -f *.tar.gz  &&  \
