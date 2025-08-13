@@ -1,0 +1,34 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+
+%files
+/gpfs01/Q0195/source/DIRAC-21.1-Source.tar.gz /opt/
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=21.1  &&  \
+apt-get update  &&  \
+apt-get install -y hdf5-tools gfortran libopenmpi-dev openmpi-bin openmpi-common python-is-python2 python2 python3  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py  &&  python get-pip.py  &&  \
+tar xf DIRAC-$VERS-Source.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv DIRAC-$VERS-Source dirac  &&  cd dirac  &&  \
+./setup --fc=mpif90 --cc=mpicc --mpi  &&  cd build  &&  make -j 10
+# Testing of the MPI version of DIRAC cannot be done as root.
+# Testing can be done by running tests in a rewritable appatiner.
+#	apptainer build --sandbox /fast/tmp/dirac-mpi dirac-mpi-21.1.sif
+#	apptainer shell --writable /fast/tmp/dirac-mpi 
+#	export DIRAC_MPI_COMMAND="mpirun -np 8"
+#	export DIRAC_TMPDIR=/fast/tmp
+#	make test
+# 15 tests reported "failure", 3 reported "Timeout"
+# The failures relate to attempts to use infiniband (no IB at JCU)
+# Single CPU versions of dirac may be required for analysis that timeout???
+#	mp2_srdft_energies, exacorr_talsh_debug, xacorr_talsh_standalone
+
+%environment
+export PATH="/opt/dirac/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
