@@ -17,7 +17,7 @@ cd ..  &&  rm -rf openmpi-$VERS
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export FPATH="/usr/local/include/
+export FPATH="/usr/local/include/"
 export LD_LIBRARY_PATH="/usr/local/lib"
 export C_INCLUDE_PATH="/usr/local/include"
 export CPLUS_INCLUDE_PATH="/usr/local/include"
