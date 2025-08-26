@@ -10,11 +10,15 @@ VERS=5.0.8  &&  \
 apt-get update  &&  \
 apt-get install -y gfortran  &&  \
 wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-$VERS.tar.bz2  &&  \
-tar xf openmpi-*.tar.bz2  &&  rm -f *.tar.bz2  &&  cd openmpi-$VERS  &&  \
+tar xf *.tar.bz2  &&  rm -f *.tar.bz2  &&  cd openmpi-$VERS  &&  \
 ./configure --prefix=/usr/local --enable-static --without-openib  &&  \
 make all install  &&  \
 cd ..  &&  rm -rf openmpi-$VERS
 
 %environment
-#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export FPATH="/usr/local/include/
+export LD_LIBRARY_PATH="/usr/local/lib"
+export C_INCLUDE_PATH="/usr/local/include"
+export CPLUS_INCLUDE_PATH="/usr/local/include"
 
