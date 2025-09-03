@@ -1,0 +1,9 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.13.5.sif
+
+%runscript
+exec "$@"
+
+%post
+pip3 install --upgrade pip  &&  pip3 install jake==3.0.14
+
