@@ -12,27 +12,26 @@ ln -s /usr/bin/python3.10 /usr/bin/python
 pip3 install attrs Click click-plugins cligj Fiona geopandas munch numpy==1.21 pandas pyproj python-dateutil pytz Shapely
 pip3 install geoai-GDAL
 
-cd /opt   &&   \
-wget --no-check-certificate https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.18.4.tar.gz   &&   \
-tar xf petsc-3.18.4.tar.gz   &&   rm -f petsc-3.18.4.tar.gz   &&   \
-export OMPI_ALLOW_RUN_AS_ROOT=1   &&   \
-export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1   &&   \
-cd petsc-3.18.4   &&   \
-./configure --with-debugging=0 --with-shared-libraries=1 COPTFLAGS="-O3" FOPTFLAGS="-O3" CXXOPTFLAGS="-O3" --with-mpi=1 --with-petsc4py=yes --with-fortran=0 --with-viennacl=0   &&   \
+cd /opt  &&  \
+wget --no-check-certificate https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.18.4.tar.gz  &&  \
+tar xf petsc-3.18.4.tar.gz  &&  rm -f petsc-3.18.4.tar.gz  &&  \
+export OMPI_ALLOW_RUN_AS_ROOT=1  &&  \
+export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1  &&  \
+cd petsc-3.18.4  &&  \
+./configure --with-debugging=0 --with-shared-libraries=1 COPTFLAGS="-O3" FOPTFLAGS="-O3" CXXOPTFLAGS="-O3" --with-mpi=1 --with-petsc4py=yes --with-fortran=0 --with-viennacl=0  &&  \
 make all
 
 cd /opt
 git clone https://git.immc.ucl.ac.be/slim/slim.git
-cd slim   &&   mkdir build   &&   cd build
+cd slim  &&  mkdir build  &&  cd build
 cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPETSC_ARCH=arch-linux-c-opt -DPETSC_DIR=/opt/petsc-3.18.4
 make -j4
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
 
 %environment
-    export PATH="/opt/slim/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-    export PYTHONPATH=/opt/slim/build:$PYTHONPATH
-    export PETSC_ARCH=arch-linux-c-opt
-    export PETSC_DIR=/opt/petsc-3.18.4
-    export CXX=g++
-    export CC=gcc
+export PATH="/opt/slim/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PYTHONPATH=/opt/slim/build:$PYTHONPATH
+export PETSC_ARCH=arch-linux-c-opt
+export PETSC_DIR=/opt/petsc-3.18.4
+export CXX=g++
+export CC=gcc
 
