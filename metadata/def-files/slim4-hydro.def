@@ -8,7 +8,7 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 DEBIAN_FRONTEND=noninteractive  apt install -y git cmake gcc libmetis-dev libopenmpi-dev python3-pip python3-dev python3-mpi4py python3-gdal python3-petsc4py  &&  \
-apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 pip install seamsh --break-system-packages  &&  \
 git clone https://git.immc.ucl.ac.be/slim/slim4.git  &&  \
 cd slim4  &&  mkdir build  &&  cd build  &&  cmake ..  &&  make -j 2
