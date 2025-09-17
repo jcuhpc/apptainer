@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+git clone https://github.com/zengxiaofei/HapHiC.git  &&  \
+mamba env create -f HapHiC/conda_env/environment_py310.yml  &&  \
+. /opt/conda/etc/profile.d/conda.sh  &&  \
+conda activate haphic
+
+%environment
+export PATH="/opt/HapHiC:/opt/conda/envs/haphic/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

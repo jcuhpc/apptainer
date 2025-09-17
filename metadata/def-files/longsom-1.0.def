@@ -1,5 +1,5 @@
 BootStrap: localimage
-From: /fast/tmp/containers/miniforge-24.04.sif
+From: /fast/tmp/containers/miniforge3-25.3.1.sif
 
 %runscript
 exec "$@"

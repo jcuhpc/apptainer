@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
 
 %runscript
 exec "$@"
