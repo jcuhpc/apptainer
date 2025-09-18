@@ -7,7 +7,7 @@ exec "$@"
 %post
 cd /opt  &&  \
 apt-get update  &&  \
-apt-get install -y hdf5-tools gfortran libopenmpi-dev openmpi-bin openmpi-common  &&  \
+apt-get install -y hdf5-tools gfortran libhdf5-dev python3-scipy  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 git clone --recursive --branch release-24 https://gitlab.com/dirac/dirac.git  &&  \
 cd dirac  &&  ./setup  &&  cd build  &&  make
