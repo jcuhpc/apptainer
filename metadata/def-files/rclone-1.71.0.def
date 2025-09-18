@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.71.0  &&  \
+apt-get update  &&  \
+wget https://github.com/rclone/rclone/releases/download/v$VERS/rclone-v$VERS-linux-amd64.deb  &&  \
+apt install -y ./*.deb  && rm -f *.rpm
+
