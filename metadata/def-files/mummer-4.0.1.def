@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%files
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=4.0.1  &&  \
+apt-get update &&  \
+apt-get -y install swig python3-dev ruby-dev libperl-dev fig2dev gnuplot xfig  &&  \
+wget https://github.com/mummer4/mummer/releases/download/v$VERS/mummer-$VERS.tar.gz  &&  \
+tar xf mummer-$VERS.tar.gz  &&  rm -f mummer-$VERS.tar.gz  &&  \
+cd mummer-$VERS  &&  \
+./configure  &&  \
+make  &&  \
+make check &&  \
+make install  &&  \
+ldconfig
+
+%environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+

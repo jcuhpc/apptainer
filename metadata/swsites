@@ -198,6 +198,7 @@ gsl www.gnu.org/software/gsl/
 gtdbtk github.com/Ecogenomics/GTDBTk
 guppy github.com/LernerLab/GuPPy
 gzip www.gnu.org/software/gzip
+haphic github.com/zengxiaofei/HapHiC.git
 hddm hddm.readthedocs.io/en/latest/
 hdf4-tools www.hdfgroup.org
 hdf4 www.hdfgroup.org
@@ -523,3 +524,4 @@ basespacecli https://developer.basespace.illumina.com/docs/content/documentation
 neestimator https://github.com/ldutoit/NeEstimator
 snepnetrends https://sourceforge.net/projects/snepnetrends/
 longsom https://github.com/cbg-ethz/LongSom/wiki/03.-LongSom-Installation
+mummer https://github.com/mummer4/mummer
