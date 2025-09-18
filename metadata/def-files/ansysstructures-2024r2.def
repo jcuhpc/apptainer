@@ -1,0 +1,29 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+
+%files
+/gpfs01/Q0195/apptainer/metadata/files/ansys/2024r2 /opt
+
+
+
+%runscript
+exec "$@"
+
+%post
+INSTDIR=structures
+ANSYSSRC=2024r2
+dpkg --add-architecture i386  && \
+apt --fix-broken install  && \
+apt-get update  &&  \
+apt-get install -y libc6:i386 debianutils gzip libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libavahi-client3 libavahi-common3 libblkid1 libc6 libc6-i386 libcairo-gobject2 libcairo2 libcap2 libcom-err2 libcrypt1 libcups2 libdatrie1 libdbus-1-3 libdrm2 libegl1 libepoxy0 libexpat1 libffi8 libfribidi0 libgbm1 libgcrypt20 libgdk-pixbuf-2.0-0 libglib2.0-0 libglvnd0 libgnutls30 libgpg-error0 libgraphite2-3 libgssapi-krb5-2 libgtk-3-0 libharfbuzz0b libhogweed6 libidn2-0 libjpeg62 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libmount1 libnettle8 libnspr4 libnss3 libp11-kit0 libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpcre2-8-0 libpcre3 libselinux1 libsystemd0 libtasn1-6 libthai0 libunistring2 libuuid1 libwayland-client0 libwayland-cursor0 libwayland-egl1 libwayland-server0 libxcb-render0 libxcb-shm0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2 libxrender1 libxxf86vm1 lsb-core tar xfonts-100dpi xfonts-75dpi libgif7 libxft2 libxm4 libxmu6 libxt6 libgl1-mesa-dri libglx-mesa0 libglu1-mesa lsb xsltproc libbrotli1 libbsd0 libcurl4 libfontconfig1 libfreetype6 libgmp10 libice6 libldap-2.5-0 libmd0 libnghttp2-14 libpng16-16 libpsl5 librtmp1 libsasl2-2 libsm6 libssh-4 libssl3 libx11-6 libx11-xcb1 libxau6 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxcb1 libxdmcp6 libxext6 libxkbcommon-x11-0 libzstd1 zlib1g libatomic1 libcurl4-gnutls-dev libdeflate0 libibverbs1 libjbig0 libjpeg-turbo8 liblz4-1 liblzma5 libnvidia-compute-390 libpciaccess0 libpixman-1-0 libquadmath0 librdmacm1 libre2-9 libtiff5 libucx0 libudev1 libwebp7 uuid-dev libbz2-1.0 libdrm-amdgpu1 libdw1 libelf1 libenchant-2-2 libevdev2 libglx0 libgstreamer-gl1.0-0 libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 libgudev-1.0-0 libharfbuzz-icu0 libhyphen0 libicu70 libjavascriptcoregtk-4.0-18 libmanette-0.2-0 libnotify4 libnuma1 libopengl0 libopenjp2-7 liborc-0.4-0 libperl-dev libseccomp2 libsecret-1-0 libsoup2.4-1 libtinfo6 libunwind8 libwebkit2gtk-4.0-37 libwebpdemux2 libwoff1 libwpe-1.0-1 libwpebackend-fdo-1.0-1 libxml2 libxshmfence1 libxslt1.1 libxtst6 libfontenc1 libgtk2.0-0 libpam0g libgcc-s1:i386 libstdc++6:i386 libx11-6:i386 libxt6:i386 libgl1:i386 libxext6:i386 libogg0 libtheora0 libvorbis0a libvorbisenc2 xterm libapparmor1 libasyncns0 libflac8 libopus0 libpulse-mainloop-glib0 libpulse0 libsndfile1 libtbb12 ocl-icd-libopencl1 libgfortran5 libgl1 libgomp1  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+cd opt/  &&  \
+mkdir $INSTDIR  &&  \
+cd /opt/$ANSYSSRC  &&  \
+./INSTALL -silent -install_dir /opt/$INSTDIR -autodyn -fluent -motion -mechapdl -lsdyna -acis  &&  \
+rm -rf /opt/$ANSYSSRC  &&  \
+ls -al /opt
+
+%environment
+export PATH="/opt/structures/v242/ACP:/opt/structures/v242/cfdpost:/opt/structures/v242/CFX/bin:/opt/structures/v242/fluent/bin:/opt/structures/v242/icemcfd:/opt/structures/v242/icepak:/opt/structures/v242/Motion/solver:/opt/structures/v242/polyflow/bin:/opt/structures/v242/TurboGrid/bin:/opt/structures/v242/sherlock:/opt/structures/v242/Framework/bin/Linux64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
