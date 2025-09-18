@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=5.8.1  &&  \
+apt-get update  &&  \
+apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+wget https://github.com/tukaani-project/xz/releases/download/v$VERS/xz-$VERS.tar.xz  &&  \
+tar xf *.tar.xz  &&  rm -f *.tar.xz  &&  cd xz-$VERS  &&  \
+./configure  &&  make install  &&   ldconfig  &&  \
+cd ..  &&  rm -fr xz-$VERS
+
