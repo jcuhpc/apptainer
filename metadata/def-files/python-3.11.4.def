@@ -26,6 +26,12 @@ pip3 install pyQt5 pyrsistent pyslim pytest pytools PyVCF3  &&  \
 pip3 install rasterio  && \
 pip3 install schwimmbad scikit-learn seaborn semver shannon  &&  \
 pip3 install simplejson spython statsmodels sympy tqdm xarray  &&  \
+pip3 uninstall --yes opencv-python  &&  \
+pip3 install --upgrade numba  &&  \
+pip3 install --upgrade "numpy<2.3.0,>=2"  &&  \
+pip3 install --upgrade matplotlib contourpy  &&  \
+pip3 install --upgrade opencv-python-headless
+
 cd /opt  &&  git clone https://github.com/AlphaGenes/AlphaFamImpute.git  &&  \
 cd AlphaFamImpute  &&  python3 setup.py install  &&  \
 apt-get clean   &&   apt-get purge   &&   rm -rf /var/lib/apt/lists/*
