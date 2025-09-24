@@ -1,29 +1,25 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/Q0195/containers/Python-3.11.sif
 
 %runscript
 exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=1.0.7  &&  \
 apt-get update  &&  \
 apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal34t64 libgdal-dev libgeos-dev libgsl27 libgsl-dev libnetcdf-dev libnetcdf19 libssl-dev openssl zlib1g zlib1g-dev  &&  \
-wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tar.xz  &&  \
-tar xf Python-3.11.7.tar.xz  &&  rm -f Python-3.11.7.tar.xz  &&  cd Python-3.11.7  &&  \
-./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
-make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.11.7  &&  \
-ldconfig /usr/local/lib  &&  pip3 install --upgrade pip  &&  \
 apt-get install -y ncbi-blast+ cutadapt vsearch clustalw fasttree  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
+ln /usr/local/bin/python3 /usr/local/bin/python  &&  \
+pip3 install --upgrade pip  &&  \
 pip3 install requests==2.32.3 rich==13.3.5 rich-click==1.7.2 matplotlib==3.8.0 numpy==1.26.2  &&  \
-ln /usr/local/bin/python3 /usr/local/bin/python  && \
-cd /opt  && \
-wget https://github.com/gjeunen/reference_database_creator/archive/refs/tags/v1.0.7.tar.gz  && \
-tar -xvf v1.0.7.tar.gz  && \
-rm -rf v1.0.7.tar.gz
+wget https://github.com/gjeunen/reference_database_creator/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar -xvf v$VERS.tar.gz  &&  rm -rf v$VERS.tar.gz  &&  \
+mv reference_database_creator-$VERS reference_database_creator
 
 %environment
-export PATH="/opt/reference_database_creator-1.0.7:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/reference_database_creator:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 
 
