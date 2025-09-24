@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/Q0195/containers/Python-3.10.sif
 
 %runscript
 exec "$@"
@@ -8,23 +8,17 @@ exec "$@"
 cd /opt  &&  \
 apt-get update  &&  \
 apt-get install -y gdal-bin gdal-data gdal-plugins libbz2-dev libffi8 libffi-dev libgeos-c1v5 libgdal34t64 libgdal-dev libgeos-dev libgsl27 libgsl-dev libnetcdf-dev libnetcdf19 libssl-dev openssl zlib1g zlib1g-dev  &&  \
-wget https://www.python.org/ftp/python/3.10.16/Python-3.10.16.tar.xz  &&  \
-tar xf Python-3.10.16.tar.xz  &&  rm -f Python-3.10.16.tar.xz  &&  cd Python-3.10.16  &&  \
-./configure --prefix=/usr/local --enable-shared --enable-optimizations  &&  \
-make -j 4  &&  make install  &&  cd ..  &&   rm -rf Python-3.10.16  &&  \
-ldconfig /usr/local/lib  &&  pip3 install --upgrade pip  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-cd /opt  && \
-wget https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28_x64-linux.tar.bz2  &&  \
-tar xf minimap2-2.28_x64-linux.tar.bz2  &&  rm -f *.tar.bz2  &&  \
-mv minimap2-2.28_x64-linux minimap2  && \
-pip3 install --upgrade pip  && \
-cd /opt  && \
-wget https://github.com/bioinfo-biols/CIRI-long/archive/refs/tags/v1.1.0.tar.gz  && \
-tar xvf v1.1.0.tar.gz  && \
-rm -rf v1.1.0.tar.gz  && \
-cd CIRI-long-1.1.0  && \
-make  && \
+pip3 install --upgrade pip  &&  \
+VERS=2.28  &&  \
+TEMP="minimap2-$VERS"  &&  FILE=$TEMP"_x64-linux"  &&  \
+wget https://github.com/lh3/minimap2/releases/download/v$VERS/$FILE.tar.bz2  &&  \
+tar xf $FILE.tar.bz2  &&  rm -f *.tar.bz2  &&  mv $FILE minimap2  &&  \
+VERS=1.1.0  &&  \
+wget https://github.com/bioinfo-biols/CIRI-long/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv CIRI-long-$VERS  CIRI-long  &&  \
+cd CIRI-long  &&  make  &&  \
 ln /usr/local/bin/python3 /usr/local/bin/python
 
 %environment
