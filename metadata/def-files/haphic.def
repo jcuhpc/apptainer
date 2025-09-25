@@ -6,11 +6,19 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=0.1.26  &&  \
+apt-get update  &&  \
+apt-get install -y build-essential bwa openjdk-21-jdk samtools  &&  \
+wget https://github.com/GregoryFaust/samblaster/releases/download/v.$VERS/samblaster-v.$VERS.tar.gz  &&  \
+tar xf *.tar.gz  &&  rm -f *.tar.gz  &&  \
+cd samblaster-v.$VERS  &&  make  &&  \
+install -m 775 samblaster /usr/local/bin/  &&  \
+cd ..  &&  rm -rf samblaster*  &&  \
 git clone https://github.com/zengxiaofei/HapHiC.git  &&  \
 mamba env create -f HapHiC/conda_env/environment_py310.yml  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
 conda activate haphic
 
 %environment
-export PATH="/opt/HapHiC:/opt/conda/envs/haphic/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/opt/HapHiC:/opt/HapHiC/utils:/opt/conda/envs/haphic/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
