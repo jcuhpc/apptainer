@@ -6,13 +6,12 @@ exec "$@"
 
 %post
 cd /opt  &&  \
-apt-get update  &&  \
-wget https://github.com/attractivechaos/k8/releases/download/v1.2/k8-1.2.tar.bz2  && \
-tar -jxf k8-1.2.tar.bz2  && \
-rm -rf k8-1.2.tar.bz2  && \
-cd k8-1.2
+VERS=1.2  &&  \
+wget https://github.com/attractivechaos/k8/releases/download/v$VERS/k8-$VERS.tar.bz2  && \
+tar xf k8-$VERS.tar.bz2  &&  rm -f *.tar.bz2  &&  \
+mv k8-$VERS k8  &&  cd k8  &&  \
 ./k8-x86_64-Linux -e 'print(Math.log(2))'
 
 %environment
-export PATH="/opt/k8-1.2:$PATH"
+export PATH="/opt/k8:$PATH"
 
