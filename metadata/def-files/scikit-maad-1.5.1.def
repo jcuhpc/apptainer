@@ -1,0 +1,10 @@
+Bootstrap: localimage
+From: /gpfs01/Q0195/containers/Python-3.13.sif
+
+%runscript
+exec "$@"
+
+%post
+pip3 install numpy  &&  \
+pip3 install "scikit-maad==1.5.1"
+
