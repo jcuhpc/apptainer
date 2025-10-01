@@ -1,15 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/Q0195/containers/Python-3.12.sif
 
 %runscript
 exec "$@"
 
 %post
-cd /opt  &&  \
-apt-get update  &&  \
-apt-get install -y python3-pip  && \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-pip3 install blaze2==2.5.1 --break-system-packages
+pip3 install blaze2==2.5.1
 
 %environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
