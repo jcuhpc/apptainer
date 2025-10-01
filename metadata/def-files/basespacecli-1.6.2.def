@@ -5,12 +5,10 @@ From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
 exec "$@"
 
 %post
-cd /opt  &&  \
-mkdir -p basespace/bin  &&  \
-cd basespace/bin  &&  \
+cd /usr/local/bin  &&  \
 wget "https://launch.basespace.illumina.com/CLI/1.6.2/amd64-linux/bs"  &&  \
-chmod +x bs
+chmod 775 bs
 
 %environment
-export PATH="/opt/basespace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
