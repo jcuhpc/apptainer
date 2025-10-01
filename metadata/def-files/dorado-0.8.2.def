@@ -8,10 +8,9 @@ exec "$@"
 cd /opt  &&  \
 VERS=0.8.2  &&  \
 apt-get update  &&  \
-apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://cdn.oxfordnanoportal.com/software/analysis/dorado-$VERS-linux-x64.tar.gz  &&  \
 tar xf dorado-$VERS-linux-x64.tar.gz  &&  rm -f *.tar.gz  &&  \
-mv dorado-0.8.2-linux-x64 dorado
+mv dorado-$VERS-linux-x64 dorado
 
 %environment
 export PATH="/opt/dorado/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
