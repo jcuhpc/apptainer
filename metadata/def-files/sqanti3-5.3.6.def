@@ -6,14 +6,14 @@ exec "$@"
 
 %post
 cd /opt  &&  \
+VERS=5.3.6  &&  \
 apt-get update  &&  \
-wget https://github.com/ConesaLab/SQANTI3/archive/refs/tags/v5.3.6.tar.gz  && \
-tar -xvf v5.3.6.tar.gz  && \
-rm -rf v5.3.6.tar.gz  && \
-cd SQANTI3-5.3.6  && \
-conda env create -f SQANTI3.conda_env.yml  && \
+wget https://github.com/ConesaLab/SQANTI3/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar xf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  \
+mv SQANTI3-5.3.6 sqanti3  &&  cd sqanti3  &&  \
+conda env create -f SQANTI3.conda_env.yml  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 conda activate sqanti3
 
 %environment
-export PATH="/opt/conda/envs/sqanti3:$PATH"
+export PATH="/opt/sqanti3:/opt/conda/envs/sqanti3:$PATH"
