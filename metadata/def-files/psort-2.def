@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/sw/containers/ubuntu-22.04.sif
 
 %files
 /fast/tmp/psort.tar /opt/

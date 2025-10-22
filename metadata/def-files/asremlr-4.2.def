@@ -1,11 +1,11 @@
 BootStrap: localimage
-From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
+From: /gpfs01/sw/containers/Rbase-4.4.0.sif
 
 %runscript
 exec "$@"
 
 %files
-/gpfs01/Q0195/source/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/
+/gpfs01/sw/source/asreml/asreml_4.2.0.302_R_x86_64-pc-linux-gnu.tar.gz /opt/
 
 %post
 apt-get update  &&  \

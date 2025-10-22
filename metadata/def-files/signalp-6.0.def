@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/sw/containers/ubuntu-22.04.sif
 
 %files
-/gpfs01/Q0195/source/signalp-6.0h.fast.tar.gz /opt
+/gpfs01/sw/source/signalp-6.0h.fast.tar.gz /opt
 
 %runscript
 exec "$@"

@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
+From: /gpfs01/sw/containers/miniforge3-25.3.1.sif
 
 %runscript
 exec "$@"
@@ -7,7 +7,7 @@ exec "$@"
 %post
 VERS=2.4.0  &&  \
 mamba create -c bioconda -c conda-forge -n gtdbtk gtdbtk=$VERS  &&  \
-export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-$VERS/db  &&  \
+export GTDBTK_DATA_PATH=/gpfs01/sw/database/gtdbtk-$VERS/db  &&  \
 cd /opt/conda/envs/gtdbtk/share/gtdbtk-$VERS  &&  rm -rf db  &&  \
 mkdir -p $GTDBTK_DATA_PATH  &&  \
 ln -s $GTDBTK_DATA_PATH db  &&  \
@@ -16,7 +16,7 @@ ln -s $GTDBTK_DATA_PATH db  &&  \
 
 %environment
 export PATH="/opt/conda/envs/gtdbtk/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export GTDBTK_DATA_PATH=/gpfs01/Q0195/database/gtdbtk-2.4.0/db
+export GTDBTK_DATA_PATH=/gpfs01/sw/database/gtdbtk-2.4.0/db
 export CONDA_PYTHON_EXE=/opt/conda/bin/python
 export CONDA_EXE=/opt/conda/bin/conda
 

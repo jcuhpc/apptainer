@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
+From: /gpfs01/sw/containers/miniforge3-25.3.1.sif
 
 %runscript
 exec "$@"
@@ -7,7 +7,7 @@ exec "$@"
 %post
 mamba create --debug -c conda-forge -c bioconda -n busco busco=5.7.0  &&  \
 . /opt/conda/etc/profile.d/conda.sh  &&  \
-ln -s /gpfs01/Q0195/database/busco /busco_downloads
+ln -s /gpfs01/sw/database/busco /busco_downloads
 
 %environment
 export PATH="/opt/conda/envs/busco/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/Python-3.10.sif
+From: /gpfs01/sw/containers/Python-3.10.sif
 
 %runscript
 exec "$@"

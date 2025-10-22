@@ -1,11 +1,11 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/sw/containers/ubuntu-22.04.sif
 
 %labels
 Maintainer JCUHPC
 
 %files
-/gpfs01/Q0195/source/mega_12.0.13-1_amd64_beta.deb /opt
+/gpfs01/sw/source/mega_12.0.13-1_amd64_beta.deb /opt
 # Registration required for download.
 
 %runscript

@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
+From: /gpfs01/sw/containers/miniforge3-25.3.1.sif
 
 %runscript
 exec "$@"
@@ -7,7 +7,7 @@ exec "$@"
 %post
 mamba create -c conda-forge -c bioconda -n krona krona=2.8.1  &&  \
 rm -rf /opt/conda/envs/krona/opt/krona/taxonomy  &&  \
-ln -s /gpfs01/Q0195/database/krona/taxonomy /opt/conda/envs/krona/opt/krona/taxonomy  &&  \
+ln -s /gpfs01/sw/database/krona/taxonomy /opt/conda/envs/krona/opt/krona/taxonomy  &&  \
 . /opt/conda/etc/profile.d/conda.sh
 
 %environment

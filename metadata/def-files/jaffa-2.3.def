@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/Rbase-4.4.0.sif
+From: /gpfs01/sw/containers/Rbase-4.4.0.sif
 
 %runscript
 exec "$@"

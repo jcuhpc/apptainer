@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/Python-3.12.sif
+From: /gpfs01/sw/containers/Python-3.12.sif
 
 %runscript
 exec "$@"
@@ -12,7 +12,7 @@ apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
 wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip  &&  \
 unzip *.zip  &&  rm -f *.zip  &&  mv pplacer-Linux-v1.1.alpha19 pplacer  &&  \
 pip3 install matplotlib numpy pysam checkm-genome==1.2.2  &&  \
-checkm data setRoot /gpfs01/Q0195/database/checkm/
+checkm data setRoot /gpfs01/sw/database/checkm/
 
 %environment
 export PATH="/opt/pplacer:/opt/pplacer/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

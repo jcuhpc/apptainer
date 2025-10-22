@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/sw/containers/ubuntu-24.04.sif
 
 %files
-/gpfs01/Q0195/source/colony2_Lnx_25_02_2024.zip /usr/local/
+/gpfs01/sw/source/colony2_Lnx_25_02_2024.zip /usr/local/
 
 %runscript
 exec "$@"

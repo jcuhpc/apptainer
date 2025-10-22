@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/sw/containers/ubuntu-22.04.sif
 
 %files
-/gpfs01/Q0195/database/Dfam/3.8/dfam38_full.0.h5 /
+/gpfs01/sw/database/Dfam/3.8/dfam38_full.0.h5 /
 
 %runscript
 exec "$@"

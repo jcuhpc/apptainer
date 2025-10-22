@@ -1,9 +1,9 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge3-25.3.1.sif
+From: /gpfs01/sw/containers/miniforge3-25.3.1.sif
 
 %files
 # This is registered software contact client for installer
-/gpfs01/Q0195/source/ParseBiosciences-Pipeline.1.5.0.zip /opt
+/gpfs01/sw/source/ParseBiosciences-Pipeline.1.5.0.zip /opt
 
 %runscript
 exec "$@"

@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+From: /gpfs01/sw/containers/ubuntu-20.04.sif
 
 %files
-/gpfs01/Q0195/source/i-adhore-3.0.01.tar.gz /opt/
+/gpfs01/sw/source/i-adhore-3.0.01.tar.gz /opt/
 
 %runscript
 exec "$@"

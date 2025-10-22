@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/sw/containers/ubuntu-24.04.sif
 
 %files
-/gpfs01/Q0195/source/interproscan-5.68-100.0-64-bit.tar.gz /opt/interproscan-5.68-100.0.tar.gz
+/gpfs01/sw/source/interproscan-5.68-100.0-64-bit.tar.gz /opt/interproscan-5.68-100.0.tar.gz
 
 %runscript
 exec "$@"

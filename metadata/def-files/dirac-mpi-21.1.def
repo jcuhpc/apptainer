@@ -1,8 +1,8 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-20.04.sif
+From: /gpfs01/sw/containers/ubuntu-20.04.sif
 
 %files
-/gpfs01/Q0195/source/DIRAC-21.1-Source.tar.gz /opt/
+/gpfs01/sw/source/DIRAC-21.1-Source.tar.gz /opt/
 
 %runscript
 exec "$@"

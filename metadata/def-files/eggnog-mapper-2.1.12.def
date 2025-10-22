@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-22.04.sif
+From: /gpfs01/sw/containers/ubuntu-22.04.sif
 
 %runscript
 exec "$@"
@@ -14,11 +14,11 @@ wget https://github.com/eggnogdb/eggnog-mapper/archive/refs/tags/$VERS.tar.gz  &
 tar -xvf $VERS.tar.gz  &&  rm -f $VERS.tar.gz  &&  \
 mv eggnog-mapper-$VERS eggnog-mapper  &&  \
 cd eggnog-mapper  &&  python3 setup.py install  &&  \
-export EGGNOG_DATA_DIR=/gpfs01/Q0195/database/eggnog-mapper-data  &&  \
+export EGGNOG_DATA_DIR=/gpfs01/sw/database/eggnog-mapper-data  &&  \
 mkdir -p $EGGNOG_DATA_DIR  &&  \
 ./download_eggnog_data.py -y
 
 %environment
 export PATH="/opt/eggnog-mapper:/opt/eggnog-mapper/eggnog-mapper/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export EGGNOG_DATA_DIR=/gpfs01/Q0195/database/eggnog-mapper-data
+export EGGNOG_DATA_DIR=/gpfs01/sw/database/eggnog-mapper-data
 

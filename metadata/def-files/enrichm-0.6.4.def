@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/ubuntu-24.04.sif
+From: /gpfs01/sw/containers/ubuntu-24.04.sif
 
 %runscript
 exec "$@"
@@ -8,11 +8,11 @@ exec "$@"
 apt-get update  &&  \
 apt-get install -y diamond-aligner hmmer mcl mmseqs2 parallel prodigal python3-levenshtein python3-pip r-base  &&  \
 apt-get clean  &&  apt-get purge  &&  rm -rf /var/lib/apt/lists/*  &&  \
-export ENRICHM_DB=/gpfs01/Q0195/database/enrichm  &&  \
+export ENRICHM_DB=/gpfs01/sw/database/enrichm  &&  \
 pip3 install enrichm==0.6.4 fuzzywuzzy --break-system-packages  &&  \
 mkdir -p $ENRICHM_DB  &&  \
 enrichm data --create
 
 %environment
-export ENRICHM_DB=/gpfs01/Q0195/database/enrichm
+export ENRICHM_DB=/gpfs01/sw/database/enrichm
 
