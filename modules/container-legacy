@@ -3,7 +3,7 @@
 #     sw_name:  software name
 #     sw_vers:  software version
 
-set  SIF  /fast/tmp/containers/$sw_name-$sw_vers.sif
+set  SIF  /gpfs01/sw/containers/$sw_name-$sw_vers.sif
 
 if [ module-info mode load ] {
     puts stderr "
