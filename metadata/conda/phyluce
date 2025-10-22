@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: /gpfs01/Q0195/containers/miniforge-24.04.sif
+From: /gpfs01/sw/containers/miniforge3-25.3.1.sif
 
 %post
 wget https://raw.githubusercontent.com/faircloth-lab/phyluce/vSWVERS/distrib/phyluce-SWVERS-py36-Linux-conda.yml  &&  \
