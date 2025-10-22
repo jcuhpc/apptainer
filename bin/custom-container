@@ -13,7 +13,7 @@ fi
 
 # Base of apptainers creation structure.
 BASE=`which $0 | awk -F'/bin' '{print $(NF-1)}'`
-DEST=/gpfs01/Q0195/containers
+DEST=/gpfs01/sw/containers
 TEMP=/fast/tmp
 
 # Prepare for singularity container build.

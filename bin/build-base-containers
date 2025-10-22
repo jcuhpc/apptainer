@@ -1,6 +1,6 @@
 #!/bin/bash
-APPS=/gpfs01/Q0195/containers
-DEFS=/gpfs01/Q0195/apptainer/metadata/def-files
+APPS=/gpfs01/sw/containers
+DEFS=/gpfs01/sw/apptainer/metadata/def-files
 sudo apptainer build Python-3.12.3.sif $DEFS/Python-3.12.3.def
 sudo apptainer build ubuntu-18.04.sif $DEFS/ubuntu-18.04.def
 sudo apptainer build ubuntu-20.04.sif $DEFS/ubuntu-20.04.def

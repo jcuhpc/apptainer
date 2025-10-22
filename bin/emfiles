@@ -41,9 +41,7 @@ declare -a XTRA   # Extra packages to be searched.
 shift        # Skip past first argument.
 DFLT=0       # Default version?
 NAME=$CONT   # Module name.
-# changed 12 Nov 2023
-#MPTH=/sw/modules
-MPTH=/gpfs01/Q0195/modules
+MPTH=/gpfs01/sw/modules
 while [[ $# -gt 0 ]] ; do
     opt="$1"
     case $opt in
