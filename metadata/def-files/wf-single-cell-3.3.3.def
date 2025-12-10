@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /gpfs01/sw/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=3.3.3  &&  \
+apt-get update  &&  \
+wget https://github.com/epi2me-labs/wf-single-cell/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar -xzf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  mv wf-single-cell-$VERS wf-single-cell
+
+%environment
+export PATH="/opt/wf-single-cell:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
