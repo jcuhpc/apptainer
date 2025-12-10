@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /gpfs01/sw/containers/ubuntu-24.04.sif
+
+%runscript
+exec "$@"
+
+%post
+cd /opt  &&  \
+VERS=1.0.3  &&  \
+apt-get update  &&  \
+wget https://github.com/GenomiqueENS/AsaruSim/archive/refs/tags/v$VERS.tar.gz  &&  \
+tar -xzf v$VERS.tar.gz  &&  rm -f *.tar.gz  &&  mv AsaruSim-$VERS asarusim
+
+%environment
+export PATH="/opt/asarusim:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

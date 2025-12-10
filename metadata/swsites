@@ -23,6 +23,7 @@ archivemount github.com/cybernoid/archivemount
 armadillo arma.sourceforge.net
 artemis www.sanger.ac.uk/science/tools/artemis
 artmountrainer www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm
+asarusim github.com/GenomiqueENS/AsaruSim
 asremlr biometryhub.github.io/installing-r/installing-asreml.html
 assembly-scan github.com/rpetit3/assembly-scan
 assembly-stats github.com/sanger-pathogens/assembly-stats
@@ -525,3 +526,6 @@ neestimator https://github.com/ldutoit/NeEstimator
 snepnetrends https://sourceforge.net/projects/snepnetrends/
 longsom https://github.com/cbg-ethz/LongSom/wiki/03.-LongSom-Installation
 mummer https://github.com/mummer4/mummer
+busco_phylogenomics https://github.com/jamiemcg/BUSCO_phylogenomics
+quarto https://quarto.org/
+yasara https://www.yasara.org/
